@@ -1,0 +1,54 @@
+/*위 타이틀부터 페이지네이션 전체를 덮는 div*/
+.mypage3{
+    width:80%;
+    margin: 0 auto;
+}
+
+/*관심기업 star이미지*/
+.star_img {
+    width: 30px;
+}
+
+/*기업 로고 이미지*/
+.corp_logo{
+    width: 50px;
+}
+
+/*리스트 전체를 덮는 div*/
+.all_list {
+    width: 100%;
+}
+
+.all_list ul {
+    display: flex;
+    border-bottom: 1px solid gainsboro;
+    padding: 0;
+    width: 100%;
+}
+
+.all_list li {
+    /* border: 1px solid black; */
+    flex-basis: 100%;
+    list-style: none;
+    text-align: center;
+}
+
+li:nth-child(1){
+    float: left;
+    text-align: left;
+    padding-left: 30px;
+}
+li:nth-last-child(1){
+    float: right;
+    text-align: right;
+    padding-right: 30px;
+}
+
+/*페이지네이션 버튼*/
+.page-area{
+    width: 100%;
+}
+
+#page-area{
+    text-align: center;
+}

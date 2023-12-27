@@ -1,0 +1,24 @@
+* {
+    background-color: aliceblue;
+}
+
+.side_bar_content {
+    margin: 0;
+    /* border: 1px solid salmon; */
+}
+
+a {
+    text-decoration-line: none;
+    color: black;
+    /* border: 1px solid blue; */
+}
+
+li {
+    list-style: none;
+    margin: 30% 0;
+    /* border: 1px solid green; */
+}
+
+ul {
+    text-align: center;
+}

@@ -1,0 +1,35 @@
+.footer {
+    color: rgb(141, 141, 141);
+    background-color: rgba(220, 220, 220, 0.3);
+}
+
+.footer_div1 {
+    padding: 10px;
+}
+
+.footer_ul {
+    list-style: none;
+    display: flex;
+}
+
+.footer_li {
+    margin: 0 auto;
+    font-size: small;
+}
+
+.footer a {
+    text-decoration-line: none;
+    color: rgb(141, 141, 141);
+}
+
+.footer p {
+    text-align: center;
+}
+
+.footer a:hover {
+    color: blue;
+}
+
+#youtube_logo {
+    width: 20px;
+}
