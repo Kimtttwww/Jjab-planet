@@ -11,7 +11,7 @@
 
     <body>
         <div class="main">
-            <h3 class="content_title"><a href="">인기 많은 공고 ></a></h3>
+            <h3 class="content_title"><a href="${pageContext.request.contextPath}/corpInsert.jsp">인기 많은 공고 ></a></h3>
             <div class="top_banner">
                 <!--최다 조회수 배너-->
                 <div id="top_b1">
