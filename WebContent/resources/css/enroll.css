@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.container-enroll {
+    /*회원가입 박스 전체 틀*/
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+} 
+.container-enroll div { 
+    margin-bottom: 8px;
+} 
+.container-enroll .enroll-textL {
+    /*입력 정보 길이가 긴 인풋태그*/
+    width: 540px;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #27ae60;
+    border-radius: 5px;
+} 
+.container-enroll .enroll-phoneBox {
+    /*입력 정보 인풋태그 text*/
+    width: 470px;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #27ae60;
+    border-radius: 5px;
+}
+
+.container-enroll .enroll-email{
+    /*이메일 인풋태그*/
+    width: 200px;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #27ae60;
+    border-radius: 5px;
+}
+.container-enroll .email-direct{
+    /*직접입력 누르면 나오는 인풋태그*/
+    width: 200px;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #27ae60;
+    border-radius: 5px;
+}
+
+.container-enroll .enroll-selectBox {
+    /*셀렉트 박스 css*/
+    border-radius: 5px;
+    padding: 9px;
+    border: 1px solid #27ae60;
+    outline-color: #27ae60;
+}
+.container-enroll .enroll-div {
+    /*입력 정보 감싸는 틀*/
+    border: 10px solid #27ae60;
+    padding-left: 20px;
+    border-radius: 20px;
+    width: 580px;
+} 
+.container-enroll .enroll-btn {
+    /*가입 버튼*/
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.container-enroll .link-enroll {
+    /*개인 & 기업 회원가입 이동 틀*/
+    display: flex; 
+    border: none; 
+    width: 615px;
+    height: 100px;
+}
+
+.radius-left {
+    /*왼쪽 모서리 둥글게*/
+    border-radius: 20px 0 0 20px;
+}
+.radius-right {
+    /*오른쪽 모서리 둥글게*/
+    border-radius: 0 20px 20px 0;
+}
+
+.expand-green {
+    /*해당 페이지 확장 효과*/
+    background-color: #27ae60; 
+    width: 55%;
+}
+.contract-white {
+    /*다른 페이지 축소 효과*/
+    background-color: #ffff; 
+    border: 3px solid #27ae60; 
+    width: 45%;
+}
+.enroll-a {
+    /*개인 & 기업 회원가입 이동 앵커태그*/
+    text-decoration: none; 
+    display: inline-block; 
+    height: 100%; 
+    width: 100%; 
+    text-align: center; 
+    line-height: 90px; 
+    font-size: 22px;
+    font-weight: bold;
+    
+}
+.expand-color {
+    /*해당 페이지 확장 효과(글씨)*/
+    color: #fff;
+}
+.contract-color {
+    /*다른 페이지 축소 효과(글씨)*/
+    color: #27ae60;
+}
+.enroll-div>div:last-of-type{
+    display: flex;
+}
+.enroll-btnBox{
+    margin-bottom: 20px; 
+    margin: 0 auto;
+}
+input:focus{
+    outline-color: #27ae60;
+}
