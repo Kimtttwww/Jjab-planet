@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${ pageContext.request.contextPath }/resources/css/footer.css" rel="stylesheet">
+<link href="${ pageContext.request.contextPath }/resources/css/common/footer.css" rel="stylesheet">
 </head>
 <body>
     <div class="footer">
@@ -27,7 +27,7 @@
         </p>
         <p>
             프로들과 이야기하자!<a href="#">커뮤니티</a> | 사람인 공식채널 <a href="#"><img id="youtube_logo"
-                    src="../lib/img/youtube_logo.png"></a></p>
+                    src="${ pageContext.request.contextPath }/resources/images/youtube_logo.png"></a></p>
     </div>
 </body>
 </html>
