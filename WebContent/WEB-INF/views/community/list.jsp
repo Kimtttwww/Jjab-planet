@@ -18,6 +18,7 @@
 
         a {
             width: 100px;
+            background-color: lightgray;
             color: black;
             text-decoration: none;
             font-size: larger;
@@ -26,14 +27,10 @@
             padding: 5px 0;
         }
 
-        /* 배경색 */
-        .backgroundColor {
-            background-color: lightgray;
-        }
-        
         /* 제목박스 */
         .titlebar {
             width: 350px;
+            background-color: lightgray;
             text-align: center;
             font-size: 20px;
             margin: 0 auto;
@@ -109,7 +106,7 @@
 </head>
 <body>
 	<square>
-        <section class="titlebar backgroundColor">
+        <section class="titlebar">
             <h1>커뮤니티 게시판</h1>
         </section>
         
@@ -123,8 +120,8 @@
                 </select>
             </article>
             <article>
-                <a href="" class="backgroundColor">검색</a>
-                <a href="" class="backgroundColor">글작성</a>
+                <a href="">검색</a>
+                <a href="">글작성</a>
             </article>
         </section>
 
