@@ -1,4 +1,4 @@
-package com.kh.Corporation.controller;
+package com.kh.corporation.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -39,7 +39,7 @@ public class CorpReviewListController extends HttpServlet {
 		int endPage;	// 페이징 하단에 보여질 페이징바의 끝수
 				
 		// * listCount : 총 개시글 갯수
-		listCount = new BoardService().selectListCount();
+//		listCount = new BoardService().selectListCount();
 		
 		// * currentPage : 사용자가 요청한 페이지 -> 처음엔 선택한 값이 없기때문에(null) 1번으로 기본값설정함
 		currentPage = Integer.parseInt(request.getParameter("currentPage") == null ? 
@@ -53,7 +53,7 @@ public class CorpReviewListController extends HttpServlet {
 		
 		
 		// * maxPage : 가장 마지막 페이지가 몇번 페이지인지(총 페이지 수)		
-		maxPage = (int)Math.ceil( (double)listCount / boardLimit);
+//		maxPage = (int)Math.ceil( (double)listCount / boardLimit);
 		
 		// * startPage : 페이지 하단에 보여질 페이징바의 시작수
 		startPage = (currentPage -1) / pageLimit * pageLimit + 1;
@@ -61,10 +61,10 @@ public class CorpReviewListController extends HttpServlet {
 		// * endPage : 페이징 하단에 보여질 페이징바의 끝수
 		endPage = startPage + pageLimit - 1;
 		
-		if(endPage > maxPage) {
-			// endPage가 maxPage보다 많으면 안됨!!
-			endPage = maxPage;
-		}
+//		if(endPage > maxPage) {
+//			// endPage가 maxPage보다 많으면 안됨!!
+//			endPage = maxPage;
+//		}
 		
 		
 		

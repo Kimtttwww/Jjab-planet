@@ -1,4 +1,4 @@
-package com.kh.Corporation.controller;
+package com.kh.corporation.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

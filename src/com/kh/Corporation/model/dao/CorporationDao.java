@@ -1,5 +1,5 @@
-package com.kh.Corporation.model.dao;
+package com.kh.corporation.model.dao;
 
-public class CorpoationDao {
+public class CorporationDao {
 
 }

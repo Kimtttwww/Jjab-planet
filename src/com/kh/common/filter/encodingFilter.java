@@ -13,12 +13,12 @@ import javax.servlet.annotation.WebFilter;
  * Servlet Filter implementation class encodingFilter
  */
 @WebFilter("/encodingFilter")
-public class encodingFilter implements Filter {
+public class EncodingFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public encodingFilter() {
+    public EncodingFilter() {
     	super();
     }
 

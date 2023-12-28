@@ -18,7 +18,6 @@ import lombok.ToString;
 @ToString
 @Builder
 
-
 public class Member {
 	private int userNo;
 	private String userId;
@@ -27,15 +26,9 @@ public class Member {
 	private String status;
 	private String userType;
 
+	public void test() {
 
-public void test() {
-	
-	System.out.println();
-}
-
-
-
-
-
+		System.out.println();
+	}
 
 }
