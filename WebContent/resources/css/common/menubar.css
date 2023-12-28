@@ -1,24 +1,21 @@
-* {
-    background-color: aliceblue;
-}
-
-.side_bar_content {
-    margin: 0;
-    /* border: 1px solid salmon; */
-}
-
 a {
     text-decoration-line: none;
     color: black;
     /* border: 1px solid blue; */
 }
 
-li {
+.menu_li {
     list-style: none;
-    margin: 30% 0;
+    margin: 0;
     /* border: 1px solid green; */
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
 }
 
 ul {
     text-align: center;
+    margin:0;
+    padding: 0;
 }
+

@@ -1,10 +1,15 @@
+html, body{
+	height:100%;
+}
 .footer {
     color: rgb(141, 141, 141);
     background-color: rgba(220, 220, 220, 0.3);
+    margin:0 auto;
 }
 
 .footer_div1 {
     padding: 10px;
+
 }
 
 .footer_ul {
@@ -37,3 +42,4 @@
 #youtube_logo {
     width: 20px;
 }
+

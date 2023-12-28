@@ -6,82 +6,79 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<head>
-    <style>
-        * {
-            margin: 5;
-            text-decoration-line: none; /* 밑에 줄 없애기 */
-            text-decoration: none; color: black; /* 보라색 흔적 없애기 */
-            /* border: solid 1px black; */
-        }
-        .menu-area {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            width: 100%;
-            height: 80px;
-            vertical-align: middle;
-            font-size: 19px;
-            font-weight: bold;
-            justify-content: space-between;
-            position: sticky;
-            background-color: aquamarine;
-            border-radius: 20px;
-        }
-        
-        .menu {
-            width: 100px;
-            
-        }
-        .menu-bar {
-            display: flex;
-            flex-direction: row;
-            margin-right: 30px;
-        }
-        .menu-right {
-            display: flex;
-            justify-content: center;
-        }
-        
-        .menu a {
-            display: inline-block;
-            vertical-align: middle;
-        }
-    
-        .menu a:hover{
-            font-size: 20px;
-            transition-duration: 0.3s;
-        }
-        .menuTwo{
-            width: 130px;
-        }
-    </style>
-    </head>
-    <body>
-    <div class="menu-area" align="center">
-        <div class="menu-bar">
-            <div class="menu menu-left menuTWo"><a href = "">JJOBPLANET</a></div>
-            <div class="menu menu-left"><a href = "">채용공고</a></div>
-            <div class="menu menu-left"><a href = "">기업정보</a></div>
-            <div class="menu menu-left"><a href = "">커뮤니티</a></div>
-        </div>
-        <div class="menu-bar">
-            <div class="menu menu-right"><a href = "">로그인</a></div>
-            <div class="menu menu-right"><a href = "">회원가입</a></div>
-        </div>
-    </div>
+<style>
+.bigBox{
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
+.loginBox{
+    height: 400px;
+    width: 50%;
+    margin-top: 40px;
+    background-color: aliceblue;
+    border-radius: 20px;
+}
 
+.flexBox{
+    display: flex;
+}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href = "로그인페이지.css">
-    <title>로그인페이지</title>
-</head>
+.login{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 7%;
+}
+
+.idPass{
+    text-align: center;
+}
+
+.flexBox1 {
+    width: 70%; 
+    height: 80px;
+    display: flexbox;
+    flex-direction: column;
+    justify-content: center;    
+    align-items: center; 
+}
+
+.hapChae{
+    display: flex;
+}
+
+.id, .pwd{
+    flex-basis: 30%;
+    text-align: right;
+    padding-right: 10%;
+}
+
+.ipInput, pwdInput{
+    flex-basis: 70%;
+}
+
+.naddhapChae{
+    margin-top: 50px;
+}
+
+.button{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.large-input{
+    height: 30px;
+}
+</style>
 <body>
+	<jsp:include page="/WEB-INF/topbar.jsp"/>
+	<% String contextPath = request.getContextPath(); %>
+	<form id = "login-form" action = "<%= contextPath %>/login.me" method="post">
     <div class = "bigBox">
         <div class = "loginBox">
-            <div class ="login">로그인</div>
+            <div class ="login"><a href = "loginForm.jsp">로그인</a></div>
             <div class ="naddhapChae">
             <div class ="hapChae">
                 <div class ="id">
@@ -98,17 +95,16 @@
                 </div>
                 <div class = "pwdInput">
                     <input type ="password" class ="large-input">
+            <div class = "button">
+                <input type = "submit" name = "userId" value= "로그인">
+                <input type = "button" name = "userPwd" value="회원가입">
+            </div>
                 </div>
             </div>
             </div>
             </div>
-            <div class = "button">
-                <input type = "button" value= "로그인">
-                <input type = "button" value="회원가입">
             </div>
-            </div>
-
-        
+        </form>
         
     </div>
 </body>

@@ -2,24 +2,24 @@ body {
     margin: 0;
     padding: 0;
 }
-.container-enroll {
+#container-enroll {
     /*회원가입 박스 전체 틀*/
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
 } 
-.container-enroll div { 
+#container-enroll div { 
     margin-bottom: 8px;
 } 
-.container-enroll .enroll-textL {
-    /*입력 정보 길이가 긴 인풋태그*/
+#container-enroll input[type="password"] {
+    /*입력 정보 인풋태그 email,password*/
     width: 540px;
     padding: 10px;
     margin-bottom: 5px;
     border: 1px solid #27ae60;
     border-radius: 5px;
 } 
-.container-enroll .enroll-phoneBox {
+.enroll-phoneBox {
     /*입력 정보 인풋태그 text*/
     width: 470px;
     padding: 10px;
@@ -27,8 +27,7 @@ body {
     border: 1px solid #27ae60;
     border-radius: 5px;
 }
-
-.container-enroll .enroll-email{
+#enroll-email{
     /*이메일 인풋태그*/
     width: 200px;
     padding: 10px;
@@ -36,7 +35,7 @@ body {
     border: 1px solid #27ae60;
     border-radius: 5px;
 }
-.container-enroll .email-direct{
+#email-direct{
     /*직접입력 누르면 나오는 인풋태그*/
     width: 200px;
     padding: 10px;
@@ -45,21 +44,21 @@ body {
     border-radius: 5px;
 }
 
-.container-enroll .enroll-selectBox {
+.enroll-selectBox {
     /*셀렉트 박스 css*/
     border-radius: 5px;
     padding: 9px;
     border: 1px solid #27ae60;
     outline-color: #27ae60;
 }
-.container-enroll .enroll-div {
+.enroll-div {
     /*입력 정보 감싸는 틀*/
     border: 10px solid #27ae60;
     padding-left: 20px;
     border-radius: 20px;
     width: 580px;
 } 
-.container-enroll .enroll-btn {
+.enroll-btn {
     /*가입 버튼*/
     background-color: #27ae60;
     color: #fff;
@@ -69,7 +68,7 @@ body {
     cursor: pointer;
     font-size: 20px;
 }
-.container-enroll .link-enroll {
+#link-enroll {
     /*개인 & 기업 회원가입 이동 틀*/
     display: flex; 
     border: none; 

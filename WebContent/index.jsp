@@ -6,61 +6,40 @@
         <meta charset="UTF-8">
         <title>Insert title here</title>
         <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/common/index.css" type="text/css">
-        <link rel="import" href="./common.footer.jsp">
     </head>
 
     <body>
-    <jsp:include page="/WEB-INF/views/common/topbar.jsp"/>
+        <jsp:include page="/WEB-INF/views/common/topbar.jsp" />
         <div class="main">
-            <h3 class="content_title"><a href="${pageContext.request.contextPath}/corpInsert.jsp">인기 많은 공고 ></a></h3>
+            <h3 class="content_title"><a href="${pageContext.request.contextPath}/mypage.jsp">인기 많은 공고 ></a></h3>
             <div class="top_banner">
                 <!--최다 조회수 배너-->
-                <div id="top_b1">
-                    <div class="content_top">
-                        <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" alt="">
-                    </div>
-                    <div class="content_middle">
-                        <p>넥슨</p>
-                        <p>공고제목</p>
-                    </div>
-                    <div class="content_bottom">
-                        <p>직종 / 조회수</p>
-                    </div>
-
+                <div class="top_b1">
+                    <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" alt="">
+                    <p>넥슨</p>
+                    <p>공고제목</p>
+                    <p class="content_bottom">직종 / 조회수</p>
+                </div><!--top_b1-->
+                <div class="top_b2">
+                    <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" alt="">
+                    <p>넥슨</p>
+                    <p>공고제목</p>
+                    <p class="content_bottom">직종 / 조회수</p>
                 </div>
-                <div id="top_b2">
-                    <div class="content_top">
-                        <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" alt="">
-                    </div>
-                    <div class="content_middle">
-                        <p>넥슨</p>
-                        <p>공고제목</p>
-                    </div>
-                    <div class="content_bottom">
-                        <p>직종 / 조회수</p>
-                    </div>
+                <div class="top_b2">
+                    <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" alt="">
+                    <p>넥슨</p>
+                    <p>공고제목</p>
+                    <p class="content_bottom">직종 / 조회수</p>
                 </div>
-                <div id="top_b3">
-                    <div class="content_top">
-                        <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" alt="">
-                    </div>
-                    <div class="content_middle">
-                        <p>넥슨</p>
-                        <p>공고제목</p>
-                    </div>
-                    <div class="content_bottom">
-                        <p>직종 / 조회수</p>
-                    </div>
-                </div>
-            </div>
-            <br>
+            </div><!--top_banner-->
             <h3 class="content_title"><a href="">최신 공고 ></a></h3>
             <div class="new_banner"><!--최신 공고 배너-->
                 <div class="new_b1">
                     <div class="content_top">
                         <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" alt="">
                     </div>
-                    <div class="content_middle">
+                    <div>
                         <p>넥슨</p>
                         <p>공고제목</p>
                     </div>
@@ -72,7 +51,7 @@
                     <div class="content_top">
                         <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" alt="">
                     </div>
-                    <div class="content_middle">
+                    <div>
                         <p>넥슨</p>
                         <p>공고제목</p>
                     </div>
@@ -84,7 +63,7 @@
                     <div class="content_top">
                         <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" alt="">
                     </div>
-                    <div class="content_middle">
+                    <div>
                         <p>넥슨</p>
                         <p>공고제목</p>
                     </div>
@@ -96,7 +75,7 @@
                     <div class="content_top">
                         <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" alt="">
                     </div>
-                    <div class="content_middle">
+                    <div>
                         <p>넥슨</p>
                         <p>공고제목</p>
                     </div>
@@ -108,7 +87,7 @@
                     <div class="content_top">
                         <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" alt="">
                     </div>
-                    <div class="content_middle">
+                    <div>
                         <p>넥슨</p>
                         <p>공고제목</p>
                     </div>
@@ -120,7 +99,7 @@
                     <div class="content_top">
                         <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" alt="">
                     </div>
-                    <div class="content_middle">
+                    <div>
                         <p>넥슨</p>
                         <p>공고제목</p>
                     </div>
@@ -151,7 +130,7 @@
                     </li>
                 </ul>
             </div>
-            <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+            <jsp:include page="/WEB-INF/views/common/footer.jsp" />
         </div>
     </body>
 
