@@ -19,11 +19,28 @@
                 background-color: aquamarine;
             }
 
-            .menu-bar {
-                display: flex;
-                flex-direction: row;
-                margin-right: 30px;
-            }
+    .menu a:hover{
+        font-size: 20px;
+        transition-duration: 0.3s;
+    }
+    .menuTwo{
+        width: 130px;
+    }
+</style>
+</head>
+<body>
+<div class="menu-area" align="center">
+    <div class="menu-bar">
+        <div class="menu menu-left menuTWo"><a href = "">JJOBPLANET</a></div>
+        <div class="menu menu-left"><a href = "">채용공고</a></div>
+        <div class="menu menu-left"><a href = "${pageContext.request.contextPath}/review.insert">기업정보</a></div>
+        <div class="menu menu-left"><a href = "">커뮤니티</a></div>
+    </div>
+    <div class="menu-bar">
+        <div class="menu menu-right"><a href = "">로그인</a></div>
+        <div class="menu menu-right"><a href = "">회원가입</a></div>
+    </div>
+</div>
 
             .menu-right {
                 display: flex;
