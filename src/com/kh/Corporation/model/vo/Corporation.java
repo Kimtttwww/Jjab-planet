@@ -1,4 +1,4 @@
-package com.kr.corp.model.vo;
+package com.kh.Corporation.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,8 +23,4 @@ public class Corporation {
 		int likeCount;
 		String homepage;
 		
-	
-	
-	
-	
 }

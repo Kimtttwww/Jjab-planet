@@ -58,7 +58,7 @@
     <div class="menu-bar">
         <div class="menu menu-left menuTWo"><a href = "">JJOBPLANET</a></div>
         <div class="menu menu-left"><a href = "">채용공고</a></div>
-        <div class="menu menu-left"><a href = "">기업정보</a></div>
+        <div class="menu menu-left"><a href = "${pageContext.request.contextPath}/review.insert">기업정보</a></div>
         <div class="menu menu-left"><a href = "">커뮤니티</a></div>
     </div>
     <div class="menu-bar">
