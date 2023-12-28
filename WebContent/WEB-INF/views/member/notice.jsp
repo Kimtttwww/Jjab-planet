@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
+	<style>
         body {
             box-sizing: border-box;
             margin: 0;
