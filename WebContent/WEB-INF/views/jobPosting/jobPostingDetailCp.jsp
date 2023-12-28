@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>채용공고상세(기업)</title>
-
-  <link rel="stylesheet" href="../css/jobPostingDetailCp.css">
-
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-  <div class="container">
+	 <div class="container">
     <h1>채용 공고 (기업)</h1>
     <p class="instructions">* 정확한 정보를 입력해 주세요.</p>
     
@@ -113,6 +108,9 @@
     </form>
     <!-- 폼 태그 종료 -->
   </div>
+
+
+
+
 </body>
 </html>
-    
