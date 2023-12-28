@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
+
 <style>
     * {
         margin: 5;
@@ -54,15 +57,25 @@
 </style>
 </head>
 <body>
+<script>
+	$(() => {
+		const msg = "${ alertMsg }";
+		if(msg) {
+			alert(msg);
+			<c:remove var="alertMsg"/>
+		}
+	});
+</script>
+
 <div class="menu-area" align="center">
     <div class="menu-bar">
         <div class="menu menu-left menuTWo"><a href = "">JJOBPLANET</a></div>
         <div class="menu menu-left"><a href = "">채용공고</a></div>
         <div class="menu menu-left"><a href = "">기업정보</a></div>
-        <div class="menu menu-left"><a href = "">커뮤니티</a></div>
+        <div class="menu menu-left"><a href = "list.po">커뮤니티</a></div>
     </div>
     <div class="menu-bar">
-        <div class="menu menu-right"><a href = "">로그인</a></div>
+        <div class="menu menu-right"><a href = "login.me">로그인</a></div>
         <div class="menu menu-right"><a href = "">회원가입</a></div>
     </div>
 </div>

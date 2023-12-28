@@ -6,17 +6,17 @@
         <meta charset="UTF-8">
         <title>Insert title here</title>
         <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/common/index.css" type="text/css">
-        <link rel="import" href="./common.footer.jsp">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    </head>
         <script type="text/javascript">
-            $(document).ready(function () {
+            $(document).ready(function() {
                 $(".footer").load("./common/footer.jsp");  // 추가 인클루드를 원할 경우 이런식으로 추가하면 된다
             });
         </script>
 
-    </head>
-
     <body>
-    <jsp:include page="/WEB-INF/views/common/topbar.jsp"/>
+    <jsp:include page="/WEB-INF/topbar.jsp"/>
         <div class="main">
             <h3 class="content_title"><a href="${pageContext.request.contextPath}/corpInsert.jsp">인기 많은 공고 ></a></h3>
             <div class="top_banner">
@@ -32,7 +32,6 @@
                     <div class="content_bottom">
                         <p>직종 / 조회수</p>
                     </div>
-
                 </div>
                 <div id="top_b2">
                     <div class="content_top">
@@ -136,7 +135,7 @@
                 </div>
             </div>
 
-            <h3 class="content_title"><a href="">전체 공고 > </a></h3>
+            <h3 class="content_title"><a href="">전체 공고> </a></h3>
             <div class="all_list">
                 <ul>
                     <li>기업명</li>
