@@ -109,7 +109,7 @@
                 </div>
             </div>
 
-            <h3 class="content_title"><a href="">전체 공고 > </a></h3>
+            <h3 class="content_title"><a href="">전체 공고> </a></h3>
             <div class="all_list">
                 <ul>
                     <li>기업명</li>

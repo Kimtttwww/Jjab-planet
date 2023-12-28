@@ -13,7 +13,6 @@
     display: flex;
     justify-content: center;
 }
-
 .loginBox{
     height: 400px;
     width: 50%;
