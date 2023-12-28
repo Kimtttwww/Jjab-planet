@@ -57,6 +57,8 @@
     </style>
 </head>
 <body>
+	<jsp:include page="../common/topbar.jsp"/>
+	
 	<container>
         <section class="list-area">
             <hr>

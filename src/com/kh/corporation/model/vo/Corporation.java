@@ -1,4 +1,4 @@
-package com.kr.corp.model.vo;
+package com.kh.corporation.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

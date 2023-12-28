@@ -7,12 +7,6 @@
         <title>Insert title here</title>
         <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/common/index.css" type="text/css">
         <link rel="import" href="./common.footer.jsp">
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $(".footer").load("./common/footer.jsp");  // 추가 인클루드를 원할 경우 이런식으로 추가하면 된다
-            });
-        </script>
-
     </head>
 
     <body>

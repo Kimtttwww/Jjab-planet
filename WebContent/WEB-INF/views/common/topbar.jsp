@@ -59,7 +59,7 @@
         <div class="menu menu-left menuTWo"><a href = "">JJOBPLANET</a></div>
         <div class="menu menu-left"><a href = "">채용공고</a></div>
         <div class="menu menu-left"><a href = "">기업정보</a></div>
-        <div class="menu menu-left"><a href = "">커뮤니티</a></div>
+        <div class="menu menu-left"><a href = "list.po">커뮤니티</a></div>
     </div>
     <div class="menu-bar">
         <div class="menu menu-right"><a href = "">로그인</a></div>

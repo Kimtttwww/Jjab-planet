@@ -16,7 +16,7 @@
             display: block;
         }
 
-        a {
+        square a {
             width: 100px;
             background-color: lightgray;
             color: black;
@@ -105,6 +105,8 @@
     </style>
 </head>
 <body>
+	<jsp:include page="../common/topbar.jsp"/>
+	
 	<square>
         <section class="titlebar">
             <h1>커뮤니티 게시판</h1>
@@ -120,8 +122,8 @@
                 </select>
             </article>
             <article>
+                <a href="write.po">글작성</a>
                 <a href="">검색</a>
-                <a href="">글작성</a>
             </article>
         </section>
 

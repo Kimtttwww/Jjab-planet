@@ -179,6 +179,8 @@
         </style>
 </head>
 <body>
+	<jsp:include page="../common/topbar.jsp"/>
+	
 	<section class="titlebar">
         <h1>커뮤니티 게시판</h1>
     </section>

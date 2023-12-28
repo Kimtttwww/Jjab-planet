@@ -75,6 +75,8 @@
     </style>
 </head>
 <body>
+	<jsp:include page="../common/topbar.jsp"/>
+	
 	<square style="background-color: white;">
         <section class="titlebar">
             <h1>커뮤니티 게시판</h1>
