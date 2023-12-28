@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
+<jsp:include page="../common/topbar.jsp"/>
     <!--기업회원 enroll-->
     <div class="container-enroll">
         <form action="" method="">
