@@ -4,10 +4,9 @@
 <!-- 박윤비 정렬만 했음 12:34 -->
 <!DOCTYPE html>
 <html>
-
 <head>
-<meta charset="UTF-8">
-<title>Topbar</title>
+	<meta charset="UTF-8">
+	<title>Topbar</title>
 <style>
 	body{
 		box-sizing : border-box;
@@ -77,9 +76,12 @@
 	<div class="menu-area">
 		<div class="menu">
 			<div class="menu-left">
-				<a href="">JJOBPLANET</a> <a href="">채용공고</a> <a
-					href="${pageContext.request.contextPath}/WEB-INF/views/member/corpInsert.jsp">기업정보</a>
+				<a href="">JJOBPLANET</a>
+				<a href="">채용공고</a>
+				<a href="${pageContext.request.contextPath}/WEB-INF/views/member/corpInsert.jsp">기업정보</a>
 				<a href="list.po">커뮤니티</a>
+				<a></a>
+				<a></a>
 			</div>
 
 			<div class="menu-right">

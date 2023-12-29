@@ -42,7 +42,7 @@
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
 		<div class="content">
-			<jsp:include page="/WEB-INF/views/common/notice.jsp" />
+			<jsp:include page="/WEB-INF/views/member/notice.jsp" />
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
