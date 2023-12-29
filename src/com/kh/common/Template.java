@@ -9,6 +9,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class Template {
+	/**
+	 * @return 새 DB연결 객체
+	 */
 	public static SqlSession getSqlSession() {
 		SqlSession sqlSession = null;
 		String resource = "/mybatis-config.xml";
