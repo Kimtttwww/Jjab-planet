@@ -1,122 +1,124 @@
-            html, body{
-                margin: 0;
-                height:100%;
-            }
-            /*h3 제목과 아래 컨텐츠 맞춤용*/
-            .content_title {
-                margin: 20px 0 5px 0;
-            }
+/*박윤비 기업 공고 상세페이지 제작중 미완성 12:18*/
+html, body {
+	margin: 0;
+	height: 100%;
+}
+/*h3 제목과 아래 컨텐츠 맞춤용*/
+.content_title {
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
 
-            /* new banner */
-            .new_banner {
-                width: 100%;
-                display: flex;
-                flex-wrap: wrap;
-            }
+/* new banner */
+.new_banner_content {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
 
-            .new_banner>* {
-                /* border: 1px solid black; */
-                border-radius: 20px;
-                flex-basis: 30%;
-                width: 150px;
-                height: 150px;
-                border: 1px solid skyblue;
-                padding: 10px;
-                margin: 10px 5px;
-            }
+.new_banner {
+	/* border: 1px solid black; */
+	border-radius: 5px;
+	border: 2px solid skyblue;
+	padding: 10px;
+	flex-basis: 30%;
+	margin-bottom: 10px;
+}
 
-            /*all_list 공고 전체*/
-            .all_list {
-                display: flex;
-                width: 100%;
-                justify-content: center;
-                border-bottom: 1px solid gainsboro;
-            }
+/*all_list 공고 전체*/
+.all_list {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	border-bottom: 1px solid gainsboro;
+}
 
-            .all_list li {
-                list-style: none;
-                display: block;
-                width: 100%;
-                text-align: center;
-                flex-basis: 15%;
-                padding: 5px;
-                margin: auto 0;
-            }
+.all_list li {
+	list-style: none;
+	display: block;
+	width: 100%;
+	text-align: center;
+	flex-basis: 15%;
+	padding: 5px;
+	margin: auto 0;
+}
 
-            #list_title {
-                flex-basis: 55%;
-            }
+#list_title {
+	flex-basis: 55%;
+}
 
-            .s_info ul,
-            .all_list ul {
-                width: 100%;
-                display: inline-flex;
-                padding: 0;
-                margin: 0 auto;
-            }
+.s_info ul, .all_list ul {
+	width: 100%;
+	display: inline-flex;
+	padding: 0;
+	margin: 0 auto;
+}
 
-            .s_info li {
-                list-style: none;
-                font-size: xx-small;
-                padding: 5px 0;
-            }
+.s_info li {
+	list-style: none;
+	font-size: xx-small;
+	padding: 5px 0;
+}
 
-            .s_info ul {
-                display: block;
-            }
+.s_info ul {
+	display: block;
+}
 
-            /*입사지원 버튼*/
-            .btn {
-                border: 2px solid red;
-                border-radius: 20px;
-                padding: 10px;
-                margin: 0 auto;
-                width: 80px;
-            }
+/*입사지원 버튼*/
+.btn {
+	border: 2px solid red;
+	border-radius: 20px;
+	padding: 10px;
+	margin: 0 auto;
+	width: 80px;
+}
 
-            .btn a {
-                color: red;
-            }
+.btn a {
+	color: red;
+}
 
-            .btn:hover {
-                background-color: rgba(255, 0, 0, 0.1);
-            }
+.btn:hover {
+	background-color: rgba(255, 0, 0, 0.1);
+}
 
-            /*링크 기본 설정*/
-            a {
-                text-decoration-line: none;
-                color: black;
-            }
+/*링크 기본 설정*/
+a {
+	text-decoration-line: none;
+	color: black;
+}
 
-            /*전체 화면 크기 조절용*/
-            .main {
-                width: 1500px;
-                margin: 0 auto;
-            }
+/*전체 화면 크기 조절용*/
+.main {
+	width: 60%;
+	margin: 0 auto;
+}
 
-            /*최상단 배너*/
-            .top_banner {
-                width: 100%;
-                display: flex;
-                padding: 0 0 10px 0;
-            }
+/*최상단 배너*/
+.top_banner {
+	width: 100%;
+	display: flex;
+	margin-bottom: 20px;
+}
 
-            .top_b1 {
-                flex-basis: 40%;
-                background-color: aliceblue;
-                margin: 0 20px 0 0;
-                padding: 20px;
-                border-radius: 20px;
-            }
+.top_b1 {
+	flex-basis: 40%;
+	background-color: aliceblue;
+	margin: 0 20px 0 0;
+	padding: 20px;
+	border-radius: 20px;
+}
 
-            .top_b2 {
-                flex-basis: 25%;
-                background-color: aquamarine;
-                margin: 0 20px 0 0;
-                padding: 20px;
-                border-radius: 20px;
-            }
+.top_b2 {
+	flex-basis: 25%;
+	background-color: aquamarine;
+	margin: 0 20px 0 0;
+	padding: 20px;
+	border-radius: 20px;
+}
 
-            .content_bottom {
-                text-align: right;
-            }
+.content_bottom {
+	text-align: right;
+}
