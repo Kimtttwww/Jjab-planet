@@ -1,11 +1,17 @@
 package com.kh.corporation.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.common.model.vo.PageInfo;
+import com.kh.community.model.vo.Reply;
+import com.kh.corporation.model.service.CorporationService;
 
 /**
  * Servlet implementation class CorpReviewListController
@@ -39,7 +45,7 @@ public class CorpReviewListController extends HttpServlet {
 		int endPage;	// 페이징 하단에 보여질 페이징바의 끝수
 				
 		// * listCount : 총 개시글 갯수
-//		listCount = new BoardService().selectListCount();
+		listCount = new CorporationService().selectReviewListCount();
 		
 		// * currentPage : 사용자가 요청한 페이지 -> 처음엔 선택한 값이 없기때문에(null) 1번으로 기본값설정함
 		currentPage = Integer.parseInt(request.getParameter("currentPage") == null ? 
@@ -53,7 +59,7 @@ public class CorpReviewListController extends HttpServlet {
 		
 		
 		// * maxPage : 가장 마지막 페이지가 몇번 페이지인지(총 페이지 수)		
-//		maxPage = (int)Math.ceil( (double)listCount / boardLimit);
+		maxPage = (int)Math.ceil( (double)listCount / boardLimit);
 		
 		// * startPage : 페이지 하단에 보여질 페이징바의 시작수
 		startPage = (currentPage -1) / pageLimit * pageLimit + 1;
@@ -61,16 +67,22 @@ public class CorpReviewListController extends HttpServlet {
 		// * endPage : 페이징 하단에 보여질 페이징바의 끝수
 		endPage = startPage + pageLimit - 1;
 		
-//		if(endPage > maxPage) {
-//			// endPage가 maxPage보다 많으면 안됨!!
-//			endPage = maxPage;
-//		}
+		if(endPage > maxPage) {
+			// endPage가 maxPage보다 많으면 안됨!!
+			endPage = maxPage;
+		}
 		
 		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
+		ArrayList<Reply> list = new CorporationService().selectReviewList(pi);
 		
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		System.out.println("pi : " + pi);
+		System.out.println("list" + list);
 		
-		
+		request.getRequestDispatcher("WEB-INF/views/corporation/corpInfo_main.jsp").forward(request, response);
 		
 		
 		

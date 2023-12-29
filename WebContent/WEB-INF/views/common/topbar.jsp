@@ -9,6 +9,10 @@
 <title>Insert title here</title>
 
 <style>
+body{
+  box-sizing : border-box;
+	margin: 0;
+}
 .menu-area a {
 	text-decoration-line: none; /* 밑에 줄 없애기 */
 	text-decoration: none;
@@ -64,6 +68,7 @@
 .menuTwo {
 	width: 130px;
 }
+
 </style>
 </head>
 <body>
@@ -82,7 +87,7 @@
 
 			<a class="menu menu-left menuTwo" href="">JJOBPLANET</a>
 			<a class="menu menu-left" href="">채용공고</a>
-			<a class="menu menu-left" href="${pageContext.request.contextPath}/WEB-INF/views/member/corpInsert.jsp">기업정보</a>
+			<a class="menu menu-left" href="${pageContext.request.contextPath}/review.insert">기업정보</a>
 			<a class="menu menu-left" href="list.po">커뮤니티</a>
 		</div>
 
