@@ -8,15 +8,15 @@ import com.kh.member.model.vo.Member;
 
 public class MemberDao {
 
-	public Member loginMember(SqlSession sqlSession, HashMap<String, String> asdf) {
+	public Member loginMember(SqlSession sqlSession, HashMap<String, String> login) {
 		
-		return sqlSession.selectOne("memberMapper.loginMember", asdf);
+		return sqlSession.selectOne("memberMapper.loginMember", login);
 		
 	}
 
 	public int insertMember(SqlSession sqlSession, Member m) {
 		
-		return 0;
+		return sqlSession.insert("memberMapper.insertMember", m);
 	}
 
 }

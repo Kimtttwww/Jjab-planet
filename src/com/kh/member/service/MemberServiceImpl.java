@@ -14,12 +14,12 @@ public class MemberServiceImpl implements MemberService{
 	private MemberDao memberDao = new MemberDao();
 	
 	@Override
-	public Member loginMember(HashMap<String, String> asdf) {
+	public Member loginMember(HashMap<String, String> login) {
 		
 		// Connection conn = getConnection();
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		Member loginUser = memberDao.loginMember(sqlSession, asdf);
+		Member loginUser = memberDao.loginMember(sqlSession, login);
 		
 		//close(conn);
 		sqlSession.close();

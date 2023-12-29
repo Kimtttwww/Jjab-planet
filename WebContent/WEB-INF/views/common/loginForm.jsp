@@ -87,8 +87,6 @@
 						<span class="pwd">비밀번호:</span>
 							<input type="password" class="large-input">
 						</div>
-
-
 						<div class="button">
 							<input type="submit" name="userId" value="로그인"> 
 							<input type="button" name="userPwd" value="회원가입">

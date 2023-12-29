@@ -36,6 +36,17 @@ a {
 			<li class="menu_li"><a class="mypage_btn" href="#">정보 수정</a></li>
 		</ul>
 	</div>
+	<script>
+		window.onload = function(){
+			const msg = "${alertMsg}";
+			
+			if (msg) {
+				alert(msg);
+		}
+	}
+	</script>
 </body>
+
+
 
 </html>
