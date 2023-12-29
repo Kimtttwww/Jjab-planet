@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Insert title here</title>
+        <title>Footer</title>
         <link href="${ pageContext.request.contextPath }/resources/css/common/footer.css" rel="stylesheet">
     </head>
 

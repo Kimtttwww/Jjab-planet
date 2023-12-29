@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Insert title here</title>
+        <title>Menu bar</title>
         <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/common/menubar.css">
         <style>
             a {

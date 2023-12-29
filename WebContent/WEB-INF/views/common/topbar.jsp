@@ -6,14 +6,22 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title>Topbar</title>
 
 <style>
+
+body{
+	box-sizing: border-box;
+	margin: 0;
+}
+
 .menu-area a {
 	text-decoration-line: none; /* 밑에 줄 없애기 */
 	text-decoration: none;
 	color: black; /* 보라색 흔적 없애기 */
 }
+
+
 
 .menu-area {
 	display: flex;
