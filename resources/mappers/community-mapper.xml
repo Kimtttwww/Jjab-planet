@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="boardMapper">
+<mapper namespace="communityMapper">
 <!-- 	<resultMap type="reply" id="replyResultSet"> -->
 <!-- 		<result column="USER_ID" property="replyUserId"/> -->
 <!-- 	</resultMap> -->
@@ -24,47 +24,36 @@
 <!-- 	</resultMap> -->
 	
 	
-	<!--  다연 사용중 -->
-	<select id="selectReviewListCount" resultType="_int"  >
-	    SELECT COUNT(*) 
-	      FROM BOARD_REPLY
-	     WHERE STATUS = 'Y' 
-	      AND REPLY_TYPE = 'R'
+	<!--  태완 사용중 -->
+	<select id="selectPostCount"  parameterType="string" resultType="_int"  >
+	    SELECT COUNT(*) FROM BOARD_POST
+	    WHERE STATUS = 'Y'
+	    <if test="!category.equals('A')">
+	    	AND CATEGORY = #{category}
+	    </if>
 	</select>
 	
-	<select id="selectReviewList" resultType="Reply">
-	    SELECT REPLY_NO, REPLY_CONTENT, USER_ID, CREATE_DATE
-	    FROM BOARD_REPLY R
-	    JOIN MEMBER ON REPLY_WRITER = USER_NO
-	    WHERE R.STATUS = 'Y'
-	      AND REPLY_TYPE = 'R'
-	    ORDER BY REPLY_NO DESC
-	</select>
-	<!-- 다연 사용중 -->
+<!-- 	<select id="selectReviewList" resultType="Reply"> -->
+<!-- 	    SELECT REPLY_NO, REPLY_CONTENT, USER_ID, COUNT, CREATE_DATE -->
+<!-- 	    FROM BOARD_REPLY R -->
+<!-- 	    JOIN MEMBER ON REPLY_WRITER = USER_NO -->
+<!-- 	    WHERE R.STATUS = 'Y' -->
+<!-- 	      AND REPLY_TYPE = 'R' -->
+<!-- 	    ORDER BY REPLY_NO DESC -->
+<!-- 	</select> -->
+	<!-- 태완 사용중 -->
 	
 	
 	
 	
 	
 	
-	<!--
-		* DML문 일 경우
-			<insert id="식별자" parameterType="전달받은 자바타입">
-		 
-			</insert>
-		 
-			<update></update>
-			<delete></delete>
-		=> DML문은 처리된 행의 갯수를 반환하기 떄문에 resultType이나 resultMap 생략이 가능하다
-	 -->
-	 
-	 <!--
-	<update id="increaseCount" parameterType="_int">
-		UPDATE BOARD
-		SET COUNT = COUNT + 1
-		WHERE BOARD_NO = #{boardNo}
-	</update>
- -->
+<!-- 	<update id="increaseCount" parameterType="_int"> -->
+<!-- 		UPDATE BOARD -->
+<!-- 		SET COUNT = COUNT + 1 -->
+<!-- 		WHERE BOARD_NO = #{boardNo} -->
+<!-- 	</update> -->
+
 <!-- 	<select id="selectBoard" parameterType="_int" resultMap="boardResultSet"> -->
 <!-- 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, USER_ID, COUNT, CREATE_DATE -->
 <!-- 		FROM BOARD B -->
@@ -97,26 +86,25 @@
 <!-- 	     LIKE '%' || #{keyword} || '%' -->
 <!-- 	    ORDER BY BOARD_NO DESC -->
 <!-- 	</select> -->
-	<!--
-	<select id="selectSearchCount" parameterType="hashmap" resultType="int">
-		SELECT COUNT(*) FROM BOARD B
-		JOIN MEMBER ON BOARD_WRITER = USER_NO
-		WHERE B.STATUS = 'Y'
-		<choose>
-			<when test="condition == 'writer'">
-				AND USER_ID
-			</when>
-			<when test="condition == 'writer'">
-				AND BOARD_TITLE
-			</when>
-			<otherwise>
-				AND BOARD_CONTENT
-			</otherwise>
-		</choose>
-		LIKE '%' || #{keyword} || '%'
-		ORDER BY BOARD_NO DESC
-	</select>
-	-->
+	
+<!-- 	<select id="selectSearchCount" parameterType="hashmap" resultType="int"> -->
+<!-- 		SELECT COUNT(*) FROM BOARD B -->
+<!-- 		JOIN MEMBER ON BOARD_WRITER = USER_NO -->
+<!-- 		WHERE B.STATUS = 'Y' -->
+<!-- 		<choose> -->
+<!-- 			<when test="condition == 'writer'"> -->
+<!-- 				AND USER_ID -->
+<!-- 			</when> -->
+<!-- 			<when test="condition == 'writer'"> -->
+<!-- 				AND BOARD_TITLE -->
+<!-- 			</when> -->
+<!-- 			<otherwise> -->
+<!-- 				AND BOARD_CONTENT -->
+<!-- 			</otherwise> -->
+<!-- 		</choose> -->
+<!-- 		LIKE '%' || #{keyword} || '%' -->
+<!-- 		ORDER BY BOARD_NO DESC -->
+<!-- 	</select> -->
 <!-- 	<update id="" parameterType="_int"> -->
 <!-- 		UPDATE BOARD SET BOARD_NO = #{boardNo} -->
 <!-- 		WHERE BOARD_NO = #{boardNo} and STATUS = 'Y' -->
@@ -127,5 +115,5 @@
 <!-- 		INSERT INTO MEMBER(USER_NO, USER_ID, USER_PWD, USER_NAME, EMAIL, BIRTHDAY, GENDER, PHONE, ADDRESS) -->
 <!-- 		VALUES(SEQ_UNO.NEXTVAL, #{userId}, #{userPwd}, #{userName}, #{email}, #{birthday}, #{gender}, #{phone}, #{address}) -->
 <!-- 	</insert> -->
-	  
+	
 </mapper>

@@ -1,11 +1,18 @@
 package com.kh.community.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.kh.common.Pagination;
+import com.kh.common.model.vo.PageInfo;
+import com.kh.community.model.vo.Post;
+import com.kh.community.service.PostService;
 
 /**
  * Servlet implementation class PostListController
@@ -25,6 +32,27 @@ public class PostListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PostService ps = new PostService();
+		String caterogy = request.getParameter("category");
+		int currentPage = 1;
+		
+		try {
+			if(caterogy == null) caterogy = "A";
+			
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		} catch (NumberFormatException e) {
+		}
+		System.out.println(caterogy);
+		System.out.println(currentPage);
+		int postcount = ps.selectPostCount(caterogy);
+		
+		PageInfo pi = Pagination.getPageInfo(postcount, currentPage, 10, 25);
+		System.out.println(pi);
+		ArrayList<Post> list = ps.selectPostList(pi, caterogy);
+		
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		System.out.println(list);
 		request.getRequestDispatcher("WEB-INF/views/community/list.jsp").forward(request, response);
 	}
 

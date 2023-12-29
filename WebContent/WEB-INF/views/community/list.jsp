@@ -17,11 +17,11 @@
         
         <section class="toolbar">
             <article>
-                <select name="category" id="category">
-                    <option value="">전체</option>
-                    <option value="">면접</option>
-                    <option value="">자격증</option>
-                    <option value="">자소서</option>
+                <select id="category">
+                    <option value="A">전체</option>
+                    <option value="I">면접</option>
+                    <option value="C">자격증</option>
+                    <option value="S">자소서</option>
                 </select>
             </article>
             <article>
