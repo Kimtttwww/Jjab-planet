@@ -2,11 +2,49 @@ package com.kh.member.service;
 
 import java.util.HashMap;
 
+import org.apache.ibatis.session.SqlSession;
+
+import com.kh.common.Template;
+import com.kh.member.model.dao.MemberDao;
 import com.kh.member.model.vo.Member;
 
-//인터페이스 : 상수필드(public static final) + 추상메소드(public abstract)
-public interface MemberService {
+public class MemberService {
 
-	Member loginMember(HashMap<String, String> login);
+	//MemberService 에서 쓸 메소드 만들곳(구현체)
+	private MemberDao memberDao = new MemberDao();
 	
+	public Member loginMember(HashMap<String, String> login) {
+		
+		// Connection conn = getConnection();
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		Member loginUser = memberDao.loginMember(sqlSession, login);
+		
+		//close(conn);
+		sqlSession.close();
+		
+		return loginUser;
+		
+		
+	}
+
+	public int insertMember(Member m) {
+
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int result = memberDao.insertMember(sqlSession, m);
+	
+		if(result > 0) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		
+		return result;
+		
+	}
+	
+
 }

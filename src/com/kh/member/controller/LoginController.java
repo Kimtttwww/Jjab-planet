@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.member.service.MemberServiceImpl;
+import com.kh.member.service.MemberService;
 import com.kh.member.model.vo.Member;
 
 
@@ -40,7 +40,7 @@ public class LoginController extends HttpServlet {
 		login.put("userId", userId);
 		login.put("userPwd", userPwd);
 		// login 바궈야함
-		Member loginUser = new MemberServiceImpl().loginMember(login);		
+		Member loginUser = new MemberService().loginMember(login);		
 		
 		if(loginUser == null) { // 확인
 			request.getSession().setAttribute("alertMsg", "로그인 실패");

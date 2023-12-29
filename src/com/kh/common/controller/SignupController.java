@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kh.member.model.vo.Member;
-import com.kh.member.service.MemberServiceImpl;
-
-
+import com.kh.member.service.MemberService;
 
 /**
  * Servlet implementation class SignupController
@@ -57,7 +55,7 @@ public class SignupController extends HttpServlet {
 				.userType(userType).build();
 		
 		System.out.println(m);
-	int result = new MemberServiceImpl().insertMember(m);
+	int result = new MemberService().insertMember(m);
 	
 	System.out.println(result);
 	HttpSession session = request.getSession();
