@@ -53,8 +53,19 @@
 	</select>
 	
 	<insert id="insertMember" parameterType="member">
-		INSERT INTO MEMBER(USER_NO, USER_ID, USER_PWD, USER_NAME, EMAIL, BIRTHDAY, GENDER, PHONE, ADDRESS)
-		VALUES(SEQ_UNO.NEXTVAL, #{userId}, #{userPwd}, #{userName}, #{email}, #{birthday}, #{gender}, #{phone}, #{address})
+		INSERT INTO MEMBER
+		(USER_NO,
+		 USER_ID,
+		  USER_PWD, 
+		  PHONE,
+		  USER_TYPE)
+		VALUES(
+		SEQ_USERNO.NEXTVAL,
+		 #{userId},
+		  #{userPwd},
+		   #{phone},
+		   #{userType})
+		  
 	</insert>
 	
 	<!--

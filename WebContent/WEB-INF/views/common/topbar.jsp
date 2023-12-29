@@ -60,6 +60,8 @@
 		transition-duration: 0.3s;
 	}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- script 추가한 이유: $(() => 부분에서 jstl 라이브러리가 없어서 불러올수없어서 추가함. --강민구-- -->
 </head>
 
 <body>
@@ -86,7 +88,7 @@
 
 			<div class="menu-right">
 				<a href="login.me">로그인</a>
-				<a href="WEB-INF/views/member/memberInsert.jsp">회원가입</a>
+				<a href="sign.bo">회원가입</a>
 			</div>
 		</div>
 	</div>

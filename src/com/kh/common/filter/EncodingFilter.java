@@ -23,7 +23,7 @@ public class EncodingFilter implements Filter {
     }
 
 	/**
-	 * @see Filter#des   troy()
+	 * @see Filter#destroy()
 	 */
 	public void destroy() {
 		

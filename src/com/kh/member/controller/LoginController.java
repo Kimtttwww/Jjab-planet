@@ -36,18 +36,18 @@ public class LoginController extends HttpServlet {
 		String userPwd = request.getParameter("userPwd");
 		System.out.println(userPwd);
 		
-		HashMap<String, String> asdf = new HashMap<String, String>();
-		asdf.put("userId", userId);
-		asdf.put("userPwd", userPwd);
-		
-		Member loginUser = new MemberServiceImpl().loginMember(asdf);		
+		HashMap<String, String> login = new HashMap<String, String>();
+		login.put("userId", userId);
+		login.put("userPwd", userPwd);
+		// login 바궈야함
+		Member loginUser = new MemberServiceImpl().loginMember(login);		
 		
 		if(loginUser == null) { // 확인
 			request.getSession().setAttribute("alertMsg", "로그인 실패");
 			System.out.println("로그인 실패");
 		}else {
-			request.getSession().setAttribute("loginUser", loginUser);
 			request.getSession().setAttribute("alertMsg", "로그인 성공");
+			request.getSession().setAttribute("loginUser", loginUser);
 			System.out.println(loginUser);
 		}
 		
