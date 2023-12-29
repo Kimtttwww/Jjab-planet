@@ -23,18 +23,28 @@
 		 -->
 	</resultMap>
 	
-	<select id="selectListCount" resultType="_int"  >
-	    SELECT COUNT(*) FROM BOARD
-	    WHERE STATUS = 'Y'
+	
+	<!--  다연 사용중 -->
+	<select id="selectReviewListCount" resultType="_int"  >
+	    SELECT COUNT(*) FROM BOARD_REPLY
+	    WHERE STATUS = 'Y' 
+	      AND REPLY_TYPE = 'R'
 	</select>
 	
-	<select id="selectList" resultType="board">
-	    SELECT BOARD_NO, BOARD_TITLE, USER_ID, COUNT, CREATE_DATE
-	    FROM BOARD B
-	    JOIN MEMBER ON BOARD_WRITER = USER_NO
-	    WHERE B.STATUS = 'Y'
-	    ORDER BY BOARD_NO DESC
+	<select id="selectReviewList" resultType="Reply">
+	    SELECT REPLY_NO, REPLY_CONTENT, USER_ID, COUNT, CREATE_DATE
+	    FROM BOARD_REPLY R
+	    JOIN MEMBER ON REPLY_WRITER = USER_NO
+	    WHERE R.STATUS = 'Y'
+	      AND REPLY_TYPE = 'R'
+	    ORDER BY REPLY_NO DESC
 	</select>
+	<!-- 다연 사용중 -->
+	
+	
+	
+	
+	
 	
 	<!--
 		* DML문 일 경우

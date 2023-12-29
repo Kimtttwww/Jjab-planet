@@ -10,8 +10,14 @@
 <title>Topbar</title>
 <style>
 	body{
-		box-sizing: border-box;
+	box-sizing : border-box;
 		margin: 0;
+	}
+
+	.menu-area a {
+		text-decoration-line: none; /* 밑에 줄 없애기 */
+		text-decoration: none;
+		color: black; /* 보라색 흔적 없애기 */
 	}
 
 	.menu-area a {

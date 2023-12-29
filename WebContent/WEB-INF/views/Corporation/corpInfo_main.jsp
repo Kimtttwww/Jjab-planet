@@ -1,15 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="com.kh.corporation.model.vo.Corporation, com.kh.common.model.vo.PageInfo"%>
+	import="com.kh.corporation.model.vo.Corporation, 
+	com.kh.community.model.vo.Reply,
+	com.kh.common.model.vo.PageInfo, 
+	java.util.ArrayList"%>
 
 <%
-	Corporation corp = (Corporation) request.getAttribute("corp");
-PageInfo pi = (PageInfo) request.getAttribute("pi");
-
-int startPage = pi.getStartPage();
-int endPage = pi.getEndPage();
-int currentPage = pi.getCurrentPage();
-int maxPage = pi.getMaxPage();
+	//Corporation corp = (Corporation) request.getAttribute("corp");
+	ArrayList<Reply> list = (ArrayList) request.getAttribute("list");
+	PageInfo pi = (PageInfo) request.getAttribute("pi");
+	
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
 %>
 
 <!DOCTYPE html>
@@ -106,7 +110,7 @@ int maxPage = pi.getMaxPage();
 </head>
 <body>
 
-
+<jsp:include page="../common/topbar.jsp"/>
 	<header>
 		<div class="corp-top-area">
 			<div class="corp-top">
@@ -182,7 +186,8 @@ int maxPage = pi.getMaxPage();
 				<%-- 		<% if(loginUser != null && loginUser ==  ){ %> --%>
 				<div>
 					<button
-						onclick="open('address','write_review','width=430,height=500,location=no,status=no,scrollbars=yes')">리뷰작성하기</button>
+						onclick="open('address','write_review','width=430,height=500,location=no,status=no,scrollbars=yes')">
+						리뷰작성하기</button>
 				</div>
 				<%-- 		<% } %> --%>
 
@@ -238,7 +243,32 @@ int maxPage = pi.getMaxPage();
 					<button>등록하기</button>
 				</div>
 			</div>
+			
+			<!-- 페이징바 -->
+			<div align="center" class="paging-area">
 
+			<% if(currentPage != 1) { %>
+			<button
+				onclick="location.href= 'review.list?currentPage=<%= currentPage -1 %>'">&lt;</button>
+			<%} %>
+
+			<% for(int p = startPage; p <= endPage; p++) {%>
+
+			<% if(p != currentPage) { %>
+			<button
+				onclick="location.href= 'review.list?currentPage=<%= p %>'"><%= p %></button>
+
+			<%} else {%>
+			<button disabled><%= p %></button>
+			<%} %>
+			<%} %>
+
+			<% if(currentPage != maxPage) {%>
+			<button
+				onclick="location.href= 'review.list?currentPage=<%= currentPage +1%>'">&gt;</button>
+			<% } %>
+		</div>
+<%-- 			${pageContext.request.contextPath} --%>
 		</div>
 	</div>
 
@@ -273,6 +303,15 @@ int maxPage = pi.getMaxPage();
 		}, $(".corp_review_a1").hover(function() {
 			$(this).removeClass("corp_hovered");
 		}));
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</script>
 
 
