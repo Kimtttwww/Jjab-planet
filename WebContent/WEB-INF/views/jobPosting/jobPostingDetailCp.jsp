@@ -7,31 +7,32 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	 <div class="container">
     <h1>채용 공고 (기업)</h1>
     <p class="instructions">* 정확한 정보를 입력해 주세요.</p>
-    
+
     <!-- 폼 태그 시작 -->
-    <form action="/submit-registration" method="POST">
-
-
-
+    <form action="/detail.job" method="get">
       <!-- 채용제목 입력 필드 -->
       <div class="form-group">
         <label for="name">채용제목</label>
         <input type="text" id="name" name="name" required placeholder="공고제목을 입력하세요">
+        <p>${p.postTitle}</p>
       </div>
 
       <!-- 대표자명 입력 필드-->
       <div class="form-group">
         <label for="name">대표자명</label>
         <input type="text" id="name" name="name" required placeholder="대표자명을 입력하세요">
+        <p>${p.ceoName}</p>
       </div>
       
       <!-- 휴대폰 번호 입력 필드 -->
       <div class="form-group">
         <label for="phone">휴대폰</label>
         <input type="tel" id="phone" name="phone" required placeholder="휴대폰 번호를 입력하세요">
+        <p>${p.phone }</p>
       </div>
       
       
@@ -44,6 +45,7 @@
           <option value="senior">대학졸업</option>
           
         </select>
+        <p>${p.education }</p>
       </div>
       
       <!-- 경력여부 value값 고쳐야함 -->
@@ -56,6 +58,7 @@
           <option value="reader">5~7년</option>
           <option value="master">7년 이상</option>
         </select>
+        <p>${p.career}</p>
       </div>
       
       <!-- 직종 선택 필드 -->
@@ -66,6 +69,7 @@
           <option value="front">프론트엔드</option>
           <option value="full">풀스택</option>
         </select>
+        <p>${p.jobNo }</p>
       </div>
 
       <!-- 지역 선택 필드 value값 고쳐야함-->
@@ -84,18 +88,21 @@
           <option value="jeju">제주도</option>
           <option value="dokdo">독도</option>
         </select>
+        <p>${p.location }</p>
       </div>
 
       <!-- 채용마감일자 필드-->
       <div class="form-group">
         <label for="date">채용 마감일</label>
         <input type="date"> 
+        <p>${p.endDate }</p>
       </div>
       
       <!-- 채용세부내용 입력 필드 -->
       <div class="form-group">
         <label for="cover-letter">채용내용</label>
         <textarea id="cover-letter" name="cover-letter" rows="4" required></textarea>
+        <p>${p.postContent }</p>
       </div>
       
       <!-- 제출 버튼 -->
