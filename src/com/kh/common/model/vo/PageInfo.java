@@ -1,20 +1,13 @@
 package com.kh.common.model.vo;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
-
+@Data
 public class PageInfo {
-
-	
 	private int listCount;	// 게시글 갯수
 	private int currentPage;	// 현재 요청한 페이지
 	private int pageLimit;	// 페이지바 하단에 보여질 페이징바의 페이지 최대 갯수

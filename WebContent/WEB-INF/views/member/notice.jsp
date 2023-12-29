@@ -11,7 +11,7 @@
             margin: 0;
         }
 
-        hr {
+        container hr {
             width: 100%;
         }
 
