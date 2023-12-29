@@ -16,7 +16,7 @@ import com.kh.corporation.model.service.CorporationService;
 /**
  * Servlet implementation class CorpReviewListController
  */
-@WebServlet("/review.list")
+@WebServlet("/list.corp")
 public class CorpReviewListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

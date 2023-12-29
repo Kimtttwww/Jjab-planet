@@ -27,7 +27,9 @@ public class CorpReviewInsertController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("/WEB-INF/views/corporation/corpInfo_main.jsp").forward(request, response);
+		
+//		response.sendRedirect("/WEB-INF/views/corporation/corpInfo_main.jsp");
+		request.getRequestDispatcher("/WEB-INF/views/corporation/corpInfo_detail.jsp").forward(request, response);
 	}
 
 	/**

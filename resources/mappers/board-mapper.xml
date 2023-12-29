@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardMapper">
+<!-- 
 	<resultMap type="reply" id="replyResultSet">
 		<result column="USER_ID" property="replyUserId"/>
 	</resultMap>
@@ -13,6 +14,8 @@
 		
 		<collection property="list" javaType="java.util.ArrayList"
 			ofType="reply" select="selectReplyList" column="BOARD_NO"/>
+	</resultMap>		
+	 -->		
 		<!-- 
 			댓글 LIST를 담기 위해서 ArrayList<Reply> 객체를 생성
 			javaType="java.util.ArrayList" ofType="reply"
@@ -21,18 +24,19 @@
 			현재 resultMap으로 조회된 BOARD_NO 컬럼을 사용하겠다
 			(select="selectReplyList" column="BOARD_NO")
 		 -->
-	</resultMap>
+	
 	
 	
 	<!--  다연 사용중 -->
 	<select id="selectReviewListCount" resultType="_int"  >
-	    SELECT COUNT(*) FROM BOARD_REPLY
-	    WHERE STATUS = 'Y' 
+	    SELECT COUNT(*) 
+	      FROM BOARD_REPLY
+	     WHERE STATUS = 'Y' 
 	      AND REPLY_TYPE = 'R'
 	</select>
 	
 	<select id="selectReviewList" resultType="Reply">
-	    SELECT REPLY_NO, REPLY_CONTENT, USER_ID, COUNT, CREATE_DATE
+	    SELECT REPLY_NO, REPLY_CONTENT, USER_ID, CREATE_DATE
 	    FROM BOARD_REPLY R
 	    JOIN MEMBER ON REPLY_WRITER = USER_NO
 	    WHERE R.STATUS = 'Y'
@@ -56,6 +60,8 @@
 			<delete></delete>
 		=> DML문은 처리된 행의 갯수를 반환하기 떄문에 resultType이나 resultMap 생략이 가능하다
 	 -->
+	 
+	 <!--
 	<update id="increaseCount" parameterType="_int">
 		UPDATE BOARD
 		SET COUNT = COUNT + 1
@@ -113,6 +119,7 @@
 		LIKE '%' || #{keyword} || '%'
 		ORDER BY BOARD_NO DESC
 	</select>
+	-->
 <!-- 	<update id="" parameterType="_int"> -->
 <!-- 		UPDATE BOARD SET BOARD_NO = #{boardNo} -->
 <!-- 		WHERE BOARD_NO = #{boardNo} and STATUS = 'Y' -->
@@ -123,5 +130,5 @@
 <!-- 		INSERT INTO MEMBER(USER_NO, USER_ID, USER_PWD, USER_NAME, EMAIL, BIRTHDAY, GENDER, PHONE, ADDRESS) -->
 <!-- 		VALUES(SEQ_UNO.NEXTVAL, #{userId}, #{userPwd}, #{userName}, #{email}, #{birthday}, #{gender}, #{phone}, #{address}) -->
 <!-- 	</insert> -->
-	
+	  
 </mapper>

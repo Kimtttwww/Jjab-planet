@@ -25,8 +25,8 @@ public class Reply {
 	private String replyWriter;
 	private Date createDate;
 	private String status;
+	/** C : 커뮤니티 댓글 / R : 기업리뷰 */
 	private String replyType;
-//	replyType : C : 커뮤니티 댓글 / R : 기업리뷰
 	
 	
 	

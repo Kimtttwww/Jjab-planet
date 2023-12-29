@@ -11,12 +11,12 @@ public class CorporationDao {
 
 	public int selectReviewListCount(SqlSession sqlSession) {
 		
-		return sqlSession.selectOne("board-mapper.selectReviewListCount");
+		return sqlSession.selectOne("boardMapper.selectReviewListCount");
 	}
 
 	public ArrayList<Reply> selectReviewList(SqlSession sqlSession, PageInfo pi) {
 		
-		return (ArrayList)sqlSession.selectList("board-mapper.selectReviewList");
+		return (ArrayList)sqlSession.selectList("boardMapper.selectReviewList");
 	}
 
 	
