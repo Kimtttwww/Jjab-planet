@@ -16,7 +16,7 @@
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	<div class="main">
 		<div class="content_title">
-			<a href="${pageContext.request.contextPath}/notice.jsp">인기
+			<a href="detail.job">인기
 				많은 공고 ></a>
 		</div>
 		<div class="top_banner">
