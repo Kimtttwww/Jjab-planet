@@ -10,7 +10,7 @@
 <title>Topbar</title>
 <style>
 	body{
-	box-sizing : border-box;
+		box-sizing : border-box;
 		margin: 0;
 	}
 
@@ -19,15 +19,7 @@
 		text-decoration: none;
 		color: black; /* 보라색 흔적 없애기 */
 	}
-
-	.menu-area a {
-		text-decoration-line: none;
-		/* 밑에 줄 없애기 */
-		text-decoration: none;
-		color: black;
-		/* 보라색 흔적 없애기 */
-	}
-
+	
 	.menu-area {
 		display: flex;
 		flex-direction: row;
@@ -73,14 +65,14 @@
 
 <body>
 	<script>
-				$(() => {
-					const msg = "${ alertMsg }";
-					if (msg) {
-						alert(msg);
-						<c:remove var="alertMsg" />
-					}
-				});
-			</script>
+		$(() => {
+			const msg = "${ alertMsg }";
+			if (msg) {
+				alert(msg);
+				<c:remove var="alertMsg" />
+			}
+		});
+	</script>
 
 	<div class="menu-area">
 		<div class="menu">
@@ -91,8 +83,8 @@
 			</div>
 
 			<div class="menu-right">
-				<a href="login.me">로그인</a> <a
-					href="WEB-INF/views/member/memberInsert.jsp">회원가입</a>
+				<a href="login.me">로그인</a>
+				<a href="WEB-INF/views/member/memberInsert.jsp">회원가입</a>
 			</div>
 		</div>
 	</div>

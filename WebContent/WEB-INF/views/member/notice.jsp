@@ -7,67 +7,67 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-body {
-	box-sizing: border-box;
-	margin: 0;
-	height: 100%;
-}
+	body {
+		box-sizing: border-box;
+		margin: 0;
+		height: 100%;
+	}
 
-hr {
-	width: 100%;
-}
+	container hr {
+		width: 100%;
+	}
 
-container {
-	width: 800px;
-	display: block;
-	margin: 0 auto;
-}
+	container {
+		width: 800px;
+		display: block;
+		margin: 0 auto;
+	}
 
-/* 알림 리스트 */
-.list-area {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: column;
-}
+	/* 알림 리스트 */
+	.list-area {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
 
-/* 각 알림 */
-.notice {
-	position: relative;
-	text-align: center;
-	margin: 5px 0;
-}
+	/* 각 알림 */
+	.notice {
+		position: relative;
+		text-align: center;
+		margin: 5px 0;
+	}
 
-/* 각 알림의 버튼 */
-.notice>button {
-	width: 50px;
-	position: absolute;
-	right: 30px;
-}
+	/* 각 알림의 버튼 */
+	.notice>button {
+		width: 50px;
+		position: absolute;
+		right: 30px;
+	}
 
-/* 페이징 바 */
-.pagingbar {
-	display: flex;
-	justify-content: center;
-	margin-top: 30px;
-}
+	/* 페이징 바 */
+	.pagingbar {
+		display: flex;
+		justify-content: center;
+		margin-top: 30px;
+	}
 
-/* 페이징 바의 각 버튼들 */
-.pagingbar>button {
-	margin: 0 7px;
-	font-size: large;
-}
+	/* 페이징 바의 각 버튼들 */
+	.pagingbar>button {
+		margin: 0 7px;
+		font-size: large;
+	}
 
-.main {
-	display: flex;
-}
+	.main {
+		display: flex;
+	}
 
-.side {
-	flex-basis: 20%;
-}
+	.side {
+		flex-basis: 20%;
+	}
 
-.content {
-	flex-basis: 80%;
-}
+	.content {
+		flex-basis: 80%;
+	}
 </style>
 </head>
 <body>

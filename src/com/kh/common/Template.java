@@ -9,31 +9,19 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class Template {
-	
-
 	public static SqlSession getSqlSession() {
-		
-	
 		SqlSession sqlSession = null;
-		
-		
-		
-		String resource = "/mybatis-config.xml"; // /는 최상위 폴더(classes).
-		 
-		
+		String resource = "/mybatis-config.xml";
+
 		try {
 			InputStream stream = Resources.getResourceAsStream(resource);
-			
-			
+
 			SqlSessionFactory ssfb = new SqlSessionFactoryBuilder().build(stream);
 			sqlSession = ssfb.openSession(false);
-		
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return sqlSession;
 	}
-
 }
