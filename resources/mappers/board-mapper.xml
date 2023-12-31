@@ -25,21 +25,40 @@
 	
 	
 	<!--  다연 사용중 -->
-	<select id="selectReviewListCount" resultType="_int"  >
-	    SELECT COUNT(*) 
-	      FROM BOARD_REPLY
-	     WHERE STATUS = 'Y' 
-	      AND REPLY_TYPE = 'R'
+	<select id="corpCount" resultType="_int">
+	   SELECT COUNT(*)
+		  FROM CORPORATION		
 	</select>
 	
-	<select id="selectReviewList" resultType="Reply">
-	    SELECT REPLY_NO, REPLY_CONTENT, USER_ID, CREATE_DATE
-	    FROM BOARD_REPLY R
-	    JOIN MEMBER ON REPLY_WRITER = USER_NO
-	    WHERE R.STATUS = 'Y'
-	      AND REPLY_TYPE = 'R'
-	    ORDER BY REPLY_NO DESC
+	<select id="reviewCount" resultType="_int">
+	   SELECT COUNT(*)
+		  FROM BOARD_REPLY
+		WHERE STATUS='Y' AND REPLY_TYPE='R' 		
+		AND REF_NO = #{corpCode}		
 	</select>
+	
+	
+	<select id="selectCorpList" resultType="com.kh.corporation.model.vo.Corporation"  >
+	    SELECT *
+	      FROM CORPORATION	   
+	</select>
+	
+	<select id="selectReviewList" resultType="com.kh.community.model.vo.Reply">
+	    SELECT BOARD_REPLY.REPLY_NO, BOARD_REPLY.REPLY_CONTENT, MEMBER.USER_ID, BOARD_REPLY.CREATE_DATE
+	    FROM BOARD_REPLY 
+	  	JOIN MEMBER ON MEMBER.USER_NO = BOARD_REPLY.REPLY_WRITER
+	    WHERE BOARD_REPLY.STATUS = 'Y'
+	      AND BOARD_REPLY.REPLY_TYPE = 'R'
+	      AND BOARD_REPLY.REF_NO = #{corpCode}
+	    ORDER BY BOARD_REPLY.REPLY_NO DESC
+	</select>
+	
+	<select id="testR" resultType="com.kh.community.model.vo.Reply">
+	    SELECT *
+	    FROM BOARD_REPLY    
+	</select>
+	
+	
 	<!-- 다연 사용중 -->
 	
 	

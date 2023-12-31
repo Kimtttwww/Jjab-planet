@@ -2,6 +2,8 @@ package com.kh.community.model.vo;
 
 import java.sql.Date;
 
+import com.kh.member.model.vo.Member;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,7 +31,7 @@ public class Reply {
 	private String replyType;
 	
 	
-	
+	private String userId;
 	
 	
 	

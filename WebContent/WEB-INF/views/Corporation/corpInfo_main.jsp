@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 <link rel="stylesheet"
 	href="${ pageContext.request.contextPath }/resources/css/common/index.css"
 	type="text/css">
-	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>	
 <style>
 
 html, body {
@@ -52,65 +53,23 @@ height: 100%;
 			기업정보 >
 		</div>
 		
-		
-		<div class="top_banner">
-			
-			<div class="top_b3">
-				<img onclick='location.href="/review.insert"'
-<%-- 				<img onclick='location.href="/list.corp?bno=${b.boardNo}"' --%>
-						src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"
-						alt="" >
-				<p>넥슨</p>
-				<p>공고제목</p>
-				<p class="content_bottom">직종 / 조회수</p>
-			</div>
-			<!--top_b1-->
-			<div class="top_b3">
-				<img
-						src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"
-						alt="" >
-				<p>넥슨</p>
-				<p>공고제목</p>
-				<p class="content_bottom">직종 / 조회수</p>
-			</div>
-			<div class="top_b3">
-				<img
-						src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"
-						alt="" >
-				<p>넥슨</p>
-				<p>공고제목</p>
-				<p class="content_bottom">직종 / 조회수</p>
-			</div>
-		</div>
 	
 		
 		<div class="top_banner">
 			
 			<div class="top_b3">
-				<img
-						src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"
-						alt="" >
-				<p>넥슨</p>
-				<p>공고제목</p>
-				<p class="content_bottom">직종 / 조회수</p>
-			</div>
-			<!--top_b1-->
-			<div class="top_b3">
-				<img
-						src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"
-						alt="" >
-				<p>넥슨</p>
-				<p>공고제목</p>
-				<p class="content_bottom">직종 / 조회수</p>
-			</div>
-			<div class="top_b3">
-				<img
-						src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"
-						alt="" >
-				<p>넥슨</p>
-				<p>공고제목</p>
-				<p class="content_bottom">직종 / 조회수</p>
-			</div>
+			
+				<c:forEach var="corp" items="${list}" >
+					
+					<img onclick='location.href="${pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"'
+					src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"
+					alt="" >
+					<p> ${corp.corpName}</p>
+					<p>${corp.address}</p>
+					<p class="content_bottom">직종 / 조회수</p>
+				</c:forEach>				
+			</div>			
+			
 		</div>
 	</div>
 	

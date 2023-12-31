@@ -4,23 +4,22 @@
 	com.kh.community.model.vo.Reply,
 	com.kh.common.model.vo.PageInfo, 
 	java.util.ArrayList"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 
-<%
-	//Corporation corp = (Corporation) request.getAttribute("corp");
-	ArrayList<Reply> list = (ArrayList) request.getAttribute("list");
-	PageInfo pi = (PageInfo) request.getAttribute("pi");
-	
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int currentPage = pi.getCurrentPage();
-	int maxPage = pi.getMaxPage();
-%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>기업상세정보</title>
 <style>
+html, body {
+margin: 0;
+height: 100%;
+}
+.corp-main {
+	width: 60%;
+	margin: 0 auto;
+}
 .corp-top-area {
 	background-color: gray;
 	width: 1800px;
@@ -49,7 +48,8 @@
 }
 
 .corp-info-all {
-	width: 1800px;
+	width: 60%;
+	margin: 0 auto;
 	padding: 50px 300px;
 	background-color: rgb(206, 206, 223)
 }
@@ -212,8 +212,15 @@
 			<div class="corp-review-area">
 				<div class="corp-review-content">
 					<div>
-						<div>작성자명</div>
-						<div>작성일</div>
+						<c:forEach var="b" items="${list}" >
+							<tr onclick='location.href="corp.review?bno=${b.boardNo}"'>
+								<td>${b.boardNo}</td>
+								<td>${b.boardTitle}</td>
+								<td>${b.boardWriter}</td>
+								<td>${b.count}</td>
+								<td>${b.createDate}</td>
+							</tr>
+						</c:forEach>
 					</div>
 					<div>
 						<button
@@ -229,45 +236,41 @@
 								onclick="document.getElementById('popup_report').style.display='none'">취소</button>
 						</div>
 					</div>
-					<div>
-						<div>리뷰내용~~</div>
-						<div>
-							<button onclick="">수정</button>
-							<button onclick="">삭제</button>
-						</div>
+					
+					<div>					
+						<c:forEach var="item" items="${replyList}">				
+							<div>
+								${item.userId} > ${item.replyContent} / ${item.createDate }
+							</div>
+							<div>
+								<button onclick="">수정</button>
+								<button onclick="">삭제</button>
+							</div>							
+						</c:forEach>
 					</div>
+					
 				</div>
-				<div class="corp-review-write">
-					<textarea name="" id="" cols="100" rows="10" style="resize: none;">리뷰를 작성하세요..</textarea>
-					<button>등록하기</button>
-				</div>
-			</div>
-			
+				
 			<!-- 페이징바 -->
 			<div align="center" class="paging-area">
 
-			<% if(currentPage != 1) { %>
-			<button
-				onclick="location.href= 'review.list?currentPage=<%= currentPage -1 %>'">&lt;</button>
-			<%} %>
-
-			<% for(int p = startPage; p <= endPage; p++) {%>
-
-			<% if(p != currentPage) { %>
-			<button
-				onclick="location.href= 'review.list?currentPage=<%= p %>'"><%= p %></button>
-
-			<%} else {%>
-			<button disabled><%= p %></button>
-			<%} %>
-			<%} %>
-
-			<% if(currentPage != maxPage) {%>
-			<button
-				onclick="location.href= 'review.list?currentPage=<%= currentPage +1%>'">&gt;</button>
-			<% } %>
-		</div>
-<%-- 			${pageContext.request.contextPath} --%>
+				<c:if test="${pi.currentPage ne 1}" >
+					<a href="${url}&currentPage=${pi.currentPage - 1}" >[이전]</a>
+				</c:if>
+				
+				<c:forEach var="p" begin="${pi.startPage}" end="${pi.endPage}">
+					<a href="${url}&currentPage=${p}" >[${p}]</a>
+				</c:forEach>
+				
+				<c:if test="${pi.currentPage ne pi.maxPage}" >
+					<a href="${url}&currentPage=${pi.currentPage + 1}" >[다음]</a>
+				</c:if>
+			</div>
+				<div class="corp-review-write">
+					<textarea name="" id="" cols="50" rows="10" style="resize: none;">리뷰를 작성하세요..</textarea>
+					<button>등록하기</button>
+				</div>
+			</div>
 		</div>
 	</div>
 

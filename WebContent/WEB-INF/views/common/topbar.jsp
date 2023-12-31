@@ -78,7 +78,7 @@
 	<div class="menu-area">
 		<div class="menu">
 			<div class="menu-left">
-				<a href="">JJOBPLANET</a>
+				<a href="${pageContext.request.contextPath}">JJOBPLANET</a>
 				<a href="">채용공고</a>
 				<a href="${pageContext.request.contextPath}/list.corp">기업정보</a>
 				<a href="list.po">커뮤니티</a>
