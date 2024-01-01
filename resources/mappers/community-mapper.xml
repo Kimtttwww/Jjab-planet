@@ -3,9 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="communityMapper">
-<!-- 	<resultMap type="reply" id="replyResultSet"> -->
-<!-- 		<result column="USER_ID" property="replyUserId"/> -->
-<!-- 	</resultMap> -->
+	<resultMap id="postResultSet" type="post"/>
 	
 <!-- 	<resultMap type="board" id="boardResultSet"> -->
 <!-- 		<id column="BOARD_NO" property="boardNo"/> -->
@@ -25,22 +23,24 @@
 	
 	
 	<!--  태완 사용중 -->
-	<select id="selectPostCount"  parameterType="string" resultType="_int"  >
+	<select id="selectPostCount" parameterType="string" resultType="_int">
 	    SELECT COUNT(*) FROM BOARD_POST
 	    WHERE STATUS = 'Y'
-	    <if test="!category.equals('A')">
-	    	AND CATEGORY = #{category}
+		<if test='!category.equals("A")'>
+		    AND CATEGORY = #{category}
 	    </if>
 	</select>
 	
-<!-- 	<select id="selectReviewList" resultType="Reply"> -->
-<!-- 	    SELECT REPLY_NO, REPLY_CONTENT, USER_ID, COUNT, CREATE_DATE -->
-<!-- 	    FROM BOARD_REPLY R -->
-<!-- 	    JOIN MEMBER ON REPLY_WRITER = USER_NO -->
-<!-- 	    WHERE R.STATUS = 'Y' -->
-<!-- 	      AND REPLY_TYPE = 'R' -->
-<!-- 	    ORDER BY REPLY_NO DESC -->
-<!-- 	</select> -->
+	<select id="selectPostList" parameterType="string" resultMap="postResultSet">
+	    SELECT POST_NO, POST_TITLE, USER_ID, COUNT, CREATE_DATE
+		FROM BOARD_POST P
+		JOIN MEMBER ON POST_WRITER = USER_NO
+		WHERE P.STATUS = 'Y'
+		<if test='!category.equals("A")'>
+		    AND CATEGORY = #{category}
+	    </if>
+		ORDER BY POST_NO DESC
+	</select>
 	<!-- 태완 사용중 -->
 	
 	

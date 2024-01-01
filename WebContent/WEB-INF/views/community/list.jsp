@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,31 +32,25 @@
         </section>
 
         <div class="list-area">
-            <section class="list">
-                <article class="list-content">
-                    <span class="list-title">게시글 제목</span>
-                    <span>게시글 요약 내용</span>
-                </article>
-                <article class="list-info">
-                    <span>조회수</span>
-                    <span>작성자</span>
-                    <span>작성일</span>
-                </article>
-            </section>
-
-            <section class="list">
-                <article class="list-content">
-                    <span class="list-title">게시글 제목</span>
-                    <span>게시글 요약 내용</span>
-                </article>
-                <article class="list-info">
-                    <span>조회수</span>
-                    <span>작성자</span>
-                    <span>작성일</span>
-                </article>
-            </section>
+	        <c:forEach var="p" items="${ list }">
+	            <section class="list">
+	                <article class="list-content">
+	                    <span class="list-title">${ p.postTitle }</span>
+	                    <span>${ p.postContent }</span>
+	                </article>
+	                <article class="list-info">
+	                    <span>${ p.count }</span>
+	                    <span>${ p.userId }</span>
+	                    <span>${ p.createDate }</span>
+	                </article>
+	            </section>
+	        </c:forEach>
         </div>
-
     </square>
+    <script>
+    	$('#category').change(function(e) {
+			console.log('값 변화! ' + e.target.value);
+		});
+    </script>
 </body>
 </html>

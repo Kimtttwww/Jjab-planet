@@ -17,9 +17,9 @@ public class PostService {
 		return dao.selectPostCount(db, caterogy);
 	}
 
-	public ArrayList<Post> selectPostList(PageInfo pi, String caterogy) {
-		ArrayList<Post> list = dao.selectPostList(db, pi, caterogy);
-				
+	public ArrayList<Post> selectPostList(PageInfo pi, String category) {
+		ArrayList<Post> list = dao.selectPostList(db, pi, category);
+		
 		db.close();
 		return list;
 	}

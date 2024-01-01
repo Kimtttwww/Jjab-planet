@@ -32,34 +32,43 @@ public class PostListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PostService ps = new PostService();
-		String caterogy = request.getParameter("category");
-		int currentPage = 1;
-		
-		try {
-			if(caterogy == null) caterogy = "A";
-			
-			currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		} catch (NumberFormatException e) {
-		}
-		System.out.println(caterogy);
-		System.out.println(currentPage);
-		int postcount = ps.selectPostCount(caterogy);
-		
-		PageInfo pi = Pagination.getPageInfo(postcount, currentPage, 10, 25);
-		System.out.println(pi);
-		ArrayList<Post> list = ps.selectPostList(pi, caterogy);
-		
-		request.setAttribute("pi", pi);
-		request.setAttribute("list", list);
-		System.out.println(list);
-		request.getRequestDispatcher("WEB-INF/views/community/list.jsp").forward(request, response);
+		process(request, response, 0);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		process(request, response, 1);
+	}
+	
+	/**
+	 * @param methud (0 : Get / 1 : Post)
+	 */
+	private void process(HttpServletRequest request, HttpServletResponse response, int methud) throws ServletException, IOException {
+		PostService ps = new PostService();
+		String category = request.getParameter("category");
+		int currentPage = 1;
 		
+		try {
+			if(category == null) category = "A";
+			
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		} catch (NumberFormatException e) {
+		}
+		
+		int postcount = ps.selectPostCount(category);
+		
+		PageInfo pi = Pagination.getPageInfo(postcount, currentPage, 10, 25);
+		ArrayList<Post> list = ps.selectPostList(pi, category);
+		
+		if(methud == 0) {
+			request.setAttribute("pi", pi);
+			request.setAttribute("list", list);
+			
+			request.getRequestDispatcher("WEB-INF/views/community/list.jsp").forward(request, response);
+		} else {
+			
+		}
 	}
 }
