@@ -2,7 +2,6 @@ package com.kh.community.model.vo;
 
 import java.sql.Date;
 
-import com.kh.member.model.vo.Member;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

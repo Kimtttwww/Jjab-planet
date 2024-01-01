@@ -3,11 +3,11 @@ package com.kh.jobpost.service;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.common.Template;
-import com.kh.jobpost.model.dao.PostDao;
+import com.kh.jobpost.model.dao.JobPostDao;
 import com.kh.jobpost.model.vo.JobPost;
 
 public class JobPostService {
-	private PostDao dao = new PostDao();
+	private JobPostDao dao = new JobPostDao();
 
 	public JobPost detailPost(int jobpostNo) {
 		SqlSession session = Template.getSqlSession();
