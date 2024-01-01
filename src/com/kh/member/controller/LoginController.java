@@ -45,6 +45,7 @@ public class LoginController extends HttpServlet {
 		if(loginUser == null) { // 확인
 			request.getSession().setAttribute("alertMsg", "로그인 실패");
 			System.out.println("로그인 실패");
+			
 		}else {
 			request.getSession().setAttribute("alertMsg", "로그인 성공");
 			request.getSession().setAttribute("loginUser", loginUser);

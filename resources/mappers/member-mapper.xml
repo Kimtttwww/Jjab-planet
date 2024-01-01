@@ -68,6 +68,7 @@
 		  
 	</insert>
 	
+	
 	<!--
 		* DML문 일 경우
 			<insert id="식별자" parameterType="전달받은 자바타입">

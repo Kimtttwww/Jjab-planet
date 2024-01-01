@@ -21,8 +21,6 @@
  <jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 
 
-
-
   <div class="head-container">
     <header>
 
