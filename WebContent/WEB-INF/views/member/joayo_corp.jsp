@@ -7,8 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>관심 기업 리스트</title>
-<link rel="stylesheet"
-	href="${ pageContext.request.contextPath }/resources/css/joayo_corp.css">
+<link rel="stylesheet" ref="${ pageContext.request.contextPath }/resources/css/memberinsert.css" type = "text/css">
 </head>
 
 <body>
