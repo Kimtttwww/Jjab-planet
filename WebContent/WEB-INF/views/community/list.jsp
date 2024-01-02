@@ -28,6 +28,7 @@
             <article>
                 <a href="write.po">글작성</a>
                 <a href="">검색</a>
+                
             </article>
         </section>
 
@@ -48,8 +49,31 @@
         </div>
     </square>
     <script>
-    	$('#category').change(function(e) {
-			console.log('값 변화! ' + e.target.value);
+        
+    	$('#category').change(function() {
+	    	$.ajax({
+                url : 'list.po',
+                data : {category:$('#category').val()},
+                type : 'post',
+                success : (list) => {
+                    let tag = list.map((p) => {
+						return (`<section class="list">
+							<article class="list-content">
+								<span class="list-title">`+p.postTitle+`</span>
+								<span>`+p.postContent+`</span>
+							</article>
+							<article class="list-info">
+								<span>`+p.count+`</span>
+								<span>`+ p.userId +`</span>
+								<span>`+ p.createDate + `</span>
+							</article>
+						</section>`)
+					});
+                    $('.list-area').html(tag.join(""));
+                }, error : () => {
+                    console.log("통신 실패");
+                }
+            });
 		});
     </script>
 </body>

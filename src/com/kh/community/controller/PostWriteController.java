@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.community.model.vo.Post;
+import com.kh.community.service.PostService;
+import com.kh.member.model.vo.Member;
+
 /**
  * Servlet implementation class PostWriteController
  */
@@ -32,6 +36,24 @@ public class PostWriteController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int postWriter = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
+		String postTitle = request.getParameter("postTitle");
+		String postContent= request.getParameter("postContent");
+		String category= request.getParameter("category");
 		
+		Post p = Post.builder()
+				.postWriter(postWriter)
+				.postTitle(postTitle)
+				.postContent(postContent)
+				.category(category)
+				.build();
+		
+		int result = new PostService().insertPost(p);
+		
+		if(result > 0) {
+			request.getRequestDispatcher("list.bo").forward(request, response);
+		} else {
+			
+		}
 	}
 }

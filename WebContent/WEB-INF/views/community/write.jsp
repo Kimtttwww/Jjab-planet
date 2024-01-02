@@ -12,28 +12,25 @@
 	
 	<square style="background-color: white;">
         <section class="titlebar">
-            <h1>커뮤니티 게시판</h1>
+            <h1>게시글 작성</h1>
         </section>
     </square>
 
     <square>
-        <div class="list">
+        <form class="post" action="write.po" method="post">
             <article>  
                 <select name="category" id="category">
-                    <option value="">전체</option>
-                    <option value="">면접</option>
-                    <option value="">자격증</option>
-                    <option value="">자소서</option>
+                    <option value="I">면접</option>
+                    <option value="C">자격증</option>
+                    <option value="S">자소서</option>
                 </select>
-                <span class="post-title">게시글 제목</span>
+                <input type="text" class="post-title" name="postTitle">
             </article>
-
-            <article class="list-content">
-                <p>가나다라</p>
-            </article>
-
+			
+			<textarea class="post-content" name="postContent">가나다라</textarea>
+			
             <button style="margin: 0 auto;">등록</button>
-        </div>
+        </form>
     </square>
 </body>
 </html>

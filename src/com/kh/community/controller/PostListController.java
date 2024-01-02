@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
+import com.google.gson.Gson;
 import com.kh.common.Pagination;
 import com.kh.common.model.vo.PageInfo;
 import com.kh.community.model.vo.Post;
@@ -68,7 +71,9 @@ public class PostListController extends HttpServlet {
 			
 			request.getRequestDispatcher("WEB-INF/views/community/list.jsp").forward(request, response);
 		} else {
-			
+			Gson g = new Gson();
+			response.setContentType("application/json; charset=UTF-8");
+			g.toJson(list, response.getWriter());
 		}
 	}
 }

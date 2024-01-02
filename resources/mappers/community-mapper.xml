@@ -32,7 +32,7 @@
 	</select>
 	
 	<select id="selectPostList" parameterType="string" resultMap="postResultSet">
-	    SELECT POST_NO, POST_TITLE, USER_ID, COUNT, CREATE_DATE
+	    SELECT POST_NO, POST_TITLE, POST_CONTENT, USER_ID, COUNT, CREATE_DATE
 		FROM BOARD_POST P
 		JOIN MEMBER ON POST_WRITER = USER_NO
 		WHERE P.STATUS = 'Y'
@@ -41,6 +41,11 @@
 	    </if>
 		ORDER BY POST_NO DESC
 	</select>
+	
+	<insert id="insertPost" parameterType="post">
+		INSERT INTO BOARD_POST(POST_NO, POST_TITLE, POST_CONTENT, POST_WRITER, CATEGORY)
+		VALUES(SEQ_BOARD_POSTNO.NEXTVAL, #{postNo}, #{postTitle}, #{postContent}, #{postWriter}, #{category})
+	</insert>
 	<!-- 태완 사용중 -->
 	
 	
@@ -111,9 +116,5 @@
 <!-- 	</update> -->
 	 
 	
-<!-- 	<insert id="insertMember" parameterType="member"> -->
-<!-- 		INSERT INTO MEMBER(USER_NO, USER_ID, USER_PWD, USER_NAME, EMAIL, BIRTHDAY, GENDER, PHONE, ADDRESS) -->
-<!-- 		VALUES(SEQ_UNO.NEXTVAL, #{userId}, #{userPwd}, #{userName}, #{email}, #{birthday}, #{gender}, #{phone}, #{address}) -->
-<!-- 	</insert> -->
 	
 </mapper>

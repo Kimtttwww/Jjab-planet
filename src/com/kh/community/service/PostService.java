@@ -23,4 +23,17 @@ public class PostService {
 		db.close();
 		return list;
 	}
+
+	public int insertPost(Post p) {
+		int result = dao.insertPost(db, p);
+		
+		if(result > 0) {
+			db.commit();
+		} else {
+			db.rollback();
+		}
+		
+		db.close();
+		return result;
+	}
 }
