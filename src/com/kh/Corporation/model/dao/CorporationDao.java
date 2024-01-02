@@ -17,7 +17,6 @@ public class CorporationDao {
 	
 	public int reviewCount(SqlSession sqlSession, int corpCode) {
 		Integer count = sqlSession.selectOne("boardMapper.reviewCount", corpCode);
-		System.out.println("count : " + count);
 		return count;		
 	}
 	
@@ -29,7 +28,6 @@ public class CorporationDao {
 		RowBounds rowBounds = new RowBounds(offset, limit);	
 		
 		List<Corporation> list = sqlSession.selectList("boardMapper.selectCorpList", null, rowBounds);
-		//System.out.println(list);
 		
 		return list;
 	}
@@ -42,6 +40,12 @@ public class CorporationDao {
 		RowBounds rowBounds = new RowBounds(offset, limit);				
 		
 		return  sqlSession.selectList("boardMapper.selectReviewList", corpCode, rowBounds);
+	}
+
+	public List<Corporation> selectCorpOne(SqlSession sqlSession, int corpCode) {
+		
+		
+		return sqlSession.selectList("boardMapper.selectCorpOne", corpCode);
 	}
 
 	

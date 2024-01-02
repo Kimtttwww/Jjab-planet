@@ -25,11 +25,13 @@
 	
 	
 	<!--  다연 사용중 -->
+	<!--  기업 등록개수 -->
 	<select id="corpCount" resultType="_int">
 	   SELECT COUNT(*)
 		  FROM CORPORATION		
 	</select>
 	
+	<!--  리뷰 등록개수 -->
 	<select id="reviewCount" resultType="_int">
 	   SELECT COUNT(*)
 		  FROM BOARD_REPLY
@@ -37,20 +39,30 @@
 		AND REF_NO = #{corpCode}		
 	</select>
 	
-	
+	<!--  기업 전체리스트 -->
 	<select id="selectCorpList" resultType="com.kh.corporation.model.vo.Corporation"  >
-	    SELECT *
-	      FROM CORPORATION	   
+	    SELECT * 
+	      FROM CORPORATION	
 	</select>
 	
+	<!--  선택한 기업정보 -->
+	<select id="selectCorpOne" resultType="com.kh.corporation.model.vo.Corporation"  >
+	    SELECT * 
+	      FROM CORPORATION
+	     WHERE CORP_NO = #{corpCode}
+	</select>
+	
+	
+	
+	<!--  기업의 리뷰리스트  -->
 	<select id="selectReviewList" resultType="com.kh.community.model.vo.Reply">
-	    SELECT BOARD_REPLY.REPLY_NO, BOARD_REPLY.REPLY_CONTENT, MEMBER.USER_ID, BOARD_REPLY.CREATE_DATE
-	    FROM BOARD_REPLY 
-	  	JOIN MEMBER ON MEMBER.USER_NO = BOARD_REPLY.REPLY_WRITER
-	    WHERE BOARD_REPLY.STATUS = 'Y'
-	      AND BOARD_REPLY.REPLY_TYPE = 'R'
-	      AND BOARD_REPLY.REF_NO = #{corpCode}
-	    ORDER BY BOARD_REPLY.REPLY_NO DESC
+	    SELECT R.REPLY_NO, R.REPLY_CONTENT, M.USER_ID, R.CREATE_DATE
+	    FROM BOARD_REPLY R
+	  	JOIN MEMBER M ON (M.USER_NO = R.REPLY_WRITER)
+	    WHERE R.STATUS = 'Y'
+	      AND R.REPLY_TYPE = 'R'
+	      AND R.REF_NO = #{corpCode}
+	    ORDER BY R.REPLY_NO DESC
 	</select>
 	
 	<select id="testR" resultType="com.kh.community.model.vo.Reply">
@@ -58,6 +70,13 @@
 	    FROM BOARD_REPLY    
 	</select>
 	
+	
+	<!--  기업 공고 클릭시 조회수 증가  -->
+	<update id="increaseCount" parameterType="_int">
+		UPDATE BOARD
+		SET COUNT = COUNT + 1
+		WHERE JOP_NO = #{boardNo}
+	</update>
 	
 	<!-- 다연 사용중 -->
 	
@@ -78,11 +97,7 @@
 	 -->
 	 
 	 <!--
-	<update id="increaseCount" parameterType="_int">
-		UPDATE BOARD
-		SET COUNT = COUNT + 1
-		WHERE BOARD_NO = #{boardNo}
-	</update>
+
  -->
 <!-- 	<select id="selectBoard" parameterType="_int" resultMap="boardResultSet"> -->
 <!-- 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, USER_ID, COUNT, CREATE_DATE -->

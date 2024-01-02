@@ -47,4 +47,14 @@ public class CorporationService {
 		return list;
 	}
 
+	public List<Corporation> selectCorpOne(int corpCode) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		List<Corporation> list = corpDao.selectCorpOne(sqlSession, corpCode);
+
+		sqlSession.close();
+		return list;
+	}
+
+
 }

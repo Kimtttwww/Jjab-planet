@@ -25,6 +25,7 @@ height: 100%;
 	width: 1800px;
 	height: 90px;
 	padding: 0 200px;
+	
 }
 
 .corp-top {
@@ -57,7 +58,9 @@ height: 100%;
 .corp-zone {
 	margin: 50px;
 }
-
+.corp-info1{
+	margin-right: 20px;
+}
 .corp-review-area {
 	background-color: rgb(158, 120, 120);
 	padding: 30px;
@@ -73,6 +76,8 @@ height: 100%;
 
 .corp-backwhite {
 	background-color: white;
+	display: flex;
+	padding: 0 30px; 
 }
 
 .corp_hovered {
@@ -115,7 +120,7 @@ height: 100%;
 			<div class="corp-top">
 				<div class="corp-logo">
 					<div class="corp-name">기업로고</div>
-					<div class="corp-name">(주)넥슨코리아</div>
+					<div class="corp-name">${corp.corpNo}</div>
 				</div>
 				<div class="corp-interest">
 					<div class="corp-home">
@@ -142,18 +147,26 @@ height: 100%;
 			<div class="corp-info-area corp-backwhite">
 				<div class="corp-info1">
 					<div>기업명</div>
-					<div>대표자</div>
+					<div>대표자명</div>
 					<div>주소</div>
-					<div>연락처</div>
+					<div>홈페이지</div>
 				</div>
 				<div class="corp-info2">
-					<div>넥슨코리아</div>
-					<div>이정현</div>
-					<div>경기 성남시 분당구</div>
-					<div>031-1234-5678</div>
+					
+					<c:forEach var="corp" items="${corpOne}">				
+						<div>${corp.corpName}</div>
+						<div>${corp.ceoName}</div>
+						<div>${corp.address}</div>
+						<div>${corp.homePage}</div>
+					</c:forEach>
+				
 				</div>
 			</div>
 		</div>
+		
+		
+
+
 
 
 		<div class="corp-zone">
@@ -212,18 +225,7 @@ height: 100%;
 			<div class="corp-review-area">
 				<div class="corp-review-content">
 					<div>
-						<c:forEach var="b" items="${list}" >
-							<tr onclick='location.href="corp.review?bno=${b.boardNo}"'>
-								<td>${b.boardNo}</td>
-								<td>${b.boardTitle}</td>
-								<td>${b.boardWriter}</td>
-								<td>${b.count}</td>
-								<td>${b.createDate}</td>
-							</tr>
-						</c:forEach>
-					</div>
-					<div>
-						<button
+						<button 
 							onclick="document.getElementById('popup_report').style.display='block'">신고하기</button>
 						<!-- 팝업 창 -->
 						<div id="popup_report">
@@ -240,11 +242,14 @@ height: 100%;
 					<div>					
 						<c:forEach var="item" items="${replyList}">				
 							<div>
-								${item.userId} > ${item.replyContent} / ${item.createDate }
+								${item.userId} / 작성일:${item.createDate }
 							</div>
 							<div>
+								${item.replyContent} 
+								<div align="right">
 								<button onclick="">수정</button>
 								<button onclick="">삭제</button>
+								</div>
 							</div>							
 						</c:forEach>
 					</div>
