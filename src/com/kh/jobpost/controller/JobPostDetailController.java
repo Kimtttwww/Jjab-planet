@@ -45,7 +45,7 @@ public class JobPostDetailController extends HttpServlet {
 
 			//request에 데이터 추가
 			request.setAttribute("p", p);
-			
+		
 			System.out.println(p);
 			request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetailCP.jsp").forward(request, response);
 //		} else {

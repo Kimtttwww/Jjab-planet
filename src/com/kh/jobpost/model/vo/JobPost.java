@@ -18,7 +18,7 @@ public class JobPost {
 	private String phone; //MEMBER
 	private String education; //JOP_POST
 	private String career; //JOP_POST
-	private String jobNo; //JOP_POST
+	private String jobName; //occupation
 	private String location; //JOP_POST
 	private Date endDate; //JOP_POST
 	private String postContent; //JOP_POST
