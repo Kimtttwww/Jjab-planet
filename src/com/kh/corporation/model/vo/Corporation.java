@@ -19,6 +19,6 @@ public class Corporation {
 	/** 직종 번호(F : 프론트, B : 백, S : 풀스텍) */
 	private String jobNo;
 	private int likeCount;
-	private String homepage;
+	private String homePage;
 	private Logo logo;
 }

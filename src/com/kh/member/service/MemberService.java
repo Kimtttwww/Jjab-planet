@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.common.Template;
+import com.kh.corporation.model.vo.Corporation;
 import com.kh.member.model.dao.MemberDao;
 import com.kh.member.model.vo.Member;
 
@@ -43,6 +44,24 @@ public class MemberService {
 		sqlSession.close();
 		
 		return result;
+		
+	}
+	
+	public int insertMember(Corporation c) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int result2 = memberDao.insertMember(sqlSession, c);
+	
+		if(result2 > 0) {
+			sqlSession.commit();
+		}else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		
+		return result2;
 		
 	}
 	

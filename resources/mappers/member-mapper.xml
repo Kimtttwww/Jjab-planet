@@ -65,9 +65,26 @@
 		  #{userPwd},
 		   #{phone},
 		   #{userType})
-		  
 	</insert>
-	
+
+	<insert id="insertCorp" parameterType="corpInsert">
+		INSERT INTO CORPORATION
+		(CORP_NO,
+		 CORP_NAME,
+		  CEO_NAME, 
+		  CORP_BN,
+		  ADDRESS,
+		  HOMEPAGE)
+		VALUES(
+		 SEQ_CORPNO.NEXTVAL,
+		  #{corpName}, <!-- 기업명 -->
+		   #{ceoName}, <!-- 대표자명 -->
+		   #{corpBn}, <!-- 사업자 등록번호 -->
+		   #{address}, <!-- 회사 주소 -->
+	   		 <!-- 좋아요 수 -->
+		   #{homePage}) <!-- 홈페이지 주소 -->
+	</insert>
+		
 	
 	<!--
 		* DML문 일 경우

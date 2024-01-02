@@ -137,7 +137,7 @@
                             <div>기업명*</div>
                         </div>
                         <div>
-                            <input type="text" class="enroll-textL" minlength="1" maxlength="15">
+                            <input type="text" name = "corpName"  class="enroll-textL" minlength="1" maxlength="15">
                         </div>
                     </div>
                     <div>
@@ -145,7 +145,7 @@
                             <div>대표자명*</div>
                         </div>
                         <div>
-                            <input type="text" class="enroll-textL" minlength="2" maxlength="12">
+                            <input type="text" name = "CeoName" class="enroll-textL" minlength="2" maxlength="12">
                         </div>
                     </div>
                     <div>
@@ -153,7 +153,7 @@
                             <div>사업자등록번호*</div> <!--(XXX-XXXX-XXXX-XX)-->
                         </div>
                         <div>
-                            <input type="text" class="enroll-textL" minlength="16" maxlength="16" placeholder="(-) 포함">
+                            <input type="text" name = "corpBn" class="enroll-textL" minlength="16" maxlength="16" placeholder="(-) 포함">
                         </div>
                     </div>
                     <div>
@@ -161,7 +161,7 @@
                             <div>회사 주소*</div>
                         </div>
                         <div>
-                            <input type="text" class="enroll-textL">
+                            <input type="text" name = "address" class="enroll-textL">
                             <input type="text" class="enroll-textL" placeholder="상세 주소">
                         </div>
                     </div>
@@ -170,7 +170,7 @@
                             <div>회사전화번호*</div>
                         </div>
                         <div>
-                            <input type="text" class="enroll-textL" maxlength="17" placeholder="(-) 포함">
+                            <input type="text" name = "pphone" class="enroll-textL" maxlength="17" placeholder="(-) 포함">
                         </div>
                     </div>
                     <div>
@@ -217,8 +217,7 @@
                 $("#member-enrollForm").show();
             });
         });
-
-    </script>
+    </script> 
 
 </body>
 
