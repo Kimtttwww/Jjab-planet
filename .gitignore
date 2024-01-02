@@ -2,7 +2,8 @@
 /.settings/
 /.classpath
 /.project
-/WebContent/META-INF/MANIFEST.MF
+/WebContent/META-INF/
+/resources/mybatis-config.xml
 
 # Created by https://www.toptal.com/developers/gitignore/api/java,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse

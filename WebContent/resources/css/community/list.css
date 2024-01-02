@@ -59,15 +59,16 @@ square a {
 }
 
 /* 각 게시글 */
-.list {
+.post {
     width: 100%;
     display: flex;
     background-color: lightgray;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 /* 게시글 2등분 좌측 */
-.list-content {
+.post-content {
     display: flex;
     flex-basis: 80%;
     flex-direction: column;
@@ -76,15 +77,14 @@ square a {
 }
 
 /* 게시글 제목 */
-.list-title {
+.post-title {
     font-weight: bold;
     font-size: larger;
     margin-bottom: 10px;
-    cursor: pointer;
 }
 
 /* 게시글 정보(조회수 등) 박스 */
-.list-info {
+.post-info {
     display: flex;
     flex-basis: 20%;
     flex-direction: column;
@@ -93,8 +93,21 @@ square a {
 }
 
 /* 게시글 정보 내용들 */
-.list-info span {
+.post-info span {
     background-color: rgb(200, 255, 200);
+}
+
+/* 페이징 바 */
+.pagingbar {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+/* 페이징 바의 각 버튼들 */
+.pagingbar>button {
+	margin: 0 7px;
+	font-size: large;
 }
 
 /* select 바 */

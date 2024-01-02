@@ -36,12 +36,12 @@
 
         <div class="list-area">
 	        <c:forEach var="p" items="${ list }">
-	            <section class="list">
-	                <article class="list-content">
-	                    <span class="list-title">${ p.postTitle }</span>
+	            <section class="post">
+	                <article class="post-content">
+	                    <span class="post-title">${ p.postTitle }</span>
 	                    <span>${ p.postContent }</span>
 	                </article>
-	                <article class="list-info">
+	                <article class="post-info">
 	                    <span>${ p.count }</span>
 	                    <span>${ p.userId }</span>
 	                    <span>${ p.createDate }</span>
@@ -49,6 +49,20 @@
 	            </section>
 	        </c:forEach>
         </div>
+        
+        <section class="pagingbar">
+			<c:if test="${ pi.currentPage ne pi.startPage }">
+				<button type="button" onclick="location.href = '${ request.getContextPath() }list.po?currentPage=${ pi.currentPage - 1 }'">&lt; 이전</button>
+			</c:if>
+			
+			<c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }">
+				<button type="button" onclick="location.href = '${ request.getContextPath() }list.po?currentPage=${ i }'">${ i }</button>
+			</c:forEach>
+			
+			<c:if test="${ pi.currentPage ne pi.endPage }">
+				<button type="button" onclick="location.href = '${ request.getContextPath() }list.po?currentPage=${ pi.currentPage + 1 }'">다음 &gt;</button>
+			</c:if>
+		</section>
     </square>
     <script>
         
@@ -59,19 +73,19 @@
                 type : 'post',
                 success : (list) => {
                     let tag = list.map((p) => {
-						return (`<section class="list">
-							<article class="list-content">
-								<span class="list-title">`+p.postTitle+`</span>
+						return (`<section class="post">
+							<article class="post-content">
+								<span class="post-title">`+p.postTitle+`</span>
 								<span>`+p.postContent+`</span>
 							</article>
-							<article class="list-info">
+							<article class="post-info">
 								<span>`+p.count+`</span>
 								<span>`+ p.userId +`</span>
 								<span>`+ p.createDate + `</span>
 							</article>
 						</section>`)
 					});
-                    $('.list-area').html(tag.join(""));
+                    $('.post-area').html(tag.join(""));
                 }, error : () => {
                     console.log("통신 실패");
                 }

@@ -29,6 +29,15 @@ public class PostWriteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/* 니증에 로그인 기능 되면 추가할 부분
+		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+		
+		if(loginUser != null) {
+		} else { 
+			request.setAttribute("alertMsg", "로그인 후 이용 가능합니다");
+			response.sendRedirect(request.getContextPath() + "list.po");
+		}
+		 */
 		request.getRequestDispatcher("WEB-INF/views/community/write.jsp").forward(request, response);
 	}
 
@@ -51,9 +60,10 @@ public class PostWriteController extends HttpServlet {
 		int result = new PostService().insertPost(p);
 		
 		if(result > 0) {
-			request.getRequestDispatcher("list.bo").forward(request, response);
+			request.setAttribute("alertMsg", "게시글이 등록되었습니다");
 		} else {
-			
+			request.setAttribute("alertMsg", "에러가 발생하였습니다");
 		}
+		response.sendRedirect(request.getContextPath() + "/list.bo");
 	}
 }

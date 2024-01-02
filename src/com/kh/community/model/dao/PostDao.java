@@ -17,7 +17,7 @@ public class PostDao {
 
 	public ArrayList<Post> selectPostList(SqlSession db, PageInfo pi, String category) {
 		int limit = pi.getObjLimit();
-		int offset = pi.getCurrentPage() - 1;
+		int offset = (pi.getCurrentPage() - 1) * limit;
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
 		return (ArrayList)db.selectList(map + "selectPostList", category, rowBounds);
