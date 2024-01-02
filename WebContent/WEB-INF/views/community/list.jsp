@@ -26,8 +26,11 @@
                 </select>
             </article>
             <article>
-                <a href="write.po">글작성</a>
-                <a href="">검색</a>
+                	<a href="write.po">글작성</a>
+                    <div class="list-searchBox">
+                        <input class="list-search" type="text" placeholder="검색어를 입력하세요.">
+                        <img src="${ pageContext.request.contextPath }/resources/images/search_icon.png">
+                    </div>
             </article>
         </section>
 
