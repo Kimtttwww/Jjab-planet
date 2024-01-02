@@ -41,9 +41,8 @@
         <label for="position">학력</label>
         <select id="position" name="position">
           <option value="junior">고졸</option>
-          <option value="senior">대학재학중</option>
-          <option value="senior">대학졸업</option>
-          
+          <option value="senior">초대졸</option>
+          <option value="senior">대졸</option>
         </select>
         <p>${p.education }</p>
       </div>
@@ -77,16 +76,10 @@
         <label for="position">지역</label>
         <select id="position" name="position">
           <option value="seoul">서울</option>
-          <option value="gyeonggi">경기도</option>
-          <option value="chungcheongS">충청남도</option>
-          <option value="chungcheongN">충청북도</option>
-          <option value="gangwon">강원도</option>
-          <option value="jeollaS">전라남도</option>
-          <option value="jeollaN">전라북도</option>
-          <option value="gyeongsangS">경상남도</option>
-          <option value="gyeongsangN">경상북도</option>
-          <option value="jeju">제주도</option>
-          <option value="dokdo">독도</option>
+          <option value="gyeonggi">경기</option>
+          <option value="Incheon">인천</option>
+          <option value="Busan">부산</option>
+
         </select>
         <p>${p.location }</p>
       </div>
