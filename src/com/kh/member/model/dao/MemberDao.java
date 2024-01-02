@@ -23,7 +23,7 @@ public class MemberDao {
 	
 	public int insertMember(SqlSession sqlSession, Corporation c) {
 		
-		return sqlSession.insert("memberMapper.insertMember", c);
+		return sqlSession.insert("memberMapper.insertCorp", c);
 	}
 
 }
