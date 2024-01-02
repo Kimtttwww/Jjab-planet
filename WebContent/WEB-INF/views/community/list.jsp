@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>커뮤니티</title>
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/community/list.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/community/list.css" type="text/css">
 </head>
 <body>
 	<jsp:include page="../common/topbar.jsp"/>
@@ -29,30 +29,30 @@
                 	<a href="write.po">글작성</a>
                     <div class="list-searchBox">
                         <input class="list-search" type="text" placeholder="검색어를 입력하세요.">
-                        <img src="${ pageContext.request.contextPath }/resources/images/search_icon.png">
+                        <img src="${pageContext.request.contextPath}/resources/images/search_icon.png">
                     </div>
             </article>
         </section>
 
         <div class="list-area">
-	        <c:forEach var="p" items="${ list }">
+	        <c:forEach var="p" items="${list}">
 	            <section class="post">
 	                <article class="post-content">
-	                    <span class="post-title">${ p.postTitle }</span>
-	                    <span>${ p.postContent }</span>
+	                    <span class="post-title">${p.postTitle}</span>
+	                    <span>${p.postContent}</span>
 	                </article>
 	                <article class="post-info">
 	                	<span>
-	                	<img src="${ pageContext.request.contextPath }/resources/images/hits_icon.png">
-	                	<span>${ p.count }</span>
+	                	<img src="${pageContext.request.contextPath}/resources/images/hits_icon.png">
+	                	<span>${p.count}</span>
 	                	</span>
 	                    <span>
-	                    	<img src="${ pageContext.request.contextPath }/resources/images/person_icon.png">
-		                   <span>${ p.userId }</span>
+	                    	<img src="${pageContext.request.contextPath}/resources/images/person_icon.png">
+		                   <span>${p.userId}</span>
 	                    </span>
 	                    <span>
-	                    	<img src="${ pageContext.request.contextPath }/resources/images/date_icon.png">
-		                   <span>${ p.createDate }</span>
+	                    	<img src="${ pageContext.request.contextPath}/resources/images/date_icon.png">
+		                   <span>${p.createDate}</span>
 	                    </span>
 	                </article>
 	            </section>
@@ -60,16 +60,16 @@
         </div>
         
         <section class="pagingbar">
-			<c:if test="${ pi.currentPage ne pi.startPage }">
-				<button type="button" onclick="location.href = '${ request.getContextPath() }list.po?currentPage=${ pi.currentPage - 1 }'">&lt; 이전</button>
+			<c:if test="${pi.currentPage ne pi.startPage}">
+				<button type="button" onclick="location.href = '${request.getContextPath()}list.po?currentPage=${ pi.currentPage - 1 }'">&lt; 이전</button>
 			</c:if>
 			
 			<c:forEach var="i" begin="${ pi.startPage }" end="${ pi.endPage }">
-				<button type="button" onclick="location.href = '${ request.getContextPath() }list.po?currentPage=${ i }'">${ i }</button>
+				<button type="button" onclick="location.href = '${request.getContextPath()}list.po?currentPage=${ i }'">${ i }</button>
 			</c:forEach>
 			
-			<c:if test="${ pi.currentPage ne pi.endPage }">
-				<button type="button" onclick="location.href = '${ request.getContextPath() }list.po?currentPage=${ pi.currentPage + 1 }'">다음 &gt;</button>
+			<c:if test="${pi.currentPage ne pi.endPage}">
+				<button type="button" onclick="location.href = '${request.getContextPath()}list.po?currentPage=${ pi.currentPage + 1 }'">다음 &gt;</button>
 			</c:if>
 		</section>
     </square>
@@ -78,21 +78,22 @@
     	$('#category').change(function() {
 	    	$.ajax({
                 url : 'list.po',
-                data : {category:$('#category').val()},
+                data : {category : $('#category').val(), currentPage : ${pi.currentPage}},
                 type : 'post',
                 success : (list) => {
+                	console.log(list);
                     let tag = list.map((p) => {
 						return (`<section class="post">
 							<article class="post-content">
-								<span class="post-title">`+p.postTitle+`</span>
-								<span>`+p.postContent+`</span>
+								<span class="post-title">` + p.postTitle + `</span>
+								<span>` + p.postContent + `</span>
 							</article>
 							<article class="post-info">
-								<span>`+p.count+`</span>
-								<span>`+ p.userId +`</span>
-								<span>`+ p.createDate + `</span>
+								<span>` + p.count + `</span>
+								<span>` + p.userId + `</span>
+								<span>` + p.createDate + `</span>
 							</article>
-						</section>`)
+						</section>`);
 					});
                     $('.post-area').html(tag.join(""));
                 }, error : () => {
