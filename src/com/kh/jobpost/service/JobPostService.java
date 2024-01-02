@@ -39,4 +39,20 @@ public class JobPostService {
 
 		return listCount;
 	}
+
+	public int increaseCount(int jobpostNo) {
+		SqlSession sqlSession = Template.getSqlSession();
+
+		int count = dao.increaseCount(sqlSession, jobpostNo);
+
+		if (count > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+
+		sqlSession.close();
+
+		return count;
+	}
 }

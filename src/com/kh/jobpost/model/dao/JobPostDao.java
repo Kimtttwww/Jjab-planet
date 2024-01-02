@@ -11,7 +11,7 @@ import com.kh.jobpost.model.vo.JobPost;
 public class JobPostDao {
 
 	public JobPost detailBoard(SqlSession session, int jobpostNo) {
-		return session.selectOne("post-mapper.detailPost", jobpostNo);
+		return session.selectOne("jobpostMapper.detailPost", jobpostNo); 
 	}
 	
 	
@@ -30,5 +30,10 @@ public class JobPostDao {
 
 	public int selectListCount(SqlSession sqlSession) {
 		return sqlSession.selectOne("jobpostMapper.selectListCount");
+	}
+
+
+	public int increaseCount(SqlSession sqlSession, int jobpostNo) {
+		return sqlSession.update("jobpostMapper.increaseCount", jobpostNo);
 	}
 }

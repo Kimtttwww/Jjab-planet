@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- 	/*박윤비 미완성 12:18*/ -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -21,15 +21,17 @@
 		</div>
 		<div class="top_banner">
 			<!--최다 조회수 배너-->
+			<c:forEach var="jobPost" items="${list}">
 			<div class="top_b1">
 				<img
-					src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"
-					alt="">
-				<p>넥슨</p>
-				<p>공고제목</p>
-				<p class="content_bottom">직종 / 조회수</p>
+					src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg">
+				<p>${jobPost.corpName}</p>
+				<p>${jobPost.postTitle }</p>
+				<p class="content_bottom">${jobPost.jobName } / ${jobPost.count}</p>
 			</div>
+			</c:forEach>
 			<!--top_b1-->
+			
 			<div class="top_b2">
 				<img
 					src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"
@@ -47,6 +49,7 @@
 				<p class="content_bottom">직종 / 조회수</p>
 			</div>
 		</div>
+		
 		<!--top_banner-->
 
 		<div class="content_title"><a href="" class="content_title">최신 공고 ></a></div>
