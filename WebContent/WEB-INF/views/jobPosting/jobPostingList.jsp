@@ -36,10 +36,9 @@
     <main>
 
       <section class="job-listing">
-        <!-- 반복되는 채용 공고 카드 -->
         <c:forEach var="p" items="${list }">
-        <div class="job-card" onclick='location.href = "detail.bo?bno=${p.jobPostNo }"'>
-          <img src="resource/구글로고.png" alt="회사 로고" class="company-logo">
+        <div class="job-card" onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
+          <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" class="company-logo">
           <div class="job-info">
             <h3 class="job-offer-title">${p.postTitle }</h3>
             <p class="employee-condition">${p.postContent }</p>

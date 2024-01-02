@@ -1,6 +1,7 @@
 package com.kh.jobpost.model.vo;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,6 +23,10 @@ public class JobPost {
 	private String location; //JOP_POST
 	private Date endDate; //JOP_POST
 	private String postContent; //JOP_POST
+	private String corpName;//CORPORATION
+	private int count; //JOP_POST
+	
+	private ArrayList<JobPost> list;
 		 
 //	private int corpNo; //JOP_POST
 //	private String status; //JOP_POST

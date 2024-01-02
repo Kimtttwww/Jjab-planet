@@ -34,24 +34,21 @@ public class JobPostDetailController extends HttpServlet {
 		
 		JobPostService service = new JobPostService();
 		
-//		int result = service.detailPost(jobpostNo);
+		int result = service.increaseCount(jobpostNo);
 		
 		HttpSession session =request.getSession();
 
-//		if (result > 0) {
-			// 게시글 정보 조회
-			//Board, Reply
+		if (result > 0) {
 			JobPost p = service.detailPost(jobpostNo);
 
-			//request에 데이터 추가
-			request.setAttribute("p", p);
+			request.setAttribute("jobpostNo", jobpostNo);
 		
-			System.out.println(p);
+			System.out.println(jobpostNo);
 			request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetailCP.jsp").forward(request, response);
-//		} else {
-//			session.setAttribute("alertMsg", "게시글 상세조회 실패");
-//			response.sendRedirect("list.bo?currentPage=1");
-//		}
+		} else {
+			session.setAttribute("alertMsg", "게시글 상세조회 실패");
+//			response.sendRedirect("list.job?currentPage=1");
+		}
 	}
 
 	/**

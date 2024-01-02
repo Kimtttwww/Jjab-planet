@@ -25,10 +25,9 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="/mappers/member-mapper.xml"/>
+<!-- 		<mapper resource="/mappers/member-mapper.xml"/> -->
 		<mapper resource="/mappers/board-mapper.xml"/>
 		<mapper resource="/mappers/community-mapper.xml"/>
-		<mapper resource="/mappers/post-mapper.xml"/>
 		<mapper resource="/mappers/jobpost-mapper.xml"/>
 	</mappers>
 </configuration>
