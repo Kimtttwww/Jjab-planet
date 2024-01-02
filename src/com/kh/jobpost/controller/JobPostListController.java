@@ -1,61 +1,77 @@
-//package com.kh.jobpost.controller;
-//
-//import java.io.IOException;
-//import java.util.ArrayList;
-//
-//import javax.servlet.ServletException;
-//import javax.servlet.annotation.WebServlet;
-//import javax.servlet.http.HttpServlet;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//import javax.servlet.http.HttpSession;
-//
-//import com.kh.jobpost.model.vo.JobPostVo;
+package com.kh.jobpost.controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.kh.common.Pagination;
+import com.kh.common.model.vo.PageInfo;
+import com.kh.jobpost.model.vo.JobPostVo;
+import com.kh.jobpost.service.JobPostService;
 //import com.kh.jobpost.service.JobService;
-//
-///**
-// * Servlet implementation class JobPostListController
-// */
-//@WebServlet("/list.job")
-//public class JobPostListController extends HttpServlet {
-//	private static final long serialVersionUID = 1L;
-//       
-//    /**
-//     * @see HttpServlet#HttpServlet()
-//     */
-//    public JobPostListController() {
-//        super();
-//        // TODO Auto-generated constructor stub
-//    }
-//
-//	/**
-//	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-//	 */
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		JobService service = new JobService();
-//		
-//		HttpSession session =request.getSession();
-//		
-//		JobPostVo jpl = new JobPostVo();
-//		
-//		
-//		ArrayList<JobPostVo> list = service.selectList(jpl);
-//		request.setAttribute("list", list);
-//		
-//		request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingList.jsp").forward(request, response);
-//
-//		
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-//		
-//		
-//	}
-//
-//	/**
-//	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-//	 */
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		doGet(request, response);
-//	}
-//
-//}
+
+/**
+ * Servlet implementation class JobPostListController
+ */
+@WebServlet("/list.job")
+public class JobPostListController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public JobPostListController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		JobPostService service = new JobPostService();
+		
+		/* 페이징 처리*/
+		int objCount = service.selectListCount();
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		int pageLimit = 10;
+		int objLimit = 5;
+		
+		PageInfo pi = Pagination.getPageInfo(objCount, currentPage, pageLimit, objLimit);
+		
+		HttpSession session =request.getSession();
+		
+		ArrayList<JobPostVo> list = service.selectList(pi);
+		
+		int listCount = service.selectListCount();
+		String currentPageParam = request.getParameter("currentPage");
+		
+		/* 클라이언트로부터 파라미터가 전달되지 않을경우에 대한 예외처리 */
+		int currentPageEx = currentPageParam != null ? Integer.parseInt(currentPageParam) : 1;
+
+		
+		request.setAttribute("pi",pi);
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingList.jsp").forward(request, response);
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
