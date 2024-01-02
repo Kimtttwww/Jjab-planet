@@ -10,7 +10,9 @@
 <style>
 	body{
 		box-sizing : border-box;
-		margin: 0;
+		min-width: 1200px;
+		max-width: 1600px;
+		margin: 0 auto;
 	}
 
 	.menu-area a {
@@ -39,6 +41,7 @@
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
+		min-width: 1000px;
 	}
 
 	.menu-left a {

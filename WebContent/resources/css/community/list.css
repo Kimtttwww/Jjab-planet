@@ -34,6 +34,8 @@ square a {
     display: flex;
     text-align: center;
     margin: 20px 0;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #27ae60;
 }
 
 /* 검색도구 드롭다운 박스 */
@@ -62,9 +64,9 @@ square a {
 .post {
     width: 100%;
     display: flex;
-    background-color: lightgray;
     margin-bottom: 10px;
     cursor: pointer;
+    border-bottom: 2px solid #27ae60;
 }
 
 /* 게시글 2등분 좌측 */
@@ -94,7 +96,10 @@ square a {
 
 /* 게시글 정보 내용들 */
 .post-info span {
-    background-color: rgb(200, 255, 200);
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    font-size: 13px
 }
 
 /* 페이징 바 */
@@ -149,4 +154,9 @@ square img {
 /* 돋보기 이미지 hover */
 square img:hover{
     cursor: pointer;
+}
+
+.list-info img {
+    width: 20px;
+    height: 16px;
 }

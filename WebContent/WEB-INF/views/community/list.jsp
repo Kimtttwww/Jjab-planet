@@ -42,9 +42,18 @@
 	                    <span>${ p.postContent }</span>
 	                </article>
 	                <article class="post-info">
-	                    <span>${ p.count }</span>
-	                    <span>${ p.userId }</span>
-	                    <span>${ p.createDate }</span>
+	                	<span>
+	                	<img src="${ pageContext.request.contextPath }/resources/images/hits_icon.png">
+	                	<span>${ p.count }</span>
+	                	</span>
+	                    <span>
+	                    	<img src="${ pageContext.request.contextPath }/resources/images/person_icon.png">
+		                   <span>${ p.userId }</span>
+	                    </span>
+	                    <span>
+	                    	<img src="${ pageContext.request.contextPath }/resources/images/date_icon.png">
+		                   <span>${ p.createDate }</span>
+	                    </span>
 	                </article>
 	            </section>
 	        </c:forEach>
