@@ -22,5 +22,11 @@ SELECT
 		WHERE JOBPOST_NO = #{jobpostNo}
 		AND J.STATUS = 'Y'
 	</select>
+	
+<!-- 	<select id="selectListCount1" resultType="_int"> -->
+<!-- 		SELECT COUNT(*) -->
+<!-- 		FROM BOARD -->
+<!-- 		WHERE STATUS='Y' -->
+<!-- 	</select> -->
 
 </mapper>

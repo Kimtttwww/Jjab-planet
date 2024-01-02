@@ -8,13 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.common.Pagination;
 import com.kh.common.model.vo.PageInfo;
-import com.kh.jobpost.model.vo.JobPostVo;
+import com.kh.jobpost.model.vo.JobPost;
 import com.kh.jobpost.service.JobPostService;
-//import com.kh.jobpost.service.JobService;
 
 /**
  * Servlet implementation class JobPostListController
@@ -35,34 +33,23 @@ public class JobPostListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		JobPostService service = new JobPostService();
 		
-		/* 페이징 처리*/
-		int objCount = service.selectListCount();
-		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+//		// ------페이징처리-------
+		int listCount = service.selectListCount();
+		int currentPage = 0;
 		int pageLimit = 10;
 		int objLimit = 5;
-		
-		PageInfo pi = Pagination.getPageInfo(objCount, currentPage, pageLimit, objLimit);
-		
-		HttpSession session =request.getSession();
-		
-		ArrayList<JobPostVo> list = service.selectList(pi);
-		
-		int listCount = service.selectListCount();
-		String currentPageParam = request.getParameter("currentPage");
-		
-		/* 클라이언트로부터 파라미터가 전달되지 않을경우에 대한 예외처리 */
-		int currentPageEx = currentPageParam != null ? Integer.parseInt(currentPageParam) : 1;
 
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, pageLimit, objLimit);
+		System.out.println(pi);
+	
+		ArrayList<JobPost> list = service.selectList(pi);
 		
-		request.setAttribute("pi",pi);
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingList.jsp").forward(request, response);
-		
 		
 	}
 
