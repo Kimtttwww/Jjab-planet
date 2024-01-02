@@ -1,6 +1,7 @@
 package com.kh.corporation.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,11 +9,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.kh.common.Pagination;
 import com.kh.common.model.vo.PageInfo;
 import com.kh.community.model.vo.Reply;
 import com.kh.corporation.model.service.CorporationService;
+import com.kh.corporation.model.vo.Corporation;
 
 /**
  * Servlet implementation class CorpReviewInsertController
@@ -36,19 +40,32 @@ public class CorpDetailController extends HttpServlet {
 		
 		
 		CorporationService corpService = new CorporationService();
-//		
 		int corpCode = Integer.parseInt( request.getParameter("corpNo"));
-//		
 		
+		
+		// 기업리뷰 페이징처리
 		int objCount = corpService.reviewCount(corpCode);		
 		int currentPage = Integer.parseInt(request.getParameter("currentPage") == null ? 
 				"1" : request.getParameter("currentPage"));		
 		int pageLimit = 10;
-		int objLimit = 5;
+		int objLimit = 3;
 		
-		CorporationService coprService = new CorporationService();
+		
 		PageInfo pi = Pagination.getPageInfo(objCount, currentPage, pageLimit, objLimit);
-		List<Reply> replyList = coprService.selectReviewList(pi, corpCode);
+		
+		
+		List<Corporation> corpList = corpService.selectCorpList(pi);
+		request.setAttribute("corpList", corpList);
+		System.out.println("corpList : " +corpList);
+		
+		// corpNo에 해당하는 기업 출력
+		List<Corporation> corpOne = corpService.selectCorpOne(corpCode);
+		System.out.println(corpOne);
+		request.setAttribute("corpOne", corpOne);
+		
+		
+		// 기업의 리뷰 리스트 출력하기
+		List<Reply> replyList = corpService.selectReviewList(pi, corpCode);
 		System.out.println(replyList);
 		request.setAttribute("replyList", replyList);
 		
