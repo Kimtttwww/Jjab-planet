@@ -46,25 +46,25 @@
 		INSERT INTO BOARD_POST(POST_NO, POST_TITLE, POST_CONTENT, POST_WRITER, CATEGORY)
 		VALUES(SEQ_BOARD_POSTNO.NEXTVAL, #{postNo}, #{postTitle}, #{postContent}, #{postWriter}, #{category})
 	</insert>
+	
+	<update id="increaseCount" parameterType="_int">
+		UPDATE BOARD_POST
+		SET COUNT = COUNT + 1
+		WHERE POST_NO = #{postNo}
+	</update>
+	
+	<select id="selectPost" parameterType="_int" resultMap="postResultSet">
+		SELECT POST_TITLE, POST_CONTENT, USER_ID, COUNT, CREATE_DATE
+		FROM BOARD_POST 
+		JOIN MEMBER ON POST_WRITER = USER_NO
+		WHERE B.STATUS = 'Y' AND BOARD_NO = #{boardNo}
+	</select>
 	<!-- 태완 사용중 -->
 	
 	
 	
 	
-	
-	
-<!-- 	<update id="increaseCount" parameterType="_int"> -->
-<!-- 		UPDATE BOARD -->
-<!-- 		SET COUNT = COUNT + 1 -->
-<!-- 		WHERE BOARD_NO = #{boardNo} -->
-<!-- 	</update> -->
 
-<!-- 	<select id="selectBoard" parameterType="_int" resultMap="boardResultSet"> -->
-<!-- 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, USER_ID, COUNT, CREATE_DATE -->
-<!-- 		FROM BOARD B -->
-<!-- 		JOIN MEMBER ON BOARD_WRITER = USER_NO -->
-<!-- 		WHERE B.STATUS = 'Y' AND BOARD_NO = #{boardNo} -->
-<!-- 	</select> -->
 	
 <!-- 	<select id="selectReplyList" resultMap="replyResultSet" parameterType="_int"> -->
 <!-- 		SELECT USER_ID, REPLY_CONTENT, CREATE_DATE -->

@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.community.model.vo.Post;
+import com.kh.community.service.PostService;
+
 /**
  * Servlet implementation class Controller
  */
@@ -25,9 +28,23 @@ public class PostDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		int postNo = Integer.parseInt(request.getParameter("pno"));
-
-		request.getRequestDispatcher("WEB-INF/views/community/detail.jsp").forward(request, response);
+		PostService ps = new PostService();
+		int postNo = Integer.parseInt(request.getParameter("postNo"));
+		
+		int result = ps.increaseCount(postNo);
+		
+		if(result > 0) {
+			Post p = ps.selectPost(postNo);
+		
+			System.out.println(p);
+			request.setAttribute("p", p);
+			
+			request.getRequestDispatcher("WEB-INF/views/community/detail.jsp").forward(request, response);
+		} else {
+			request.setAttribute("alertMsg", "해당 게시글을 찾지 못하였습니다");
+			
+			response.sendRedirect(request.getContextPath() + "/list.po");
+		}
 	}
 
 	/**

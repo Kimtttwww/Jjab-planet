@@ -11,6 +11,7 @@ import com.kh.community.model.vo.Post;
 public class PostDao {
 	private String map = "communityMapper.";
 	
+	
 	public int selectPostCount(SqlSession db, String category) {
 		return db.selectOne(map + "selectPostCount", category);
 	}
@@ -25,5 +26,13 @@ public class PostDao {
 
 	public int insertPost(SqlSession db, Post p) {
 		return db.insert(map + "insertPost", p);
+	}
+
+	public int increaseCount(SqlSession db, int postNo) {
+		return db.update(map + "increaseCount", postNo);
+	}
+
+	public Post selectPost(SqlSession db, int postNo) {
+		return db.selectOne(map + "selectPost", postNo);
 	}
 }
