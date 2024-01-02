@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
-
 import com.google.gson.Gson;
 import com.kh.common.Pagination;
 import com.kh.common.model.vo.PageInfo;
