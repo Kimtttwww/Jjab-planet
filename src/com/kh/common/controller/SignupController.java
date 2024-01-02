@@ -48,17 +48,9 @@ public class SignupController extends HttpServlet {
 		String userPwd = request.getParameter("userPwd");
 		String phone = request.getParameter("pphone") + request.getParameter("phone");
 		String userType = request.getParameter("userType");
+		Corporation c = null;
 		
 //		================================================================================
-		
-		String corpName = request.getParameter("corpName");
-		String ceoName = request.getParameter("ceoName");
-		String corpBn = request.getParameter("corpBn");
-		String address = request.getParameter("address");
-		//int likeCount = Integer.parseInt(request.getParameter("likeCount"));
-		String homePage = request.getParameter("homePage");
-		
-// 		=================================================================================		
 		
 		Member m = Member.builder()
 				.userId(userId)
@@ -66,43 +58,45 @@ public class SignupController extends HttpServlet {
 				.phone(phone)
 				.userType(userType).build();
 		
-// 		=================================================================================
+		System.out.println(m);
 		
-		Corporation c = Corporation.builder()
+		if(userType == "C") {		
+// 		=================================================================================
+		String corpName = request.getParameter("corpName");
+		String ceoName = request.getParameter("ceoName");
+		String corpBn = request.getParameter("corpBn");
+		String address = request.getParameter("address");
+		int likeCount = Integer.parseInt(request.getParameter("likeCount"));
+		String homePage = request.getParameter("homePage");
+		
+// 		=================================================================================		
+		
+		c = Corporation.builder()
 				.corpName(corpName)
 				.ceoName(ceoName)
 				.corpBn(corpBn)
 				.address(address)
-				//.likeCount(likeCount)
+				.likeCount(likeCount)
 				.homePage(homePage).build();
 
-//		==================================================================================
-		
-		System.out.println(m);
 		System.out.println(c);
+//		==================================================================================
+		}
 		
-	int result = new MemberService().insertMember(m);
-	int result2 = new MemberService().insertMember(c);
-	
-	System.out.println(result);
-	HttpSession session = request.getSession();
-	
-	if(result > 0) {
-		session.setAttribute("alertMsg", "회원가입 성공");
-	} else {
-		session.setAttribute("alertMsg", "회원가입 실패");
-	}
-	response.sendRedirect(request.getContextPath()); 
-//	홈페이지 다시 돌아가기
-	
-	
-	if(result2 > 0) {
-		session.setAttribute("alertMsg", "기업 회원가입 성공");
-	} 	else {
-		session.setAttribute("alertMsg", "기업 회원가입 실패 ");
-	}
-	
-	response.sendRedirect(request.getContextPath());
-	
+		int result = new MemberService().insertMember(m);
+		if(userType == "C") {		
+			result *= new MemberService().insertMember(c);
+		}
+		System.out.println(result);
+		HttpSession session = request.getSession();
+
+		if (result > 0) {
+			session.setAttribute("alertMsg", "회원가입 성공");
+			response.sendRedirect(request.getContextPath());
+		} else {
+			session.setAttribute("alertMsg", "회원가입 실패");
+			request.getRequestDispatcher(request.getContextPath() + "/sign.bo").forward(request, response);
+		}
+//		홈페이지 다시 돌아가기
 	}
 }

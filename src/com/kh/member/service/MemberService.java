@@ -51,9 +51,9 @@ public class MemberService {
 		
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		int result2 = memberDao.insertMember(sqlSession, c);
+		int result = memberDao.insertMember(sqlSession, c);
 	
-		if(result2 > 0) {
+		if(result > 0) {
 			sqlSession.commit();
 		}else {
 			sqlSession.rollback();
@@ -61,7 +61,7 @@ public class MemberService {
 		
 		sqlSession.close();
 		
-		return result2;
+		return result;
 		
 	}
 	

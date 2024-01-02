@@ -67,7 +67,7 @@
 		   #{userType})
 	</insert>
 
-	<insert id="insertCorp" parameterType="corpInsert">
+	<insert id="insertCorp" parameterType="member">
 		INSERT INTO CORPORATION
 		(CORP_NO,
 		 CORP_NAME,
