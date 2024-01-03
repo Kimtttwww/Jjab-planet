@@ -25,9 +25,9 @@
     <header>
 
       <select id="category">
-        <option value="back">프론트엔드</option>
-        <option value="front">백엔드</option>
-        <option value="full">풀스택</option>
+        <option value="F">프론트엔드</option>
+        <option value="B">백엔드</option>
+        <option value="S">풀스택</option>
       </select>
 
       <div>
@@ -41,7 +41,7 @@
       <section class="job-listing">
       
         <c:forEach var="p" items="${list }">
-			<div class="job-card" onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
+			<div class="job-card" data-category="${p.category}"   onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
 				<img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" class="company-logo">
 				<div class="job-info">
 					<h3 class="job-offer-title">${p.postTitle }</h3>
@@ -389,6 +389,36 @@ document.getElementById('search-box').addEventListener('input', function(event) 
     }
   });
 });
+
+
+//필터기능
+function filterJobs(category) {
+	  // 모든 job-card 요소를 선택
+	  const jobCards = document.querySelectorAll('.job-card');
+
+	  // 각 job-card에 대해 반복
+	  jobCards.forEach(card => {
+	    // job-card의 data-category 속성을 가져옴
+	    const jobCategory = card.getAttribute('data-category');
+
+	    
+	    // 선택된 카테고리와 일치하거나 'all'이 선택된 경우, 해당 카드를 표시
+	    if (category === 'all' || jobCategory === category) {
+	      card.style.display = ''; // 혹은 'block' 또는 'flex' 등의 적절한 디스플레이 속성 사용
+	    } else {
+	      // 그렇지 않으면 카드를 숨김
+	      card.style.display = 'none';
+	    }
+	  });
+	}
+
+
+//카테고리 선택요소에 이벤트리스너 추가(category 요소 값이 바뀔때마다 관련작어 필터링)
+document.getElementById('category').addEventListener('change',function(){
+  filterJobs(this.value); // this.value는 현재'category' 요소의 선택된 값
+});
+
+
 
 </script>
 
