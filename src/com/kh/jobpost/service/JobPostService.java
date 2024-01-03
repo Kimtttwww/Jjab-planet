@@ -1,6 +1,7 @@
 package com.kh.jobpost.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.apache.ibatis.session.SqlSession;
 

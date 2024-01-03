@@ -48,7 +48,7 @@
 					<p class="employee-condition">${p.postContent }</p>
 					<p class="corporate-name">${p.corpName}</p>
 					<div class="deadline-box">
-						<p class="deadline">마감일: ${p.endDate}</p>
+						<p class="deadline">${p.endDate}</p>
 					</div>
 				</div>
 			</div>

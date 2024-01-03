@@ -24,9 +24,12 @@ public class JobPost {
 	private Date endDate; //JOP_POST
 	private String postContent; //JOP_POST
 	private String corpNo;//CORPORATION
+	private String corpName;
 	private int count; //JOP_POST
 	
 	private ArrayList<JobPost> list;
+	private ArrayList<JobPost> idx_list;
+
 		 
 //	private int corpNo; //JOP_POST
 //	private String status; //JOP_POST

@@ -55,7 +55,38 @@
 		SET COUNT = COUNT +1
 		WHERE JOBPOST_NO = #{jobpostNo}
 		AND STATUS = 'Y'
-	</update>    
+	</update>
+	
+	<!-- 리스트 목록 -->
+    <select id="idx_firstList" parameterType="string" resultMap='postResultSet'>
+    select * from(
+	SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, count
+        FROM JOP_POST J
+        JOIN corporation C USING(CORP_NO)
+        JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
+        ORDER BY count DESC)
+        where ROWNUM &lt; 4;
+    </select>
+    
+    <select id="idx_secondList" parameterType="string" resultMap='postResultSet'>
+    select * from(
+	SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, count
+        FROM JOP_POST J
+        JOIN corporation C USING(CORP_NO)
+        JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
+        ORDER BY count DESC)
+        where ROWNUM &lt; 4;
+    </select>
+    
+    <select id="idx_thirdList" parameterType="string" resultMap='postResultSet'>
+    select * from(
+	SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, count
+        FROM JOP_POST J
+        JOIN corporation C USING(CORP_NO)
+        JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
+        ORDER BY count DESC)
+        where ROWNUM &lt; 4;
+    </select>	   
 
 </mapper>   
 
