@@ -22,6 +22,7 @@
 		text-decoration-line: none; /* 밑에 줄 없애기 */
 		text-decoration: none;
 		color: black; /* 보라색 흔적 없애기 */
+        width: 100px;
 	}
 	
 	.menu-area {
@@ -41,6 +42,7 @@
 
 	.menu {
 		width: 60%;
+        height: 100%;
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
@@ -65,6 +67,12 @@
 		font-size: 20px;
 		transition-duration: 0.3s;
 	}
+
+    .menu-left , .menu-right {
+        display: flex;
+        height: 100%;
+        align-items: center;
+    }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- script 추가한 이유: $(() => 부분에서 jstl 라이브러리가 없어서 불러올수없어서 추가함. --강민구-- -->
