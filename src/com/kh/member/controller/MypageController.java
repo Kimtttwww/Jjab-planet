@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LogoutController
+ * Servlet implementation class MypageController
  */
-@WebServlet("/logout.me")
-public class LogoutController extends HttpServlet {
+@WebServlet("/myPage.me")
+public class MypageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutController() {
+    public MypageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,11 +26,7 @@ public class LogoutController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getSession().invalidate();
-		request.getSession().setAttribute("alertMsg", "로그아웃되었습니다.");
-		
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/views/member/mypage.jsp").forward(request, response);
 	}
 
 	/**
@@ -41,6 +37,4 @@ public class LogoutController extends HttpServlet {
 		doGet(request, response);
 	}
 
-	
-	
 }

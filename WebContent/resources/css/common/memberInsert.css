@@ -2,6 +2,16 @@ body {
     margin: 0;
     padding: 0;
 }
+
+
+.container-enroll input {
+	border: 1px solid #27ae60;
+}
+
+.container-enroll input:focus{
+    outline-color: #27ae60;
+}
+
 .container-enroll {
     /*회원가입 박스 전체 틀*/
     max-width: 600px;
@@ -24,7 +34,6 @@ body {
     width: 470px;
     padding: 10px;
     margin-bottom: 5px;
-    border: 1px solid #27ae60;
     border-radius: 5px;
 }
 
@@ -33,15 +42,13 @@ body {
     width: 200px;
     padding: 10px;
     margin-bottom: 5px;
-    border: 1px solid #27ae60;
     border-radius: 5px;
 }
 .container-enroll .email-direct{
     /*직접입력 누르면 나오는 인풋태그*/
-    width: 200px;
+    width: 160px;
     padding: 10px;
     margin-bottom: 5px;
-    border: 1px solid #27ae60;
     border-radius: 5px;
 }
 
@@ -78,12 +85,7 @@ body {
 .enroll-btnBox{
     margin-bottom: 20px; 
 	margin-left: 37%;
-    
 }
-input:focus{
-    outline-color: #27ae60;
-}
-
 
 .container-enroll .link-enroll {
     /*개인 & 기업 회원가입 이동 틀*/
@@ -105,14 +107,12 @@ input:focus{
     cursor: pointer;
 }
 .expand-green {
-   
     background-color: #27ae60; 
     border: none;
     color: #fff;
     width: 50%;
 }
 .contract-white {
-
     background-color: #ffff; 
     border: 3px solid #27ae60; 
     color: #27ae60;
@@ -125,10 +125,4 @@ input:focus{
 .radius-right {
     /*오른쪽 모서리 둥글게*/
     border-radius: 0 20px 20px 0;
-}
-
-
-.flex-container{
-	display: flex;
-	flex-direction: column;
 }
