@@ -58,22 +58,11 @@
 						<div class="top_b3" style="background: pink">
 							
 							<img onclick='location.href="${pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"'
-								src="${ pageContext.request.contextPath }/resources/images/aa.jpg" alt="기업 대표이미지">
+								src="${ pageContext.request.contextPath }/resources/logo_upfiles/${corp.logo}" alt="기업 대표이미지">
 							<p>${corp.corpName}</p>
 							<p>${corp.address}</p>
 							<p class="content_bottom">
-								<c:choose>
-									<c:when test="${corp.jobNo eq 'F'}">
-										프론트
-									</c:when>
-									<c:when test="${corp.jobNo eq 'S'}">
-										풀스택
-									</c:when>
-									<c:otherwise>
-										백엔드
-									</c:otherwise>
-								</c:choose>
-								/ 관심 ${corp.likeCount}
+								 관심 ${corp.likeCount}
 							</p>
 						</div>
 					</c:forEach>

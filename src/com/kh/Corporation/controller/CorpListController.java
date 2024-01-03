@@ -61,8 +61,8 @@ public class CorpListController extends HttpServlet {
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 
-		System.out.println("pi : " + pi);
-		System.out.println("list" + list);
+//		System.out.println("pi : " + pi);
+		System.out.println("Corplist : " + list);
 
 		Collections.shuffle(list);
 		

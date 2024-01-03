@@ -1,6 +1,7 @@
 package com.kh.corporation.model.vo;
 
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,5 +19,6 @@ public class Corporation {
 	private String address;
 	private int likeCount;
 	private String homePage;
+	private String jobName;
 	private Logo logo;
 }
