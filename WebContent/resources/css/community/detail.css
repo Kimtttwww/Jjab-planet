@@ -1,5 +1,8 @@
-body {
+*{
     box-sizing: border-box;
+}
+	
+body {
     margin: 0;
 }
 
@@ -20,8 +23,8 @@ square a {
     text-decoration: none;
 }
 
-textarea {
-    width: 99%;
+square textarea {
+    width: 100%;
     height: 90%;
     resize: none;
 }
@@ -60,7 +63,7 @@ textarea {
 }
 
 /* 게시글 박스, 댓글 박스 */
-.list, .reply{
+.post, .reply{
     display: flex;
     background-color: brown;
     margin-bottom: 20px;
@@ -68,7 +71,7 @@ textarea {
 }
 
 /* 게시글 내부 좌측 박스 */
-.list-box {
+.post-box {
     display: flex;
     flex-direction: column;
     flex-basis: 80%;
@@ -92,7 +95,6 @@ textarea {
 .post-info span {
     width: 23%;
     background-color: rgb(200, 255, 200);
-    font-size: larger;
 }
 
 /* 게시글 좌측 박스 내부 각 정보들 */

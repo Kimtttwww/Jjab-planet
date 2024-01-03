@@ -3,26 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="communityMapper">
-	<resultMap id="postResultSet" type="post"/>
+	<resultMap id="postResultSet" type="post">
+		<id column="POST_NO" property="postNo"/>
+		<collection property="replyList" javaType="java.util.ArrayList"
+			ofType="reply" select="selectReplyList" column="POST_NO"/>
+	</resultMap>
 	
-<!-- 	<resultMap type="board" id="boardResultSet"> -->
-<!-- 		<id column="BOARD_NO" property="boardNo"/> -->
-<!-- 		<result column="USER_ID" property="userId"/> -->
-		
-<!-- 		<collection property="list" javaType="java.util.ArrayList" -->
-<!-- 			ofType="reply" select="selectReplyList" column="BOARD_NO"/> -->
-		<!-- 
-			댓글 LIST를 담기 위해서 ArrayList<Reply> 객체를 생성
-			javaType="java.util.ArrayList" ofType="reply"
-			
-			selectReplyList 쿼리를 수행하기 위해 필요한 파라미터는
-			현재 resultMap으로 조회된 BOARD_NO 컬럼을 사용하겠다
-			(select="selectReplyList" column="BOARD_NO")
-		 -->
-<!-- 	</resultMap> -->
+	<resultMap id="replyResultSet" type="reply"/>
 	
 	
-	<!--  태완 사용중 -->
 	<select id="selectPostCount" parameterType="string" resultType="_int">
 	    SELECT COUNT(*) FROM BOARD_POST
 	    WHERE STATUS = 'Y'
@@ -54,12 +43,18 @@
 	</update>
 	
 	<select id="selectPost" parameterType="_int" resultMap="postResultSet">
-		SELECT POST_TITLE, POST_CONTENT, USER_ID, COUNT, CREATE_DATE
+		SELECT POST_NO, POST_TITLE, POST_CONTENT, USER_ID, COUNT, CREATE_DATE
 		FROM BOARD_POST P
 		JOIN MEMBER ON POST_WRITER = USER_NO
 		WHERE P.STATUS = 'Y' AND POST_NO = #{postNo}
 	</select>
-	<!-- 태완 사용중 -->
+	
+	<select id="selectReplyList" parameterType="_int" resultMap="replyResultSet">
+		SELECT REPLY_CONTENT, USER_ID, CREATE_DATE
+		FROM BOARD_REPLY R
+		JOIN MEMBER ON REPLY_WRITER = USER_NO
+		WHERE R.STATUS = 'Y' AND REPLY_TYPE = 'C' AND REF_NO = #{postNo}
+	</select>
 	
 	
 	

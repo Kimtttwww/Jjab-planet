@@ -18,24 +18,22 @@
     <square>
         <section class="topbar">
             <article>
-                <a>목록</a>
+                <a href="list.po">목록</a>
             </article>
             <article>
-                <span>조회수</span>
+                <span>${ p.count }</span>
             </article>
         </section>
 
-        <section class="list">
-            <div class="list-box">
+        <section class="post">
+            <div class="post-box">
                 <article class="post-info">
                     <span class="post-title">${ p.postTitle }</span>
                     <span>${ p.userId }</span>
                     <span>${ p.createDate }</span>
                 </article>
                 
-                <article class="post-content">
-                    <p>${ p.postContent }</p>
-                </article>
+                <textarea class="post-content">${ p.postContent }</textarea>
             </div>
 
             <article class="need-login">
@@ -48,27 +46,26 @@
         <section class="reply">
             <section class="reply-write">
                 <article>
-                    <textarea>
-                    	<c:if test="${ loginUser }!= null">로그인 후 이용 가능합니다</c:if>
-                    </textarea>
-                </article>
+				<c:if test="1 == 1">로그인 후 이용 가능합니다</c:if>
+				<textarea></textarea>
+				</article>
                 <article>
                     <a href="">등록</a>
                 </article>
             </section>
             
-            
-            <section class="reply-read">
-                <article>
-                    <span>다른 댓글 1</span>
-                </article>
-                <article class="need-login">
-                    <a href="">수정</a>
-                    <a href="">삭제</a>
-                    <a href="">신고하기</a>
-                </article>
-            </section>
-
+			<c:forEach var="r" items="p.replylist">
+	            <section class="reply-read">
+	                <article>
+	                    <span>다른 댓글 1</span>
+	                </article>
+	                <article class="need-login">
+	                    <a href="">수정</a>
+	                    <a href="">삭제</a>
+	                    <a href="">신고하기</a>
+	                </article>
+	            </section>
+			</c:forEach>
         </section>
     </square>
 </body>

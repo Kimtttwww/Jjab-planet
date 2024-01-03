@@ -24,5 +24,5 @@ public class Post {
 	/** A : 전체 / I : 면접 / C : 자격증 / S : 자소서 */
 	private String category;
 	private String userId;
-	private ArrayList<Reply> repleList;
+	private ArrayList<Reply> replyList;
 }

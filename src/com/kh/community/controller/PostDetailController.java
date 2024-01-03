@@ -30,14 +30,11 @@ public class PostDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PostService ps = new PostService();
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
-		
 		int result = ps.increaseCount(postNo);
 		
 		if(result > 0) {
-			Post p = ps.selectPost(postNo);
-		
-			System.out.println(p);
-			request.setAttribute("p", p);
+			request.setAttribute("p", ps.selectPost(postNo));
+//			System.out.println((Post)request.getAttribute("p"));
 			
 			request.getRequestDispatcher("WEB-INF/views/community/detail.jsp").forward(request, response);
 		} else {

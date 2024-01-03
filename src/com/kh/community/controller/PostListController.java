@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 import com.kh.common.Pagination;
 import com.kh.common.model.vo.PageInfo;
 import com.kh.community.model.vo.Post;
@@ -33,20 +32,6 @@ public class PostListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		process(request, response, 0);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		process(request, response, 1);
-	}
-	
-	/**
-	 * @param methud (0 : Get / 1 : Post)
-	 */
-	private void process(HttpServletRequest request, HttpServletResponse response, int methud) throws ServletException, IOException {
 		PostService ps = new PostService();
 		String category = request.getParameter("category");
 		int currentPage = 1;
@@ -63,16 +48,17 @@ public class PostListController extends HttpServlet {
 		PageInfo pi = Pagination.getPageInfo(postcount, currentPage, 10, 25);
 		ArrayList<Post> list = ps.selectPostList(pi, category);
 		
-		if(methud == 0) {
-			request.setAttribute("category", category);
-			request.setAttribute("pi", pi);
-			request.setAttribute("list", list);
-			
-			request.getRequestDispatcher("WEB-INF/views/community/list.jsp").forward(request, response);
-		} else {
-			Gson g = new Gson();
-			response.setContentType("application/json; charset=UTF-8");
-			g.toJson(list, response.getWriter());
-		}
+		request.setAttribute("category", category);
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("WEB-INF/views/community/list.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 }
