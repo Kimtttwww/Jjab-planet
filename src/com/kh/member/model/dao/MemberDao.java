@@ -21,7 +21,7 @@ public class MemberDao {
 	}
 	
 	
-	public int insertMember(SqlSession sqlSession, Corporation c) {
+	public int insertMembera(SqlSession sqlSession, Corporation c) {
 		
 		return sqlSession.insert("memberMapper.insertCorp", c);
 	}

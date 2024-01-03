@@ -79,6 +79,7 @@
 
 
 					<div id="corporation-enrollForm" class = "flex-container">
+						<input type="hidden" name="userType" value="E">
 						<div>
 							<div>
 								<div>기업명*</div>
@@ -133,7 +134,15 @@
 									maxlength="17" placeholder="(-) 포함">
 							</div>
 						</div>
-
+							<div>
+							<div>
+								<div>회사전화번호*</div>
+							</div>
+							<div>
+								<input type="text" name="jobNo" class="enroll-textL"
+									maxlength="17" placeholder="(-) 직종">
+							</div>
+						</div>
 						</div>
 						<div class="enroll-btnBox">
 							<button type="submit" class="enroll-btn">가입하기</button>

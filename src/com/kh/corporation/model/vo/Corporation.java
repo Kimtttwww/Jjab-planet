@@ -16,8 +16,6 @@ public class Corporation {
 	private String ceoName;
 	private String corpBn;
 	private String address;
-	/** 직종 번호(F : 프론트, B : 백, S : 풀스텍) */
-	private String jobNo;
 	private int likeCount;
 	private String homePage;
 	private Logo logo;
