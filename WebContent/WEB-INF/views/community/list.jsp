@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="project" value="${pageContext.request.contextPath}"/>
-<c:set var="domain" value="${project}list.po?"/>
+<c:set var="domain" value="${project}/list.po?"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +38,7 @@
 
         <div class="list-area">
 	        <c:forEach var="p" items="${list}">
-	            <section class="post" onclick="location.href = '${project}detail.po?postNo=${p.postNo}'">
+	            <section class="post" onclick="location.href = '${project}/detail.po?postNo=${p.postNo}'">
 	                <article class="post-content">
 	                    <span class="post-title">${p.postTitle}</span>
 	                    <span>${p.postContent}</span>
@@ -63,15 +63,17 @@
         
         <section class="pagingbar">
 			<c:if test="${pi.currentPage ne pi.startPage}">
-				<button type="button" onclick="location.href = '${domain}currentPage=${pi.currentPage - 1}'">&lt; 이전</button>
+				<button type="button" onclick="stepPage(-1)">&lt; 이전</button>
 			</c:if>
 			
 			<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage}">
-				<button type="button" onclick="location.href = '${domain}currentPage=${i}'">${i}</button>
+				<button type="button"
+				<c:if test="i eq ${pi.currentPage}">disabled</c:if>
+				 onclick="page(${i})">${i}</button>
 			</c:forEach>
 			
 			<c:if test="${pi.currentPage ne pi.endPage}">
-				<button type="button" onclick="location.href = '${domain}currentPage=${pi.currentPage + 1}'">다음 &gt;</button>
+				<button type="button" onclick="stepPage(1)">다음 &gt;</button>
 			</c:if>
 		</section>
     </square>
@@ -83,12 +85,27 @@
     	});
        	
     	$('#category').change(function() {
-    		location.href = '${domain}category=' + $("#category").val() + '&currentPage=${pi.currentPage}';
+    		location.href = '${domain}currentPage=1&category=' + $("#category").val();
 		});
+    	
+    	function page(n) {
+			let domain = '${domain}currentPage=' + n;
+			
+			if("${category}") domain += '&category=${category}';
+			
+			location.href = domain;
+    	}
     		
-/* 			<c:if test="true">
-				console.log('test');
-			</c:if> */
+    	function stepPage(n) {
+			let domain = '${domain}currentPage=' + (${pi.currentPage} + n);
+			
+			if("${category}") domain += '&category=${category}';
+   			
+    		location.href = domain;
+    	}
+//  		<c:if test="true">
+// 				console.log('test');
+// 			</c:if>
 /*			$.ajax({
                 url : 'list.po',
                 data : {category : $('#category').val(), currentPage : ${pi.currentPage}},

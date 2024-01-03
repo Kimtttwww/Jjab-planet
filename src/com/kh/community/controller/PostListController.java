@@ -60,7 +60,7 @@ public class PostListController extends HttpServlet {
 		
 		int postcount = ps.selectPostCount(category);
 		
-		PageInfo pi = Pagination.getPageInfo(postcount, currentPage, 10, 3);
+		PageInfo pi = Pagination.getPageInfo(postcount, currentPage, 10, 25);
 		ArrayList<Post> list = ps.selectPostList(pi, category);
 		
 		if(methud == 0) {

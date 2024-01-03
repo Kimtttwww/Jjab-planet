@@ -1,6 +1,7 @@
 package com.kh.community.model.vo;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,4 +24,5 @@ public class Post {
 	/** A : 전체 / I : 면접 / C : 자격증 / S : 자소서 */
 	private String category;
 	private String userId;
+	private ArrayList<Reply> repleList;
 }

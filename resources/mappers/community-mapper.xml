@@ -44,7 +44,7 @@
 	
 	<insert id="insertPost" parameterType="post">
 		INSERT INTO BOARD_POST(POST_NO, POST_TITLE, POST_CONTENT, POST_WRITER, CATEGORY)
-		VALUES(SEQ_BOARD_POSTNO.NEXTVAL, #{postNo}, #{postTitle}, #{postContent}, #{postWriter}, #{category})
+		VALUES(SEQ_BOARD_POSTNO.NEXTVAL, #{postTitle}, #{postContent}, #{postWriter}, #{category})
 	</insert>
 	
 	<update id="increaseCount" parameterType="_int">
@@ -55,9 +55,9 @@
 	
 	<select id="selectPost" parameterType="_int" resultMap="postResultSet">
 		SELECT POST_TITLE, POST_CONTENT, USER_ID, COUNT, CREATE_DATE
-		FROM BOARD_POST 
+		FROM BOARD_POST P
 		JOIN MEMBER ON POST_WRITER = USER_NO
-		WHERE B.STATUS = 'Y' AND BOARD_NO = #{boardNo}
+		WHERE P.STATUS = 'Y' AND POST_NO = #{postNo}
 	</select>
 	<!-- 태완 사용중 -->
 	

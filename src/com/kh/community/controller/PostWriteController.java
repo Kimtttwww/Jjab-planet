@@ -64,6 +64,6 @@ public class PostWriteController extends HttpServlet {
 		} else {
 			request.setAttribute("alertMsg", "에러가 발생하였습니다");
 		}
-		response.sendRedirect(request.getContextPath() + "/list.bo");
+		response.sendRedirect(request.getContextPath() + "/list.po");
 	}
 }

@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>(게시글이름)</title>
+<title>${ p.postTitle }</title>
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/community/detail.css" type="text/css">
 </head>
 <body>
@@ -27,13 +28,13 @@
         <section class="list">
             <div class="list-box">
                 <article class="post-info">
-                    <span class="post-title">게시글 제목</span>
-                    <span>작성자</span>
-                    <span>작성일</span>
+                    <span class="post-title">${ p.postTitle }</span>
+                    <span>${ p.userId }</span>
+                    <span>${ p.createDate }</span>
                 </article>
                 
                 <article class="post-content">
-                    <p>가나다라</p>
+                    <p>${ p.postContent }</p>
                 </article>
             </div>
 
@@ -47,12 +48,15 @@
         <section class="reply">
             <section class="reply-write">
                 <article>
-                    <textarea>로그인 후 이용 가능합니다</textarea>
+                    <textarea>
+                    	<c:if test="${ loginUser }!= null">로그인 후 이용 가능합니다</c:if>
+                    </textarea>
                 </article>
                 <article>
                     <a href="">등록</a>
                 </article>
             </section>
+            
             
             <section class="reply-read">
                 <article>
@@ -65,16 +69,6 @@
                 </article>
             </section>
 
-            <section class="reply-read">
-                <article>
-                    <span>다른 댓글 2</span>
-                </article>
-                <article class="need-login">
-                    <a href="">수정</a>
-                    <a href="">삭제</a>
-                    <a href="">신고하기</a>
-                </article>
-            </section>
         </section>
     </square>
 </body>
