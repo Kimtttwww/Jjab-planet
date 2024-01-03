@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+.navBar{
+    height: 50px;
+    position: sticky;
+}
+.navBar ul li{
+    float: left;
+    padding: 1px 10px 3px 10px;
+}
+/* 관리자 페이지 틀 */
+div{
+    border: 1px solid black;
+}
+.OneBox{
+   height:  600px;
+   display: flex;
+   width: 100%;
+}
+.TwoBox{
+    height: 90%;
+    width: 30%;
+    margin: auto;
+    display: inline-block;
+    border-radius: 20px;
+}
+.TopBox{
+    height: 20%;
+    margin: 10%;
+    text-align: center;
+    border-radius: 20px;
+    
+    background-color: aquamarine;
+    border: 1px solid aqua;
+}
+.BottomBox{
+    height: 50%;
+    margin: 10%;
+    text-align: center;
+    border-radius: 20px;
+}

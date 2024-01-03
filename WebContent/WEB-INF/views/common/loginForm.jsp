@@ -76,8 +76,6 @@
 	%>
 	<form id="login-form" action="<%=contextPath%>/login.me" method="post">
 		<div class="bigBox">
-			<div class="login">
-				</div>
 				<div class="naddhapChae">
 					<div class="hapChae">
 						<span class="id">아이디:</span>
