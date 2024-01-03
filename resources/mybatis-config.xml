@@ -18,14 +18,15 @@
 			<dataSource type="POOLED">
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-				<property name="username" value="JJAB" />
-				<property name="password" value="JJAB" />
+				<property name="username" value="JJAP"/>
+				<property name="password" value="JJAP"/>
 			</dataSource>
 		</environment>
 	</environments>
 
 	<mappers>
-<!-- 		<mapper resource="/mappers/member-mapper.xml"/> -->
+		<mapper resource="/mappers/member-mapper.xml"/>
+		<!-- mapped statements collection does not... 나오면 주석 제거 -->
 		<mapper resource="/mappers/board-mapper.xml"/>
 		<mapper resource="/mappers/community-mapper.xml"/>
 		<mapper resource="/mappers/jobpost-mapper.xml"/>
