@@ -1,14 +1,17 @@
 package com.kh.common.controller;
 
+import java.io.Console;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.kh.common.service.IndexService;
 import com.kh.jobpost.model.vo.JobPost;
 
@@ -16,13 +19,13 @@ import com.kh.jobpost.model.vo.JobPost;
  * Servlet implementation class IndexFirstController
  */
 @WebServlet("/index.co")
-public class IndexFirstController extends HttpServlet {
+public class IndexListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexFirstController() {
+    public IndexListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,17 +35,20 @@ public class IndexFirstController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		IndexService service = new IndexService();
+
+		ArrayList<JobPost> first = service.selectFirstList();
+		ArrayList<JobPost> second = service.selectSecondList();
+		ArrayList<JobPost> third = service.selectThirdList();
 		
-		ArrayList<JobPost> listFirst = service.selectfirstList();
-		ArrayList<JobPost> listSecond = service.selectSecondList();
-		ArrayList<JobPost> listThird = service.selectThirdList();
+		request.setAttribute("first", first);
+		request.setAttribute("second", second);
+		request.setAttribute("third", third);
 		
-		request.setAttribute("listFirst", listFirst);
-		request.setAttribute("listSecond", listSecond);
-		request.setAttribute("listThird", listThird);
+		System.out.print(first);
+		System.out.print(second);
+		System.out.print(third);
 		
-		request.getRequestDispatcher("index.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("/WEB-INF/views/common/indexcontent.jsp").forward(request, response);
 	}
 
 	/**

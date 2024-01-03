@@ -3,118 +3,123 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="jobpostMapper"> 
-    <resultMap id="postResultSet" type='com.kh.jobpost.model.vo.JobPost'>
- 		<id column="JOBPOST_NO" property="jobpostNo" />
+<mapper namespace="jobpostMapper">
+	<resultMap id="postResultSet" type='jobPost'>
+		<!-- <collection property="list" javaType="java.util.ArrayList" -->
+		<!-- ofType="com.kh.jobpost.model.vo.JobPost" select="selectList" column="JOBPOST_NO" 
+			/> -->
+		<!-- 댓글 LIST를 담기 위해서 ArrayList<Reply>객체를 생성 (javaType="java.util.ArrayList" -->
+		<!-- ofType="reply") selectReplyList쿼리를 수행하기위해 필요한 파라미터는 현재 resultMap으로 
+			조회된 BOARD_NO칼럼을 -->
+		<!-- 사용하겠다 (select="selectReplyList" column="BOARD_NO") -->
+	</resultMap>
 
- 		<collection property="list" javaType="java.util.ArrayList"
- 			ofType="com.kh.jobpost.model.vo.JobPost" select="selectList" column="JOBPOST_NO" />
-<!-- 		 댓글 LIST를 담기 위해서 ArrayList<Reply>객체를 생성 (javaType="java.util.ArrayList"  -->
-<!-- 			ofType="reply") selectReplyList쿼리를 수행하기위해 필요한 파라미터는 현재 resultMap으로 조회된 BOARD_NO칼럼을  -->
-<!-- 			사용하겠다 (select="selectReplyList" column="BOARD_NO") -->
- 	</resultMap>
-    
-    <!-- 리스트 목록 -->
-    <select id="selectList" parameterType="string" resultMap='postResultSet'>
-        SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, END_DATE, C.CORP_NAME, JOB_NAME
-        FROM JOP_POST J
-        JOIN corporation C USING(CORP_NO)
-        JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
-    </select>
-    
-    <!-- 게시물 몇개인지 조회 -->
-    <select id="selectListCount" resultType="_int">
+
+
+	<!-- 리스트 목록 -->
+	<select id="selectList" parameterType="string"
+		resultMap='postResultSet'>
+		SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, END_DATE, C.CORP_NAME, JOB_NAME
+		FROM JOP_POST J
+		JOIN corporation C USING(CORP_NO)
+		JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
+	</select>
+
+	<!-- 게시물 몇개인지 조회 -->
+	<select id="selectListCount" resultType="_int">
 		SELECT COUNT(*)
 		FROM JOP_POST
 		WHERE STATUS='Y'
 	</select>
-	
+
 	<!-- 공고 상세보기 -->
-		<select id="detailPost" parameterType="_int">
+	<select id="detailPost" resultMap='postResultSet'>
 		SELECT
-			JOBPOST_NO,
-	        post_title,
-	        CEO_NAME,
-	        PHONE,
-			EDUCATION,
-			CAREER,
-			J.JOB_NO,
-			LOCATION,
-			END_DATE,
-			POST_CONTENT
+		JOBPOST_NO,
+		post_title,
+		CEO_NAME,
+		PHONE,
+		EDUCATION,
+		CAREER,
+		J.JOB_NO,
+		LOCATION,
+		END_DATE,
+		POST_CONTENT
 		FROM JOP_POST J
-        JOIN CORPORATION USING (CORP_NO)
-        JOIN MEMBER ON (CORP_NO = USER_NO)
+		JOIN CORPORATION USING (CORP_NO)
+		JOIN MEMBER ON (CORP_NO = USER_NO)
 		WHERE JOBPOST_NO = #{jobpostNo}
 		AND J.STATUS = 'Y'
-		AND WHERE post_id = #{postId}
 	</select>
-	
+
 	<update id="increaseCount" parameterType="_int">
 		UPDATE JOP_POST
 		SET COUNT = COUNT +1
 		WHERE JOBPOST_NO = #{jobpostNo}
 		AND STATUS = 'Y'
 	</update>
-	
+
 	<!-- 리스트 목록 -->
-    <select id="idx_firstList" parameterType="string" resultMap='postResultSet'>
-    select * from(
-	SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, count
-        FROM JOP_POST J
-        JOIN corporation C USING(CORP_NO)
-        JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
-        ORDER BY count DESC)
-        where ROWNUM &lt; 4;
-    </select>
-    
-    <select id="idx_secondList" parameterType="string" resultMap='postResultSet'>
-    select * from(
-	SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, count
-        FROM JOP_POST J
-        JOIN corporation C USING(CORP_NO)
-        JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
-        ORDER BY count DESC)
-        where ROWNUM &lt; 4;
-    </select>
-    
-    <select id="idx_thirdList" parameterType="string" resultMap='postResultSet'>
-    select * from(
-	SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, count
-        FROM JOP_POST J
-        JOIN corporation C USING(CORP_NO)
-        JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
-        ORDER BY count DESC)
-        where ROWNUM &lt; 4;
-    </select>	   
+	<select id="idx_firstList" resultMap='postResultSet'>
+		select * from(
+		SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, COUNT
+		FROM JOP_POST J
+		JOIN corporation C USING(CORP_NO)
+		JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
+		ORDER BY count DESC)
+		where ROWNUM &lt; 4
+	</select>
 
-</mapper>   
+	<select id="idx_secondList" resultMap='postResultSet'>
+		select * from(
+		SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, COUNT
+		FROM JOP_POST J
+		JOIN corporation C USING(CORP_NO)
+		JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
+		ORDER BY END_DATE ASC)
+		where ROWNUM &lt; 7
+	</select>
 
-<!--     공고 상세 정보 조회 -->
-<!--     <select id="selectJobPostDetail" parameterType="long" resultType="JobPostVO"> -->
-<!--         SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT,채용조건?CAREER,EDUCATION,LOCATION, END_DATE, category -->
-<!--         FROM JOP_POST -->
-<!--         WHERE post_id = #{postId} -->
-<!--     </select> -->
+	<select id="idx_thirdList" resultMap='postResultSet'>
+		select * from(
+		SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, COUNT
+		FROM JOP_POST J
+		JOIN corporation C USING(CORP_NO)
+		JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
+		ORDER BY J.JOBPOST_NO DESC)
+		where ROWNUM &lt; 10
+	</select>
 
-<!--     기업 정보 조회 -->
-<!--     <select id="selectCorporationInfo" parameterType="long" resultType="CorporationVO"> -->
-<!--         SELECT CORP_NO, CORP_NAME, 기업경로? -->
-<!--         FROM CORPORATION -->
-<!--         WHERE CORP_NO = #{corpId} -->
-<!--     </select> -->
+</mapper>
 
-<!--     채용공고 검색 (기업명) -->
-<!--     <select id="searchJobPostsByCompanyName" parameterType="string" resultType="JobPostVO"> -->
-<!--         SELECT JP.JOBPOST_NO, JP.CORP_NO, JP.POST_TITLE, JP.POST_CONTENT, JP.CAREER, JP.EDUCATION, JP.LOCATION, JP.END_DATE, JP.category -->
-<!--         FROM JOP_POST JP -->
-<!--         JOIN CORPORATION C ON JP.CORP_NO = C.CORP_NO -->
-<!--         WHERE C.CORP_NAME LIKE CONCAT('%', #{corpName}, '%') -->
-<!--     </select> -->
+<!-- 공고 상세 정보 조회 -->
+<!-- <select id="selectJobPostDetail" parameterType="long" resultType="JobPostVO"> -->
+<!-- SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT,채용조건?CAREER,EDUCATION,LOCATION, 
+	END_DATE, category -->
+<!-- FROM JOP_POST -->
+<!-- WHERE post_id = #{postId} -->
+<!-- </select> -->
 
-<!--     카테고리별 채용공고 조회 -->
-<!--     <select id="selectJobPostsByCategory" parameterType="string" resultType="JobPostVO"> -->
-<!--         SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, CAREER, EDUCATION, LOCATION,END_DATE, category -->
-<!--         FROM JOP_POST -->
-<!--         WHERE category = #{category} -->
-<!--     </select> -->    
+<!-- 기업 정보 조회 -->
+<!-- <select id="selectCorporationInfo" parameterType="long" resultType="CorporationVO"> -->
+<!-- SELECT CORP_NO, CORP_NAME, 기업경로? -->
+<!-- FROM CORPORATION -->
+<!-- WHERE CORP_NO = #{corpId} -->
+<!-- </select> -->
+
+<!-- 채용공고 검색 (기업명) -->
+<!-- <select id="searchJobPostsByCompanyName" parameterType="string" resultType="JobPostVO"> -->
+<!-- SELECT JP.JOBPOST_NO, JP.CORP_NO, JP.POST_TITLE, JP.POST_CONTENT, JP.CAREER, 
+	JP.EDUCATION, JP.LOCATION, JP.END_DATE, JP.category -->
+<!-- FROM JOP_POST JP -->
+<!-- JOIN CORPORATION C ON JP.CORP_NO = C.CORP_NO -->
+<!-- WHERE C.CORP_NAME LIKE CONCAT('%', #{corpName}, '%') -->
+<!-- </select> -->
+
+<!-- 카테고리별 채용공고 조회 -->
+<!-- <select id="selectJobPostsByCategory" parameterType="string" resultType="JobPostVO"> -->
+<!-- SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, CAREER, EDUCATION, 
+	LOCATION,END_DATE, category -->
+<!-- FROM JOP_POST -->
+<!-- WHERE category = #{category} -->
+<!-- </select> -->    

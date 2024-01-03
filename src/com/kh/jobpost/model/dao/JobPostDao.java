@@ -36,9 +36,4 @@ public class JobPostDao {
 	public int increaseCount(SqlSession sqlSession, int jobpostNo) {
 		return sqlSession.update("jobpostMapper.increaseCount", jobpostNo);
 	}
-
-
-	public ArrayList<JobPost> idxSelectList(SqlSession session, PageInfo pi) {
-		return(ArrayList) session.selectList("jobpostMapper.idx_selectList");
-	}
 }

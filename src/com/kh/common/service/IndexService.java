@@ -12,18 +12,12 @@ public class IndexService {
 	private IndexDao dao = new IndexDao();
 	private SqlSession session = Template.getSqlSession();
 
-	public ArrayList<JobPost> selectfirstList() {
-		ArrayList<JobPost> list = dao.selectfirstList(session);
-		
-		session.close();
-		return list;
+	public ArrayList<JobPost> selectFirstList() {
+		return dao.selectfirstList(session);
 	}
 
 	public ArrayList<JobPost> selectSecondList() {
-		ArrayList<JobPost> list = dao.selectSecondList(session);
-		
-		session.close();
-		return list;
+		return dao.selectSecondList(session);
 	}
 
 	public ArrayList<JobPost> selectThirdList() {
