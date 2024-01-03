@@ -81,15 +81,15 @@
 				<div class="naddhapChae">
 					<div class="hapChae">
 						<span class="id">아이디:</span>
-							<input type="text" class="large-input">
+							<input type="text" name = "userId" class="large-input">
 					</div>
 					<div class="hapChae">
 						<span class="pwd">비밀번호:</span>
-							<input type="password" class="large-input">
+							<input type="password" name = "userPwd" class="large-input">
 						</div>
 						<div class="button">
-							<input type="submit" name="userId" value="로그인"> 
-							<input type="button" name="userPwd" value="회원가입">
+							<input type="submit" class ="inputButton" value="로그인"> 
+							<input type="button" class ="inputButton" value="회원가입">
 						</div>
 				</div>
 			

@@ -101,11 +101,24 @@
 			</div>
 
 			<div class="menu-right">
+			<% if (loginUser == null) { %>
+				<!-- 로그인 하지 않았을 경우 -->
 				<a href="login.me">로그인</a>
 				<a href="sign.bo">회원가입</a>
+			<% } else { %>
+			<!-- 로그인 했을 때 -->
+			<%= loginUser.getUserId() %>
+			<a href="logout.me">&nbsp; &nbsp; 로그아웃</a>
+			<a href="myPage.me">마이페이지</a>
+			<!-- 마이페이지는 아직 미완성이라 나중에 myPage.me 바꿔야함 -->
+			<% } %>
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	
 </body>
 
 </html>

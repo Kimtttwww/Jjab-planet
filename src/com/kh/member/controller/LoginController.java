@@ -27,6 +27,8 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("WEB-INF/views/common/loginForm.jsp").forward(request, response);
+		
+
 	}
 
 	
@@ -53,6 +55,8 @@ public class LoginController extends HttpServlet {
 		}
 		
 		response.sendRedirect(request.getContextPath());
+	
+	
 	}
 
 }

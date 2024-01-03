@@ -36,7 +36,6 @@ public class JobPostDetailController extends HttpServlet {
 		
 		int result = service.increaseCount(jobpostNo);
 		
-		HttpSession session =request.getSession();
 
 		if (result > 0) {
 			JobPost p = service.detailPost(jobpostNo);
@@ -46,7 +45,7 @@ public class JobPostDetailController extends HttpServlet {
 			System.out.println(jobpostNo);
 			request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetailCP.jsp").forward(request, response);
 		} else {
-			session.setAttribute("alertMsg", "게시글 상세조회 실패");
+			request.getSession().setAttribute("alertMsg", "게시글 상세조회 실패");
 //			response.sendRedirect("list.job?currentPage=1");
 		}
 	}

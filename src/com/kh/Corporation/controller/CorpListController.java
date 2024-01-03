@@ -1,8 +1,6 @@
 package com.kh.corporation.controller;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,7 +14,6 @@ import com.kh.common.Pagination;
 import com.kh.common.model.vo.PageInfo;
 import com.kh.corporation.model.service.CorporationService;
 import com.kh.corporation.model.vo.Corporation;
-import com.kh.corporation.model.vo.Logo;
 
 /**
  * Servlet implementation class CorpReviewListController
