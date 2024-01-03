@@ -17,6 +17,7 @@ import com.kh.common.model.vo.PageInfo;
 import com.kh.community.model.vo.Reply;
 import com.kh.corporation.model.service.CorporationService;
 import com.kh.corporation.model.vo.Corporation;
+import com.kh.corporation.model.vo.Logo;
 import com.kh.jobpost.model.vo.JobPost;
 
 /**
@@ -58,10 +59,19 @@ public class CorpDetailController extends HttpServlet {
 		request.setAttribute("corpList", corpList);
 		System.out.println("corpList : " +corpList);
 		
+		
 		// corpNo에 해당하는 기업 출력
 		List<Corporation> corpOne = corpService.selectCorpOne(corpCode);
 		System.out.println(corpOne);
 		request.setAttribute("corpOne", corpOne);
+		
+		
+		// corpNo에 해당하는 기업로고
+		List<Logo> logoList = corpService.selectLogoOne(corpCode);
+		request.setAttribute("logoList", logoList);
+		System.out.println("logoList : " + logoList);
+		
+		System.out.println("2corpCode : " + corpCode);
 		
 		
 		// corpNo에 해당하는 채용공고 출력
@@ -69,7 +79,7 @@ public class CorpDetailController extends HttpServlet {
 		System.out.println(jopPostlist);
 		request.setAttribute("jopPostlist", jopPostlist);
 		
-		// 본인리뷰에
+		
 		
 		// 기업의 리뷰 리스트 출력하기
 		List<Reply> replyList = corpService.selectReviewList(pi, corpCode);

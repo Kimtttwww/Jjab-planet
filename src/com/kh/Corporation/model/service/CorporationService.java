@@ -9,6 +9,7 @@ import com.kh.common.model.vo.PageInfo;
 import com.kh.community.model.vo.Reply;
 import com.kh.corporation.model.dao.CorporationDao;
 import com.kh.corporation.model.vo.Corporation;
+import com.kh.corporation.model.vo.Logo;
 import com.kh.jobpost.model.vo.JobPost;
 
 public class CorporationService {
@@ -61,6 +62,15 @@ public class CorporationService {
 		
 		SqlSession sqlSession = Template.getSqlSession();
 		List<JobPost> list = corpDao.selectJopPostList(sqlSession, corpCode);
+
+		sqlSession.close();
+		return list;
+	}
+
+	public List<Logo> selectLogoOne(int corpCode) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		List<Logo> list = corpDao.selectLogoOne(sqlSession, corpCode);
 
 		sqlSession.close();
 		return list;

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.kh.common.model.vo.PageInfo;
 import com.kh.community.model.vo.Reply;
 import com.kh.corporation.model.vo.Corporation;
+import com.kh.corporation.model.vo.Logo;
 import com.kh.jobpost.model.vo.JobPost;
 
 public class CorporationDao {
@@ -45,13 +46,17 @@ public class CorporationDao {
 
 	public List<Corporation> selectCorpOne(SqlSession sqlSession, int corpCode) {
 		
-		
 		return sqlSession.selectList("boardMapper.selectCorpOne", corpCode);
 	}
 
 	public List<JobPost> selectJopPostList(SqlSession sqlSession, int corpCode) {
 		
 		return sqlSession.selectList("boardMapper.selectJopPostList", corpCode);
+	}
+
+	public List<Logo> selectLogoOne(SqlSession sqlSession, int corpCode) {
+		
+		return sqlSession.selectList("boardMapper.selectLogoOne", corpCode);
 	}
 
 	

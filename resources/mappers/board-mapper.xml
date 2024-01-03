@@ -44,12 +44,22 @@
 	      FROM CORPORATION 	
 	</select>
 	
+	
 	<!--  선택한 기업정보 -->
 	<select id="selectCorpOne" resultType="com.kh.corporation.model.vo.Corporation"  >
 	    SELECT * 
 	      FROM CORPORATION
 	     WHERE CORP_NO = #{corpCode}
 	</select>
+	
+	<!--  선택한 기업 로고 -->
+	<select id="selectLogoOne" resultType="com.kh.corporation.model.vo.Corporation"  >
+	    SELECT * 
+	      FROM LOGO
+	     WHERE CORP_NO = #{corpCode}
+	</select>
+	
+	
 	
 	
 	<!--  기업의 리뷰리스트  -->
