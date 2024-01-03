@@ -179,7 +179,7 @@ height: 100%;
 			<div>|진행중인 채용공고</div>
 			<div class="corp-uppost-area corp-backwhite">
 				<c:if test="${empty jopPostlist}" >
-					진행중인 공고가 없습니다.
+					<p>진행중인 공고가 없습니다.</p>
 				</c:if>
 				<c:forEach var="jopPost" items="${jopPostlist}">
 					<c:if test="${!empty jopPostlist}" >
@@ -235,10 +235,13 @@ height: 100%;
 
 			<div class="corp-review-area">
 			
-			
 				<div class="corp-review-content">
 									
-					<c:forEach var="item" items="${replyList}">				
+					<c:if test="${empty replyList}" >
+						<p>작성된 리뷰가 없습니다.</p>
+					</c:if>
+					
+					<c:forEach var="item" items="${replyList}">		
 						<div>
 							${item.userId} / 작성일:${item.createDate }
 						</div>
@@ -275,11 +278,13 @@ height: 100%;
 								<button onclick="">삭제</button>
 								</div>
 							<% } %>
-						</div>							
+						</div>		
+						
+										
 					</c:forEach>
 				</div>
 				
-				<!-- 페이징바 -->
+				<!-- 기업리뷰 페이징바 -->
 				<div align="center" class="paging-area">
 	
 					<c:if test="${pi.currentPage ne 1}" >

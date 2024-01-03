@@ -2,10 +2,12 @@ package com.kh.corporation.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @Data
 public class Logo {
 	private int fileNo;

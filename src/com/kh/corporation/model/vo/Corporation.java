@@ -19,6 +19,5 @@ public class Corporation {
 	private String address;
 	private int likeCount;
 	private String homePage;
-	private String jobName;
-	private Logo logo;
+	private Logo changeName;
 }

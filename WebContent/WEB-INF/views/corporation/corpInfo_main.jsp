@@ -54,11 +54,19 @@
 
 				<div class="top_banner">
 
-					<c:forEach var="corp" items="${list}">
+					<c:forEach var="corp" items="${Corplist}">
 						<div class="top_b3" style="background: pink">
-							
+<%-- 							<c:forEach var="logo" items="${logoList}"> --%>
 							<img onclick='location.href="${pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"'
-								src="${ pageContext.request.contextPath }/resources/logo_upfiles/${corp.logo}" alt="기업 대표이미지">
+								src="${ pageContext.request.contextPath }/resources/logo_upfiles/${logo.changeName}" alt="기업 대표이미지">
+							
+							
+							<c:if test="${not empty logo.changeName}">
+						            <%-- 값이 null이 아닌 경우에만 로그 출력 --%>
+						           ${corp.corpNo} 
+						    </c:if>
+<%-- 							</c:forEach> --%>
+								
 							<p>${corp.corpName}</p>
 							<p>${corp.address}</p>
 							<p class="content_bottom">

@@ -16,6 +16,7 @@ import com.kh.common.Pagination;
 import com.kh.common.model.vo.PageInfo;
 import com.kh.corporation.model.service.CorporationService;
 import com.kh.corporation.model.vo.Corporation;
+import com.kh.corporation.model.vo.Logo;
 
 /**
  * Servlet implementation class CorpReviewListController
@@ -40,7 +41,8 @@ public class CorpListController extends HttpServlet {
 			throws ServletException, IOException {
 
 		CorporationService corpService = new CorporationService();
-
+//		int corpCode = Integer.parseInt( request.getParameter("corpNo"));
+//		System.out.println("1corpCode : " + corpCode);
 		// ------------------------ 페이징처리 -----------------------
 //		int objCount;	// 게시글 갯수
 //		int currentPage;	// 현재 요청한 페이지
@@ -54,21 +56,22 @@ public class CorpListController extends HttpServlet {
 		int objLimit = 13;
 
 		PageInfo pi = Pagination.getPageInfo(objCount, currentPage, pageLimit, objLimit);
-		List<Corporation> list = corpService.selectCorpList(pi);
+		List<Corporation> Corplist = corpService.selectCorpList(pi);
 //		ArrayList<Reply> list = coprService.selectReviewList(pi);
 //		System.out.println();
 
 		request.setAttribute("pi", pi);
-		request.setAttribute("list", list);
+		request.setAttribute("Corplist", Corplist);
 
 //		System.out.println("pi : " + pi);
-		System.out.println("Corplist : " + list);
+		System.out.println("Corplist : " + Corplist);
 
-		Collections.shuffle(list);
 		
-		request.setAttribute("randonCorp", list);
+		Collections.shuffle(Corplist);
+		request.setAttribute("randonCorp", Corplist);
 		
-		
+		// 기업 로고 list
+
 
 		request.getRequestDispatcher("WEB-INF/views/corporation/corpInfo_main.jsp").forward(request, response);
 
