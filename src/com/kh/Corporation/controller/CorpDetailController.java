@@ -17,6 +17,7 @@ import com.kh.common.model.vo.PageInfo;
 import com.kh.community.model.vo.Reply;
 import com.kh.corporation.model.service.CorporationService;
 import com.kh.corporation.model.vo.Corporation;
+import com.kh.jobpost.model.vo.JobPost;
 
 /**
  * Servlet implementation class CorpReviewInsertController
@@ -50,10 +51,9 @@ public class CorpDetailController extends HttpServlet {
 		int pageLimit = 10;
 		int objLimit = 3;
 		
-		
 		PageInfo pi = Pagination.getPageInfo(objCount, currentPage, pageLimit, objLimit);
 		
-		
+		// 모든 기업리스트
 		List<Corporation> corpList = corpService.selectCorpList(pi);
 		request.setAttribute("corpList", corpList);
 		System.out.println("corpList : " +corpList);
@@ -63,6 +63,13 @@ public class CorpDetailController extends HttpServlet {
 		System.out.println(corpOne);
 		request.setAttribute("corpOne", corpOne);
 		
+		
+		// corpNo에 해당하는 채용공고 출력
+		List<JobPost> jopPostlist = corpService.selectJopPostList(corpCode);
+		System.out.println(jopPostlist);
+		request.setAttribute("jopPostlist", jopPostlist);
+		
+		// 본인리뷰에
 		
 		// 기업의 리뷰 리스트 출력하기
 		List<Reply> replyList = corpService.selectReviewList(pi, corpCode);

@@ -3,9 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardMapper">
-<!-- 	<resultMap type="reply" id="replyResultSet"> -->
-<!-- 		<result column="USER_ID" property="replyUserId"/> -->
-<!-- 	</resultMap> -->
+	<resultMap type="Corporation" id="corpResultSet"/>
+
 	
 <!-- 	<resultMap type="board" id="boardResultSet"> -->
 <!-- 		<id column="BOARD_NO" property="boardNo"/> -->
@@ -40,9 +39,9 @@
 	</select>
 	
 	<!--  기업 전체리스트 -->
-	<select id="selectCorpList" resultType="com.kh.corporation.model.vo.Corporation"  >
-	    SELECT * 
-	      FROM CORPORATION	
+	<select id="selectCorpList" resultMap="corpResultSet" >
+  		SELECT *
+	      FROM CORPORATION 	
 	</select>
 	
 	<!--  선택한 기업정보 -->
@@ -51,7 +50,6 @@
 	      FROM CORPORATION
 	     WHERE CORP_NO = #{corpCode}
 	</select>
-	
 	
 	
 	<!--  기업의 리뷰리스트  -->
@@ -65,12 +63,6 @@
 	    ORDER BY R.REPLY_NO DESC
 	</select>
 	
-	<select id="testR" resultType="com.kh.community.model.vo.Reply">
-	    SELECT *
-	    FROM BOARD_REPLY    
-	</select>
-	
-	
 	<!--  기업 공고 클릭시 조회수 증가  -->
 	<update id="increaseCount" parameterType="_int">
 		UPDATE BOARD
@@ -78,6 +70,14 @@
 		WHERE JOP_NO = #{boardNo}
 	</update>
 	
+	<!--  기업 정보에 해당 기업공고 노출  -->
+	<select id="selectJopPostList" resultType="com.kh.jobpost.model.vo.JobPost">
+		SELECT POST_TITLE, POST_CONTENT, CREATE_DATE, JOB_NAME
+		  FROM JOP_POST P
+		  JOIN OCCUPATION USING (JOB_NO)
+		 WHERE CORP_NO = #{corpCode}
+		
+	</select>
 	<!-- 다연 사용중 -->
 	
 	

@@ -15,15 +15,15 @@ import lombok.NoArgsConstructor;
 public class JobPost {
 	private int jobpostNo; //JOP_POST
 	private String postTitle; //JOP_POST
-	private String ceoName; //CORPORATION
 	private String phone; //MEMBER
 	private String education; //JOP_POST
 	private String career; //JOP_POST
 	private String jobName; //occupation
 	private String location; //JOP_POST
+	private Date createDate;
 	private Date endDate; //JOP_POST
 	private String postContent; //JOP_POST
-	private String corpName;//CORPORATION
+	private String corpNo;//CORPORATION
 	private int count; //JOP_POST
 	
 	private ArrayList<JobPost> list;
@@ -33,7 +33,6 @@ public class JobPost {
 //	private int count; //JOP_POST
 	
 /*공고제목
-	대표자명
 	휴대폰번호
 	학력
 	경력여부
