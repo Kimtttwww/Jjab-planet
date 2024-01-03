@@ -26,7 +26,6 @@ public class JobPost {
 	private String corpNo;//CORPORATION
 	private String corpName;
 	private int count; //JOP_POST
-	private String corpName; // CORP_NAME
 	private char jobNo;// JOB_NO
 	
 	

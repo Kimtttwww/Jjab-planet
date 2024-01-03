@@ -15,7 +15,7 @@ public class Reply {
 	private int replyNo;
 	private int refNo;
 	private String replyContent;
-	private String replyWriter;
+	private int replyWriter;
 	private Date createDate;
 	private String status;
 	/** C : 커뮤니티 댓글 / R : 기업리뷰 */

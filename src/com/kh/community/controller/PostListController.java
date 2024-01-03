@@ -2,6 +2,7 @@ package com.kh.community.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,21 +35,28 @@ public class PostListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PostService ps = new PostService();
 		String category = request.getParameter("category");
+		String keyword = request.getParameter("keyword");
 		int currentPage = 1;
 		
 		try {
 			if(category == null) category = "A";
+			if(keyword == null || keyword.equals("")) keyword = "NULLNULLNULLNULLNULL";
 			
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		} catch (NumberFormatException e) {
 		}
 		
-		int postcount = ps.selectPostCount(category);
+		HashMap<String, String> v = new HashMap<String, String>();
+		v.put("category", category);
+		v.put("keyword", keyword);
+		System.out.println(v + "\n" + v.size());
+		int postcount = ps.selectPostCount(v);
 		
 		PageInfo pi = Pagination.getPageInfo(postcount, currentPage, 10, 25);
-		ArrayList<Post> list = ps.selectPostList(pi, category);
+		ArrayList<Post> list = ps.selectPostList(pi, v);
 		
 		request.setAttribute("category", category);
+		request.setAttribute("keyword", (v.get("keyword").equals("NULLNULLNULLNULLNULL")) ? "" : keyword);
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
