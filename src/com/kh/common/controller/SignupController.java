@@ -60,13 +60,13 @@ public class SignupController extends HttpServlet {
 		
 		System.out.println(m);
 		
-		if(userType == "C") {		
+		
+		if(userType.equals("C")){		
 // 		=================================================================================
 		String corpName = request.getParameter("corpName");
 		String ceoName = request.getParameter("ceoName");
 		String corpBn = request.getParameter("corpBn");
 		String address = request.getParameter("address");
-		int likeCount = Integer.parseInt(request.getParameter("likeCount"));
 		String homePage = request.getParameter("homePage");
 		
 // 		=================================================================================		
@@ -76,26 +76,29 @@ public class SignupController extends HttpServlet {
 				.ceoName(ceoName)
 				.corpBn(corpBn)
 				.address(address)
-				.likeCount(likeCount)
 				.homePage(homePage).build();
-
 		System.out.println(c);
+		
+		
 //		==================================================================================
 		}
 		
 		int result = new MemberService().insertMember(m);
-		if(userType == "C") {		
-			result *= new MemberService().insertMember(c);
-		}
+		if(userType.equals("C")) {		
+			result *= new MemberService().insertMembera(c);
+	}
 		System.out.println(result);
 		HttpSession session = request.getSession();
+
 
 		if (result > 0) {
 			session.setAttribute("alertMsg", "회원가입 성공");
 			response.sendRedirect(request.getContextPath());
+//			NULL
 		} else {
 			session.setAttribute("alertMsg", "회원가입 실패");
 			request.getRequestDispatcher(request.getContextPath() + "/sign.bo").forward(request, response);
+			
 		}
 //		홈페이지 다시 돌아가기
 	}

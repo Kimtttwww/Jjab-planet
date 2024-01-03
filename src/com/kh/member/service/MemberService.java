@@ -30,7 +30,7 @@ public class MemberService {
 	}
 
 	public int insertMember(Member m) {
-
+//		개인 회원가입
 		SqlSession sqlSession = Template.getSqlSession();
 		
 		int result = memberDao.insertMember(sqlSession, m);
@@ -47,11 +47,11 @@ public class MemberService {
 		
 	}
 	
-	public int insertMember(Corporation c) {
-		
+	public int insertMembera(Corporation c) {
+//		기업회원가입
 		SqlSession sqlSession = Template.getSqlSession();
 		
-		int result = memberDao.insertMember(sqlSession, c);
+		int result = memberDao.insertMembera(sqlSession, c);
 	
 		if(result > 0) {
 			sqlSession.commit();

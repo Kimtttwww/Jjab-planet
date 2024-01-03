@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL" />
 		<setting name="mapUnderscoreToCamelCase" value="true" />
@@ -18,14 +19,14 @@
 			<dataSource type="POOLED">
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-				<property name="username" value="JJAB" />
-				<property name="password" value="JJAB" />
+				<property name="username" value="JJAP" />
+				<property name="password" value="JJAP" />
 			</dataSource>
 		</environment>
 	</environments>
 
 	<mappers>
-<!-- 		<mapper resource="/mappers/member-mapper.xml"/> -->
+		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/board-mapper.xml"/>
 		<mapper resource="/mappers/community-mapper.xml"/>
 		<mapper resource="/mappers/jobpost-mapper.xml"/>
