@@ -21,24 +21,26 @@
 		</div>
 		<div class="top_banner">
 			<!--최다 조회수 배너-->
-			<c:forEach var="jobPost" items="${list}">
-			<div class="top_b1">
+			
+			<c:forEach var="p" items="${list}" begin="0" end="2" >
+			<div class="top_b1" onclick='location.href = "detail.job?bno=${p.jobpostNo}"'>
 				<img
 					src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg">
-				<p>${jobPost.corpName}</p>
-				<p>${jobPost.postTitle }</p>
-				<p class="content_bottom">${jobPost.jobName } / ${jobPost.count}</p>
+				<p>${p.corpName}</p>
+				<p>${list}</p>
+				<p class="content_bottom">${list}</p>
 			</div>
 			</c:forEach>
+			
 			<!--top_b1-->
 			
 			<div class="top_b2">
 				<img
 					src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"
 					alt="">
-				<p>넥슨</p>
-				<p>공고제목</p>
-				<p class="content_bottom">직종 / 조회수</p>
+				<p>${p.corpName}</p>
+				<p>${p.postTitle }</p>
+				<p class="content_bottom">${p.jobName }</p>
 			</div>
 			<div class="top_b2">
 				<img
