@@ -17,14 +17,17 @@
 
 
   <div class="head-container">
+  
+  	<h1 style="text-align: center; border-bottom: solid 1px; padding-bottom: 50px; font-size: 5ch;"> 
+      채 용 공 고
+    </h1>
+  
     <header>
 
       <select id="category">
-        <option value="all">전체</option>
-        <!-- 다른 카테고리 옵션 -->
-        <option value="back">프론트</option>
+        <option value="back">프론트엔드</option>
         <option value="front">백엔드</option>
-        <option value="data">DB</option>
+        <option value="full">풀스택</option>
       </select>
 
       <div>
@@ -36,19 +39,21 @@
     <main>
 
       <section class="job-listing">
+      
         <c:forEach var="p" items="${list }">
-        <div class="job-card" onclick='location.href = "detail.job?bno=${p.jobpostNo}"'>
-          <img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" class="company-logo">
-          <div class="job-info">
-            <h3 class="job-offer-title">${p.postTitle }</h3>
-            <p class="employee-condition">${p.postContent }</p>
-            <p class="corporate-name">${p.corpName}</p>
-            <div class="deadline-box">
-              <p class="deadline">마감일: ${p.endDate}</p>
-            </div>
-          </div>
-        </div>
-        </c:forEach>        
+			<div class="job-card" onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
+				<img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" class="company-logo">
+				<div class="job-info">
+					<h3 class="job-offer-title">${p.postTitle }</h3>
+					<p class="employee-condition">${p.postContent }</p>
+					<p class="corporate-name">${p.corpName}</p>
+					<div class="deadline-box">
+						<p class="deadline">마감일: ${p.endDate}</p>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
+        
         
         <!-- 추가 채용공고 카드 -->
         <div class="job-card">
@@ -367,6 +372,32 @@
   <jsp:include page="/WEB-INF/views/common/footer.jsp" />
   
 </body>
+
+<script>
+
+//검색기능
+document.getElementById('search-box').addEventListener('input', function(event) {
+  const searchTerm = event.target.value.toLowerCase();
+  const jobCards = document.querySelectorAll('.job-card');
+
+  jobCards.forEach(card => {
+    const title = card.querySelector('.corporate-name').textContent.toLowerCase();
+    if (title.includes(searchTerm)) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+});
+
+</script>
+
+
+
+
+
+
+
 <!-- <script> -->
 
 <!-- // document.getElementById('search-box').addEventListener('input', function(event) { -->
