@@ -15,22 +15,22 @@ import lombok.NoArgsConstructor;
 public class JobPost {
 	private int jobpostNo; //JOP_POST
 	private String postTitle; //JOP_POST
-	private String phone; //MEMBER
 	private String education; //JOP_POST
 	private String career; //JOP_POST
-	private String jobName; //occupation
 	private String location; //JOP_POST
 	private Date createDate;
 	private Date endDate; //JOP_POST
 	private String postContent; //JOP_POST
-	private String corpNo;//CORPORATION
-	private String corpName;
+	private int corpNo;//CORPORATION
 	private int count; //JOP_POST
+	private String jobNo;// JOB_NO
+	private String status;// STATUS	
+	
+		
+	private String jobName; //occupation
 	private String corpName; // CORP_NAME
-	private char jobNo;// JOB_NO
-	
-	
-	
+
+		
 	private ArrayList<JobPost> list;
 	private ArrayList<JobPost> idx_list;
 

@@ -41,7 +41,7 @@ public class JobPostListController extends HttpServlet {
 		int currentPage = 1;
 		int pageLimit = 10;
 		int objLimit = 5;
-
+	
 		PageInfo pi = Pagination.getPageInfo(objCount, currentPage, pageLimit, objLimit);
 		System.out.println(pi);
 		
@@ -49,15 +49,21 @@ public class JobPostListController extends HttpServlet {
 		HttpSession session =request.getSession();
 		
 		if (result > 0) {
-		ArrayList<JobPost> list = new ArrayList<JobPost> (service.selectList(pi));
+		ArrayList<JobPost> jobPostList = new ArrayList<JobPost> (service.selectList(pi));
 		
 		request.setAttribute("pi", pi);      
-		request.setAttribute("list", list);
+		request.setAttribute("jobPostList", jobPostList);
 		
 		request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingList.jsp").forward(request, response);
 		} else {
 			session.setAttribute("alertMsg", "게시글 상세조회 실패");
 		}
+		
+		
+		
+		
+		
+		
 		
 	}
 

@@ -87,6 +87,14 @@
         ORDER BY count DESC)
         where ROWNUM &lt; 4;
     </select>	   
+    
+    <!-- 특정 카테고리에 해당하는 채용 공고를 조회하는 쿼리 -->
+    <select id="getPostsByCategory" parameterType="string" resultType="com.kh.jobpost.model.vo.JobPost">
+        SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, END_DATE, JOB_NO, STATUS, COUNT, CAREER, EDUCATION, LOCATION
+        FROM JOB_POST
+        WHERE JOB_NO = #{category} AND STATUS = 'Y'
+        ORDER BY JOBPOST_NO DESC
+    </select>
 
 </mapper>   
 
