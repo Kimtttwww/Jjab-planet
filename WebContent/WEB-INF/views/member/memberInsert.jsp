@@ -29,13 +29,13 @@
 						<div>
 							<input type="text" name="userId" class="enroll-email" placeholder="이메일을 입력하세요."> 
 								<span>@</span> 
-								<input disabled id="textEmail" class="email-direct" name="email-direct" placeholder="이메일을 선택하세요."> 
-							<select id="selectId" name="enroll-selectEmail" class="enroll-selectBox enroll-selectEmail">
+								<input disabled id="selectText" class="email-selectText" name="email-selectText" placeholder="이메일을 선택하세요."> 
+							<select id="selectId" name="email-selectText" class="enroll-selectBox enroll-selectEmail">
 								<option value="" disabled selected>E-Mail 선택</option>
-								<option value="naver.com" id="naver.com">naver.com</option>
-								<option value="gmail.com" id="gmail.com">gmail.com</option>
-								<option value="daum.net" id="daum.net">daum.net</option>
-								<option value="nate.com" id="nate.com">nate.com</option>
+								<option value="naver.com" >naver.com</option>
+								<option value="gmail.com" >gmail.com</option>
+								<option value="daum.net" >daum.net</option>
+								<option value="nate.com" >nate.com</option>
 								<option value="directEmail" id="textEmail">직접 입력하기</option>
 							</select>
 						</div>
@@ -102,7 +102,6 @@
 							</div>
 							<div>
 								<input type="text" name="address" class="enroll-textL">
-								<input type="text" class="enroll-textL" placeholder="상세 주소">
 							</div>
 						</div>
 						<div>
@@ -162,12 +161,12 @@
 		$(function() {
 	        $('#selectId').change(function() {
 	            if ($('#selectId').val() == 'directEmail') {
-	                $('#textEmail').attr("disabled", false);
-	                $('#textEmail').val("");
-	                $('#textEmail').focus();
+	                $('#selectText').attr("disabled", false);
+	                $('#selectText').val("");
+	                $('#selectText').focus();
 	            } else {
-	                $('#textEmail').val($('#selectId').val());
-	                $('#textEmail').attr("disabled", true);
+	                $('#selectText').val($('#selectId').val());
+	                $('#selectText').attr("disabled", true);
 	            }
 	        })
 	    });

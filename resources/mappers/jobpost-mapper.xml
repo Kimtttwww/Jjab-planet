@@ -20,7 +20,7 @@
 	<select id="selectList" parameterType="string"
 		resultMap='postResultSet'>
 		SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, END_DATE, C.CORP_NAME, JOB_NAME
-		FROM JOP_POST J
+		FROM JOB_POST J
 		JOIN corporation C USING(CORP_NO)
 		JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
 	</select>
@@ -28,7 +28,7 @@
 	<!-- 게시물 몇개인지 조회 -->
 	<select id="selectListCount" resultType="_int">
 		SELECT COUNT(*)
-		FROM JOP_POST
+		FROM JOB_POST
 		WHERE STATUS='Y'
 	</select>
 
@@ -45,7 +45,7 @@
 		LOCATION,
 		END_DATE,
 		POST_CONTENT
-		FROM JOP_POST J
+		FROM JOB_POST J
 		JOIN CORPORATION USING (CORP_NO)
 		JOIN MEMBER ON (CORP_NO = USER_NO)
 		WHERE JOBPOST_NO = #{jobpostNo}
@@ -53,7 +53,7 @@
 	</select>
 
 	<update id="increaseCount" parameterType="_int">
-		UPDATE JOP_POST
+		UPDATE JOB_POST
 		SET COUNT = COUNT +1
 		WHERE JOBPOST_NO = #{jobpostNo}
 		AND STATUS = 'Y'
@@ -63,9 +63,9 @@
 	<select id="idx_firstList" resultMap='postResultSet'>
 		select * from(
 		SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, COUNT
-		FROM JOP_POST J
+		FROM JOB_POST J
 		JOIN corporation C USING(CORP_NO)
-		JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
+		JOIN occupation O USING (JOB_NO)
 		ORDER BY count DESC)
 		where ROWNUM &lt; 4
 	</select>
@@ -73,9 +73,9 @@
 	<select id="idx_secondList" resultMap='postResultSet'>
 		select * from(
 		SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, COUNT
-		FROM JOP_POST J
+		FROM JOB_POST J
 		JOIN corporation C USING(CORP_NO)
-		JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
+		JOIN occupation O USING (JOB_NO)
 		ORDER BY END_DATE ASC)
 		where ROWNUM &lt; 7
 	</select>
@@ -83,9 +83,9 @@
 	<select id="idx_thirdList" resultMap='postResultSet'>
 		select * from(
 		SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, COUNT
-		FROM JOP_POST J
+		FROM JOB_POST J
 		JOIN corporation C USING(CORP_NO)
-		JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
+		JOIN occupation O USING (JOB_NO)
 		ORDER BY J.JOBPOST_NO DESC)
 		where ROWNUM &lt; 10
 	</select>
@@ -96,7 +96,7 @@
 <!-- <select id="selectJobPostDetail" parameterType="long" resultType="JobPostVO"> -->
 <!-- SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT,채용조건?CAREER,EDUCATION,LOCATION, 
 	END_DATE, category -->
-<!-- FROM JOP_POST -->
+<!-- FROM JOB_POST -->
 <!-- WHERE post_id = #{postId} -->
 <!-- </select> -->
 
@@ -111,7 +111,7 @@
 <!-- <select id="searchJobPostsByCompanyName" parameterType="string" resultType="JobPostVO"> -->
 <!-- SELECT JP.JOBPOST_NO, JP.CORP_NO, JP.POST_TITLE, JP.POST_CONTENT, JP.CAREER, 
 	JP.EDUCATION, JP.LOCATION, JP.END_DATE, JP.category -->
-<!-- FROM JOP_POST JP -->
+<!-- FROM JOB_POST JP -->
 <!-- JOIN CORPORATION C ON JP.CORP_NO = C.CORP_NO -->
 <!-- WHERE C.CORP_NAME LIKE CONCAT('%', #{corpName}, '%') -->
 <!-- </select> -->
@@ -120,6 +120,6 @@
 <!-- <select id="selectJobPostsByCategory" parameterType="string" resultType="JobPostVO"> -->
 <!-- SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, CAREER, EDUCATION, 
 	LOCATION,END_DATE, category -->
-<!-- FROM JOP_POST -->
+<!-- FROM JOB_POST -->
 <!-- WHERE category = #{category} -->
 <!-- </select> -->    

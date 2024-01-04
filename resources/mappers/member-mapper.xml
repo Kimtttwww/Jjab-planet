@@ -83,8 +83,23 @@
 		   #{address}, <!-- 회사 주소 -->
 		   #{homePage}) <!-- 홈페이지 주소 -->
 	</insert>
-		
 	
+	<update id="updateMember" parameterType="map">
+	    UPDATE MEMBER
+	    	SET PHONE = #{phone}
+	    WHERE USER_NO = #{userNo}
+		
+        if(test="userType == 'C'"){
+		    UPDATE CORPORATION 
+		    	SET
+		            CORP_NAME = #{corpName},
+		            CEO_NAME = #{ceoName}, 
+		            CORP_BN = #{corpBn}, 
+		            ADDRESS = #{address},
+		            HOMEPAGE = #{homePage}
+	        }
+	    WHERE CORP_NO = #{userNo}
+	</update>
 	<!--
 		* DML문 일 경우
 			<insert id="식별자" parameterType="전달받은 자바타입">

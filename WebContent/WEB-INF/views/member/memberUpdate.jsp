@@ -41,7 +41,7 @@ body {
 } 
 .container-update .update-phoneBox {
     /*입력 정보 인풋태그 text*/
-    width: 470px;
+    width: 540px;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
@@ -154,33 +154,24 @@ body {
 					<div>
 						<div>아이디</div>
 						<div>
-							<input type="text" name="userId" class="update-email" disabled>
+							<input type="text" name="userId" class="update-email" value="${ loginUser.userId}" disabled>
 						</div>
 					</div>
 					<div>
 						<div>핸드폰번호</div>
-						<div>
-							<select name="pphone" class="update-selectBox">
-								<option value="010">010</option>
-								<option value="011">011</option>
-								<option value="016">016</option>
-								<option value="017">017</option>
-								<option value="019">019</option>
-                                <option value="02">02</option>
-								<option value="031">031</option>
-								<option value="032">032</option>
-							</select> <input type="text" name="phone" class="update-phoneBox" maxlength="8" placeholder="(-)제외">
-						</div>
+						
+							<input type="text" name="phone" class="update-phoneBox" maxlength="8" value="${loginUser.phone }" placeholder="(-)제외">
+						
 					</div>
 
-					<div id="corporation-enrollForm" class = "flex-container">
+					<div id="corporation-mypageUpdate" class = "flex-container">
 						<input type="hidden" name="userType" value="E">
 						<div>
 							<div>
 								<div>기업명</div>
 							</div>
 							<div>
-								<input type="text" name="corpName" class="update-textL" minlength="1" maxlength="15">
+								<input type="text" name="corpName" class="update-textL" value="${C.corpName }" minlength="1" maxlength="15">
 							</div>
 						</div>
 						<div>
@@ -188,7 +179,7 @@ body {
 								<div>대표자명</div>
 							</div>
 							<div>
-								<input type="text" name="ceoName" class="update-textL" minlength="2" maxlength="12">
+								<input type="text" name="ceoName" class="update-textL" value="${C.ceoName }" minlength="2" maxlength="12">
 							</div>
 						</div>
 						<div>
@@ -197,7 +188,7 @@ body {
 								<!--(XXX-XXXX-XXXX-XX)-->
 							</div>
 							<div>
-								<input type="text" name="corpBn" class="update-textL" minlength="16" maxlength="16" placeholder="(-) 포함">
+								<input type="text" name="corpBn" class="update-textL" value="${C.corpBn }" minlength="16" maxlength="16" placeholder="(-) 포함">
 							</div>
 						</div>
 						<div>
@@ -205,8 +196,7 @@ body {
 								<div>회사 주소</div>
 							</div>
 							<div>
-								<input type="text" name="address" class="update-textL">
-								<input type="text" class="update-textL" placeholder="상세 주소">
+								<input type="text" name="address" value="${C.address }" class="update-textL">
 							</div>
 						</div>
 						<div>
@@ -214,23 +204,7 @@ body {
 								<div>회사 홈페이지주소</div>
 							</div>
 							<div>
-								<input type="text" name="homePage" class="update-textL">
-							</div>
-						</div>
-						<div>
-							<div>
-								<div>회사전화번호</div>
-							</div>
-							<div>
-								<input type="text" name="pphone" class="update-textL" maxlength="17" placeholder="(-) 포함">
-							</div>
-						</div>
-						<div>
-							<div>
-								<div>회사전화번호</div>
-							</div>
-							<div>
-								<input type="text" name="jobNo" class="update-textL" maxlength="17" placeholder="(-) 직종">
+								<input type="text" name="homePage" value="${C.homePage }" class="update-textL">
 							</div>
 						</div>
 					</div>
@@ -241,6 +215,18 @@ body {
 			</div>
 		</form>
 	</div>
+	
+	<script>
+	const userType = '${loginUser.userType}';
+	$(() => {
+		$("#corporation-mypageUpdate").hide();
+		if(userType === "C"){
+			$("#corporation-mypageUpdate").show();
+		}
+	});
+	</script>
+	
+	
 </body>
 
 </html>

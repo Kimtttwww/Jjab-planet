@@ -23,8 +23,10 @@
 	   	CORP_NAME,
 	   	CEO_NAME,
 	   	CORP_BN,
-	   	ADDRESS
-	  	 FROM CORPORATION		
+	   	ADDRESS,
+	   	HOMEPAGE
+	  	 FROM CORPORATION
+	  	 WHERE CORP_NO = #{userType}
 	</select>
 	
 </mapper>

@@ -44,7 +44,7 @@ body {
     margin-bottom: 5px;
     border-radius: 5px;
 }
-.container-enroll .email-direct{
+.container-enroll .email-selectText{
     /*직접입력 누르면 나오는 인풋태그*/
     width: 160px;
     padding: 10px;
