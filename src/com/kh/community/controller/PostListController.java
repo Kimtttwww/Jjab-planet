@@ -49,7 +49,7 @@ public class PostListController extends HttpServlet {
 		HashMap<String, String> v = new HashMap<String, String>();
 		v.put("category", category);
 		v.put("keyword", keyword);
-		System.out.println(v + "\n" + v.size());
+		
 		int postcount = ps.selectPostCount(v);
 		
 		PageInfo pi = Pagination.getPageInfo(postcount, currentPage, 10, 25);

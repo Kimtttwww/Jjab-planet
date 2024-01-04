@@ -38,53 +38,81 @@
             </div>
 
             <article class="need-login">
-                <a href="">수정</a>
-                <a href="">삭제</a>
-                <a href="">신고하기</a>
+                <a href="edit.pr?type=P&postNo=${ p.postNo }">수정</a>
+                <a href="del.pr?type=P&postNo=${ p.postNo }">삭제</a>
             </article>
         </section>
 
         <section class="reply">
             <section class="reply-write">
-                <article>
-				<c:if test="1 == 1">로그인 후 이용 가능합니다</c:if>
 				<textarea id="replyContent"></textarea>
-				</article>
-                <article>
-                    <a onclick="refresh(${ p.postNo })">등록</a>
-                </article>
+				<a onclick="refresh(${ p.postNo })">등록</a>
             </section>
             
 			<c:forEach var="r" items="${ p.replyList }">
 	            <section class="reply-read">
 	                <article>
-	                    <span>${ r.replyContent }</span>
+						<span>${ r.userId }</span>
+						<span>${ r.createDate }</span>
+						<textarea>${ r.replyContent }</textarea>
 	                </article>
 	                <article class="need-login">
-	                    <a href="">수정</a>
-	                    <a href="">삭제</a>
-	                    <a href="">신고하기</a>
+	                    <a href="edit.pr?type=R&postNo=${ p.postNo }&replyNo=${r.replyNo}">수정</a>
+	                    <a href="del.pr?type=R&postNo=${ p.postNo }&replyNo=${r.replyNo}">삭제</a>
 	                </article>
 	            </section>
 			</c:forEach>
         </section>
     </square>
     <script>
+    	const test = '${loginUser}';
+    	
+    	$(() => {
+    		if(!('${loginUser}')){
+    			$("#replyContent").text("로그인 후 이용 가능합니다");
+    		}
+    		
+    		$('textarea').each((i, ele) => {
+    			switch(i){
+    			case 0:
+		   			if($(ele).prev().children().eq(1).text() != '${loginUser.userId}'){
+		   				$(ele).prop("readOnly", true);
+   						$(ele).parent().next().addClass("off");
+		   			}
+		   			break;
+    			case 1:break;
+    			default:
+		   			if($(ele).prev().prev().text() != '${loginUser.userId}'){
+		   				$(ele).prop("readOnly", true);
+   						$(ele).parent().next().addClass("off");
+		   			}
+		   			break;
+    			}
+    		});
+    	});
+    	
     	function refresh(p) {
-    		$.ajax({
-                url : 'write.re', type : 'post',
-                data : {postNo : p, replyContent : $('#replyContent').val()},
-                success : (tf) => {
-		    		if(tf) {
-		    			alert("댓글이 등록되었습니다");
-		    		} else {
-		    			alert("오류가 발생하였습니다");
-		    		}
-   					location.href = "${project}/detail.po?postNo=" + p;
-                }, error : () => {
-                    console.log("통신 실패");
-                }
-            });
+    		if('${loginUser}' && $("#replyContent").val()){
+	    		$.ajax({
+	                url : 'write.re', type : 'post',
+	                data : {postNo : p, replyContent : $('#replyContent').val()},
+	                success : (tf) => {
+			    		if(tf) {
+			    			alert("댓글이 등록되었습니다");
+			    		} else {
+			    			alert("오류가 발생하였습니다");
+			    		}
+	   					location.href = "${project}/detail.po?postNo=" + p;
+	                }, error : () => {
+	                    console.log("통신 실패");
+	                }
+	            });
+    		} else if (!'${loginUser}') {
+    			alert("로그인 후 이용 가능합니다");
+    		} else {
+    			alert("댓글을 작성해주시기 바랍니다");
+    			$("#replyContent").focus();
+    		}
     	}
     </script>
 </body>

@@ -16,11 +16,11 @@
 	<select id="selectPostCount" parameterType="hashmap" resultType="_int">
 	    SELECT COUNT(*) FROM BOARD_POST
 	    WHERE STATUS = 'Y'
-		<if test='!keyword.equals("NULLNULLNULLNULLNULL")'>
-		    AND POST_CONTENT LIKE '%#{keyword}%'
-	    </if>
 		<if test='!category.equals("A")'>
 		    AND CATEGORY = #{category}
+	    </if>
+		<if test='!keyword.equals("NULLNULLNULLNULLNULL")'>
+		    AND POST_CONTENT LIKE '%${keyword}%'
 	    </if>
 	</select>
 	
@@ -34,7 +34,7 @@
 		    AND CATEGORY = #{category}
 	    </if>
 		<if test='!keyword.equals("NULLNULLNULLNULLNULL")'>
-		    AND POST_CONTENT LIKE '%#{keyword}%'
+		    AND POST_CONTENT LIKE '%${keyword}%'
 	    </if>
 		ORDER BY POST_NO DESC
 	</select>
@@ -62,7 +62,7 @@
 	
 	<!-- 모든 댓글 조회 -->
 	<select id="selectReplyList" parameterType="_int" resultMap="replyResultSet">
-		SELECT REPLY_CONTENT, USER_ID, CREATE_DATE
+		SELECT REPLY_NO, REPLY_CONTENT, USER_ID, CREATE_DATE
 		FROM BOARD_REPLY R
 		JOIN MEMBER ON REPLY_WRITER = USER_NO
 		WHERE R.STATUS = 'Y' AND REPLY_TYPE = 'C' AND REF_NO = #{postNo}
@@ -75,27 +75,19 @@
 		VALUES(SEQ_REPLYNO.NEXTVAL, #{refNo}, #{replyContent}, #{replyWriter}, 'C')
 	</insert>
 	
-
-<!-- 	<select id="selectSearchCount" parameterType="hashmap" resultType="int"> -->
-<!-- 		SELECT COUNT(*) FROM BOARD B -->
-<!-- 		JOIN MEMBER ON BOARD_WRITER = USER_NO -->
-<!-- 		WHERE B.STATUS = 'Y' -->
-<!-- 		<choose> -->
-<!-- 			<when test="condition == 'writer'"> -->
-<!-- 				AND USER_ID -->
-<!-- 			</when> -->
-<!-- 			<when test="condition == 'writer'"> -->
-<!-- 				AND BOARD_TITLE -->
-<!-- 			</when> -->
-<!-- 			<otherwise> -->
-<!-- 				AND BOARD_CONTENT -->
-<!-- 			</otherwise> -->
-<!-- 		</choose> -->
-<!-- 		LIKE '%' || #{keyword} || '%' -->
-<!-- 		ORDER BY BOARD_NO DESC -->
-<!-- 	</select> -->
-<!-- 	<update id="" parameterType="_int"> -->
-<!-- 		UPDATE BOARD SET BOARD_NO = #{boardNo} -->
-<!-- 		WHERE BOARD_NO = #{boardNo} and STATUS = 'Y' -->
-<!-- 	</update> -->
+	<!-- 게시글, 댓글 삭제 -->
+	<update id="deleteObject" parameterType="hashmap">
+		UPDATE 
+		<choose>
+			<when test='type.equals("P")'>BOARD_POST</when>
+			<when test='type.equals("R")'>BOARD_REPLY</when>
+		</choose>
+		SET STATUS = 'N'
+		WHERE
+		<choose>
+			<when test='type.equals("P")'>POST_NO</when>
+			<when test='type.equals("R")'>REPLY_NO</when>
+		</choose>
+		  = #{refNo}
+	</update>
 </mapper>

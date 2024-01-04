@@ -62,7 +62,19 @@ public class PostService {
 	public int insertReply(Reply r) {
 		int result = dao.insertReply(db, r);
 		
-		System.out.println("result ser" + result);
+		if(result > 0) {
+			db.commit();
+		} else {
+			db.rollback();
+		}
+		
+		db.close();
+		return result;
+	}
+
+	public int deleteObject(HashMap<String, String> v) {
+		int result = dao.deleteObject(db, v);
+				
 		if(result > 0) {
 			db.commit();
 		} else {
