@@ -169,8 +169,7 @@ body {
                                 <option value="02">02</option>
 								<option value="031">031</option>
 								<option value="032">032</option>
-							</select> <input type="text" name="phone" class="update-phoneBox"
-								maxlength="8" placeholder="(-)제외">
+							</select> <input type="text" name="phone" class="update-phoneBox" maxlength="8" placeholder="(-)제외">
 						</div>
 					</div>
 
@@ -181,8 +180,7 @@ body {
 								<div>기업명</div>
 							</div>
 							<div>
-								<input type="text" name="corpName" class="update-textL"
-									minlength="1" maxlength="15">
+								<input type="text" name="corpName" class="update-textL" minlength="1" maxlength="15">
 							</div>
 						</div>
 						<div>
@@ -190,8 +188,7 @@ body {
 								<div>대표자명</div>
 							</div>
 							<div>
-								<input type="text" name="ceoName" class="update-textL"
-									minlength="2" maxlength="12">
+								<input type="text" name="ceoName" class="update-textL" minlength="2" maxlength="12">
 							</div>
 						</div>
 						<div>
@@ -200,8 +197,7 @@ body {
 								<!--(XXX-XXXX-XXXX-XX)-->
 							</div>
 							<div>
-								<input type="text" name="corpBn" class="update-textL"
-									minlength="16" maxlength="16" placeholder="(-) 포함">
+								<input type="text" name="corpBn" class="update-textL" minlength="16" maxlength="16" placeholder="(-) 포함">
 							</div>
 						</div>
 						<div>
@@ -226,30 +222,25 @@ body {
 								<div>회사전화번호</div>
 							</div>
 							<div>
-								<input type="text" name="pphone" class="update-textL"
-									maxlength="17" placeholder="(-) 포함">
+								<input type="text" name="pphone" class="update-textL" maxlength="17" placeholder="(-) 포함">
 							</div>
 						</div>
-							<div>
+						<div>
 							<div>
 								<div>회사전화번호</div>
 							</div>
 							<div>
-								<input type="text" name="jobNo" class="update-textL"
-									maxlength="17" placeholder="(-) 직종">
+								<input type="text" name="jobNo" class="update-textL" maxlength="17" placeholder="(-) 직종">
 							</div>
 						</div>
-						</div>
-						<div class="update-btnBox">
-							<button type="submit" class="update-btn">수정</button>
+					</div>
+					<div class="update-btnBox">
+						<button type="submit" class="update-btn">수정</button>
 					</div>
 				</div>
-
 			</div>
-
 		</form>
 	</div>
-
 </body>
 
 </html>

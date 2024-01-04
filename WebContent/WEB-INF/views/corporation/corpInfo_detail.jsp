@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"
 	import="com.kh.member.model.vo.Member,
 			java.util.ArrayList"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
 %>
@@ -121,25 +121,25 @@ height: 100%;
 </style>
 </head>
 <body>
-
 <jsp:include page="../common/topbar.jsp"/>
+
 	<header>
 		<div class="corp-top-area">
 			<div class="corp-top">
 				<c:forEach var="corp" items="${corpOne}">
-				<div class="corp-logo">
-					<div class="corp-name">기업로고${replyList}</div>
-					<div class="corp-name">${corp.corpName}</div>
-				</div>
-				<div class="corp-interest">
-					<div class="corp-home">
-						<button id="likeCorp" onclick="">★</button>
-						<span>${corp.likeCount}</span>
+					<div class="corp-logo">
+						<div class="corp-name">기업로고${replyList}</div>
+						<div class="corp-name">${corp.corpName}</div>
 					</div>
-					<div class="corp-home">
-						<a href="${corp.homePage}">홈페이지></a>
+					<div class="corp-interest">
+						<div class="corp-home">
+							<button id="likeCorp" onclick="">★</button>
+							<span>${corp.likeCount}</span>
+						</div>
+						<div class="corp-home">
+							<a href="${corp.homePage}">홈페이지></a>
+						</div>
 					</div>
-				</div>
 				</c:forEach>
 			</div>
 			<div class="corp-aTag">
@@ -162,7 +162,6 @@ height: 100%;
 					<div>홈페이지</div>
 				</div>
 				
-				
 				<div class="corp-info2">
 					<c:forEach var="corp" items="${corpOne}">				
 						<div>${corp.corpName}</div>
@@ -182,13 +181,13 @@ height: 100%;
 					<p>진행중인 공고가 없습니다.</p>
 				</c:if>
 				<c:forEach var="jobPost" items="${jobPostList}">
-						<div>${jobPost.postTitle}</div>
-						<div>모집직종 : ${jobPost.jobName }</div>
-						
-						<div align="right">
-							<button onclick="">입사지원</button>
-							<div>공고등록일 : ${jobPost.createDate}</div>
-						</div>
+					<div>${jobPost.postTitle}</div>
+					<div>모집직종 : ${jobPost.jobName }</div>
+					
+					<div align="right">
+						<button onclick="">입사지원</button>
+						<div>공고등록일 : ${jobPost.createDate}</div>
+					</div>
 				</c:forEach>
 			</div>
 		</div>
@@ -200,7 +199,6 @@ height: 100%;
 		<br>
 		<br>
 		
-		
 		<div class="corp-zone">
 			<div>
 				<div class="corp_review_a2">|기업리뷰</div>
@@ -210,33 +208,23 @@ height: 100%;
 				<!-- 로그인한 회원만 글작성 버튼이 보이게 조정 -->
 			<% if(loginUser != null){ %>
 					<div>
-						<button
-							onclick="open('address','write_review','width=430,height=500,location=no,status=no,scrollbars=yes')">
-							리뷰작성하기</button>
+						<button onclick="open('address','write_review','width=430,height=500,location=no,status=no,scrollbars=yes')">리뷰작성하기</button>
 					</div>
 			<% } %>
 			</div>
 
-			<button
-				onclick="document.getElementById('popup_write').style.display='block'">팝업창 열기
-			</button>
+			<button onclick="document.getElementById('popup_write').style.display='block'">팝업창 열기</button>
 
 			<!-- 팝업 창 -->
 			<div id="popup_write">
 				<p>해당 기업의 재직자만 리뷰 작성 가능합니다. 재직자가 맞습니까?</p>
 
-				<button
-					onclick="document.getElementById('popup_write').style.display='none'">예</button>
-				<button
-					onclick="alert('재직자만 작성할 수 있습니다'); document.getElementById('popup_write').style.display='none'">아니오</button>
+				<button onclick="document.getElementById('popup_write').style.display='none'">예</button>
+				<button onclick="alert('재직자만 작성할 수 있습니다'); document.getElementById('popup_write').style.display='none'">아니오</button>
 			</div>
 
-
-
 			<div class="corp-review-area">
-			
 				<div class="corp-review-content">
-									
 					<c:if test="${empty replyList}" >
 						<p>작성된 리뷰가 없습니다.</p>
 					</c:if>
@@ -261,10 +249,8 @@ height: 100%;
 										
 										
 										<% if(loginUser != null ){ %>
-										<button
-											onclick="document.getElementById('popup_report').style.display='none'">신고</button>
-										<button
-											onclick="document.getElementById('popup_report').style.display='none'">취소</button>
+										<button	onclick="document.getElementById('popup_report').style.display='none'">신고</button>
+										<button	onclick="document.getElementById('popup_report').style.display='none'">취소</button>
 										<% } %>
 									</div>
 								</div>
@@ -349,25 +335,7 @@ height: 100%;
 		}, $(".corp_review_a1").hover(function() {
 			$(this).removeClass("corp_hovered");
 		}));
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	</script>
-
-
-
-
-
-
-
-
-
 
 
 </body>

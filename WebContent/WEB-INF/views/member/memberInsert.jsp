@@ -18,10 +18,8 @@
 			<div id="member-enrollForm">
 				<input type="hidden" name="userType" value="E">
 				<div class="link-enroll">
-					<button type="button" id="mem-btn"
-						class="enroll-button expand-green radius-left">개인회원</button>
-					<button type="button" id="co-btn"
-						class="enroll-button contract-white radius-right">기업회원</button>
+					<button type="button" id="mem-btn" class="enroll-button expand-green radius-left">개인회원</button>
+					<button type="button" id="co-btn" class="enroll-button contract-white radius-right">기업회원</button>
 				</div>
 
 				<div class="enroll-div">
@@ -45,15 +43,13 @@
 					<div>
 						<div>비밀번호*</div>
 						<div>
-							<input type="password" name="userPwd" class="enroll-textL"
-								minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호">
+							<input type="password" name="userPwd" class="enroll-textL" minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호">
 						</div>
 					</div>
 					<div>
 						<div>비밀번호 확인*</div>
 						<div>
-							<input type="password" class="enroll-textL" minlength="8"
-								maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호">
+							<input type="password" class="enroll-textL" minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호">
 						</div>
 					</div>
 					<div>
@@ -80,8 +76,7 @@
 								<div>기업명*</div>
 							</div>
 							<div>
-								<input type="text" name="corpName" class="enroll-textL"
-									minlength="1" maxlength="15">
+								<input type="text" name="corpName" class="enroll-textL" minlength="1" maxlength="15">
 							</div>
 						</div>
 						<div>
@@ -89,8 +84,7 @@
 								<div>대표자명*</div>
 							</div>
 							<div>
-								<input type="text" name="ceoName" class="enroll-textL"
-									minlength="2" maxlength="12">
+								<input type="text" name="ceoName" class="enroll-textL" minlength="2" maxlength="12">
 							</div>
 						</div>
 						<div>
@@ -99,8 +93,7 @@
 								<!--(XXX-XXXX-XXXX-XX)-->
 							</div>
 							<div>
-								<input type="text" name="corpBn" class="enroll-textL"
-									minlength="16" maxlength="16" placeholder="(-) 포함">
+								<input type="text" name="corpBn" class="enroll-textL" minlength="16" maxlength="16" placeholder="(-) 포함">
 							</div>
 						</div>
 						<div>
@@ -125,9 +118,7 @@
 						<button type="submit" class="enroll-btn">가입하기</button>
 					</div>
 				</div>
-
 			</div>
-
 		</form>
 	</div>
 	<script>

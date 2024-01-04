@@ -19,22 +19,24 @@
 			<div class="all_list">
 				<ul>
 					<li class="li_no1">번호</li>
-					<li><img class="corp_logo"
-						src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"></li>
+					<li>
+						<img class="corp_logo" src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg">
+					</li>
 					<li>기업이름</li>
-					<li class="li_last"><img class="star_img"
-						src="${ pageContext.request.contextPath }/resources/images/star.png"
-						alt=""></li>
+					<li class="li_last">
+						<img class="star_img" src="${ pageContext.request.contextPath }/resources/images/star.png" alt="">
+					</li>
 				</ul>
 
 				<ul>
 					<li class="li_no1">1</li>
-					<li><img class="corp_logo"
-						src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"></li>
+					<li>
+						<img class="corp_logo" src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg">
+					</li>
 					<li>넥슨</li>
-					<li class="li_last"><img class="star_img"
-						src="${ pageContext.request.contextPath }/resources/images/star.png"
-						alt=""></li>
+					<li class="li_last">
+						<img class="star_img" src="${ pageContext.request.contextPath }/resources/images/star.png" alt="">
+					</li>
 				</ul>
 			</div>
 			<div class="page-area">

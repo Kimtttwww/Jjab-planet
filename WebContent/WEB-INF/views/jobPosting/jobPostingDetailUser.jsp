@@ -94,15 +94,11 @@
       
       <!-- 제출 버튼 -->
         <div class="form-group-footer">
-          
             <button type="submit" id="registration">공고수정</button>
             <button type="submit" id="application">공고등록</button>
-          
         </div>
     </form>
     <!-- 폼 태그 종료 -->
   </div>
-
-
 </body>
 </html>
