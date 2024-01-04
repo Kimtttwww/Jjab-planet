@@ -128,7 +128,10 @@ height: 100%;
 			<div class="corp-top">
 				<c:forEach var="corp" items="${corpOne}">
 					<div class="corp-logo">
-						<div class="corp-name">기업로고${replyList}</div>
+						<div class="corp-name"><img width="250px" height="100px" 
+							onclick='location.href="${pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"' 
+								src="${ pageContext.request.contextPath}/${corp.fileNo.filePath}${corp.fileNo.changeName}" alt="기업 대표이미지">
+					</div>
 						<div class="corp-name">${corp.corpName}</div>
 					</div>
 					<div class="corp-interest">
@@ -231,7 +234,7 @@ height: 100%;
 					
 					<c:forEach var="item" items="${replyList}">		
 						<div>
-							${item.userId} / 작성일:${item.createDate }
+							${item.replyWriter} / 작성일:${item.createDate }
 						</div>
 						<div>
 							${item.replyContent} 
@@ -257,7 +260,7 @@ height: 100%;
 							<% } %>
 							
 							<!-- 본인 작성글에만 수정/삭제 가능하게끔   -->
-<%-- 							<% if(loginUser != null && loginUser.getUserNo().equals( ) ){ %> --%>
+<%-- 							<% if(loginUser != null && loginUser.getUserNo().equals(replyWriter ) ){ %> --%>
 <%-- 									<input type="hidden" name="corpNo" value="<%= %>"> --%>
 	
 								

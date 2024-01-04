@@ -111,9 +111,9 @@
 	
 	<!--  기업의 리뷰리스트  -->
 	<select id="selectReviewList" resultType="com.kh.community.model.vo.Reply">
-	    SELECT *
+	    SELECT R.REPLY_NO, R.REF_NO, R.REPLY_CONTENT, R.REPLY_WRITER, R.CREATE_DATE, M.USER_ID
 	    FROM BOARD_REPLY R
-	  	
+	  	 JOIN MEMBER M ON (USER_NO = REPLY_WRITER)
 	    WHERE R.STATUS = 'Y'
 	      AND R.REPLY_TYPE = 'R'
 	      AND R.REF_NO = #{corpCode}
@@ -122,7 +122,7 @@
 	
 	<!--  기업 공고 클릭시 조회수 증가  -->
 	<update id="increaseCount" parameterType="_int">
-		UPDATE BOARD
+		UPDATE CORPORATION
 		SET COUNT = COUNT + 1
 		WHERE JOB_NO = #{boardNo}
 	</update>
