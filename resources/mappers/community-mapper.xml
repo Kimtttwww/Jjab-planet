@@ -12,15 +12,20 @@
 	<resultMap id="replyResultSet" type="reply"/>
 	
 	
-	<select id="selectPostCount" parameterType="string" resultType="_int">
+	<!-- 게시글 갯수 파악 -->
+	<select id="selectPostCount" parameterType="hashmap" resultType="_int">
 	    SELECT COUNT(*) FROM BOARD_POST
 	    WHERE STATUS = 'Y'
+		<if test='!keyword.equals("NULLNULLNULLNULLNULL")'>
+		    AND POST_CONTENT LIKE '%#{keyword}%'
+	    </if>
 		<if test='!category.equals("A")'>
 		    AND CATEGORY = #{category}
 	    </if>
 	</select>
 	
-	<select id="selectPostList" parameterType="string" resultMap="postResultSet">
+	<!-- 모든, 특정 게시글 조회 -->
+	<select id="selectPostList" parameterType="hashmap" resultMap="postResultSet">
 	    SELECT POST_NO, POST_TITLE, POST_CONTENT, USER_ID, COUNT, CREATE_DATE
 		FROM BOARD_POST P
 		JOIN MEMBER ON POST_WRITER = USER_NO
@@ -28,20 +33,26 @@
 		<if test='!category.equals("A")'>
 		    AND CATEGORY = #{category}
 	    </if>
+		<if test='!keyword.equals("NULLNULLNULLNULLNULL")'>
+		    AND POST_CONTENT LIKE '%#{keyword}%'
+	    </if>
 		ORDER BY POST_NO DESC
 	</select>
 	
+	<!-- 게시글 등록 -->
 	<insert id="insertPost" parameterType="post">
 		INSERT INTO BOARD_POST(POST_NO, POST_TITLE, POST_CONTENT, POST_WRITER, CATEGORY)
 		VALUES(SEQ_BOARD_POSTNO.NEXTVAL, #{postTitle}, #{postContent}, #{postWriter}, #{category})
 	</insert>
 	
+	<!-- 조회수 증가 -->
 	<update id="increaseCount" parameterType="_int">
 		UPDATE BOARD_POST
 		SET COUNT = COUNT + 1
 		WHERE POST_NO = #{postNo}
 	</update>
 	
+	<!-- 단일 게시글 조회 -->
 	<select id="selectPost" parameterType="_int" resultMap="postResultSet">
 		SELECT POST_NO, POST_TITLE, POST_CONTENT, USER_ID, COUNT, CREATE_DATE
 		FROM BOARD_POST P
@@ -49,44 +60,22 @@
 		WHERE P.STATUS = 'Y' AND POST_NO = #{postNo}
 	</select>
 	
+	<!-- 모든 댓글 조회 -->
 	<select id="selectReplyList" parameterType="_int" resultMap="replyResultSet">
 		SELECT REPLY_CONTENT, USER_ID, CREATE_DATE
 		FROM BOARD_REPLY R
 		JOIN MEMBER ON REPLY_WRITER = USER_NO
 		WHERE R.STATUS = 'Y' AND REPLY_TYPE = 'C' AND REF_NO = #{postNo}
+		ORDER BY CREATE_DATE DESC
 	</select>
 	
-	
-	
+	<!-- 댓글 등록 -->
+	<insert id="insertReply" parameterType="reply">
+		INSERT INTO BOARD_REPLY(REPLY_NO, REF_NO, REPLY_CONTENT, REPLY_WRITER, REPLY_TYPE)
+		VALUES(SEQ_REPLYNO.NEXTVAL, #{refNo}, #{replyContent}, #{replyWriter}, 'C')
+	</insert>
 	
 
-	
-<!-- 	<select id="selectReplyList" resultMap="replyResultSet" parameterType="_int"> -->
-<!-- 		SELECT USER_ID, REPLY_CONTENT, CREATE_DATE -->
-<!-- 		FROM REPLY R -->
-<!-- 		JOIN MEMBER ON REPLY_WRITER = USER_NO -->
-<!-- 		WHERE R.STATUS = 'Y' AND REF_BNO = #{boardNo} -->
-<!-- 		ORDER BY REPLY_NO DESC -->
-<!-- 	</select> -->
-	
-<!-- 	<select id="selectSearchList" parameterType="hashmap" resultType="board"> -->
-<!-- 		SELECT BOARD_NO, BOARD_TITLE, USER_ID, COUNT, CREATE_DATE -->
-<!-- 	    FROM BOARD B -->
-<!-- 	    JOIN MEMBER ON BOARD_WRITER = USER_NO -->
-<!-- 	    WHERE B.STATUS = 'Y' -->
-<!-- 	    <if test="condition == 'writer'"> -->
-<!--     		AND USER_ID -->
-<!-- 	    </if> -->
-<!-- 	    <if test="condition.equals('title')"> -->
-<!--     		AND BOARD_TITLE -->
-<!-- 	    </if> -->
-<!-- 	    <if test="condition == 'content'"> -->
-<!--     		AND BOARD_CONTENT -->
-<!-- 	    </if> -->
-<!-- 	     LIKE '%' || #{keyword} || '%' -->
-<!-- 	    ORDER BY BOARD_NO DESC -->
-<!-- 	</select> -->
-	
 <!-- 	<select id="selectSearchCount" parameterType="hashmap" resultType="int"> -->
 <!-- 		SELECT COUNT(*) FROM BOARD B -->
 <!-- 		JOIN MEMBER ON BOARD_WRITER = USER_NO -->
@@ -109,7 +98,4 @@
 <!-- 		UPDATE BOARD SET BOARD_NO = #{boardNo} -->
 <!-- 		WHERE BOARD_NO = #{boardNo} and STATUS = 'Y' -->
 <!-- 	</update> -->
-	 
-	
-	
 </mapper>

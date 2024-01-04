@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="project" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>${ p.postTitle }</title>
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/community/detail.css" type="text/css">
+<link rel="stylesheet" href="${ project }/resources/css/community/detail.css" type="text/css">
 </head>
 <body>
 	<jsp:include page="../common/topbar.jsp"/>
@@ -47,17 +48,17 @@
             <section class="reply-write">
                 <article>
 				<c:if test="1 == 1">로그인 후 이용 가능합니다</c:if>
-				<textarea></textarea>
+				<textarea id="replyContent"></textarea>
 				</article>
                 <article>
-                    <a href="">등록</a>
+                    <a onclick="refresh(${ p.postNo })">등록</a>
                 </article>
             </section>
             
-			<c:forEach var="r" items="p.replylist">
+			<c:forEach var="r" items="${ p.replyList }">
 	            <section class="reply-read">
 	                <article>
-	                    <span>다른 댓글 1</span>
+	                    <span>${ r.replyContent }</span>
 	                </article>
 	                <article class="need-login">
 	                    <a href="">수정</a>
@@ -68,5 +69,23 @@
 			</c:forEach>
         </section>
     </square>
+    <script>
+    	function refresh(p) {
+    		$.ajax({
+                url : 'write.re', type : 'post',
+                data : {postNo : p, replyContent : $('#replyContent').val()},
+                success : (tf) => {
+		    		if(tf) {
+		    			alert("댓글이 등록되었습니다");
+		    		} else {
+		    			alert("오류가 발생하였습니다");
+		    		}
+   					location.href = "${project}/detail.po?postNo=" + p;
+                }, error : () => {
+                    console.log("통신 실패");
+                }
+            });
+    	}
+    </script>
 </body>
 </html>

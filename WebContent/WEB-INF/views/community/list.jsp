@@ -28,10 +28,10 @@
                 </select>
             </article>
             <article>
-                	<a href="write.po">글작성</a>
+                	<a id="write">글작성</a>
                     <div class="list-searchBox">
                         <input class="list-search" type="text" placeholder="검색어를 입력하세요.">
-                        <img src="${project}/resources/images/search_icon.png">
+                        <img id="search" src="${project}/resources/images/search_icon.png">
                     </div>
             </article>
         </section>
@@ -78,24 +78,30 @@
 		</section>
     </square>
     <script>
+//     	필터
     	$(() => {
-    		if("${category}") {
-    			$('#category').val('${category}');
-    		}
+    		if("${category}") $('#category').val('${category}');
+    		if("${keyword}") $('.list-search').val('${keyword}');
     	});
        	
-    	$('#category').change(function() {
+    	$('#category').change(() => {
     		location.href = '${domain}currentPage=1&category=' + $("#category").val();
 		});
     	
+    	$("#search").click(() => {
+			location.href = '${domain}keyword=' + $('.list-search').val();
+    	});
+    	
+//     	페이징
     	function page(n) {
 			let domain = '${domain}currentPage=' + n;
 			
 			if("${category}") domain += '&category=${category}';
+    		if("${keyword}") domain += '&keyword=${keyword}';
 			
 			location.href = domain;
     	}
-    		
+    	
     	function stepPage(n) {
 			let domain = '${domain}currentPage=' + (${pi.currentPage} + n);
 			
@@ -103,35 +109,16 @@
    			
     		location.href = domain;
     	}
-//  		<c:if test="true">
-// 				console.log('test');
-// 			</c:if>
-/*			$.ajax({
-                url : 'list.po',
-                data : {category : $('#category').val(), currentPage : ${pi.currentPage}},
-                type : 'get',
-                async: false,
-                success : (list) => {
-                	console.log(list);
-                    let tag = list.map((p) => {
-						return (`<section class="post">
-	<article class="post-content">
-		<span class="post-title">` + p.postTitle + `</span>
-		<span>` + p.postContent + `</span>
-	</article>
-	<article class="post-info">
-		<span>` + p.count + `</span>
-		<span>` + p.userId + `</span>
-		<span>` + p.createDate + `</span>
-	</article>
-</section>`);
-					});
-                	console.log(tag);
-                    $('.list-area').html(tag.join(""));
-                }, error : () => {
-                    console.log("통신 실패");
-                }
-            }); */
+    	
+//     	게시글 작성
+    	$("#write").click(() => {
+    		let user = '${loginUser}';
+    		if(user) {
+    			location.href = '${project}/write.po';
+    		} else {
+    			alert("로그인 후 이용 가능합니다")
+    		}
+    	});
     </script>
 </body>
 </html>
