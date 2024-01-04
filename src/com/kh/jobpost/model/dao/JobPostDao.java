@@ -41,4 +41,23 @@ public class JobPostDao {
 	public ArrayList<JobPost> idxSelectList(SqlSession session, PageInfo pi) {
 		return(ArrayList) session.selectList("jobpostMapper.idx_selectList");
 	}
+
+
+	public ArrayList<JobPost> getPostsByCategory(SqlSession session, String category) {
+        return (ArrayList) session.selectList("jobpostMapper.getPostsByCategory", category);
+
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

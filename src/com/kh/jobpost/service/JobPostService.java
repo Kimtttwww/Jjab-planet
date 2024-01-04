@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.kh.common.Template;
 import com.kh.common.model.vo.PageInfo;
+import com.kh.community.model.vo.Post;
 import com.kh.jobpost.model.dao.JobPostDao;
 import com.kh.jobpost.model.vo.JobPost;
 
@@ -56,4 +57,20 @@ public class JobPostService {
 
 		return count;
 	}
+
+	
+	public ArrayList<JobPost> getPostsByCategory(String category) {
+		
+		//데이터베이스 연결 및 쿼리 실행
+		SqlSession session = Template.getSqlSession();
+		
+		//반환된 결과를 ArrayList<Post> 형태로 변환하여 반환
+		ArrayList<JobPost> list = dao.getPostsByCategory(session, category);
+		
+		session.close();
+		
+		return list;
+	}
+
+	
 }
