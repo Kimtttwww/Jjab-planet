@@ -44,7 +44,7 @@ public class SignupController extends HttpServlet {
 //		INSERT INTO MEMBER(USER_NO, USER_ID, USER_PWD, PHONE, STATUS, USER_TYPE)
 //		VALUES(SEQ_UNO.NEXTVAL, #{userId}, #{userPwd}, #{phone}, #{status}, #{userType})
 		
-		String userId = request.getParameter("userId");
+		String userId = request.getParameter("userId") + "@" + request.getParameter("email-direct");
 		String userPwd = request.getParameter("userPwd");
 		String phone = request.getParameter("pphone") + request.getParameter("phone");
 		String userType = request.getParameter("userType");

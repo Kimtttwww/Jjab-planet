@@ -9,6 +9,7 @@
 <title>Document</title>
 <link rel="stylesheet"
 	href="${ pageContext.request.contextPath }/resources/css/common/memberInsert.css">
+</head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	<!--개인회원 enroll-->
@@ -26,59 +27,53 @@
 				<div class="enroll-div">
 					<p>* 필수 입력 정보입니다.</p>
 					<div>
-
 						<div>아이디*</div>
-
 						<div>
-							<input type="email" name="userId" class="enroll-email"
-								placeholder="이메일을 입력하세요."> <select
-								name="enroll-selectEmail"
-								class="enroll-selectBox enroll-selectEmail">
-								<option value="" selected>naver.com</option>
-								<option value="">gmail.com</option>
-								<option value="">daum.net</option>
-								<option value="">nate.com</option>
-								<option value="direct">직접입력</option>
-							</select> <input type="text" name="email-direct" class="email-direct" />
+							<input type="text" name="userId" class="enroll-email" placeholder="이메일을 입력하세요."> 
+								<span>@</span> 
+								<input disabled id="textEmail" class="email-direct" name="email-direct" placeholder="이메일을 선택하세요."> 
+							<select id="selectId" name="enroll-selectEmail" class="enroll-selectBox enroll-selectEmail">
+								<option value="" disabled selected>E-Mail 선택</option>
+								<option value="naver.com" id="naver.com">naver.com</option>
+								<option value="gmail.com" id="gmail.com">gmail.com</option>
+								<option value="daum.net" id="daum.net">daum.net</option>
+								<option value="nate.com" id="nate.com">nate.com</option>
+								<option value="directEmail" id="textEmail">직접 입력하기</option>
+							</select>
 						</div>
 					</div>
 					<div>
-
 						<div>비밀번호*</div>
-
 						<div>
 							<input type="password" name="userPwd" class="enroll-textL"
 								minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호">
-
 						</div>
 					</div>
 					<div>
-
 						<div>비밀번호 확인*</div>
-
 						<div>
 							<input type="password" class="enroll-textL" minlength="8"
 								maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호">
 						</div>
 					</div>
 					<div>
-
-						<div>핸드폰번호</div>
-
+						<div id="phone">핸드폰 번호*</div>
 						<div>
-							<select name="pphone" class="enroll-selectBox">
-								<option value="">010</option>
-								<option value="">011</option>
-								<option value="">016</option>
-								<option value="">017</option>
-								<option value="">019</option>
-							</select> <input type="text" name="phone" class="enroll-phoneBox"
-								maxlength="8" placeholder="(-)제외">
+							<select id="selectPhone" name="pphone" class="enroll-selectBox">
+								<option value="010">010</option>
+								<option value="011">011</option>
+								<option value="016">016</option>
+								<option value="017">017</option>
+								<option value="019">019</option>
+								<option value="02">02</option>
+								<option value="031">031</option>
+								<option value="032">032</option>
+							</select> 
+							<input type="text" name="phone" class="enroll-phoneBox" maxlength="8" placeholder="(-)제외">
 						</div>
 					</div>
 
-
-					<div id="corporation-enrollForm" class = "flex-container">
+					<div id="corporation-enrollForm" class="flex-container">
 						<input type="hidden" name="userType" value="E">
 						<div>
 							<div>
@@ -125,27 +120,9 @@
 								<input type="text" name="homePage" class="enroll-textL">
 							</div>
 						</div>
-						<div>
-							<div>
-								<div>회사전화번호*</div>
-							</div>
-							<div>
-								<input type="text" name="pphone" class="enroll-textL"
-									maxlength="17" placeholder="(-) 포함">
-							</div>
-						</div>
-							<div>
-							<div>
-								<div>회사전화번호*</div>
-							</div>
-							<div>
-								<input type="text" name="jobNo" class="enroll-textL"
-									maxlength="17" placeholder="(-) 직종">
-							</div>
-						</div>
-						</div>
-						<div class="enroll-btnBox">
-							<button type="submit" class="enroll-btn">가입하기</button>
+					</div>
+					<div class="enroll-btnBox">
+						<button type="submit" class="enroll-btn">가입하기</button>
 					</div>
 				</div>
 
@@ -154,21 +131,6 @@
 		</form>
 	</div>
 	<script>
-
-		$(function() {
-			//직접입력박스 숨김
-			$(".email-direct").hide();
-
-			$(".enroll-selectEmail").change(function() {
-				//직접입력 누르면 나타남
-				if ($(".enroll-selectEmail").val() == "direct") {
-					$(".email-direct").show();
-				} else {
-					$(".email-direct").hide();
-				}
-
-			})
-		});
 
 		$(document).ready(function() {
 			// 초기 상태 기업 숨김
@@ -184,10 +146,8 @@
 			$("#co-btn").click(function() {
 				$("#mem-btn").removeClass("expand-green").addClass("contract-white");
 				$("#co-btn").removeClass("contract-white").addClass("expand-green");
-				
 				$("#corporation-enrollForm").show();
-				
-				
+				$("#phone").html("회사 전화번호*");
 			});
 
 			// 기업회원가입 상태에서 개인 버튼 클릭 시
@@ -195,7 +155,7 @@
 				$("#mem-btn").removeClass("contract-white").addClass("expand-green");
 				$("#co-btn").removeClass("expand-green").addClass("contract-white");
 				$("#corporation-enrollForm").hide();
-				
+				$("#phone").html("핸드폰 번호*");
 			});
 		});
 
@@ -208,10 +168,22 @@
 		});
 		
 		
+		$(function() {
+	        $('#selectId').change(function() {
+	            if ($('#selectId').val() == 'directEmail') {
+	                $('#textEmail').attr("disabled", false);
+	                $('#textEmail').val("");
+	                $('#textEmail').focus();
+	            } else {
+	                $('#textEmail').val($('#selectId').val());
+	                $('#textEmail').attr("disabled", true);
+	            }
+	        })
+	    });
 	
 	</script>
-	
-	
+
+
 
 </body>
 
