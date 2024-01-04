@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,41 +73,21 @@
 </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
-	<div class="main">
-	<div class="side">
-			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
-		</div>
-		<container>
-		<section class="list-area">
+<container>
+<section class="list-area">
 			<h3>알림 관리</h3>
 			<hr>
-			<c:forEach var="p" items="${notice}">
 			<article class="notice">
-				<span>${p.noticeText }</span>
+				<span>어쩌구 저쩌구 알림1</span>
 				<button type="button" class="">삭제</button>
 			</article>
 			<hr>
-			</c:forEach>
-			
-		</section>
-
-		<section class="pagingbar">
-			<button type="button">&lt; 이전</button>
-			<button type="button">1</button>
-			<button type="button">2</button>
-			<button type="button">3</button>
-			<button type="button">4</button>
-			<button type="button">5</button>
-			<button type="button">6</button>
-			<button type="button">7</button>
-			<button type="button">8</button>
-			<button type="button">9</button>
-			<button type="button">10</button>
-			<button type="button">다음 &gt;</button>
+			<article class="notice">
+				<span>어쩌구 저쩌구 알림2</span>
+				<button type="button" class="">삭제</button>
+			</article>
+			<hr>
 		</section>
 		</container>
-	</div>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

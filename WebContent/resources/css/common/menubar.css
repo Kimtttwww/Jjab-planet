@@ -1,4 +1,3 @@
-/*박윤비 기업 공고 상세페이지 제작중 미완성 12:18*/
 a {
 	text-decoration-line: none;
 	color: black;
@@ -8,8 +7,9 @@ a {
 	list-style: none;
 	margin: 0;
 	width: 100%;
-	text-align: center;
-	padding: 10px 0;
+	text-align: right;
+	padding: 10px;
+	border-right : 1px solid black;
 }
 
 ul {
