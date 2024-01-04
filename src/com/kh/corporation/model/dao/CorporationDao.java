@@ -49,14 +49,19 @@ public class CorporationDao {
 		return sqlSession.selectList("boardMapper.selectCorpOne", corpCode);
 	}
 
-	public List<JobPost> selectJopPostList(SqlSession sqlSession, int corpCode) {
+	public List<JobPost> selectJobPostList(SqlSession sqlSession, int corpCode) {
 		
-		return sqlSession.selectList("boardMapper.selectJopPostList", corpCode);
+		return sqlSession.selectList("boardMapper.selectJobPostList", corpCode);
 	}
 
 	public List<Logo> selectLogoOne(SqlSession sqlSession, int corpCode) {
 		
 		return sqlSession.selectList("boardMapper.selectLogoOne", corpCode);
+	}
+
+	public List<Logo> selectLogoList(SqlSession sqlSession, int corpCode) {
+
+		return sqlSession.selectList("boardMapper.selectLogoList", corpCode);
 	}
 
 	

@@ -72,15 +72,15 @@ public class CorpDetailController extends HttpServlet {
 		
 		
 		// corpNo에 해당하는 채용공고 출력
-		List<JobPost> jopPostlist = corpService.selectJopPostList(corpCode);
-		System.out.println(jopPostlist);
-		request.setAttribute("jopPostlist", jopPostlist);
+		List<JobPost> jobPostList = corpService.selectJobPostList(corpCode);
+		System.out.println("jobPostList : " +jobPostList);
+		request.setAttribute("jobPostList", jobPostList);
 		
 		
 		
 		// 기업의 리뷰 리스트 출력하기
 		List<Reply> replyList = corpService.selectReviewList(pi, corpCode);
-		System.out.println(replyList);
+		System.out.println("replyList : " + replyList);
 		request.setAttribute("replyList", replyList);
 		
 		request.getRequestDispatcher("/WEB-INF/views/corporation/corpInfo_detail.jsp").forward(request, response);

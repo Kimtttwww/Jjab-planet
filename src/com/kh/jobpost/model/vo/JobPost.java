@@ -1,19 +1,18 @@
 package com.kh.jobpost.model.vo;
 
 import java.sql.Date;
-import java.util.ArrayList;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Data
 public class JobPost {
 	private int jobpostNo; //JOP_POST
+	private int corpNo;//CORPORATION
 	private String postTitle; //JOP_POST
 	private String postContent; //JOP_POST
 	private String education; //JOP_POST

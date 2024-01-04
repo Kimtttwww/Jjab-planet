@@ -58,10 +58,10 @@ public class CorporationService {
 		return list;
 	}
 
-	public List<JobPost> selectJopPostList(int corpCode) {
+	public List<JobPost> selectJobPostList(int corpCode) {
 		
 		SqlSession sqlSession = Template.getSqlSession();
-		List<JobPost> list = corpDao.selectJopPostList(sqlSession, corpCode);
+		List<JobPost> list = corpDao.selectJobPostList(sqlSession, corpCode);
 
 		sqlSession.close();
 		return list;
@@ -71,6 +71,15 @@ public class CorporationService {
 		
 		SqlSession sqlSession = Template.getSqlSession();
 		List<Logo> list = corpDao.selectLogoOne(sqlSession, corpCode);
+
+		sqlSession.close();
+		return list;
+	}
+
+	public List<Logo> selectLogoList(int corpCode) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		List<Logo> list = corpDao.selectLogoList(sqlSession, corpCode);
 
 		sqlSession.close();
 		return list;
