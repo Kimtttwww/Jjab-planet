@@ -9,19 +9,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>채용공고 리스트</title>
 <!-- <script src="/3script/jobPostingList.js"></script> -->
-<link rel="stylesheet"
-	href="${ pageContext.request.contextPath }/resources/css/jobPostingList.css"
-	type="text/css">
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/jobPostingList.css" type="text/css">
 </head>
 <body>
-
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
-
 
 	<div class="head-container">
 
-		<h1
-			style="text-align: center; border-bottom: solid 1px; padding-bottom: 50px; font-size: 5ch;">
+		<h1 style="text-align: center; border-bottom: solid 1px; padding-bottom: 50px; font-size: 5ch;">
 			채 용 공 고</h1>
 
 		<header>
@@ -36,35 +31,29 @@
 				<input type="search" id="search-box" placeholder="기업검색">
 			</div>
 		</header>
+    <main>
 
-		<main>
-			<section class="job-listing">
-
-				<c:forEach var="p" items="${jobPostList }">
-
-					<!-- items="${list } 이 놈의 변수명 p -->
-					<div class="job-card" data-category="${p.jobNo}"
-						onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
-						<img
-							src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg"
-							class="company-logo">
-						<div class="job-info">
-							<h3 class="job-offer-title">${p.postTitle }</h3>
-							<p class="employee-condition">${p.postContent }</p>
-							<p class="corporate-name">${p.corpNo}</p>
-							<div class="deadline-box">
-								<p class="deadline">${p.endDate}</p>
-							</div>
+      <section class="job-listing">
+      
+			<c:forEach var="p" items="${list }">
+				<div class="job-card" onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
+					<img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" class="company-logo">
+					<div class="job-info">
+						<h3 class="job-offer-title">${p.postTitle }</h3>
+						<p class="employee-condition">${p.postContent }</p>
+						<p class="corporate-name">${p.corpName}</p>
+						<div class="deadline-box">
+							<p class="deadline">${p.endDate}</p>
 						</div>
 					</div>
-				</c:forEach>
-			</section>
-		</main>
+				</div>
+			</c:forEach>
+		</section>
+	</main>
 
 
 		<div class="pagination">
-			<c:url value="${empty condition ? 'list.job' : 'search.bo'}"
-				var="url">
+			<c:url value="${empty condition ? 'list.job' : 'search.bo'}" var="url">
 				<c:param name="condition" value="${condition }" />
 				<c:param name="keyword" value="${keyword }" />
 			</c:url>

@@ -1,6 +1,5 @@
-/*박윤비 미완성 12:18*/
 html, body {
-	margin: 0;
+	margin: 0 auto;
 	box-sizing: border-box;
 	height: 100%;
 }

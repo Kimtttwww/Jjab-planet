@@ -107,11 +107,11 @@ a {
 	flex-basis: 40%;
 	background-color: aliceblue;
 	margin: 0 20px 0 0;
-	padding: 20px;
+	padding: 25px;
 	border-radius: 20px;
 }
 
-.top_b2 {
+.top_b1:nth-child(2), .top_b1:nth-child(3) {
 	flex-basis: 25%;
 	background-color: aquamarine;
 	margin: 0 20px 0 0;
