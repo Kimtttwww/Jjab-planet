@@ -1,44 +1,33 @@
 package com.kh.jobpost.model.vo;
 
 import java.sql.Date;
-import java.util.ArrayList;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
+
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Data
 public class JobPost {
 	private int jobpostNo; //JOP_POST
+	private int corpNo;//CORPORATION
 	private String postTitle; //JOP_POST
-	private String phone; //MEMBER
-	private String education; //JOP_POST
-	private String career; //JOP_POST
-	private String jobName; //occupation
-	private String location; //JOP_POST
+	private String postContent; //JOP_POST
 	private Date createDate;
 	private Date endDate; //JOP_POST
-	private String postContent; //JOP_POST
-	private String corpNo;//CORPORATION
-	private String corpName;
+	private String jobName;// 
+	private String status;
 	private int count; //JOP_POST
-	private String corpName; // CORP_NAME
-	private char jobNo;// JOB_NO
+	private String career; //JOP_POST
+	private String education; //JOP_POST
+	private String location; //JOP_POST
 	
 	
-	
-	private ArrayList<JobPost> list;
-	private ArrayList<JobPost> idx_list;
-
 		 
-//	private int corpNo; //JOP_POST
-//	private String status; //JOP_POST
-//	private int count; //JOP_POST
-	
 /*공고제목
 	휴대폰번호
 	학력

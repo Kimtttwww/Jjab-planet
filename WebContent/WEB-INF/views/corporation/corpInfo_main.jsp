@@ -1,5 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" 
+		import= "java.util.ArrayList, com.kh.corporation.model.vo.*"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
+	<% 
+	Corporation corp = (Corporation)request.getAttribute("corp");
+	
+	
+	%>
+	
+
 		<!DOCTYPE html>
 		<html>
 
@@ -23,16 +32,20 @@
 				.top_banner {
 					width: 100%;
 					display: flex;
-					margin-bottom: 50px;
+					flex-wrap: wrap;
+					
+					
+					
 				}
 
 				.top_b3 {
 					flex-basis: 30%;
 					height: 300px;
 					background-color: rgb(231, 248, 170);
-					margin: 0 20px 0 0;
+					margin: 20px;
 					padding: 20px;
 					border-radius: 20px;
+					justify-content: space-between;
 				}
 
 
@@ -53,20 +66,18 @@
 				</div>
 
 				<div class="top_banner">
-
+					
+				    
 					<c:forEach var="corp" items="${Corplist}">
-						<div class="top_b3" style="background: pink">
-<%-- 							<c:forEach var="logo" items="${logoList}"> --%>
-							<img onclick='location.href="${pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"'
-								src="${ pageContext.request.contextPath }/resources/logo_upfiles/${logo.changeName}" alt="기업 대표이미지">
-							
-							
-							<c:if test="${not empty logo.changeName}">
-						            <%-- 값이 null이 아닌 경우에만 로그 출력 --%>
-						           ${corp.corpNo} 
+						<div class="top_b3" style="background: pinkyellow">
+							<c:if test="${ empty corp.fileNo}">
+					    		<p>등록된 이미지가 없습니다.</p>
 						    </c:if>
-<%-- 							</c:forEach> --%>
-								
+							<div align="center">
+							<img width="250px" height="100px" 
+								onclick='location.href="${pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"'
+								src="${ pageContext.request.contextPath}/${corp.fileNo.filePath}${corp.fileNo.changeName}" alt="기업 대표이미지">
+							</div>	
 							<p>${corp.corpName}</p>
 							<p>${corp.address}</p>
 							<p class="content_bottom">

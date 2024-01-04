@@ -128,7 +128,7 @@ height: 100%;
 			<div class="corp-top">
 				<c:forEach var="corp" items="${corpOne}">
 				<div class="corp-logo">
-					<div class="corp-name">기업로고</div>
+					<div class="corp-name">기업로고${replyList}</div>
 					<div class="corp-name">${corp.corpName}</div>
 				</div>
 				<div class="corp-interest">
@@ -178,18 +178,17 @@ height: 100%;
 		<div class="corp-zone">
 			<div>|진행중인 채용공고</div>
 			<div class="corp-uppost-area corp-backwhite">
-				<c:if test="${empty jopPostlist}" >
+				<c:if test="${empty jobPostList}" >
 					<p>진행중인 공고가 없습니다.</p>
 				</c:if>
-				<c:forEach var="jopPost" items="${jopPostlist}">
-					<c:if test="${!empty jopPostlist}" >
-						<div>${jopPost.postTitle}</div>
-						<div>모집직종 : ${jopPost.jobName}</div>
+				<c:forEach var="jobPost" items="${jobPostList}">
+						<div>${jobPost.postTitle}</div>
+						<div>모집직종 : ${jobPost.jobName }</div>
+						
 						<div align="right">
 							<button onclick="">입사지원</button>
-							<div>공고등록일 : ${jopPost.createDate}</div>
+							<div>공고등록일 : ${jobPost.createDate}</div>
 						</div>
-					</c:if>
 				</c:forEach>
 			</div>
 		</div>
@@ -205,16 +204,17 @@ height: 100%;
 		<div class="corp-zone">
 			<div>
 				<div class="corp_review_a2">|기업리뷰</div>
-
+				
+<%-- 				<input type="hidden" name="userNo" value= "<%= loginUser.getUserNo() %> "> --%>
 
 				<!-- 로그인한 회원만 글작성 버튼이 보이게 조정 -->
-<%-- 			<% if(loginUser != null){ %> --%>
+			<% if(loginUser != null){ %>
 					<div>
 						<button
 							onclick="open('address','write_review','width=430,height=500,location=no,status=no,scrollbars=yes')">
 							리뷰작성하기</button>
 					</div>
-<%-- 			<% } %> --%>
+			<% } %>
 			</div>
 
 			<button
@@ -259,25 +259,27 @@ height: 100%;
 										<p>신고 내용을 작성해주세요</p>
 										<textarea rows="10" cols="20" style="resize: none;"></textarea>
 										
-			
+										
+										<% if(loginUser != null ){ %>
 										<button
 											onclick="document.getElementById('popup_report').style.display='none'">신고</button>
 										<button
 											onclick="document.getElementById('popup_report').style.display='none'">취소</button>
+										<% } %>
 									</div>
 								</div>
 							<% } %>
 							
 							<!-- 본인 작성글에만 수정/삭제 가능하게끔   -->
-							<% if(loginUser != null){ %>
+<%-- 							<% if(loginUser != null && loginUser.getUserNo().equals( ) ){ %> --%>
 <%-- 									<input type="hidden" name="corpNo" value="<%= %>"> --%>
 	
-								<input type="hidden" name="userNo" value= "<%= loginUser.getUserNo() %> ">
+								
 								<div align="right">
 								<button onclick="">수정</button>
 								<button onclick="">삭제</button>
 								</div>
-							<% } %>
+<%-- 							<% } %> --%>
 						</div>		
 						
 										
