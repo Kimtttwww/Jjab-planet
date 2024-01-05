@@ -1,5 +1,6 @@
 package com.kh.corporation.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -83,6 +84,23 @@ public class CorporationService {
 
 		sqlSession.close();
 		return list;
+	}
+
+
+	public int corplikeInsert(HashMap<Integer, Integer> map) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		int corplike = corpDao.corplikeInsert(sqlSession, map);
+		sqlSession.close();
+		return corplike;
+	}
+
+	public int corplikeCount(int corpCode) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		int corplike = corpDao.corplikeCount(sqlSession, corpCode);
+		sqlSession.close();
+		return corplike;
 	}
 
 

@@ -86,10 +86,11 @@
 <!-- 	</select> -->
 	
 	<!--  선택한 기업정보 -->
-	<select id="selectCorpOne" resultType="com.kh.corporation.model.vo.Corporation"  >
-	    SELECT * 
-	      FROM CORPORATION
-	     WHERE CORP_NO = #{corpCode}
+	<select id="selectCorpOne" resultMap="corpResultMap"  >
+	    SELECT C.*, L.*
+	      FROM CORPORATION C	
+	      JOIN LOGO L ON (C.CORP_NO = L.CORP_NO) 
+	     WHERE C.CORP_NO = #{corpCode}
 	</select>
 	
 	
@@ -120,11 +121,17 @@
 	    ORDER BY R.REPLY_NO DESC
 	</select>
 	
-	<!--  기업 공고 클릭시 조회수 증가  -->
-	<update id="increaseCount" parameterType="_int">
+	<!--  유저가 ★클릭한 기업 넣어주기  -->
+	<insert id="corplikeInsert">
+		INSERT INTO JOAYO_CORP
+		VALUES (SEQ_JOAYONO.NEXTVAL, ??  ,#{corpCode} )
+	</insert>
+	
+	<!--  기업정보에서 ★클릭시 관심수 증가  -->
+	<update id="corplikeCount" parameterType="_int">
 		UPDATE CORPORATION
-		SET COUNT = COUNT + 1
-		WHERE JOB_NO = #{boardNo}
+		SET LIKE_COUNT = LIKE_COUNT + 1
+		WHERE CORP_NO = #{corpCode}
 	</update>
 	
 	<!--  기업 정보에 해당 기업공고 노출  -->

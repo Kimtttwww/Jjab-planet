@@ -16,6 +16,7 @@ import com.kh.corporation.model.service.CorporationService;
 import com.kh.corporation.model.vo.Corporation;
 import com.kh.corporation.model.vo.Logo;
 import com.kh.jobpost.model.vo.JobPost;
+import com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class CorpReviewInsertController
@@ -59,7 +60,7 @@ public class CorpDetailController extends HttpServlet {
 		
 		// corpNo에 해당하는 기업 출력
 		List<Corporation> corpOne = corpService.selectCorpOne(corpCode);
-		System.out.println(corpOne);
+		System.out.println("corpOne : " +corpOne);
 		request.setAttribute("corpOne", corpOne);
 		
 		
@@ -69,6 +70,8 @@ public class CorpDetailController extends HttpServlet {
 		System.out.println("logoList : " + logoList);
 		
 		System.out.println("2corpCode : " + corpCode);
+		
+		
 		
 		
 		// corpNo에 해당하는 채용공고 출력
@@ -83,6 +86,9 @@ public class CorpDetailController extends HttpServlet {
 		System.out.println("replyList : " + replyList);
 		request.setAttribute("replyList", replyList);
 		
+		
+		
+	
 		request.getRequestDispatcher("/WEB-INF/views/corporation/corpInfo_detail.jsp").forward(request, response);
 	}
 
