@@ -25,4 +25,5 @@ public class JobPost {
 	private String phone; //MEMBER
 	private String corpName;//CORPORATION
 	private String ceoName;//CORPORATION
+	private String userType;//USER_TYPE
 }

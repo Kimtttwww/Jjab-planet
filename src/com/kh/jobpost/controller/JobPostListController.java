@@ -49,18 +49,15 @@ public class JobPostListController extends HttpServlet {
 		HttpSession session =request.getSession();
 		
 		if (result > 0) {
-		ArrayList<JobPost> jobPostList = new ArrayList<JobPost> (service.selectList(pi));
+		ArrayList<JobPost> list = new ArrayList<JobPost> (service.selectList(pi));
 		
 		request.setAttribute("pi", pi);      
-		request.setAttribute("jobPostList", jobPostList);
+		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingList.jsp").forward(request, response);
 		} else {
 			session.setAttribute("alertMsg", "게시글 상세조회 실패");
 		}
-		
-		
-		
 		
 		
 		
