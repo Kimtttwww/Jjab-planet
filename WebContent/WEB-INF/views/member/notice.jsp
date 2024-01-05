@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- 	/*박윤비 미완성 12:18*/ -->
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@
 <style>
 	body {
 		box-sizing: border-box;
-		margin: 0;
+		margin: 0 auto;
 		height: 100%;
 	}
 
@@ -59,6 +59,7 @@
 
 	.main {
 		display: flex;
+    	justify-content: flex-start;
 	}
 
 	.side {
@@ -68,24 +69,28 @@
 	.content {
 		flex-basis: 80%;
 	}
+	
+	
 </style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	<div class="main">
+	<div class="side">
+			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
+		</div>
 		<container>
 		<section class="list-area">
 			<h3>알림 관리</h3>
 			<hr>
+			<c:forEach var="p" items="${notice}">
 			<article class="notice">
-				<span>어쩌구 저쩌구 알림1</span>
+				<span>${p.noticeText }</span>
 				<button type="button" class="">삭제</button>
 			</article>
 			<hr>
-			<article class="notice">
-				<span>어쩌구 저쩌구 알림2</span>
-				<button type="button" class="">삭제</button>
-			</article>
-			<hr>
+			</c:forEach>
+			
 		</section>
 
 		<section class="pagingbar">
@@ -104,5 +109,6 @@
 		</section>
 		</container>
 	</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

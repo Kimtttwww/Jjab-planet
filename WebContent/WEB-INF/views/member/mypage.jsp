@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -14,26 +15,17 @@
 }
 
 .side {
-	width: 100%;
+	width: 200px;
 	height: 100%;
 	padding-top: 20px;
-	borer-right: 1px solid;
 }
 
 .content {
-	flex-basis: 80%;
-	width: 100%;
+	width: 70%;
 	height: 100%;
 }
 </style>
 </head>
-<%-- <%
-    String pagefile=request.getParameter("page");
-    //처음 보여주는 페이지는 newitem입니다.
-    if(pagefile==null){
-            pagefile="newItem";
-        }
-%> --%>
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	<div class="main">
@@ -41,7 +33,7 @@
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
 		<div class="content">
-			<jsp:include page="/WEB-INF/views/member/notice.jsp" />
+			<jsp:include page="/WEB-INF/views/common/mypagemain.jsp" />
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />

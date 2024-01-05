@@ -1,7 +1,9 @@
 /*위 타이틀부터 페이지네이션 전체를 덮는 div*/
 .mypage3{
-    width:80%;
+    width:70%;
     margin: 0 auto;
+    display:inline-block;
+    margin-left : 50px;
 }
 
 /*관심기업 star이미지*/
@@ -34,10 +36,13 @@
 }
 
 /*페이지네이션 버튼*/
-.page-area{
-    width: 100%;
-}
-
 #page-area{
     text-align: center;
+    width: 100%;
+    margin-top:20px;
+}
+
+.side{
+	display:inline-block;
+	width:20%;
 }
