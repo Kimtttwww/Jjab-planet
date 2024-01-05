@@ -15,25 +15,17 @@
 }
 
 .side {
-	width: 100%;
+	width: 200px;
 	height: 100%;
 	padding-top: 20px;
 }
 
 .content {
-	flex-basis: 80%;
-	width: 100%;
+	width: 70%;
 	height: 100%;
 }
 </style>
 </head>
-<%-- <%
-    String pagefile=request.getParameter("page");
-    //처음 보여주는 페이지는 newitem입니다.
-    if(pagefile==null){
-            pagefile="newItem";
-        }
-%> --%>
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	<div class="main">
