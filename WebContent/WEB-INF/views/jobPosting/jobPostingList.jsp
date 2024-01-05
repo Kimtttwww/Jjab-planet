@@ -19,13 +19,15 @@
 		<h1 style="text-align: center; border-bottom: solid 1px; padding-bottom: 50px; font-size: 5ch;">
 			채 용 공 고</h1>
 
-		<header>
-
-			<select id="category">
-				<option value="F">프론트엔드</option>
-				<option value="B">백엔드</option>
-				<option value="S">풀스택</option>
-			</select>
+		<header class="header">
+			<form action="JobPostListController" method="get">
+				<select id="category" name="category">
+					<option value="F">프론트엔드</option>
+					<option value="B">백엔드</option>
+					<option value="S">풀스택</option>
+				</select>
+				<button type="submit">검색</button>
+			</form>
 
 			<div>
 				<input type="search" id="search-box" placeholder="기업검색">
@@ -33,20 +35,24 @@
 		</header>
     <main>
 
-      <section class="job-listing">
+      <section class="job-listing" style="margin-bottom: 40px;"><!-- 일단여기에 css적용 -->
       
 			<c:forEach var="p" items="${list }">
+				<a href="/JobPostDetailController2?jobpostNo=${p.jobpostNo}">
+			
 				<div class="job-card" onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
 					<img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" class="company-logo">
 					<div class="job-info">
 						<h3 class="job-offer-title">${p.postTitle }</h3>
 						<p class="employee-condition">${p.postContent }</p>
 						<p class="corporate-name">${p.corpName}</p>
+						
 						<div class="deadline-box">
 							<p class="deadline">${p.endDate}</p>
 						</div>
 					</div>
 				</div>
+				</a>
 			</c:forEach>
 		</section>
 	</main>
@@ -69,7 +75,8 @@
 				<a href="${url }&currentPage=${pi.currentPage+1 }">[다음]</a>
 			</c:if>
 		</div>
-	</div>
+		
+	</div> <!-- head-container -->
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
@@ -93,7 +100,7 @@
 	});
 
 
-//필터기능
+/* //필터기능
 function filterJobs(category) {
 	  // 모든 job-card 요소를 선택
 	  const jobCards = document.querySelectorAll('.job-card');
@@ -119,7 +126,7 @@ function filterJobs(category) {
 document.getElementById('category').addEventListener('change',function(){
   filterJobs(this.value); // this.value는 현재'category' 요소의 선택된 값
 });
-
+ */
 
 
 </script>

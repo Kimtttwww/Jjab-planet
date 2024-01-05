@@ -27,10 +27,10 @@ public class JobPost {
 	private String location; //JOB_POST
 	private Date endDate; //JOB_POST
 	private int count; //JOB_POST
-	private int jobNo;// JOB_NO
 	private String jobName; //occupation
 //	private String phone; //MEMBER
 	private String corpName;//CORPORATION
-//	private String ceoName;//CORPORATION
+	private String ceoName;//CORPORATION
+	private String userType;//USER_TYPE
 }
 

@@ -31,7 +31,8 @@ public class JobPostDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		JobPostService service = new JobPostService();
-
+		
+		
 		int jobpostNo = Integer.parseInt(request.getParameter("bno"));
 		int result = service.increaseCount(jobpostNo);
 
@@ -40,7 +41,7 @@ public class JobPostDetailController extends HttpServlet {
 
 			request.setAttribute("p", p);
 			System.out.println(p);
-			request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetailCp.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetailUser2.jsp").forward(request, response);
 		} else {
 			request.getSession().setAttribute("alertMsg", "게시글 상세조회 실패");
 			response.sendRedirect("list.job?currentPage=1");

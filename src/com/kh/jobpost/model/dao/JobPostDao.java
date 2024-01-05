@@ -10,10 +10,17 @@ import com.kh.jobpost.model.vo.JobPost;
 
 public class JobPostDao {
 
-	public JobPost detailBoard(SqlSession session, int jobpostNo) {
-		return session.selectOne("jobpostMapper.detailPost", jobpostNo); 
-	}
+//	public JobPost detailBoard(SqlSession session, int jobpostNo) {
+//		return session.selectOne("jobpostMapper.detailPost", jobpostNo); 
+//	}
 	
+	
+	public JobPost detailPost(SqlSession session, int jobpostNo) {
+
+		// MyBatis의 selectOne 메서드를 사용하여 특정 jobpostNo에 해당하는
+        // 채용공고 상세 정보를 조회하고 반환
+        return session.selectOne("jobpostMapper.detailPost", jobpostNo); 
+	}
 	
 	/*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0**/
 	/*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0**/
@@ -44,9 +51,13 @@ public class JobPostDao {
 
 
 	public ArrayList<JobPost> getPostsByCategory(SqlSession session, String category) {
-        return (ArrayList) session.selectList("jobpostMapper.getPostsByCategory", category);
-
+		return  (ArrayList)session.selectList("jobpostMapper.getPostsByCategory", category);
 	}
+
+
+
+
+	
 
 
 	

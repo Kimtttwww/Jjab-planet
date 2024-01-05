@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <script src="/3script/jobPostingList.js"></script>
   <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/jobPostingDetailCp.css" type="text/css">
+	<link rel="stylesheet" href="/JJOB/WebContent/resources/css/jobPostingDetailCp.css"
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
@@ -17,7 +18,7 @@
 	    <p class="instructions">* 정확한 정보를 입력해 주세요.</p>
 
 	    <!-- 폼 태그 시작 -->
-	    <form action="/detail.job" method="get">
+	    <form action="/detail.job2" method="get">
 			<!-- 채용제목 입력 필드 -->
 			<div class="form-group">
 			  <label for="name">채용제목</label>
