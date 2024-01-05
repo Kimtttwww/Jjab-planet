@@ -9,7 +9,7 @@
 <style>
 
 .bigBox {
-    height: 350px;
+    height: 410px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -18,7 +18,7 @@
 .hapChae {
     display: flex;
     width: 350px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .id, .pwd {
@@ -32,8 +32,12 @@
     border: 1px solid black;
     border-radius: 20px;
     padding: 30px;
-    border: 10px solid #27ae60;
+    border: 6px solid #27ae60;
     border-radius: 20px;
+}
+
+.naddhapChae > div:first-of-type {
+    margin-top: 35px;
 }
 
 .button {
@@ -64,6 +68,12 @@
     outline-color: #27ae60;
 }
 
+.naddhapChae>span{
+	font-size:xx-large;
+	margin-left: 125px; 
+}
+
+
 </style>
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
@@ -73,13 +83,14 @@
 	<form id="login-form" action="<%=contextPath%>/login.me" method="post">
 		<div class="bigBox">
 				<div class="naddhapChae">
+				<span>로그인</span>
 					<div class="hapChae">
 						<span class="id">아이디:</span>
 							<input type="text" name = "userId" class="large-input" placeholder="이메일 주소">
 					</div>
 					<div class="hapChae">
 						<span class="pwd">비밀번호:</span>
-							<input type="password" name = "userPwd" class="large-input" placeholder="비밀번호(8자리 이상)">
+							<input type="password" name = "userPwd" class="large-input" placeholder="비밀번호">
 						</div>
 						<div class="button">
 							<input type="submit" class ="inputButton" value="로그인"> 

@@ -20,14 +20,15 @@
         <form class="post" action="write.po" method="post">
             <article>  
                 <select name="category" id="category">
+                    <option>게시판을 선택해주세요.</option>
                     <option value="I">면접</option>
                     <option value="C">자격증</option>
                     <option value="S">자소서</option>
                 </select>
-                <input type="text" class="post-title" name="postTitle">
+                <input type="text" class="post-title" name="postTitle" placeholder="제목을 입력해주세요.">
             </article>
 			
-			<textarea class="post-content" name="postContent">가나다라</textarea>
+			<textarea class="post-content" name="postContent" placeholder="내용을 입력해 주세요."></textarea>
 			
             <button style="margin: 0 auto;">등록</button>
         </form>

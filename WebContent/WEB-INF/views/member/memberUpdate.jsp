@@ -71,10 +71,11 @@ body {
 }
 .container-update .update-div{
     /*입력 정보 감싸는 틀*/
-    border: 10px solid #27ae60;
+    border: 4px solid #27ae60;
     padding-left: 20px;
     border-radius: 20px;
     width: 580px;
+    padding: 30px 20px 30px 35px;
 } 
 .container-update .update-btn {
     /*가입 버튼*/
