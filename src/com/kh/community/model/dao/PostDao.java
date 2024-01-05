@@ -41,4 +41,12 @@ public class PostDao {
 	public int insertReply(SqlSession db, Reply r) {
 		return db.insert(map + "insertReply", r);
 	}
+
+	public int deleteObject(SqlSession db, HashMap<String, String> v) {
+		return db.update(map + "deleteObject", v);
+	}
+
+	public int updateObject(SqlSession db, HashMap<String, String> v) {
+		return db.update(map + "updateObject", v);
+	}
 }

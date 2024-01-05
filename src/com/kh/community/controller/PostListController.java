@@ -49,14 +49,14 @@ public class PostListController extends HttpServlet {
 		HashMap<String, String> v = new HashMap<String, String>();
 		v.put("category", category);
 		v.put("keyword", keyword);
-		System.out.println(v + "\n" + v.size());
+		
 		int postcount = ps.selectPostCount(v);
 		
 		PageInfo pi = Pagination.getPageInfo(postcount, currentPage, 10, 25);
 		ArrayList<Post> list = ps.selectPostList(pi, v);
 		
 		request.setAttribute("category", category);
-		request.setAttribute("keyword", (v.get("keyword").equals("NULLNULLNULLNULLNULL")) ? "" : keyword);
+		request.setAttribute("keyword", (keyword.equals("NULLNULLNULLNULLNULL")) ? "" : keyword);
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		

@@ -28,17 +28,21 @@ public class PostDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PostService ps = new PostService();
-		int postNo = Integer.parseInt(request.getParameter("postNo"));
-		int result = ps.increaseCount(postNo);
-		
-		if(result > 0) {
-			request.setAttribute("p", ps.selectPost(postNo));
-//			System.out.println((Post)request.getAttribute("p"));
+		int postNo = 0;
+		try {
+			postNo = Integer.parseInt(request.getParameter("postNo"));
 			
+			if(postNo == 0) throw new NumberFormatException();
+		} catch (NumberFormatException e) {
+			request.setAttribute("alertMsg", "잘못된 접근입니다");
+			request.getRequestDispatcher("/list.po").forward(request, response);
+		}
+		
+		if(ps.increaseCount(postNo) > 0) {
+			request.setAttribute("p", ps.selectPost(postNo));
 			request.getRequestDispatcher("WEB-INF/views/community/detail.jsp").forward(request, response);
 		} else {
 			request.setAttribute("alertMsg", "해당 게시글을 찾지 못하였습니다");
-			
 			response.sendRedirect(request.getContextPath() + "/list.po");
 		}
 	}

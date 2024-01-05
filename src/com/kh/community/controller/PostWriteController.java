@@ -56,13 +56,12 @@ public class PostWriteController extends HttpServlet {
 				.category(category)
 				.build();
 		
-		int result = new PostService().insertPost(p);
-		
-		if(result > 0) {
+		if(new PostService().insertPost(p) > 0) {
 			request.setAttribute("alertMsg", "게시글이 등록되었습니다");
 		} else {
 			request.setAttribute("alertMsg", "에러가 발생하였습니다");
 		}
+		
 		request.getRequestDispatcher("/list.po").forward(request, response);
 	}
 }

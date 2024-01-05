@@ -18,14 +18,13 @@ square a {
     width: 100px;
     background-color: lightgray;
     color: black;
-    font-size: large;
     font-weight: bold;
     text-decoration: none;
 }
 
 square textarea {
     width: 100%;
-    height: 90%;
+    height: 65%;
     resize: none;
 }
 
@@ -81,23 +80,29 @@ square textarea {
 .post-info {
     display: flex;
     justify-content: space-between;
-    text-align: center;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-/* 게시글 좌측 박스 내부 제목 */
-.post-info span:first-of-type {
-    width: 48%;
-}
-
 /* 게시글 좌측 박스 내부 각 정보들 */
-.post-info span {
+.post-info * {
     width: 23%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(200, 255, 200);
 }
 
-/* 게시글 좌측 박스 내부 각 정보들 */
+/* 게시글 좌측 박스 내부 제목 */
+.post-title {
+    width: 48%;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bolder;
+    border: 0;
+    padding: 0;
+}
+/* 게시글 좌측 박스 내부 내용 */
 .post-content {
     min-height: 150px;
     background-color: rgb(200, 255, 200);
@@ -121,32 +126,21 @@ square textarea {
 
 /* 댓글 작성 박스 */
 .reply-write {
-    height: 75px;
-    display: flex;
-    background-color: brown;
-    margin-bottom: 10px;
-}
-
-/* 댓글 작성 부분 박스 */
-.reply-write>article:first-of-type, .reply-read>article:first-of-type {
-    flex-basis: 80%;
-}
-
-/* 댓글 등록 박스 */
-.reply-write>article:last-of-type {
-    display: flex;
-    flex-basis: 20%;
-    justify-content: center;
     align-items: center;
-    text-align: center;
+    background-color: brown;
 }
 
-/* 댓글 내부 좌측 박스 */
-.reply-box {
-    display: flex;
-    flex-direction: column;
+/* 댓글 박스 안 댓글 내용 */
+.reply-write>textarea, .reply-read>textarea {
+    min-height: 50px;
     flex-basis: 80%;
-    padding: 0 50px;
+}
+
+/* 댓글 작성 박스 안 버튼 */
+.reply-write>a {
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
 }
 
 /* 댓글 좌측 박스 내부 정보 */
@@ -158,15 +152,31 @@ square textarea {
     margin: 5px 0;
 }
 
-/* 게시글 좌측 박스 내부 제목 */
-.reply-read {
+/* 댓글 박스 내부 박스 */
+.reply-write, .reply-read {
     display: flex;
     margin-bottom: 20px;
 }
 
-/* 게시글 좌측 박스 내부 제목 */
+/* 댓글 박스 */
+.reply-read {
+	min-height: 75px;
+}
+
+/* 댓글 박스 내부 좌측 박스 */
+.reply-read>article:first-of-type {
+    flex-basis: 80%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/* 댓글 박스 내부 내용 */
 .reply-read span {
-    height: 150px;
-    display: flex;
-    background-color: skyblue;
+	width: 50%;
+	height: 35%;
+	font-weight: bold;
+}
+
+.off{
+	display: none;
 }
