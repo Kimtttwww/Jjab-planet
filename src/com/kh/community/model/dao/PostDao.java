@@ -43,6 +43,10 @@ public class PostDao {
 	}
 
 	public int deleteObject(SqlSession db, HashMap<String, String> v) {
-		return db.delete(map + "deleteObject", v);
+		return db.update(map + "deleteObject", v);
+	}
+
+	public int updateObject(SqlSession db, HashMap<String, String> v) {
+		return db.update(map + "updateObject", v);
 	}
 }

@@ -56,7 +56,7 @@ public class PostListController extends HttpServlet {
 		ArrayList<Post> list = ps.selectPostList(pi, v);
 		
 		request.setAttribute("category", category);
-		request.setAttribute("keyword", (v.get("keyword").equals("NULLNULLNULLNULLNULL")) ? "" : keyword);
+		request.setAttribute("keyword", (keyword.equals("NULLNULLNULLNULLNULL")) ? "" : keyword);
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		

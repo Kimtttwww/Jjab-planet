@@ -84,4 +84,17 @@ public class PostService {
 		db.close();
 		return result;
 	}
+
+	public int updateObject(HashMap<String, String> v) {
+		int result = dao.updateObject(db, v);
+		
+		if(result > 0) {
+			db.commit();
+		} else {
+			db.rollback();
+		}
+		
+		db.close();
+		return result;
+	}
 }

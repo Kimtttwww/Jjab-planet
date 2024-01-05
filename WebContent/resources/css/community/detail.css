@@ -80,23 +80,29 @@ square textarea {
 .post-info {
     display: flex;
     justify-content: space-between;
-    text-align: center;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-/* 게시글 좌측 박스 내부 제목 */
-.post-info span:first-of-type {
-    width: 48%;
-}
-
 /* 게시글 좌측 박스 내부 각 정보들 */
-.post-info span {
+.post-info * {
     width: 23%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(200, 255, 200);
 }
 
-/* 게시글 좌측 박스 내부 각 정보들 */
+/* 게시글 좌측 박스 내부 제목 */
+.post-title {
+    width: 48%;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bolder;
+    border: 0;
+    padding: 0;
+}
+/* 게시글 좌측 박스 내부 내용 */
 .post-content {
     min-height: 150px;
     background-color: rgb(200, 255, 200);

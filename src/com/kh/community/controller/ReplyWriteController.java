@@ -46,9 +46,7 @@ public class ReplyWriteController extends HttpServlet {
 				.replyWriter(replyWriter)
 				.build();
 		
-		int result = new PostService().insertReply(r);
-		
-		if(result > 0) {
+		if(new PostService().insertReply(r) > 0) {
 			response.getWriter().print(true);
 		} else {
 			response.getWriter().print(false);

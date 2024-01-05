@@ -90,4 +90,24 @@
 		</choose>
 		  = #{refNo}
 	</update>
+	
+	<!-- 게시글, 댓글 수정 -->
+	<update id="updateObject" parameterType="hashmap">
+		UPDATE 
+		<choose>
+			<when test='type.equals("P")'>BOARD_POST</when>
+			<when test='type.equals("R")'>BOARD_REPLY</when>
+		</choose>
+		SET
+		<choose>
+			<when test='type.equals("P")'>POST_TITLE = #{postTitle}, POST_CONTENT = #{postContent}</when>
+			<when test='type.equals("R")'>REPLY_CONTENT = #{replyContent}</when>
+		</choose>
+		WHERE
+		<choose>
+			<when test='type.equals("P")'>POST_NO</when>
+			<when test='type.equals("R")'>REPLY_NO</when>
+		</choose>
+		  = #{refNo}
+	</update>
 </mapper>
