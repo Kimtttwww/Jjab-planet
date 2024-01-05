@@ -10,7 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>기업정보페이지</title>
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/common/index.css" type="text/css">
 <style>
 html,
 body {
@@ -19,21 +18,23 @@ body {
 }
 
 .main {
-	width: 60%;
+	max-width: 1000px;
 	margin: 0 auto;
 }
-
+.content_title {
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
 .top_banner {
 	width: 100%;
 	display: flex;
-	flex-wrap: wrap;
-	
-	
-	
+	flex-wrap: wrap;	
 }
 
 .top_b3 {
-	flex-basis: 30%;
+	flex-basis: 20%;
 	height: 300px;
 	background-color: rgb(231, 248, 170);
 	margin: 20px;
@@ -41,8 +42,10 @@ body {
 	border-radius: 20px;
 	justify-content: space-between;
 }
-
-
+.corp_maincontent{
+	height: 130px;
+	border: 1px solid red;
+}
 .content_bottom {
 	text-align: right;
 }
@@ -50,7 +53,7 @@ body {
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
-
+	
 	<div class="main">
 		<div class="content_title">
 			기업정보 >
@@ -63,10 +66,14 @@ body {
 			    		<p>등록된 이미지가 없습니다.</p>
 				    </c:if>
 					<div align="center">
-						<img width="250px" height="100px" onclick='location.href="${pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"' src="${ pageContext.request.contextPath}/${corp.fileNo.filePath}${corp.fileNo.changeName}" alt="기업 대표이미지">
+						<img width="250px" height="100px" 
+							onclick='location.href="${pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"' 
+								src="${ pageContext.request.contextPath}/${corp.fileNo.filePath}${corp.fileNo.changeName}" alt="기업 대표이미지">
 					</div>	
-					<p>${corp.corpName}</p>
-					<p>${corp.address}</p>
+					<div class="corp_maincontent">
+						<p>${corp.corpName}</p>
+						<p>${corp.address}</p>
+					</div>
 					<p class="content_bottom">
 						 관심 ${corp.likeCount}
 					</p>

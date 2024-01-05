@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,7 @@ height: 100%;
 .corp-top-area {
 	background-color: gray;
 	width: 1800px;
-	height: 90px;
+	height: 100px;
 	padding: 0 200px;
 	
 }
@@ -44,8 +45,8 @@ height: 100%;
 
 .corp-aTag {
 	display: flex;
-	margin: 0 130px;
-	margin-top: 30px;
+	margin: 0 150px;
+	margin-top: 10px;
 }
 
 .corp-info-all {
@@ -63,12 +64,13 @@ height: 100%;
 }
 .corp-review-area {
 	background-color: rgb(158, 120, 120);
-	padding: 30px;
 }
 
 .corp-review-content {
 	background-color: pink;
-	padding: 15px;
+	height: 80px;
+	margin-top: 20px;
+	margin: 20px;
 	
 }
 
@@ -83,7 +85,6 @@ height: 100%;
 	padding: 10px;
    
 }
-
 
 .corp-uppost-area{
 	 flex-direction: column;
@@ -128,12 +129,16 @@ height: 100%;
 			<div class="corp-top">
 				<c:forEach var="corp" items="${corpOne}">
 					<div class="corp-logo">
-						<div class="corp-name">기업로고${replyList}</div>
+						<div class="corp-logoImg" >
+							<img width="120px" height="60px" 
+								onclick='location.href="${pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"' 
+									src="${ pageContext.request.contextPath}/${corp.fileNo.filePath}${corp.fileNo.changeName}" alt="기업 대표이미지">
+						</div>
 						<div class="corp-name">${corp.corpName}</div>
 					</div>
 					<div class="corp-interest">
 						<div class="corp-home">
-							<button id="likeCorp" onclick="">★</button>
+							<button id="likeCorp" onclick='location.href="${pageContext.request.contextPath}/like.corp?corpNo=${corp.corpNo}"' >★</button>
 							<span>${corp.likeCount}</span>
 						</div>
 						<div class="corp-home">
@@ -173,6 +178,7 @@ height: 100%;
 			</div>
 		</div>
 		
+		<input type="hidden" name="userNo" value= "${loginUser.userNo } ">
 		
 		<div class="corp-zone">
 			<div>|진행중인 채용공고</div>
@@ -224,51 +230,50 @@ height: 100%;
 			</div>
 
 			<div class="corp-review-area">
-				<div class="corp-review-content">
+				<div >
 					<c:if test="${empty replyList}" >
 						<p>작성된 리뷰가 없습니다.</p>
 					</c:if>
 					
 					<c:forEach var="item" items="${replyList}">		
+					<div class="corp-review-content">
 						<div>
-							${item.userId} / 작성일:${item.createDate }
+							작성자:${loginUser.userId} / 작성일:${item.createDate }
 						</div>
-						<div>
+						<div class="other-reviews">
 							${item.replyContent} 
 							
-							
-							<!-- 로그인한 유저만 신고버튼 보이게..   -->
-							<% if(loginUser != null){ %>
-								<div align="right">
-									<button 
-										onclick="document.getElementById('popup_report').style.display='block'">신고하기</button>
-									<!-- 팝업 창 -->
-									<div id="popup_report">
-										<p>신고 내용을 작성해주세요</p>
-										<textarea rows="10" cols="20" style="resize: none;"></textarea>
-										
-										
-										<% if(loginUser != null ){ %>
-										<button	onclick="document.getElementById('popup_report').style.display='none'">신고</button>
-										<button	onclick="document.getElementById('popup_report').style.display='none'">취소</button>
-										<% } %>
-									</div>
-								</div>
-							<% } %>
-							
-							<!-- 본인 작성글에만 수정/삭제 가능하게끔   -->
-<%-- 							<% if(loginUser != null && loginUser.getUserNo().equals( ) ){ %> --%>
-<%-- 									<input type="hidden" name="corpNo" value="<%= %>"> --%>
-	
-								
-								<div align="right">
-								<button onclick="">수정</button>
-								<button onclick="">삭제</button>
-								</div>
-<%-- 							<% } %> --%>
-						</div>		
 						
+							<!-- 로그인한 유저만 신고버튼 보이게..   -->
+<%-- 							<% if(loginUser != null){ %> --%>
+<!-- 								<div align="right"> -->
+<!-- 									<button  -->
+<!-- 										onclick="document.getElementById('popup_report').style.display='block'">신고하기</button> -->
+<!-- 									팝업 창 -->
+<!-- 									<div id="popup_report"> -->
+<!-- 										<p>신고 내용을 작성해주세요</p> -->
+<!-- 										<textarea rows="10" cols="20" style="resize: none;"></textarea> -->
 										
+										
+<%-- 										<% if(loginUser != null ){ %> --%>
+<!-- 										<button	onclick="document.getElementById('popup_report').style.display='none'">신고</button> -->
+<!-- 										<button	onclick="document.getElementById('popup_report').style.display='none'">취소</button> -->
+<%-- 										<% } %> --%>
+<!-- 									</div> -->
+<!-- 								</div> -->
+<%-- 							<% } %> --%>
+
+
+							<!-- 본인 작성글에만 수정/삭제 가능하게끔   -->
+							<c:if test="${loginUser.userNo eq item.replyWriter}" >
+								<div align="right">
+									<button onclick="">수정</button>
+									<button onclick="">삭제</button>
+								</div>
+							</c:if>
+							
+						</div>		
+						</div>				
 					</c:forEach>
 				</div>
 				

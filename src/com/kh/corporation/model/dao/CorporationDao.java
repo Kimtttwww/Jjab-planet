@@ -1,5 +1,6 @@
 package com.kh.corporation.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -62,6 +63,16 @@ public class CorporationDao {
 	public List<Logo> selectLogoList(SqlSession sqlSession, int corpCode) {
 
 		return sqlSession.selectList("boardMapper.selectLogoList", corpCode);
+	}
+
+
+	public int corplikeInsert(SqlSession sqlSession, HashMap<Integer, Integer> map) {
+		Integer corplike = sqlSession.selectOne("boardMapper.corplikeInsert", map);
+		return corplike;
+	}
+
+	public int corplikeCount(SqlSession sqlSession, int corpCode) {
+		return sqlSession.selectOne("boardMapper.corplikeCount", corpCode);	
 	}
 
 	

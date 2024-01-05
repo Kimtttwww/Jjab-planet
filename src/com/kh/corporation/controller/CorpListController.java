@@ -86,7 +86,6 @@ public class CorpListController extends HttpServlet {
 
 		
 		List<Corporation> Corplist = corpService.selectCorpList(pi);
-//		List<Corporation> Corplist = corpService.selectCorpListTest(pi, corpCode);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("Corplist", Corplist);
