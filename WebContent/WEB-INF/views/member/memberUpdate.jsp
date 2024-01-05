@@ -148,7 +148,7 @@ body {
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	<div class="container-update">
-		<form action="myPage.me" method="post">
+		<form action="update.me" method="post">
 			<div>
 				<div class="update-div">
 					<p class="title-p">회원 정보 수정</p>

@@ -30,6 +30,4 @@
 		FROM JOAYO_CORP
 		WHERE WORKER_NO = #{userNo}
 	</select>
-	
-	
 </mapper>   

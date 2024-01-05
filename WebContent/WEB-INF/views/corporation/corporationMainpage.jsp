@@ -7,9 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<body>
-	<style>
+<style>
 div{
     border: solid 1px black;
 }
@@ -89,7 +87,7 @@ div{
             </form>
             <div id = "paging-area">
                 <c:url value = "${empty condition ? 'list.bo' : 'search.bo'}" var ="url">
-                    <c: param name ='condition' value  ='${condition }'/>
+                    <c:param name ='condition' value  ='${condition }'/>
                 </c:url>
                 <c:if test = "${pi.currentPage ne 1}">
                     <a href="${url }&currentPage=${pi.currentPage - 1}">[이전]</a>
@@ -114,9 +112,5 @@ div{
         }
     })
 </script>
-</body>
-</html>
-	
-
 </body>
 </html>

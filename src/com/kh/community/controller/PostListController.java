@@ -46,14 +46,10 @@ public class PostListController extends HttpServlet {
 		} catch (NumberFormatException e) {
 		}
 		
-		HashMap<String, String> v = new HashMap<String, String>();
-		v.put("category", category);
-		v.put("keyword", keyword);
-		
-		int postcount = ps.selectPostCount(v);
+		int postcount = ps.selectPostCount(category, keyword);
 		
 		PageInfo pi = Pagination.getPageInfo(postcount, currentPage, 10, 25);
-		ArrayList<Post> list = ps.selectPostList(pi, v);
+		ArrayList<Post> list = ps.selectPostList(pi, category, keyword);
 		
 		request.setAttribute("category", category);
 		request.setAttribute("keyword", (keyword.equals("NULLNULLNULLNULLNULL")) ? "" : keyword);

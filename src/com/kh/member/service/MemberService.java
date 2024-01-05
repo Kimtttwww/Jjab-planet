@@ -29,8 +29,11 @@ public class MemberService {
 		
 	}
 
+	/** 개인 회원가입
+	 * @param m
+	 * @return
+	 */
 	public int insertMember(Member m) {
-//		개인 회원가입
 		SqlSession sqlSession = Template.getSqlSession();
 		
 		int result = memberDao.insertMember(sqlSession, m);
@@ -47,8 +50,11 @@ public class MemberService {
 		
 	}
 	
+	/** 기업 회원가입
+	 * @param c
+	 * @return
+	 */
 	public int insertMembera(Corporation c) {
-//		기업회원가입
 		SqlSession sqlSession = Template.getSqlSession();
 		
 		int result = memberDao.insertMembera(sqlSession, c);
@@ -62,8 +68,38 @@ public class MemberService {
 		sqlSession.close();
 		
 		return result;
-		
 	}
+
+	public boolean updateMember(Member m) {
+		SqlSession db = Template.getSqlSession();
+		
+		int result = memberDao.updateMember(db, m);
+		
+		if(result > 0) {
+			db.commit();
+		} else {
+			db.rollback();
+		}
+		
+		db.close();
+		return result > 0;
+	}
+
+	public boolean updateMember(Corporation c) {
+		SqlSession db = Template.getSqlSession();
+		
+		int result = memberDao.updateMember(db, c);
+		
+		if(result > 0) {
+			db.commit();
+		} else {
+			db.rollback();
+		}
+		
+		db.close();
+		return result > 0;
+	}
+	
 	
 
 }

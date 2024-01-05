@@ -6,23 +6,8 @@
 <!-- namespace : 현재 mapper의 고유한 별칭 -->
 
 	<resultMap type="member" id="memberResultSet">
-		<!-- 
-			* resultMap : 마이바티스 핵심 기능 중 하나
-			ResultSet으로부터 조회된 컬럼값을 하나씩 뽑아서 vo객체의 각 필드에 담는 JDBC 코드를 대신 수행해준다
-			
-			<resultMap id:="[식별자]" type="[조회된 결과를 담아서 반환하조가 하는 vo객체의 타입"]>
-				<id column="[조회 결과를 뽑고자 하는 DB 테이블의 컬럼명]" property="[결과값을 담아줄 필드명]"
-				<result column="[조회 결과를 뽑고자 하는 DB 테이블의 컬럼명]" property="[결과값을 담아줄 필드명]"
-			</resultMap>
-		 -->
-		<!-- Member m = new Member() -->
-		
 		<id column="USER_NO" property="userNo"/>
-		<!-- m.setUserNo(rset.getInt("USER_NO") -->
-		
 		<result column="USER_ID" property="userId"/>
-		<!-- m.setUserNo(rset.getInt("USER_ID") -->
-		
 		<result column="USER_PWD" property="userPwd"/>
 		<result column="USER_NAME" property="userName"/>
 		<result column="EMAIL" property="email"/>
@@ -85,20 +70,19 @@
 	</insert>
 	
 	<update id="updateMember" parameterType="member">
-	    UPDATE MEMBER
-	    	SET PHONE = #{phone}
-	    WHERE USER_NO = #{userNo}
-		
-        if(test="userType == 'C'"){
-		    UPDATE CORPORATION 
-		    	SET
-		            CORP_NAME = #{corpName},
-		            CEO_NAME = #{ceoName}, 
-		            CORP_BN = #{corpBn}, 
-		            ADDRESS = #{address},
-		            HOMEPAGE = #{homePage}
-	        }
-	    WHERE CORP_NO = #{userNo}
+		UPDATE MEMBER
+		SET PHONE = #{phone}
+		WHERE USER_NO = #{userNo}
+	</update>
+	
+	<update id="updateCorporation" parameterType="corporation">
+		UPDATE CORPORATION
+		SET CORP_NAME = #{corpName},
+			CEO_NAME = #{ceoName},
+			CORP_BN = #{corpBn},
+			ADDRESS = #{address},
+			HOMEPAGE = #{homePage}
+		WHERE CORP_NO = #{corpNo}
 	</update>
 	
 	<select id="selectMember" resultType="Member">

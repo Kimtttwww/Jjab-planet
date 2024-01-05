@@ -14,5 +14,5 @@ public class Logo {
 	private int corpNo;
 	private String originName;
 	private String changeName;
-	private String filePath;
+	public static final String filePath = "resources/logo_uofiles/";
 }
