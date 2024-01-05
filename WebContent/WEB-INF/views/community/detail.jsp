@@ -23,6 +23,7 @@
             </article>
             <article>
                 <span>${ p.count }</span>
+            	<img src="${project}/resources/images/hits_icon.png">
             </article>
         </section>
 
@@ -30,7 +31,9 @@
             <div class="post-box">
                 <article class="post-info">
                     <input type="text" class="post-title" value="${ p.postTitle }">
+                    <img src="${project}/resources/images/person_icon.png">
                     <span>${ p.userId }</span>
+                    <img src="${project}/resources/images/date_icon.png">
                     <span>${ p.createDate }</span>
                 </article>
                 
@@ -65,6 +68,7 @@
         </section>
     </square>
     <script>
+    	const asdf = '${loginUser.userId}';
     	$(() => {
     		/* 댓글 작성 제약 */
     		if(!('${loginUser}')){
@@ -76,7 +80,7 @@
     		$('textarea').each((i, ele) => {
     			switch(i){
     			case 0:
-		   			if($(ele).prev().children().eq(1).text() != '${loginUser.userId}'){
+		   			if($(ele).prev().children().eq(2).text() != '${loginUser.userId}'){
 		   				$(ele).prop("readOnly", true);
    						$(ele).parent().next().addClass("off");
    						$(ele).prev().children().eq(0).prop("readOnly", true);
