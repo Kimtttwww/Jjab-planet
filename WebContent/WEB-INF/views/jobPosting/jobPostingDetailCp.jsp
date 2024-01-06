@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script src="/3script/jobPostingList.js"></script>
   <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/jobPostingDetailCp.css" type="text/css">
-	<link rel="stylesheet" href="/JJOB/WebContent/resources/css/jobPostingDetailCp.css"
+	<link rel="stylesheet" href="/JJOB/WebContent/resources/css/jobPostingDetailCp.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />

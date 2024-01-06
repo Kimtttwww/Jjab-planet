@@ -26,4 +26,8 @@ public class MemberDao {
 		return sqlSession.insert("memberMapper.insertCorp", c);
 	}
 
+	public Member selectMember(SqlSession sqlSession, int userNo) {
+		return sqlSession.selectOne("memberMapper.selectMember", userNo);
+	}
+
 }

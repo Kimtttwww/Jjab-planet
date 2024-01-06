@@ -101,10 +101,10 @@
 	    WHERE CORP_NO = #{userNo}
 	</update>
 	
-	<select id="selectMember" resultType="Member">
+	<select id="selectMember" parameterType="_int" resultType="Member">
 		SELECT *
 		FROM MEMBER
-		WHERE USER_ID = #{userId}
+		WHERE USER_NO = #{userNo}
 	</select>
 	<!--
 		* DML문 일 경우
