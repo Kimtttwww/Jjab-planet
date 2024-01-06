@@ -14,7 +14,7 @@
 	<!-- 리스트 목록 -->
 	<select id="selectList" parameterType="string" resultMap='postResultSet'>
 		SELECT JOBPOST_NO, JOBPOST_NO ,CORP_NO, POST_TITLE, POST_CONTENT, END_DATE, C.CORP_NAME, JOB_NAME
-		FROM JOP_POST J
+		FROM JOB_POST J
 		JOIN corporation C USING(CORP_NO)
 		JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
 	</select>
@@ -28,17 +28,15 @@
 	<select id="detailPost" resultMap='postResultSet'>
 		SELECT
 			JOBPOST_NO,
+			CORP_NO,
 			post_title,
-			CEO_NAME,
-			PHONE,
 			EDUCATION,
 			CAREER,
-			J.JOB_NAME,
+			JOB_NAME,
 			LOCATION,
 			END_DATE,
 			POST_CONTENT
 		FROM JOB_POST J
-		JOIN MEMBER ON (CORP_NO = USER_NO)
 		JOIN occupation O USING (JOB_NO)
 		WHERE JOBPOST_NO = #{jobpostNo}
 		AND J.STATUS = 'Y'
@@ -81,7 +79,7 @@
 	<!-- 카테고리 -->
 	<select id="getPostsByCategory" parameterType="string" resultMap="postResultSet">	
 		SELECT *
-		FROM JOP_POST
+		FROM JOB_POST
 		WHERE JOB_NO = #{category}
 	</select>
 

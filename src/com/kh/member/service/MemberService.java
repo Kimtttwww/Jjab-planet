@@ -64,6 +64,20 @@ public class MemberService {
 		return result;
 		
 	}
+
+	public Member selectMember(int userNo) {
+		// Connection conn = getConnection();
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		Member m = memberDao.selectMember(sqlSession, userNo);
+		
+		//close(conn);
+		sqlSession.close();
+		
+		return m;
+	}
 	
 
 }
+
+
