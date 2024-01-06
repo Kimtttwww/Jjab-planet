@@ -6,9 +6,9 @@ a {
 .menu_li {
 	list-style: none;
 	margin: 0;
-	width: 100%;
+	width: 300PX;
 	text-align: right;
-	padding: 10px;
+	padding: 10px 50PX;
 	border-right : 1px solid black;
 }
 
@@ -16,4 +16,5 @@ ul {
 	text-align: center;
 	margin: 0;
 	padding: 0;
+	width: 200px;
 }

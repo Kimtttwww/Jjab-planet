@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.kh.common.Template;
 import com.kh.common.model.vo.PageInfo;
-import com.kh.community.model.vo.Post;
 import com.kh.jobpost.model.dao.JobPostDao;
 import com.kh.jobpost.model.vo.JobPost;
 

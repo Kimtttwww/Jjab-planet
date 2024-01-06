@@ -12,17 +12,20 @@
 	display: flex;
 	hight: 100%;
 	margin: 0;
+	justify-content: space-around;
 }
 
 .side {
+/* flex-basis:30%; */
 	width: 200px;
-	height: 100%;
+	height: 2000px;
 	padding-top: 20px;
 }
 
 .content {
-	width: 70%;
-	height: 100%;
+/* flex-basis:60%; */
+	width: 1000px;
+	height: 2000px;
 }
 </style>
 </head>

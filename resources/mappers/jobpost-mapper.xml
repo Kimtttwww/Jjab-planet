@@ -13,8 +13,8 @@
 	</resultMap>
 	<!-- 리스트 목록 -->
 	<select id="selectList" parameterType="string" resultMap='postResultSet'>
-		SELECT JOBPOST_NO, JOBPOST_NO ,CORP_NO, POST_TITLE, POST_CONTENT, END_DATE, C.CORP_NAME, JOB_NAME
-		FROM JOP_POST J
+		SELECT JOBPOST_NO,CORP_NO, POST_TITLE, POST_CONTENT, END_DATE, C.CORP_NAME, JOB_NAME
+		FROM JOB_POST J
 		JOIN corporation C USING(CORP_NO)
 		JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
 	</select>
@@ -81,36 +81,8 @@
 	<!-- 카테고리 -->
 	<select id="getPostsByCategory" parameterType="string" resultMap="postResultSet">	
 		SELECT *
-		FROM JOP_POST
+		FROM JOB_POST
 		WHERE JOB_NO = #{category}
 	</select>
 
 </mapper>
-<!-- 공고 상세 정보 조회 -->
-<!-- <select id="selectJobPostDetail" parameterType="long" resultType="JobPostVO"> -->
-<!-- SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT,채용조건?CAREER,EDUCATION,LOCATION,
-	END_DATE, category -->
-<!-- FROM JOB_POST -->
-<!-- WHERE post_id = #{postId} -->
-<!-- </select> -->
-<!-- 기업 정보 조회 -->
-<!-- <select id="selectCorporationInfo" parameterType="long" resultType="CorporationVO"> -->
-<!-- SELECT CORP_NO, CORP_NAME, 기업경로? -->
-<!-- FROM CORPORATION -->
-<!-- WHERE CORP_NO = #{corpId} -->
-<!-- </select> -->
-<!-- 채용공고 검색 (기업명) -->
-<!-- <select id="searchJobPostsByCompanyName" parameterType="string" resultType="JobPostVO"> -->
-<!-- SELECT JP.JOBPOST_NO, JP.CORP_NO, JP.POST_TITLE, JP.POST_CONTENT, JP.CAREER,
-	JP.EDUCATION, JP.LOCATION, JP.END_DATE, JP.category -->
-<!-- FROM JOB_POST JP -->
-<!-- JOIN CORPORATION C ON JP.CORP_NO = C.CORP_NO -->
-<!-- WHERE C.CORP_NAME LIKE CONCAT('%', #{corpName}, '%') -->
-<!-- </select> -->
-<!-- 카테고리별 채용공고 조회 -->
-<!-- <select id="selectJobPostsByCategory" parameterType="string" resultType="JobPostVO"> -->
-<!-- SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, CAREER, EDUCATION,
-	LOCATION,END_DATE, category -->
-<!-- FROM JOB_POST -->
-<!-- WHERE category = #{category} -->
-<!-- </select> -->
