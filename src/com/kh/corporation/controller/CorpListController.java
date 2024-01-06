@@ -50,14 +50,14 @@ public class CorpListController extends HttpServlet {
 		    try {
 		        corpCode = Integer.parseInt(corpNoParameter);
 		    } catch (NumberFormatException e) {
-		        // 적절한 예외 처리
-		        e.printStackTrace(); // 또는 로깅 등
+		      
+		        e.printStackTrace(); 
 		    }
 		} else {
 		    // 적절한 기본값이나 오류 처리
-		    corpCode = 100; // 예를 들어, 기본값 설정
+		    corpCode = 1000; // 기본값 설정
 		}
-		System.out.println("corpCode : "  + corpCode);
+//		System.out.println("corpCode : "  + corpCode);
 		
 		// ------------------------ 페이징처리 -----------------------
 //		int objCount;	// 게시글 갯수
@@ -76,28 +76,22 @@ public class CorpListController extends HttpServlet {
 		
 		List<Logo> logoList = corpService.selectLogoList(corpCode);
 		request.setAttribute("logoList", logoList);
-		System.out.println("listC logoList : " + logoList);
+//		System.out.println("listC logoList : " + logoList);
 		
 		
-		// 기업 로고 list
-//		List<Logo> logoList = corpService.selectLogoList(corpCode);
-//		request.setAttribute("logoList", logoList);
-//		System.out.println("logoList : " + logoList);
 
-		
+		// 기업 로고 list
 		List<Corporation> Corplist = corpService.selectCorpList(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("Corplist", Corplist);
 //		System.out.println("pi : " + pi);
-		System.out.println("Corplist : " + Corplist);
+//		System.out.println("Corplist : " + Corplist);
 		
 		Collections.shuffle(Corplist);
 		request.setAttribute("randonCorp", Corplist);
 
 		
-//		List<Reply> list = corpService.selectReviewList(corpCode);
-//		System.out.println();
 
 
 

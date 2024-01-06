@@ -66,13 +66,29 @@ public class CorporationDao {
 	}
 
 
-	public int corplikeInsert(SqlSession sqlSession, HashMap<Integer, Integer> map) {
-		Integer corplike = sqlSession.selectOne("boardMapper.corplikeInsert", map);
-		return corplike;
+	public int corplikeInsert(SqlSession sqlSession, HashMap<String, Integer> map) {
+		return sqlSession.insert("boardMapper.corplikeInsert", map);
 	}
 
 	public int corplikeCount(SqlSession sqlSession, int corpCode) {
-		return sqlSession.selectOne("boardMapper.corplikeCount", corpCode);	
+		 return sqlSession.update("boardMapper.corplikeCount", corpCode);
+	}
+
+	public int corplikeUnCount(SqlSession sqlSession, int corpCode) {
+		
+		 return sqlSession.update("boardMapper.corplikeUnCount", corpCode);
+
+	}
+
+	public int corplikeDelete(SqlSession sqlSession, HashMap<String, Integer> map) {
+ 		return sqlSession.insert("boardMapper.corplikeDelete", map);
+
+	}
+
+	public boolean isCorpLiked(SqlSession sqlSession, HashMap<String, Integer> map) {
+		Boolean isLiked = sqlSession.selectOne("boardMapper.isCorpLiked", map);
+		boolean result = (isLiked != null) ? isLiked.booleanValue() : false;
+		return result;
 	}
 
 	

@@ -87,20 +87,92 @@ public class CorporationService {
 	}
 
 
-	public int corplikeInsert(HashMap<Integer, Integer> map) {
-		
+	public int corplikeInsert(int corpCode, int userNo) {
 		SqlSession sqlSession = Template.getSqlSession();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("corpCode", corpCode);
+		map.put("userNo", userNo);
+		
 		int corplike = corpDao.corplikeInsert(sqlSession, map);
+		
+		if(corplike > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
 		sqlSession.close();
 		return corplike;
 	}
 
 	public int corplikeCount(int corpCode) {
-		
 		SqlSession sqlSession = Template.getSqlSession();
 		int corplike = corpDao.corplikeCount(sqlSession, corpCode);
+		
+		if(corplike > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
 		sqlSession.close();
 		return corplike;
+	}
+
+	public int corplikeUnCount(int corpCode) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		int corplike = corpDao.corplikeUnCount(sqlSession, corpCode);
+		
+		if(corplike > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return corplike;
+	}
+
+	public int corplikeDelete(int corpCode, int userNo) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("corpCode", corpCode);
+		map.put("userNo", userNo);
+		
+		int corplike = corpDao.corplikeDelete(sqlSession, map);
+		
+		if(corplike > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return corplike;
+		
+	}
+
+	// 유저의 관심기업 설정여부 체크
+	public boolean isCorpLiked(int corpCode, int userNo) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("corpCode", corpCode);
+		map.put("userNo", userNo);
+		
+		boolean corplike = corpDao.isCorpLiked(sqlSession, map);
+		
+		if(corplike) {
+			corplike = true; 
+		}else {
+			corplike = false; 
+		}
+		
+		sqlSession.close();
+		return corplike;
+		
 	}
 
 

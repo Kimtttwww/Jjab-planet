@@ -25,6 +25,7 @@ public class JobPost {
 	private String education; //JOB_POST
 	private String career; //JOB_POST
 	private String location; //JOB_POST
+	private Date createDate; //JOB_POST
 	private Date endDate; //JOB_POST
 	private int count; //JOB_POST
 	private String jobName; //occupation
