@@ -330,11 +330,12 @@ function isCorpLiked(corpNo, likeCorpElement ) {
 
 							<%-- <input type="hidden" name="userNo" value="<%= loginUser.getUserNo() %> "> --%>
 
-								<!-- 로그인한 회원만 글작성 버튼이 보이게 조정 -->
+								<!-- 로그인한 개인회원만 글작성 버튼이 보이게 조정 -->
 								<% if(loginUser !=null){ %>
 									<div>
 										<button
-											onclick="open('address','write_review','width=430,height=500,location=no,status=no,scrollbars=yes')">리뷰작성하기</button>
+											onclick="${ pageContext.request.contextPath}/write.review?userNo=${loginUser.userNo } , 
+													open('address','write_review','width=430,height=500,location=no,status=no,scrollbars=yes')">리뷰작성하기</button>
 									</div>
 									<% } %>
 						</div>
