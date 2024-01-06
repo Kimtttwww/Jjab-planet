@@ -27,7 +27,6 @@ public class MypageUpdateController extends HttpServlet {
      */
     public MypageUpdateController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -54,7 +53,8 @@ public class MypageUpdateController extends HttpServlet {
 		
 		Member m = Member.builder()
 				.userNo(loginUser.getUserNo())
-				.phone(request.getParameter("phone")).build();
+				.phone(request.getParameter("phone"))
+				.userType(userType).build();
 		
 		if(ms.updateMember(m)) {
 			if(userType.equals("C")) {

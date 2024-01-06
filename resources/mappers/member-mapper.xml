@@ -3,34 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberMapper">
-<!-- namespace : 현재 mapper의 고유한 별칭 -->
 
-	<resultMap type="member" id="memberResultSet">
-		<id column="USER_NO" property="userNo"/>
-		<result column="USER_ID" property="userId"/>
-		<result column="USER_PWD" property="userPwd"/>
-		<result column="USER_NAME" property="userName"/>
-		<result column="EMAIL" property="email"/>
-		<result column="BIRTHDAY" property="birthday"/>
-		<result column="GENDER" property="gender"/>
-		<result column="PHONE" property="phone"/>
-		<result column="ADDRESS" property="address"/>
-		<result column="ENROLL_DATE" property="enrollDate"/>
-		<result column="MODIFY_DATE" property="modifyDate"/>
-		<result column="STATUS" property="status"/>
-	</resultMap>
 	
-	<!-- 
-		* SELECT문 일 경우
-		<select id="[각 sql문 들의 식별자]" parameterType="[전달받은 데이터의 타입 혹은 별칭]"
-			resultType="[조회결과를 반환하고자 하는 자바 타입]" resultMap="[조회 결과를 뽑아서 매핑할 resultMap의 id]"></select>
-		=> parameterType 속성은 생략 가능하다
-		=> select문은 반드시 resultType이나 resultMap으로 결과값에 대한 타입을 지정해야한다
-		
-		* DML문의 경우 어차피 처리된 행의 갯수가 반환되기 때문에 생략 가능
-		* ? 대신에 해당 SQL문에 전달된 객체로부터 값을 꺼낼떄 #{필드명}, #{변수명}, ${키값}를 이용함
-	 -->
-	<select id="loginMember" parameterType="member" resultMap="memberResultSet">
+	<select id="loginMember" parameterType="member" resultType="member">
 	    SELECT * FROM MEMBER
 	    WHERE USER_ID = #{userId}
 	    	AND USER_PWD = #{userPwd}
@@ -38,35 +13,47 @@
 	</select>
 	
 	<insert id="insertMember" parameterType="member">
-		INSERT INTO MEMBER
-		(USER_NO,
-		 USER_ID,
-		  USER_PWD, 
-		  PHONE,
-		  USER_TYPE)
-		VALUES(
-		SEQ_USERNO.NEXTVAL,
-		 #{userId},
-		  #{userPwd},
-		   #{phone},
-		   #{userType})
+		INSERT INTO MEMBER (
+			USER_NO,
+			USER_ID,
+			USER_PWD, 
+			PHONE,
+			USER_TYPE
+		) VALUES (
+			SEQ_USERNO.NEXTVAL,
+			#{userId},
+			#{userPwd},
+			#{phone},
+			#{userType})
 	</insert>
 
-	<insert id="insertCorp" parameterType="member">
-		INSERT INTO CORPORATION
-		(CORP_NO,
-		 CORP_NAME,
-		  CEO_NAME, 
-		  CORP_BN,
-		  ADDRESS,
-		  HOMEPAGE)
-		VALUES(
-		  SEQ_CORPNO.NEXTVAL,
-		  #{corpName}, <!-- 기업명 -->
-		   #{ceoName}, <!-- 대표자명 -->
-		   #{corpBn}, <!-- 사업자 등록번호 -->
-		   #{address}, <!-- 회사 주소 -->
-		   #{homePage}) <!-- 홈페이지 주소 -->
+	<insert id="insertCorp" parameterType="Corporation">
+		INSERT INTO CORPORATION(
+			CORP_NO,
+			CORP_NAME,
+			CEO_NAME, 
+			CORP_BN,
+			ADDRESS,
+			HOMEPAGE
+		) VALUES (
+			SEQ_USERNO.CURRVAL,
+			#{corpName}, <!-- 기업명 -->
+			#{ceoName}, <!-- 대표자명 -->
+			#{corpBn}, <!-- 사업자 등록번호 -->
+			#{address}, <!-- 회사 주소 -->
+			#{homePage}) <!-- 홈페이지 주소 -->
+	</insert>
+	
+	<insert id="insertLogo" parameterType="logo">
+		INSERT INTO Logo
+		VALUES (
+			SEQ_FILENO.NEXTVAL,
+			SEQ_USERNO.CURRVAL,
+			#{originName},
+			#{changeName}
+			 <!-- 나중에 없앨 컬럼 -->
+			,'A'
+		)
 	</insert>
 	
 	<update id="updateMember" parameterType="member">
@@ -75,7 +62,7 @@
 		WHERE USER_NO = #{userNo}
 	</update>
 	
-	<update id="updateCorporation" parameterType="corporation">
+	<update id="updateCorporation" parameterType="Corporation">
 		UPDATE CORPORATION
 		SET CORP_NAME = #{corpName},
 			CEO_NAME = #{ceoName},
@@ -85,20 +72,10 @@
 		WHERE CORP_NO = #{corpNo}
 	</update>
 	
-	<select id="selectMember" resultType="Member">
+	<select id="selectMember" resultType="member">
 		SELECT *
 		FROM MEMBER
 		WHERE USER_ID = #{userId}
 	</select>
-	<!--
-		* DML문 일 경우
-			<insert id="식별자" parameterType="전달받은 자바타입">
-		 
-			</insert>
-		 
-			<update></update>
-			<delete></delete>
-		=> DML문은 처리된 행의 갯수를 반환하기 떄문에 resultType이나 resultMap 생략이 가능하다
-	 -->
-	 
+
 </mapper>

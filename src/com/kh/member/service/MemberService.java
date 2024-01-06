@@ -4,20 +4,20 @@ import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.kh.common.Template;
+import static com.kh.common.Template.*;
 import com.kh.corporation.model.vo.Corporation;
+import com.kh.corporation.model.vo.Logo;
 import com.kh.member.model.dao.MemberDao;
 import com.kh.member.model.vo.Member;
 
 public class MemberService {
-
-	//MemberService 에서 쓸 메소드 만들곳(구현체)
 	private MemberDao memberDao = new MemberDao();
+	private SqlSession db = getSqlSession();
 	
 	public Member loginMember(HashMap<String, String> login) {
 		
 		// Connection conn = getConnection();
-		SqlSession sqlSession = Template.getSqlSession();
+		SqlSession sqlSession = getSqlSession();
 		
 		Member loginUser = memberDao.loginMember(sqlSession, login);
 		
@@ -33,73 +33,58 @@ public class MemberService {
 	 * @param m
 	 * @return
 	 */
-	public int insertMember(Member m) {
-		SqlSession sqlSession = Template.getSqlSession();
-		
-		int result = memberDao.insertMember(sqlSession, m);
+	public boolean insertMember(Member m) {
+		boolean result = memberDao.insertMember(db, m);
 	
-		if(result > 0) {
-			sqlSession.commit();
+		if(result) {
+			db.commit();
 		}else {
-			sqlSession.rollback();
+			db.rollback();
 		}
 		
-		sqlSession.close();
-		
+		if(m.getUserType().equals("E")) db.close();
 		return result;
-		
 	}
 	
 	/** 기업 회원가입
 	 * @param c
 	 * @return
 	 */
-	public int insertMembera(Corporation c) {
-		SqlSession sqlSession = Template.getSqlSession();
+	public boolean insertMember(Corporation c, Logo l) {
+		boolean result = memberDao.insertMember(db, c) && memberDao.insertMember(db, l);
 		
-		int result = memberDao.insertMembera(sqlSession, c);
-	
-		if(result > 0) {
-			sqlSession.commit();
+		if(result) {
+			db.commit();
 		}else {
-			sqlSession.rollback();
+			db.rollback();
 		}
-		
-		sqlSession.close();
 		
 		return result;
 	}
-
+	
 	public boolean updateMember(Member m) {
-		SqlSession db = Template.getSqlSession();
+		boolean result = memberDao.updateMember(db, m);
 		
-		int result = memberDao.updateMember(db, m);
-		
-		if(result > 0) {
+		if(result) {
 			db.commit();
 		} else {
 			db.rollback();
 		}
 		
-		db.close();
-		return result > 0;
+		if(m.getUserType().equals("E")) db.close();
+		return result;
 	}
 
 	public boolean updateMember(Corporation c) {
-		SqlSession db = Template.getSqlSession();
+		boolean result = memberDao.updateMember(db, c);
 		
-		int result = memberDao.updateMember(db, c);
-		
-		if(result > 0) {
+		if(result) {
 			db.commit();
 		} else {
 			db.rollback();
 		}
 		
 		db.close();
-		return result > 0;
+		return result;
 	}
-	
-	
-
 }

@@ -160,12 +160,10 @@ body {
 					</div>
 					<div>
 						<div>핸드폰번호</div>
-						
-							<input type="text" name="phone" class="update-phoneBox" maxlength="8" value="${loginUser.phone }" placeholder="(-)제외">
-						
+						<input type="text" name="phone" class="update-phoneBox" maxlength="8" value="${loginUser.phone }" placeholder="(-)제외" required="required">
 					</div>
 
-					<div id="corporation-mypageUpdate" class = "flex-container">
+					<div id="corporation-mypageUpdate" class="flex-container">
 						<input type="hidden" name="userType" value="E">
 						<div>
 							<div>

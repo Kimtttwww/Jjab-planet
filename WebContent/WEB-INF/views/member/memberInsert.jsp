@@ -14,108 +14,82 @@
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	<!--개인회원 enroll-->
 	<div class="container-enroll">
-		<form action="sign.bo" method="post">
-			<div id="member-enrollForm">
-				<input type="hidden" name="userType" value="E">
-				<div class="link-enroll">
-					<button type="button" id="mem-btn" class="enroll-button expand-green radius-left">개인회원</button>
-					<button type="button" id="co-btn" class="enroll-button contract-white radius-right">기업회원</button>
+		<form action="sign.bo" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="userType" value="E">
+			<div class="link-enroll">
+				<button type="button" id="mem-btn" class="enroll-button expand-green radius-left">개인회원</button>
+				<button type="button" id="co-btn" class="enroll-button contract-white radius-right">기업회원</button>
+			</div>
+
+			<div class="enroll-div">
+				<p>* 필수 입력 정보입니다.</p>
+				<div>
+					<div>아이디*</div>
+					<input type="text" name="userId" class="enroll-email" placeholder="이메일을 입력하세요."> 
+					<span>@</span> 
+					<input disabled id="selectText" class="email-selectText" name="email-selectText" placeholder="이메일을 선택하세요."> 
+					<select id="selectId" name="email-selectText" class="enroll-selectBox enroll-selectEmail">
+						<option value="" disabled selected>E-Mail 선택</option>
+						<option value="naver.com" >naver.com</option>
+						<option value="gmail.com" >gmail.com</option>
+						<option value="daum.net" >daum.net</option>
+						<option value="nate.com" >nate.com</option>
+						<option value="directEmail" id="textEmail">직접 입력하기</option>
+					</select>
+				</div>
+				<div>
+					<div>비밀번호*</div>
+					<input type="password" name="userPwd" class="enroll-textL" minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호">
+				</div>
+				<div>
+					<div>비밀번호 확인*</div>
+					<input type="password" class="enroll-textL" minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호">
+				</div>
+				<div>
+					<div id="phone">핸드폰 번호*</div>
+					<select id="selectPhone" name="pphone" class="enroll-selectBox">
+						<option value="010">010</option>
+						<option value="011">011</option>
+						<option value="016">016</option>
+						<option value="017">017</option>
+						<option value="019">019</option>
+						<option value="02">02</option>
+						<option value="031">031</option>
+						<option value="032">032</option>
+					</select> 
+					<input type="text" name="phone" class="enroll-phoneBox" maxlength="8" placeholder="(-)제외">
 				</div>
 
-				<div class="enroll-div">
-					<p>* 필수 입력 정보입니다.</p>
+				<div id="corporation-enrollForm" class="flex-container">
+					<input type="hidden" name="userType" value="E">
 					<div>
-						<div>아이디*</div>
-						<div>
-							<input type="text" name="userId" class="enroll-email" placeholder="이메일을 입력하세요."> 
-								<span>@</span> 
-								<input disabled id="selectText" class="email-selectText" name="email-selectText" placeholder="이메일을 선택하세요."> 
-							<select id="selectId" name="email-selectText" class="enroll-selectBox enroll-selectEmail">
-								<option value="" disabled selected>E-Mail 선택</option>
-								<option value="naver.com" >naver.com</option>
-								<option value="gmail.com" >gmail.com</option>
-								<option value="daum.net" >daum.net</option>
-								<option value="nate.com" >nate.com</option>
-								<option value="directEmail" id="textEmail">직접 입력하기</option>
-							</select>
-						</div>
+						<div>기업명*</div>
+						<input type="text" name="corpName" class="enroll-textL" minlength="1" maxlength="15">
 					</div>
 					<div>
-						<div>비밀번호*</div>
-						<div>
-							<input type="password" name="userPwd" class="enroll-textL" minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호">
-						</div>
+						<div>대표자명*</div>
+						<input type="text" name="ceoName" class="enroll-textL" minlength="2" maxlength="12">
 					</div>
 					<div>
-						<div>비밀번호 확인*</div>
-						<div>
-							<input type="password" class="enroll-textL" minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호">
-						</div>
+						<div>사업자등록번호*</div>
+						<input type="text" name="corpBn" class="enroll-textL" minlength="16" maxlength="16" placeholder="(-) 포함">
 					</div>
 					<div>
-						<div id="phone">핸드폰 번호*</div>
-						<div>
-							<select id="selectPhone" name="pphone" class="enroll-selectBox">
-								<option value="010">010</option>
-								<option value="011">011</option>
-								<option value="016">016</option>
-								<option value="017">017</option>
-								<option value="019">019</option>
-								<option value="02">02</option>
-								<option value="031">031</option>
-								<option value="032">032</option>
-							</select> 
-							<input type="text" name="phone" class="enroll-phoneBox" maxlength="8" placeholder="(-)제외">
-						</div>
+						<div>회사 주소*</div>
+						<input type="text" name="address" class="enroll-textL">
 					</div>
-
-					<div id="corporation-enrollForm" class="flex-container">
-						<input type="hidden" name="userType" value="E">
-						<div>
-							<div>
-								<div>기업명*</div>
-							</div>
-							<div>
-								<input type="text" name="corpName" class="enroll-textL" minlength="1" maxlength="15">
-							</div>
-						</div>
-						<div>
-							<div>
-								<div>대표자명*</div>
-							</div>
-							<div>
-								<input type="text" name="ceoName" class="enroll-textL" minlength="2" maxlength="12">
-							</div>
-						</div>
-						<div>
-							<div>
-								<div>사업자등록번호*</div>
-								<!--(XXX-XXXX-XXXX-XX)-->
-							</div>
-							<div>
-								<input type="text" name="corpBn" class="enroll-textL" minlength="16" maxlength="16" placeholder="(-) 포함">
-							</div>
-						</div>
-						<div>
-							<div>
-								<div>회사 주소*</div>
-							</div>
-							<div>
-								<input type="text" name="address" class="enroll-textL">
-							</div>
-						</div>
-						<div>
-							<div>
-								<div>회사 홈페이지주소*</div>
-							</div>
-							<div>
-								<input type="text" name="homePage" class="enroll-textL">
-							</div>
-						</div>
+					<div>
+						<div>회사 홈페이지주소*</div>
+						<input type="text" name="homePage" class="enroll-textL">
 					</div>
-					<div class="enroll-btnBox">
-						<button type="submit" class="enroll-btn">가입하기</button>
+					<div>
+						<div>회사 대표 로고*</div>
+						<input type="file" name="logo" class="enroll-textL">
+						<span>	파일은 최대 10MB까지 가능합니다</span>
 					</div>
+				</div>
+				<div class="enroll-btnBox">
+					<button type="submit" class="enroll-btn">가입하기</button>
 				</div>
 			</div>
 		</form>
