@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="adminMapper">
-	<resultMap type="Corporation" id="corpResultSet"/>
+	<resultMap type="Corporation" id="com.kh.corporation.model.vo.Corporation"/>
 	<!--  민구 사용중 -->
 	<!--  기업 등록개수 -->
 	<select id="reportNo" resultType="reportVO">

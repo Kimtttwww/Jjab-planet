@@ -27,10 +27,8 @@
 		window.onload = function(){
 			const msg = "${alertMsg}";
 			
-			if (msg) {
-				alert(msg);
+			if (msg) alert(msg);
 		}
-	}
 	</script>
 </body>
 </html>
