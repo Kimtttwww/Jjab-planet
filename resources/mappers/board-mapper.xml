@@ -1,162 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardMapper">
+<resultMap id="corpResultMap" type="com.kh.corporation.model.vo.Corporation">
+	<id property="corpNo" column="CORP_NO"/>
+	<result property="corpNo" column="CORP_NO"/>
+	<result property="corpName" column="CORP_NAME"/>
+	<result property="ceoName" column="CEO_NAME"/>
+	<result property="corpBn" column="CORP_BN"/>
+	<result property="address" column="ADDRESS"/>
+	<result property="likeCount" column="LIKE_COUNT"/>
+	<result property="homePage" column="HOMEPAGE"/>
+	<association property="logo" resultMap="CorpfnoResultMap"/>
+</resultMap>
 
-	<resultMap id="corpResultMap" type="Corporation">
-		<id property="corpNo" column="CORP_NO" /> 
-		<result property="homePage" column="HOMEPAGE" /> 
-		<association property="fileNo" resultMap="CorpfnoResultMap"/>
-	</resultMap>
-	
-	<resultMap id="CorpfnoResultMap" type="logo">
-        <id property="fileNo" column="FILE_NO"/>
-    </resultMap>
-	
-<!-- 	<resultMap id="corpLogoResultMap" type="com.kh.corporation.model.vo.Corporation" > -->
-<!-- 		<id property="corpNo" column="CORP_NO" />  -->
-<!-- 		<result property="corpName" column="CORP_NAME" />  -->
-		
-<!-- 		<association property="fileNo" column="FILE_NO" resultMap="LogoResultMap"/> -->
-<!-- 	</resultMap> -->
-
-<!-- 	<resultMap type="board" id="boardResultSet"> -->
-<!-- 		<id column="BOARD_NO" property="boardNo"/> -->
-<!-- 		<result column="USER_ID" property="userId"/> -->
-		
-<!-- 		<collection property="list" javaType="java.util.ArrayList" -->
-<!-- 			ofType="reply" select="selectReplyList" column="BOARD_NO"/> -->
-		<!-- 
+<resultMap id="CorpfnoResultMap" type="com.kh.corporation.model.vo.Logo">
+	<id property="fileNo" column="FILE_NO"/>
+	<result property="corpNo" column="CORP_NO"/>
+	<result property="originName" column="ORIGIN_NAME"/>
+	<result property="changeName" column="CHANGE_NAME"/>
+	<result property="filePath" column="FILE_PATH"/>
+</resultMap>
+<!--  	<resultMap id="corpLogoResultMap" type="com.kh.corporation.model.vo.Corporation" >  -->
+<!--  		<id property="corpNo" column="CORP_NO" />   -->
+<!--  		<result property="corpName" column="CORP_NAME" />   -->
+<!--  		<association property="fileNo" column="FILE_NO" resultMap="LogoResultMap"/>  -->
+<!--  	</resultMap>  -->
+<!--      <resultMap id="LogoResultMap" type="com.kh.corporation.model.vo.Logo">  -->
+<!--          <id property="fileNo" column="FILE_NO"/>  -->
+<!--          <id property="originName" column="ORIGIN_NAME"/>  -->
+<!--          <id property="changeName" column="CHANGE_NAME"/>  -->
+<!--          <id property="filePath" column="FILE_PATH"/>  -->
+<!--      </resultMap>  -->
+<!--  	<resultMap type="board" id="boardResultSet">  -->
+<!--  		<id column="BOARD_NO" property="boardNo"/>  -->
+<!--  		<result column="USER_ID" property="userId"/>  -->
+<!--  		<collection property="list" javaType="java.util.ArrayList"  -->
+<!--  			ofType="reply" select="selectReplyList" column="BOARD_NO"/>  -->
+<!--  
 			댓글 LIST를 담기 위해서 ArrayList<Reply> 객체를 생성
 			javaType="java.util.ArrayList" ofType="reply"
 			
 			selectReplyList 쿼리를 수행하기 위해 필요한 파라미터는
 			현재 resultMap으로 조회된 BOARD_NO 컬럼을 사용하겠다
 			(select="selectReplyList" column="BOARD_NO")
-		 -->
-<!-- 	</resultMap> -->
-	
-	
-	<!--  다연 사용중 -->
-	<!--  기업 등록개수 -->
-	<select id="corpCount" resultType="_int">
-	   SELECT COUNT(*)
-		  FROM CORPORATION		
-	</select>
-	
-	<!--  리뷰 등록개수 -->
-	<select id="reviewCount" resultType="_int">
-	   SELECT COUNT(*)
-		  FROM BOARD_REPLY
-		WHERE STATUS='Y' AND REPLY_TYPE='R' 		
-		AND REF_NO = #{corpCode}		
-	</select>
-	
-	<!--  기업 전체리스트 -->
-	<select id="selectCorpList" resultMap="corpResultMap" >
-		SELECT C.*, L.*
-			FROM CORPORATION C	
-			JOIN LOGO L ON (C.CORP_NO = L.CORP_NO) 
-	</select>
-	
-<!-- 	<select id="selectCorpListTest" resultMap="corpResultSet11" > -->
-<!--   		SELECT C.*, L.* -->
-<!-- 	      FROM CORPORATION C	 -->
-<!-- 	      JOIN LOGO L ON (C.CORP_NO = L.CORP_NO)  -->
-<!-- 	</select> -->
-	
-	<!--  선택한 기업정보 -->
-	<select id="selectCorpOne" resultMap="corpResultMap"  >
-	    SELECT C.*, L.*
-	      FROM CORPORATION C	
-	      JOIN LOGO L ON (C.CORP_NO = L.CORP_NO) 
-	     WHERE C.CORP_NO = #{corpCode}
-	</select>
-	
-	
-	<!--  기업 로고리스트 -->
-	<select id="selectLogoList" resultType="logo" >
-	    SELECT * 
-	      FROM LOGO
-	</select>
-	
-	
-	<!--  선택한 기업 로고 -->
-	<select id="selectLogoOne" resultMap="corpResultMap" >
-	   SELECT C.CORP_NO, C.CORP_NAME, L.FILE_NO, L.CHANGE_NAME, L.FILE_PATH
-	    FROM CORPORATION C
-        LEFT JOIN LOGO L ON (C.CORP_NO = L.CORP_NO)
-        WHERE C.CORP_NO = #{corpCode}
-	</select>
-	
-	
-	<!--  기업의 리뷰리스트  -->
-	<select id="selectReviewList" resultType="reply">
-	    SELECT R.REPLY_NO, R.REF_NO, R.REPLY_CONTENT, R.REPLY_WRITER, R.CREATE_DATE, M.USER_ID
-	    FROM BOARD_REPLY R
-	  	 JOIN MEMBER M ON (USER_NO = REPLY_WRITER)
-	    WHERE R.STATUS = 'Y'
-	      AND R.REPLY_TYPE = 'R'
-	      AND R.REF_NO = #{corpCode}
-	    ORDER BY R.REPLY_NO DESC
-	</select>
-	
-	<!-- 유저의 관심기업 설정여부 확인 -->
-	<select id="isCorpLiked" resultType="joayoCorp">
-		SELECT *
-		  FROM JOAYO_CORP
-		 WHERE CORP_NO = #{corpCode}
-		   AND WORKER_NO = #{userNo}
-	</select>
-	
-	
-	<!--  유저가 ★클릭한 기업 넣어주기  -->
-	<insert id="corplikeInsert" parameterType="hashmap">
-		INSERT INTO JOAYO_CORP
-		VALUES (SEQ_JOAYONO.NEXTVAL, #{corpCode}, #{userNo})
-	</insert>
-	
-	<!--  유저가 ★ 해제한 기업 삭제  -->
-	<delete id="corplikeDelete" parameterType="hashmap">
-		DELETE FROM JOAYO_CORP
-		 WHERE CORP_NO = #{corpCode}
-		   AND WORKER_NO = #{userNo}
-	</delete>
-	
-	<!--  기업정보에서 ★클릭시 관심수 증가  -->
-	<update id="corplikeCount" parameterType="_int">
-		UPDATE CORPORATION
-		SET LIKE_COUNT = LIKE_COUNT + 1
-		WHERE CORP_NO = #{corpCode}
-	</update>
-	
-	<!--  기업정보에서 ★클릭시 관심수 감소  -->
-	<update id="corplikeUnCount" parameterType="_int">
-		UPDATE CORPORATION
-		SET LIKE_COUNT = LIKE_COUNT - 1
-		WHERE CORP_NO = #{corpCode}
-	</update>
-	
-	<!--  기업 정보에 해당 기업공고 노출  -->
-	<select id="selectJobPostList" resultType="jobPost">
-		SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, CREATE_DATE, JOB_NAME
-		  FROM JOB_POST P
-		  JOIN OCCUPATION USING (JOB_NO)
-		 WHERE CORP_NO = #{corpCode}
-		
-	</select>
-	
-	
-	
-	<!-- 다연 사용중 -->
-	
-	
-	
-	
-	
-	
-	<!--
+		  -->
+<!--  	</resultMap>  -->
+<!--   다연 사용중  -->
+<!--   기업 등록개수  -->
+<select id="corpCount" resultType="_int">
+SELECT COUNT(*) FROM CORPORATION
+</select>
+<!--   리뷰 등록개수  -->
+<select id="reviewCount" resultType="_int">
+ SELECT COUNT(*) FROM BOARD_REPLY WHERE STATUS='Y' AND REPLY_TYPE='R' AND REF_NO = #{corpCode}
+</select>
+<!--   기업 전체리스트  -->
+<select id="selectCorpList" resultMap="corpResultMap">
+<!--    		SELECT C.CORP_NO, C.CORP_NAME, C.CEO_NAME, C.CORP_BN, C.ADDRESS, C.LIKE_COUNT, C.HOMEPAGE, L.FILE_NO  -->
+SELECT C.*, L.* FROM CORPORATION C JOIN LOGO L ON (C.CORP_NO = L.CORP_NO)
+</select>
+<!--  	<select id="selectCorpListTest" resultMap="corpResultSet11" >  -->
+<!--    		SELECT C.*, L.*  -->
+<!--  	      FROM CORPORATION C	  -->
+<!--  	      JOIN LOGO L ON (C.CORP_NO = L.CORP_NO)   -->
+<!--  	</select>  -->
+<!--   선택한 기업정보  -->
+<select id="selectCorpOne" resultMap="corpResultMap"> SELECT C.*, L.* FROM CORPORATION C JOIN LOGO L ON (C.CORP_NO = L.CORP_NO) WHERE C.CORP_NO = #{corpCode} </select>
+<!--   기업 로고리스트  -->
+<select id="selectLogoList" resultType="logo"> SELECT * FROM LOGO </select>
+<!--   선택한 기업 로고  -->
+<select id="selectLogoOne" resultMap="corpResultMap"> SELECT C.CORP_NO, C.CORP_NAME, L.FILE_NO, L.CHANGE_NAME, L.FILE_PATH FROM CORPORATION C LEFT JOIN LOGO L ON (C.CORP_NO = L.CORP_NO) WHERE C.CORP_NO = #{corpCode} </select>
+<!--   기업의 리뷰리스트   -->
+<select id="selectReviewList" resultType="com.kh.community.model.vo.Reply"> SELECT R.REPLY_NO, R.REF_NO, R.REPLY_CONTENT, R.REPLY_WRITER, R.CREATE_DATE, M.USER_ID FROM BOARD_REPLY R JOIN MEMBER M ON (USER_NO = REPLY_WRITER) WHERE R.STATUS = 'Y' AND R.REPLY_TYPE = 'R' AND R.REF_NO = #{corpCode} ORDER BY R.REPLY_NO DESC </select>
+<!--  유저의 관심기업 설정여부 확인  -->
+<select id="isCorpLiked" resultType="JoayoCorp"> SELECT * FROM JOAYO_CORP WHERE CORP_NO = #{corpCode} AND WORKER_NO = #{userNo} </select>
+<!--   유저가 ★클릭한 기업 넣어주기   -->
+<insert id="corplikeInsert" parameterType="hashmap"> INSERT INTO JOAYO_CORP VALUES (SEQ_JOAYONO.NEXTVAL, #{corpCode}, #{userNo}) </insert>
+<!--   유저가 ★ 해제한 기업 삭제   -->
+<delete id="corplikeDelete" parameterType="hashmap"> DELETE FROM JOAYO_CORP WHERE CORP_NO = #{corpCode} AND WORKER_NO = #{userNo} </delete>
+<!--   기업정보에서 ★클릭시 관심수 증가   -->
+<update id="corplikeCount" parameterType="_int"> UPDATE CORPORATION SET LIKE_COUNT = LIKE_COUNT + 1 WHERE CORP_NO = #{corpCode} </update>
+<!--   기업정보에서 ★클릭시 관심수 감소   -->
+<update id="corplikeUnCount" parameterType="_int"> UPDATE CORPORATION SET LIKE_COUNT = LIKE_COUNT - 1 WHERE CORP_NO = #{corpCode} </update>
+<!--   기업 정보에 해당 기업공고 노출   -->
+<select id="selectJobPostList" resultType="com.kh.jobpost.model.vo.JobPost"> SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, CREATE_DATE, JOB_NAME FROM JOB_POST P JOIN OCCUPATION USING (JOB_NO) WHERE CORP_NO = #{corpCode} </select>
+<!--  다연 사용중  -->
+<!-- 
 		* DML문 일 경우
 			<insert id="식별자" parameterType="전달받은 자바타입">
 		 
@@ -165,44 +95,41 @@
 			<update></update>
 			<delete></delete>
 		=> DML문은 처리된 행의 갯수를 반환하기 떄문에 resultType이나 resultMap 생략이 가능하다
-	 -->
-	 
-	 <!--
+	  -->
+<!-- 
 
- -->
-<!-- 	<select id="selectBoard" parameterType="_int" resultMap="boardResultSet"> -->
-<!-- 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, USER_ID, COUNT, CREATE_DATE -->
-<!-- 		FROM BOARD B -->
-<!-- 		JOIN MEMBER ON BOARD_WRITER = USER_NO -->
-<!-- 		WHERE B.STATUS = 'Y' AND BOARD_NO = #{boardNo} -->
-<!-- 	</select> -->
-	
-<!-- 	<select id="selectReplyList" resultMap="replyResultSet" parameterType="_int"> -->
-<!-- 		SELECT USER_ID, REPLY_CONTENT, CREATE_DATE -->
-<!-- 		FROM REPLY R -->
-<!-- 		JOIN MEMBER ON REPLY_WRITER = USER_NO -->
-<!-- 		WHERE R.STATUS = 'Y' AND REF_BNO = #{boardNo} -->
-<!-- 		ORDER BY REPLY_NO DESC -->
-<!-- 	</select> -->
-	
-<!-- 	<select id="selectSearchList" parameterType="hashmap" resultType="board"> -->
-<!-- 		SELECT BOARD_NO, BOARD_TITLE, USER_ID, COUNT, CREATE_DATE -->
-<!-- 	    FROM BOARD B -->
-<!-- 	    JOIN MEMBER ON BOARD_WRITER = USER_NO -->
-<!-- 	    WHERE B.STATUS = 'Y' -->
-<!-- 	    <if test="condition == 'writer'"> -->
-<!--     		AND USER_ID -->
-<!-- 	    </if> -->
-<!-- 	    <if test="condition.equals('title')"> -->
-<!--     		AND BOARD_TITLE -->
-<!-- 	    </if> -->
-<!-- 	    <if test="condition == 'content'"> -->
-<!--     		AND BOARD_CONTENT -->
-<!-- 	    </if> -->
-<!-- 	     LIKE '%' || #{keyword} || '%' -->
-<!-- 	    ORDER BY BOARD_NO DESC -->
-<!-- 	</select> -->
-	<!--
+  -->
+<!--  	<select id="selectBoard" parameterType="_int" resultMap="boardResultSet">  -->
+<!--  		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, USER_ID, COUNT, CREATE_DATE  -->
+<!--  		FROM BOARD B  -->
+<!--  		JOIN MEMBER ON BOARD_WRITER = USER_NO  -->
+<!--  		WHERE B.STATUS = 'Y' AND BOARD_NO = #{boardNo}  -->
+<!--  	</select>  -->
+<!--  	<select id="selectReplyList" resultMap="replyResultSet" parameterType="_int">  -->
+<!--  		SELECT USER_ID, REPLY_CONTENT, CREATE_DATE  -->
+<!--  		FROM REPLY R  -->
+<!--  		JOIN MEMBER ON REPLY_WRITER = USER_NO  -->
+<!--  		WHERE R.STATUS = 'Y' AND REF_BNO = #{boardNo}  -->
+<!--  		ORDER BY REPLY_NO DESC  -->
+<!--  	</select>  -->
+<!--  	<select id="selectSearchList" parameterType="hashmap" resultType="board">  -->
+<!--  		SELECT BOARD_NO, BOARD_TITLE, USER_ID, COUNT, CREATE_DATE  -->
+<!--  	    FROM BOARD B  -->
+<!--  	    JOIN MEMBER ON BOARD_WRITER = USER_NO  -->
+<!--  	    WHERE B.STATUS = 'Y'  -->
+<!--  	    <if test="condition == 'writer'">  -->
+<!--      		AND USER_ID  -->
+<!--  	    </if>  -->
+<!--  	    <if test="condition.equals('title')">  -->
+<!--      		AND BOARD_TITLE  -->
+<!--  	    </if>  -->
+<!--  	    <if test="condition == 'content'">  -->
+<!--      		AND BOARD_CONTENT  -->
+<!--  	    </if>  -->
+<!--  	     LIKE '%' || #{keyword} || '%'  -->
+<!--  	    ORDER BY BOARD_NO DESC  -->
+<!--  	</select>  -->
+<!-- 
 	<select id="selectSearchCount" parameterType="hashmap" resultType="int">
 		SELECT COUNT(*) FROM BOARD B
 		JOIN MEMBER ON BOARD_WRITER = USER_NO
@@ -221,16 +148,13 @@
 		LIKE '%' || #{keyword} || '%'
 		ORDER BY BOARD_NO DESC
 	</select>
-	-->
-<!-- 	<update id="" parameterType="_int"> -->
-<!-- 		UPDATE BOARD SET BOARD_NO = #{boardNo} -->
-<!-- 		WHERE BOARD_NO = #{boardNo} and STATUS = 'Y' -->
-<!-- 	</update> -->
-	 
-	
-<!-- 	<insert id="insertMember" parameterType="member"> -->
-<!-- 		INSERT INTO MEMBER(USER_NO, USER_ID, USER_PWD, USER_NAME, EMAIL, BIRTHDAY, GENDER, PHONE, ADDRESS) -->
-<!-- 		VALUES(SEQ_UNO.NEXTVAL, #{userId}, #{userPwd}, #{userName}, #{email}, #{birthday}, #{gender}, #{phone}, #{address}) -->
-<!-- 	</insert> -->
-	  
+	 -->
+<!--  	<update id="" parameterType="_int">  -->
+<!--  		UPDATE BOARD SET BOARD_NO = #{boardNo}  -->
+<!--  		WHERE BOARD_NO = #{boardNo} and STATUS = 'Y'  -->
+<!--  	</update>  -->
+<!--  	<insert id="insertMember" parameterType="member">  -->
+<!--  		INSERT INTO MEMBER(USER_NO, USER_ID, USER_PWD, USER_NAME, EMAIL, BIRTHDAY, GENDER, PHONE, ADDRESS)  -->
+<!--  		VALUES(SEQ_UNO.NEXTVAL, #{userId}, #{userPwd}, #{userName}, #{email}, #{birthday}, #{gender}, #{phone}, #{address})  -->
+<!--  	</insert>  -->
 </mapper>

@@ -62,13 +62,13 @@ body {
 		<div class="top_banner">
 			<c:forEach var="corp" items="${Corplist}">
 				<div class="top_b3" style="background: pinkyellow">
-					<c:if test="${ empty corp.fileNo}">
+					<c:if test="${ empty corp.logo}">
 			    		<p>등록된 이미지가 없습니다.</p>
 				    </c:if>
 					<div align="center">
 						<img width="250px" height="100px" 
 							onclick='location.href="${pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"' 
-								src="${ pageContext.request.contextPath}/${corp.fileNo.filePath}${corp.fileNo.changeName}" alt="기업 대표이미지">
+								src="${ pageContext.request.contextPath}/${corp.logo.filePath}${corp.logo.changeName}" alt="기업 대표이미지">
 					</div>	
 					<div class="corp_maincontent">
 						<p>${corp.corpName}</p>

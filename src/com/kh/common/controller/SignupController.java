@@ -40,7 +40,7 @@ public class SignupController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MultipartRequest mr = new MultipartRequest(request, Logo.filePath, Logo.fileSize, "UTF-8", new JjapFileRenamePolicy());
+		MultipartRequest mr = new MultipartRequest(request, Logo.FILE_PATH, Logo.FILE_SIZE, "UTF-8", new JjapFileRenamePolicy());
 		String userId = mr.getParameter("userId") + "@" + mr.getParameter("email-selectText");
 		String phone = mr.getParameter("pphone") + mr.getParameter("phone");
 		Corporation c = null;
@@ -53,7 +53,7 @@ public class SignupController extends HttpServlet {
 				.userType(mr.getParameter("userType")).build();
 		
 		if(m.getUserType().equals("C")){
-			l = new Logo(0, 0, mr.getOriginalFileName("logo"), mr.getFilesystemName("logo"));
+			l = new Logo(0, 0, mr.getOriginalFileName("logo"), mr.getFilesystemName("logo"), "a");
 			c = Corporation.builder()
 					.corpName(mr.getParameter("corpName"))
 					.ceoName(mr.getParameter("ceoName"))

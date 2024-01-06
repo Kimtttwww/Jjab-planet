@@ -82,9 +82,7 @@ public class CorpListController extends HttpServlet {
 		Collections.shuffle(Corplist);
 		request.setAttribute("randonCorp", Corplist);
 
-
 		request.getRequestDispatcher("WEB-INF/views/corporation/corpInfo_main.jsp").forward(request, response);
-
 	}
 
 	/**

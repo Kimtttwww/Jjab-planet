@@ -17,7 +17,7 @@
 		SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, END_DATE, C.CORP_NAME, JOB_NAME
 		FROM JOB_POST J
 		JOIN corporation C USING(CORP_NO)
-		JOIN occupation O ON (C.JOB_NO=O.JOB_NO)
+		JOIN occupation O USING (JOB_NO)
 	</select>
 
 	<!-- 게시물 몇개인지 조회 -->
