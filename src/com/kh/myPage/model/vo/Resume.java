@@ -17,10 +17,8 @@ public class Resume {
 	private Date birthday;
 	private String gender;
 	private String address;
-	private String jobNo;
+	private String jobName;
 	private String isOpen;
 	private String career;
-	private String jobName;
 	private String education;
 }
-
