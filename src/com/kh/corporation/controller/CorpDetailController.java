@@ -55,35 +55,35 @@ public class CorpDetailController extends HttpServlet {
 		// 모든 기업리스트
 		List<Corporation> corpList = corpService.selectCorpList(pi);
 		request.setAttribute("corpList", corpList);
-		System.out.println("corpList : " +corpList);
+//		System.out.println("corpList : " +corpList);
 		
 		
 		// corpNo에 해당하는 기업 출력
 		List<Corporation> corpOne = corpService.selectCorpOne(corpCode);
-		System.out.println("corpOne : " +corpOne);
 		request.setAttribute("corpOne", corpOne);
+//		System.out.println("corpOne : " +corpOne);
 		
 		
 		// corpNo에 해당하는 기업로고
 		List<Logo> logoList = corpService.selectLogoOne(corpCode);
 		request.setAttribute("logoList", logoList);
-		System.out.println("logoList : " + logoList);
-		
-		System.out.println("2corpCode : " + corpCode);
+//		System.out.println("logoList : " + logoList);
+//		
+//		System.out.println("2corpCode : " + corpCode);
 		
 		
 		
 		
 		// corpNo에 해당하는 채용공고 출력
 		List<JobPost> jobPostList = corpService.selectJobPostList(corpCode);
-		System.out.println("jobPostList : " +jobPostList);
+//		System.out.println("jobPostList : " +jobPostList);
 		request.setAttribute("jobPostList", jobPostList);
 		
 		
 		
 		// 기업의 리뷰 리스트 출력하기
 		List<Reply> replyList = corpService.selectReviewList(pi, corpCode);
-		System.out.println("replyList : " + replyList);
+//		System.out.println("replyList : " + replyList);
 		request.setAttribute("replyList", replyList);
 		
 		

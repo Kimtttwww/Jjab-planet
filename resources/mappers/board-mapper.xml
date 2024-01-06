@@ -121,16 +121,39 @@
 	    ORDER BY R.REPLY_NO DESC
 	</select>
 	
+	<!-- 유저의 관심기업 설정여부 확인 -->
+	<select id="isCorpLiked" resultType="com.kh.corporation.model.vo.JoayoCorp">
+		SELECT *
+		  FROM JOAYO_CORP
+		 WHERE CORP_NO = #{corpCode}
+		   AND WORKER_NO = #{userNo}
+	</select>
+	
+	
 	<!--  유저가 ★클릭한 기업 넣어주기  -->
-	<insert id="corplikeInsert">
+	<insert id="corplikeInsert" parameterType="hashmap">
 		INSERT INTO JOAYO_CORP
-		VALUES (SEQ_JOAYONO.NEXTVAL, ??  ,#{corpCode} )
+		VALUES (SEQ_JOAYONO.NEXTVAL, #{corpCode}, #{userNo})
 	</insert>
+	
+	<!--  유저가 ★ 해제한 기업 삭제  -->
+	<delete id="corplikeDelete" parameterType="hashmap">
+		DELETE FROM JOAYO_CORP
+		 WHERE CORP_NO = #{corpCode}
+		   AND WORKER_NO = #{userNo}
+	</delete>
 	
 	<!--  기업정보에서 ★클릭시 관심수 증가  -->
 	<update id="corplikeCount" parameterType="_int">
 		UPDATE CORPORATION
 		SET LIKE_COUNT = LIKE_COUNT + 1
+		WHERE CORP_NO = #{corpCode}
+	</update>
+	
+	<!--  기업정보에서 ★클릭시 관심수 감소  -->
+	<update id="corplikeUnCount" parameterType="_int">
+		UPDATE CORPORATION
+		SET LIKE_COUNT = LIKE_COUNT - 1
 		WHERE CORP_NO = #{corpCode}
 	</update>
 	
