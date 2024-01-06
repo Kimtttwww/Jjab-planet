@@ -57,7 +57,7 @@
 	                <article>
 						<span>${ r.userId }</span>
 						<span>${ r.createDate }</span>
-						<textarea>${ r.replyContent }</textarea>
+						<textarea id="reply-size">${ r.replyContent }</textarea>
 	                </article>
 	                <article class="need-login">
 	                    <a onclick="change(this, 'R', ${r.replyNo})">수정</a>

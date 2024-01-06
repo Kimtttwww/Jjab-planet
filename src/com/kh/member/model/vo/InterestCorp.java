@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class InterestCorp {
-
 	private int joayoNo; //joayocorp, 관심설정번호
 	private int corpNo; // joayocorp, 기업번호
 	private String corpName;

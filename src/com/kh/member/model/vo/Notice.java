@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class Notice {
-//	NOTICE_NO	NUMBER
-//	RECEIVER	NUMBER
-//	NOTICE_TYPE	NUMBER
 	private int noticeNo;
 	private int receiver;
 	private int noticeType;

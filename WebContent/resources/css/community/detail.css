@@ -202,9 +202,16 @@ square textarea {
 }
 
 /* 댓글 박스 안 댓글 내용 */
-.reply-write>textarea, .reply-read>textarea {
+.reply-write>textarea {
     min-height: 50px;
     flex-basis: 80%;
+}
+
+#reply-size {
+	height: 100px;
+    flex-basis: 80%;
+    border: none;
+    border-bottom: 1px solid #27ae60;
 }
 
 /* 댓글 작성 박스 안 버튼 */
