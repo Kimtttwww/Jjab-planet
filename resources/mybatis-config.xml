@@ -9,7 +9,7 @@
 	</settings>
 	
 	<typeAliases>
-		<package name="com.kh" />
+		<package name= "com.kh" />
 	</typeAliases>
 
 	<environments default="development">
@@ -26,8 +26,10 @@
 
 	<mappers>
 		<mapper resource="/mappers/member-mapper.xml"/>
+<!-- <mapper resource="/mappers/admin-mapper.xml"/> -->
 		<mapper resource="/mappers/board-mapper.xml"/>
 		<mapper resource="/mappers/community-mapper.xml"/>
 		<mapper resource="/mappers/jobpost-mapper.xml"/>
+		<mapper resource="/mappers/mypage-mapper.xml"/>  
 	</mappers>
 </configuration>

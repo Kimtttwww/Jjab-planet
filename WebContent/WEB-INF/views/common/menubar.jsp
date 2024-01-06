@@ -32,9 +32,12 @@ a {
 </head>
 
 <body>
+	
 	<div>
+	
 		<ul>
 			<li class="menu_li"><a class="mypage_btn" href="#">알림 관리</a></li>
+			
 			<li class="menu_li"><a class="mypage_btn" href="#">이력서 관리</a></li>
 			<li class="menu_li"><a class="mypage_btn" href="#">관심 기업 리스트</a>
 			</li>

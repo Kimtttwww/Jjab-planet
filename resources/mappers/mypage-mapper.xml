@@ -1,1 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="corMyPageMapper">
+		<resultMap id="resumeResultSet" type="Resume">
+			<id column="WORKER_NO" property="workerNo"/>
+		
+		</resultMap>
+	<!--  민구 사용중 -->
+	<!--  기업 등록개수 -->
+<!-- 	뽑고 싶은거의 타입을 Resume로 해야한다. -->
+	<select id="selectResumeList" resultMap="resumeResultSet"> 
+	SELECT FORM_TITLE, JOB_NAME, WORKER_NAME
+	FROM RESUME R
+	JOIN PROPOSE P ON P.PROPOSER = R.WORKER_NO
+	JOIN OCCUPATION USING (JOB_NO)
+	WHERE P.RECEIVER = #{userNo}
+	</select>
+<!-- 	<select id ="babybaby" resultMap = ""> -->
+<!-- 	SELECT RESUME_NO -->
+<!-- 	FROM RESUME -->
+<!-- 	</select> -->
+</mapper>
