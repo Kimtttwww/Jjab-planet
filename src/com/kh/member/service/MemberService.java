@@ -4,65 +4,56 @@ import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.kh.common.Template;
+import static com.kh.common.Template.*;
 import com.kh.corporation.model.vo.Corporation;
+import com.kh.corporation.model.vo.Logo;
 import com.kh.member.model.dao.MemberDao;
 import com.kh.member.model.vo.Member;
 
 public class MemberService {
-
-	//MemberService 에서 쓸 메소드 만들곳(구현체)
 	private MemberDao memberDao = new MemberDao();
+	private SqlSession db = getSqlSession();
 	
 	public Member loginMember(HashMap<String, String> login) {
-		
-		// Connection conn = getConnection();
-		SqlSession sqlSession = Template.getSqlSession();
+		SqlSession sqlSession = getSqlSession();
 		
 		Member loginUser = memberDao.loginMember(sqlSession, login);
-		
-		//close(conn);
+
 		sqlSession.close();
-		
 		return loginUser;
-		
-		
 	}
 
-	public int insertMember(Member m) {
-//		개인 회원가입
-		SqlSession sqlSession = Template.getSqlSession();
-		
-		int result = memberDao.insertMember(sqlSession, m);
+	/** 개인 회원가입
+	 * @param m
+	 * @return
+	 */
+	public boolean insertMember(Member m) {
+		boolean result = memberDao.insertMember(db, m);
 	
-		if(result > 0) {
-			sqlSession.commit();
+		if(result) {
+			db.commit();
 		}else {
-			sqlSession.rollback();
+			db.rollback();
 		}
 		
-		sqlSession.close();
-		
+		if(m.getUserType().equals("E")) db.close();
 		return result;
-		
 	}
 	
-	public int insertMembera(Corporation c) {
-//		기업회원가입
-		SqlSession sqlSession = Template.getSqlSession();
+	/** 기업 회원가입
+	 * @param c
+	 * @return
+	 */
+	public boolean insertMember(Corporation c, Logo l) {
+		boolean result = memberDao.insertMember(db, c) && memberDao.insertMember(db, l);
 		
-		int result = memberDao.insertMembera(sqlSession, c);
-	
-		if(result > 0) {
-			sqlSession.commit();
+		if(result) {
+			db.commit();
 		}else {
-			sqlSession.rollback();
+			db.rollback();
 		}
 		
-		sqlSession.close();
-		
 		return result;
-		
 	}
 
 	public Member selectMember(int userNo) {
@@ -77,7 +68,29 @@ public class MemberService {
 		return m;
 	}
 	
+	public boolean updateMember(Member m) {
+		boolean result = memberDao.updateMember(db, m);
+		
+		if(result) {
+			db.commit();
+		} else {
+			db.rollback();
+		}
+		
+		if(m.getUserType().equals("E")) db.close();
+		return result;
+	}
 
+	public boolean updateMember(Corporation c) {
+		boolean result = memberDao.updateMember(db, c);
+		
+		if(result) {
+			db.commit();
+		} else {
+			db.rollback();
+		}
+		
+		db.close();
+		return result;
+	}
 }
-
-

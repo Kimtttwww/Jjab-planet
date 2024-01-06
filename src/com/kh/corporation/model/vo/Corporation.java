@@ -19,5 +19,5 @@ public class Corporation {
 	private String address;
 	private int likeCount;
 	private String homePage;
-	private Logo fileNo;
+	private Logo logo;
 }

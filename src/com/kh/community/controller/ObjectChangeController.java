@@ -29,17 +29,13 @@ public class ObjectChangeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HashMap<String, String> v = new HashMap<String, String>();
 		String type = request.getParameter("type");
 		int postNo = Integer.parseInt(request.getParameter("postNo"));
 		int refNo = postNo;
 				
 		if(type.equals("R")) refNo = Integer.parseInt(request.getParameter("replyNo"));
 
-		v.put("type", type);
-		v.put("refNo", Integer.toString(refNo));
-		
-		if(new PostService().deleteObject(v) > 0) {
+		if(new PostService().deleteObject(type, refNo) > 0) {
 			if(type.equals("P")) {	// 게시글 삭제
 				request.setAttribute("alertMsg", "게시글이 삭제되었습니다");
 				request.getRequestDispatcher("list.po").forward(request, response);

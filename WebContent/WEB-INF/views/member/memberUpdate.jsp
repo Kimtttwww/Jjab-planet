@@ -148,7 +148,7 @@ body {
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	<div class="container-update">
-		<form action="myPage.me" method="post">
+		<form action="update.me" method="post">
 			<div>
 				<div class="update-div">
 					<p class="title-p">회원 정보 수정</p>
@@ -160,12 +160,10 @@ body {
 					</div>
 					<div>
 						<div>핸드폰번호</div>
-						
-							<input type="text" name="phone" class="update-phoneBox" maxlength="8" value="${loginUser.phone }" placeholder="(-)제외">
-						
+						<input type="text" name="phone" class="update-phoneBox" maxlength="8" value="${loginUser.phone }" placeholder="(-)제외" required="required">
 					</div>
 
-					<div id="corporation-mypageUpdate" class = "flex-container">
+					<div id="corporation-mypageUpdate" class="flex-container">
 						<input type="hidden" name="userType" value="E">
 						<div>
 							<div>

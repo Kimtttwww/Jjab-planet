@@ -1,5 +1,4 @@
 package com.kh.community.controller;
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,14 +35,10 @@ public class ReplyWriteController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int refNo = Integer.parseInt(request.getParameter("postNo"));
-		String replyContent= request.getParameter("replyContent");
-		int replyWriter = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
-		
 		Reply r = Reply.builder()
-				.refNo(refNo)
-				.replyContent(replyContent)
-				.replyWriter(replyWriter)
+				.refNo(Integer.parseInt(request.getParameter("postNo")))
+				.replyContent(request.getParameter("replyContent"))
+				.replyWriter(((Member) request.getSession().getAttribute("loginUser")).getUserNo())
 				.build();
 		
 		if(new PostService().insertReply(r) > 0) {

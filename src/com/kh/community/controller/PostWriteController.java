@@ -29,10 +29,7 @@ public class PostWriteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* 니증에 로그인 기능 되면 추가할 부분 */
-		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
-		
-		if(loginUser != null) {
+		if(request.getSession().getAttribute("loginUser") != null) {
 			request.getRequestDispatcher("WEB-INF/views/community/write.jsp").forward(request, response);
 		} else { 
 			request.setAttribute("alertMsg", "로그인 후 이용 가능합니다");
@@ -44,24 +41,18 @@ public class PostWriteController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int postWriter = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
-		String postTitle = request.getParameter("postTitle");
-		String postContent= request.getParameter("postContent");
-		String category= request.getParameter("category");
-		
 		Post p = Post.builder()
-				.postWriter(postWriter)
-				.postTitle(postTitle)
-				.postContent(postContent)
-				.category(category)
+				.postTitle(request.getParameter("postTitle"))
+				.postContent(request.getParameter("postContent"))
+				.postWriter(((Member) request.getSession().getAttribute("loginUser")).getUserNo())
+				.category(request.getParameter("category"))
 				.build();
 		
 		if(new PostService().insertPost(p) > 0) {
-			request.setAttribute("alertMsg", "게시글이 등록되었습니다");
+			request.getSession().setAttribute("alertMsg", "게시글이 등록되었습니다");
 		} else {
-			request.setAttribute("alertMsg", "에러가 발생하였습니다");
+			request.getSession().setAttribute("alertMsg", "에러가 발생하였습니다");
 		}
-		
-		request.getRequestDispatcher("/list.po").forward(request, response);
+		response.sendRedirect("list.po");
 	}
 }
