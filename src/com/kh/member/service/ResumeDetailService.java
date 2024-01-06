@@ -3,7 +3,7 @@ package com.kh.member.service;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.common.Template;
-import com.kh.member.model.vo.Resume;
+import com.kh.myPage.model.vo.Resume;
 import com.kh.member.model.dao.ResumeDao;
 
 public class ResumeDetailService {
@@ -16,8 +16,6 @@ public class ResumeDetailService {
 		return resume;
 	}
 	public Resume updateResume(Resume resume) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

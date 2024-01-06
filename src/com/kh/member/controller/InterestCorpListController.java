@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.common.Pagination;
 import com.kh.common.model.vo.PageInfo;
-import com.kh.member.model.vo.InterestCorp;
+import com.kh.member.model.vo.JoayoCorp;
 import com.kh.member.model.vo.Member;
 import com.kh.member.service.InterestCorpService;
 
@@ -48,7 +48,7 @@ public class InterestCorpListController extends HttpServlet {
 		PageInfo pi = Pagination.getPageInfo(objCount, currentPage, pageLimit, objLimit);
 		System.out.println(pi);
 		
-		ArrayList<InterestCorp> list = icService.selectList(pi, userNo);
+		ArrayList<JoayoCorp> list = icService.selectList(pi, userNo);
 
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);

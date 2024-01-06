@@ -6,11 +6,11 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.common.model.vo.PageInfo;
-import com.kh.member.model.vo.InterestCorp;
+import com.kh.member.model.vo.JoayoCorp;
 
 public class InterestCorpDao {
 	@SuppressWarnings("unchecked")
-	public ArrayList<InterestCorp> selectList(SqlSession sqlSession, PageInfo pi, int userNo) {
+	public ArrayList<JoayoCorp> selectList(SqlSession sqlSession, PageInfo pi, int userNo) {
 		int limit = pi.getObjLimit();
 		int offset = (pi.getCurrentPage()-1)*limit;
 		
@@ -25,5 +25,4 @@ public class InterestCorpDao {
 		System.out.println(re + "asd");
 		return re;
 	}
-
 }
