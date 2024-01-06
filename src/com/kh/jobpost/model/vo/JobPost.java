@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Data
-
 //이 VO 이상함!@@
 //ceoName이랑 phone이 왜있는지? 
 //jobNo이랑 jobName이랑 둘다 있는지?
