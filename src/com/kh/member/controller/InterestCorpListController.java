@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.common.Pagination;
 import com.kh.common.model.vo.PageInfo;
@@ -28,7 +27,6 @@ public class InterestCorpListController extends HttpServlet {
 	 */
 	public InterestCorpListController() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -52,22 +50,19 @@ public class InterestCorpListController extends HttpServlet {
 		
 		ArrayList<InterestCorp> list = icService.selectList(pi, userNo);
 
-			request.setAttribute("pi", pi);
-			request.setAttribute("list", list);
-			
-			System.out.println(list+ " ㅁ");
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		
+		System.out.println(list+ " ㅁ");
 
-			request.getRequestDispatcher("WEB-INF/views/member/joayo_corp.jsp").forward(request, response);		
+		request.getRequestDispatcher("WEB-INF/views/member/joayo_corp.jsp").forward(request, response);		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 	}
-
 }

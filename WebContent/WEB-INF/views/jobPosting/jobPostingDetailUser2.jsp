@@ -166,7 +166,6 @@ h1 {
 			<main>
 				<section class="job-detail">
 					<h2>${p.postTitle }</h2>
-
 				</section>
 
 				<section class="application-guide">
@@ -184,12 +183,12 @@ h1 {
 
 				<section class="application-form">
 					<h2>* 채용내용</h2>
-					<form>
+					<div>
 						<p>${p.postContent }</p>
-					</form>
+					</div>
 				</section>
-				<div class="job-detail"
-					style="display: flex; flex-direction: column;">
+				
+				<div class="job-detail"	style="display: flex; flex-direction: column;">
 					<li>마감일 : ${p.endDate}</li>
 					<li>대표 : ${p.ceoName} 회사연락처:(${p.phone})</li>
 				</div>
@@ -198,9 +197,7 @@ h1 {
 		</div>
 
 		<div class="cotent-footer">
-			<button type="button"
-				onclick='location.href="myPage.me?bno=${b.boardNo}"'}>
-				수정페이지로이동</button>
+			<button type="button" onclick='location.href="myPage.me?bno=${b.boardNo}"'>수정페이지로이동</button>
 			<c:choose>
 				<!-- userType이 null일 경우 (로그인하지 않은 사용자) -->
 				<c:when test="${p.userType == null}">
@@ -222,16 +219,6 @@ h1 {
 		</div>
 	</form>
 
-
-
 </body>
 
-
-
-
 </html>
-
-
-
-
-

@@ -1,14 +1,12 @@
 package com.kh.corporation.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.corporation.model.service.CorporationService;
 import com.kh.member.model.vo.Member;
@@ -25,7 +23,6 @@ public class CorplikeInsertController extends HttpServlet {
      */
     public CorplikeInsertController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -36,7 +33,6 @@ public class CorplikeInsertController extends HttpServlet {
 		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
 		int corpCode = Integer.parseInt( request.getParameter("corpNo"));
 		int userNo = loginUser.getUserNo();
-		
 		
 		boolean isLiked = corpService.isCorpLiked(corpCode, userNo);
 

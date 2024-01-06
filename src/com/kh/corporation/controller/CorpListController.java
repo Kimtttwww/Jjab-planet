@@ -1,7 +1,6 @@
 package com.kh.corporation.controller;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,11 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.io.Resources;
-
 import com.kh.common.Pagination;
 import com.kh.common.model.vo.PageInfo;
-import com.kh.community.model.vo.Reply;
 import com.kh.corporation.model.service.CorporationService;
 import com.kh.corporation.model.vo.Corporation;
 import com.kh.corporation.model.vo.Logo;
@@ -32,19 +28,16 @@ public class CorpListController extends HttpServlet {
 	 */
 	public CorpListController() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CorporationService corpService = new CorporationService();
 		String corpNoParameter = request.getParameter("corpNo");
-		int corpCode = 111;
+		int corpCode = 0;
 		
 		if (corpNoParameter != null && !corpNoParameter.isEmpty()) {
 		    try {
@@ -77,8 +70,6 @@ public class CorpListController extends HttpServlet {
 		List<Logo> logoList = corpService.selectLogoList(corpCode);
 		request.setAttribute("logoList", logoList);
 //		System.out.println("listC logoList : " + logoList);
-		
-		
 
 		// 기업 로고 list
 		List<Corporation> Corplist = corpService.selectCorpList(pi);
@@ -91,9 +82,6 @@ public class CorpListController extends HttpServlet {
 		Collections.shuffle(Corplist);
 		request.setAttribute("randonCorp", Corplist);
 
-		
-
-
 
 		request.getRequestDispatcher("WEB-INF/views/corporation/corpInfo_main.jsp").forward(request, response);
 
@@ -103,10 +91,7 @@ public class CorpListController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
-
 }

@@ -27,12 +27,12 @@ public class JobPostDao {
 	
 	
 	public ArrayList<JobPost> selectList(SqlSession session, PageInfo pi){
-			int limit = pi.getObjLimit();
-			int offset = (pi.getCurrentPage()-1)*limit;
-			
-			RowBounds rowBounds = new RowBounds(offset, limit);
-			
-			return(ArrayList) session.selectList("jobpostMapper.selectList",null,rowBounds);
+		int limit = pi.getObjLimit();
+		int offset = (pi.getCurrentPage()-1)*limit;
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		return(ArrayList) session.selectList("jobpostMapper.selectList",null,rowBounds);
 	}
 
 	public int selectListCount(SqlSession sqlSession) {
@@ -44,7 +44,6 @@ public class JobPostDao {
 		return sqlSession.update("jobpostMapper.increaseCount", jobpostNo);
 	}
 
-
 	public ArrayList<JobPost> idxSelectList(SqlSession session, PageInfo pi) {
 		return(ArrayList) session.selectList("jobpostMapper.idx_selectList");
 	}
@@ -53,22 +52,6 @@ public class JobPostDao {
 	public ArrayList<JobPost> getPostsByCategory(SqlSession session, String category) {
 		return  (ArrayList)session.selectList("jobpostMapper.getPostsByCategory", category);
 	}
-
-
-
-
-	
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

@@ -16,7 +16,6 @@ import com.kh.corporation.model.service.CorporationService;
 import com.kh.corporation.model.vo.Corporation;
 import com.kh.corporation.model.vo.Logo;
 import com.kh.jobpost.model.vo.JobPost;
-import com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class CorpReviewInsertController
@@ -30,18 +29,14 @@ public class CorpDetailController extends HttpServlet {
      */
     public CorpDetailController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		CorporationService corpService = new CorporationService();
 		int corpCode = Integer.parseInt( request.getParameter("corpNo"));
-		
 		
 		// 기업리뷰 페이징처리
 		int objCount = corpService.reviewCount(corpCode);		
@@ -57,12 +52,10 @@ public class CorpDetailController extends HttpServlet {
 		request.setAttribute("corpList", corpList);
 //		System.out.println("corpList : " +corpList);
 		
-		
 		// corpNo에 해당하는 기업 출력
 		List<Corporation> corpOne = corpService.selectCorpOne(corpCode);
 		request.setAttribute("corpOne", corpOne);
 //		System.out.println("corpOne : " +corpOne);
-		
 		
 		// corpNo에 해당하는 기업로고
 		List<Logo> logoList = corpService.selectLogoOne(corpCode);
@@ -71,21 +64,16 @@ public class CorpDetailController extends HttpServlet {
 //		
 //		System.out.println("2corpCode : " + corpCode);
 		
-		
-		
-		
 		// corpNo에 해당하는 채용공고 출력
 		List<JobPost> jobPostList = corpService.selectJobPostList(corpCode);
 //		System.out.println("jobPostList : " +jobPostList);
 		request.setAttribute("jobPostList", jobPostList);
 		
 		
-		
 		// 기업의 리뷰 리스트 출력하기
 		List<Reply> replyList = corpService.selectReviewList(pi, corpCode);
 //		System.out.println("replyList : " + replyList);
 		request.setAttribute("replyList", replyList);
-		
 		
 		
 	

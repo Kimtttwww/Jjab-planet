@@ -58,7 +58,7 @@ public class MemberService {
 
 	public Member selectMember(int userNo) {
 		// Connection conn = getConnection();
-		SqlSession sqlSession = Template.getSqlSession();
+		SqlSession sqlSession = getSqlSession();
 		
 		Member m = memberDao.selectMember(sqlSession, userNo);
 		

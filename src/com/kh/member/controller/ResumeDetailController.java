@@ -1,18 +1,15 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.member.model.vo.Member;
 import com.kh.member.model.vo.Resume;
-import com.kh.member.model.vo.Resume.ResumeBuilder;
 import com.kh.member.service.ResumeDetailService;
 
 /**
@@ -27,7 +24,6 @@ public class ResumeDetailController extends HttpServlet {
      */
     public ResumeDetailController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -68,10 +64,8 @@ public class ResumeDetailController extends HttpServlet {
 		if(updateResume==null) {
 			request.setAttribute("errorMsg", "회원정보 수정에 실패했습니다");	
 		}else {
-			HttpSession session = request.getSession();
-			session.setAttribute("alertMsg", "성공적으로 회원정보를 수정했습니다");
-			session.setAttribute("loginUser", updateResume);	// 같은 키값은 존재할 수 없다 = 덮어쓰기
+			request.getSession().setAttribute("alertMsg", "성공적으로 회원정보를 수정했습니다");
+			request.getSession().setAttribute("loginUser", updateResume);	// 같은 키값은 존재할 수 없다 = 덮어쓰기
 		}
-				
 	}
 }
