@@ -2,42 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mypageMapper">
 	<resultMap id="noticeResultSet" type='Notice' />
-	<resultMap id="interestCorpResultSet" type='InterestCorp' />
+	
+	<resultMap id="interestCorpResultSet" type='joayoCorp' />
+	
 	<resultMap id="resumeResultSet" type='Resume' >
-		<result column="WORKER_NO" property="workerNo"/>
-		<result column="FORM_TITLE" property="formTitle"/>
-		<result column="WORKER_NAME" property="workerName"/>
-		<result column="job_NAME" property="jobName"/>
-		<result column="IS_OPEN" property="isOpen"/>
+		<id column="WORKER_NO" property="workerNo"/>
 	</resultMap>
 
-
 	<!-- 리스트 목록 -->
-	<select id="noticeList" parameterType="_int"
-		resultMap='noticeResultSet'>
+	<select id="noticeList" parameterType="_int" resultMap='noticeResultSet'>
 		SELECT NOTICE_NO, NOTICE_TYPE, NOTICE_TEXT
 		FROM NOTICE N
 		JOIN NOTICE_TYPE T USING (NOTICE_TYPE)
 		WHERE RECEIVER = #{userNo}
 	</select>
 
-	<select id="interestCorpList" parameterType="_int"
-		resultMap='interestCorpResultSet'>
+	<select id="interestCorpList" parameterType="_int" resultMap='interestCorpResultSet'>
 		SELECT JOAYO_NO, CORP_NO, WORKER_NO, CORP_NAME
 		FROM JOAYO_CORP j
 		JOIN CORPORATION C USING (CORP_NO)
 		WHERE WORKER_NO = #{userNo}
 	</select>
 	
-	<select id="interestCorpListCount" parameterType="_int"
-		resultType="_int">
+	<select id="interestCorpListCount" parameterType="_int" resultType="_int">
 		SELECT COUNT(*)
 		FROM JOAYO_CORP
 		WHERE WORKER_NO = #{userNo}
 	</select>
 
-	<select id="detailResume" parameterType="_int"
-		resultMap='resumeResultSet'>
+	<select id="detailResume" parameterType="_int" resultMap='resumeResultSet'>
 		SELECT worker_no, FORM_TITLE, WORKER_NAME, BIRTHDAY, GENDER, ADDRESS, IS_OPEN, job_NAME, CAREER, EDUCATION FROM RESUME
 		JOIN occupation O USING(job_no)
 		WHERE worker_no = #{workerNo}
