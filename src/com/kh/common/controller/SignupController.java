@@ -1,12 +1,15 @@
 package com.kh.common.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.kh.common.JjapFileRenamePolicy;
 import com.kh.corporation.model.vo.Corporation;
@@ -40,31 +43,38 @@ public class SignupController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MultipartRequest mr = new MultipartRequest(request, Logo.FILE_PATH, Logo.FILE_SIZE, "UTF-8", new JjapFileRenamePolicy());
-		String userId = mr.getParameter("userId") + "@" + mr.getParameter("email-selectText");
-		String phone = mr.getParameter("pphone") + mr.getParameter("phone");
+		MultipartRequest mr = new MultipartRequest(request, Logo.getRealPath(request), Logo.FILE_SIZE, "UTF-8", new JjapFileRenamePolicy());
+		MemberService ms = new MemberService();
 		Corporation c = null;
-		Logo l = null;
+		String userId = null;
+		String emailSelectText = mr.getParameter("email-selectText");
 		
-		Member m = Member.builder()
-				.userId(userId)
-				.userPwd(mr.getParameter("userPwd"))
-				.phone(phone)
-				.userType(mr.getParameter("userType")).build();
+		if(emailSelectText.equals("directEmail")) {
+			userId = mr.getParameter("userId") + "@" + mr.getParameter("email-text");
+		} else {
+			userId = mr.getParameter("userId") + "@" + emailSelectText;
+		}
 		
-		if(m.getUserType().equals("C")){
-			l = new Logo(0, 0, mr.getOriginalFileName("logo"), mr.getFilesystemName("logo"), "a");
+		if(ServletFileUpload.isMultipartContent(request)) {
 			c = Corporation.builder()
 					.corpName(mr.getParameter("corpName"))
 					.ceoName(mr.getParameter("ceoName"))
 					.corpBn(mr.getParameter("corpBn"))
 					.address(mr.getParameter("address"))
 					.homePage(mr.getParameter("homePage"))
+					.logo(new Logo(0, 0, mr.getOriginalFileName("logo"), mr.getFilesystemName("logo"), "a"))
 					.build();
 		}
 		
-		if(new MemberService().insertMember(m) &&
-				(m.getUserType().equals("E") || new MemberService().insertMember(c, l))) {
+		String phone = mr.getParameter("pphone") + mr.getParameter("phone");
+		Member m = Member.builder()
+				.userId(userId)
+				.userPwd(mr.getParameter("userPwd"))
+				.phone(phone)
+				.userType(mr.getParameter("userType")).build();
+			
+		if(ms.insertMember(m) &&
+				(m.getUserType().equals("E") || ms.insertMember(c))) {
 			request.getSession().setAttribute("alertMsg", "회원가입 성공");
 			response.sendRedirect(request.getContextPath());
 		} else {
