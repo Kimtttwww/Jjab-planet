@@ -38,7 +38,7 @@ body {
 	margin: 20px;
 	border-radius: 20px;
 	justify-content: space-between;
-	border: 2px solid #27ae60;
+	border: 1px solid #27ae60;
 }
 
 .top_b3 img{

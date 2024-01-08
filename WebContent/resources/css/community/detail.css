@@ -17,6 +17,10 @@ body {
     color: #fff;
 }
 
+.post a {
+	cursor: pointer;
+}
+
 square {
     width: 850px;
     margin: 0 auto;
@@ -49,7 +53,7 @@ square textarea {
 	max-width: 30px;
     height: 16px;
     margin-top: 9px;
-        margin-bottom: 2px;
+    margin-bottom: 2px;
 }
 
 .topbar span{
@@ -79,7 +83,7 @@ square textarea {
     border: 1px solid #27ae60;
     border-radius: 5px;
     margin-bottom: 20px;
-    padding: 30px 50px 30px 30px;
+    padding: 30px 30px 30px 30px;
     position: relative;
 }
 
@@ -123,10 +127,18 @@ square textarea {
     border-radius: 5px;
 }
 
-.post-info img {
+.post-info img:first-of-type {
 	max-width: 40px;
     height: 16px;
-    margin-top: 9px;
+    margin-top: 6px;
+    margin-right: -14px;
+}
+
+.post-info img:last-of-type {
+	max-width: 40px;
+    height: 16px;
+    margin-top: 5px;
+    margin-right: -28px;
 }
 
 /* 게시글 좌측 박스 내부 제목 */
@@ -153,12 +165,23 @@ square textarea {
     outline-color: #27ae60;
 }
 
+.reply-need-login{
+	margin: 20px 5px 5px 30px;
+}
+
+.post-need-login {
+    margin-left: 10px;
+    margin-top: 300px; /* 적절한 크기로 조절하세요 */
+}
+
+
 /* 게시글 내부 우측 박스 (수정 삭제)*/
 .post-need-login a{
 	text-align: center;
     font-weight: bold;
     text-decoration: none;
-    background-color: black;
+    background-color: #27ae60;
+    padding:4px;
     border-radius: 5px;
     color: #fff;
 }
@@ -167,7 +190,8 @@ square textarea {
 	text-align: center;
     font-weight: bold;
     text-decoration: none;
-    background-color: black;
+    background-color: #27ae60;
+    padding:4px;
     border-radius: 5px;
     color: #fff;
 }
@@ -197,10 +221,13 @@ square textarea {
 }
 
 #reply-size {
-	height: 100px;
-    flex-basis: 80%;
+    flex-basis: 99%;
     border: none;
     border-bottom: 1px solid #27ae60;
+    height: auto; 
+    overflow: hidden; 
+    resize: none;
+    padding: 10px 20px 20px 30px;	
 }
 
 /* 댓글 좌측 박스 내부 정보 */
@@ -221,7 +248,9 @@ square textarea {
 /* 댓글 박스 */
 .reply-read {
 	min-height: 75px;
+	cursor: pointer;
 }
+
 
 /* 댓글 박스 내부 좌측 박스 */
 .reply-read>article:first-of-type {
@@ -232,9 +261,10 @@ square textarea {
 
 /* 댓글 박스 내부 내용 */
 .reply-read span {
-	width: 50%;
-	height: 35%;
+	width: 30%;
+	height: 25px;
 	font-weight: bold;
+	margin-left:4px;
 }
 
 .off{
