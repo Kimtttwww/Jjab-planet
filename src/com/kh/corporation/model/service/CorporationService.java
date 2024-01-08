@@ -50,22 +50,22 @@ public class CorporationService {
 		return list;
 	}
 
-	public List<Corporation> selectCorpOne(int corpCode) {
+	public Corporation selectCorpOne(int corpCode) {
 		
 		SqlSession sqlSession = Template.getSqlSession();
-		List<Corporation> list = corpDao.selectCorpOne(sqlSession, corpCode);
+		Corporation corp = corpDao.selectCorpOne(sqlSession, corpCode);
 
 		sqlSession.close();
-		return list;
+		return corp;
 	}
 
-	public List<JobPost> selectJobPostList(int corpCode) {
+	public JobPost selectJobPostList(int corpCode) {
 		
 		SqlSession sqlSession = Template.getSqlSession();
-		List<JobPost> list = corpDao.selectJobPostList(sqlSession, corpCode);
+		JobPost jobPost = corpDao.selectJobPostList(sqlSession, corpCode);
 
 		sqlSession.close();
-		return list;
+		return jobPost;
 	}
 
 	public List<Logo> selectLogoOne(int corpCode) {
@@ -173,6 +173,56 @@ public class CorporationService {
 		sqlSession.close();
 		return corplike;
 		
+	}
+
+	public int insertReview(Reply review) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		int result = corpDao.insertReview(sqlSession, review);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return result;
+	}
+
+	public int updateReview(int refNo, int replyWriter) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("corpCode", refNo);
+		map.put("userNo", replyWriter);
+		
+		int result = corpDao.updateReview(sqlSession, map);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return result;
+	}
+
+	public int deleteReview(int refNo, int replyWriter) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("corpCode", refNo);
+		map.put("userNo", replyWriter);
+		
+		int result = corpDao.deleteReview(sqlSession, map);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return result;
 	}
 
 

@@ -15,10 +15,12 @@ import com.kh.jobpost.model.vo.JobPost;
 public class CorporationDao {
 
 	public int corpCount(SqlSession sqlSession) {
+		
 		return sqlSession.selectOne("boardMapper.corpCount");	
 	}
 	
 	public int reviewCount(SqlSession sqlSession, int corpCode) {
+		
 		Integer count = sqlSession.selectOne("boardMapper.reviewCount", corpCode);
 		return count;		
 	}
@@ -45,14 +47,14 @@ public class CorporationDao {
 		return  sqlSession.selectList("boardMapper.selectReviewList", corpCode, rowBounds);
 	}
 
-	public List<Corporation> selectCorpOne(SqlSession sqlSession, int corpCode) {
+	public Corporation selectCorpOne(SqlSession sqlSession, int corpCode) {
 		
-		return sqlSession.selectList("boardMapper.selectCorpOne", corpCode);
+		return sqlSession.selectOne("boardMapper.selectCorpOne", corpCode);
 	}
 
-	public List<JobPost> selectJobPostList(SqlSession sqlSession, int corpCode) {
+	public JobPost selectJobPostList(SqlSession sqlSession, int corpCode) {
 		
-		return sqlSession.selectList("boardMapper.selectJobPostList", corpCode);
+		return sqlSession.selectOne("boardMapper.selectJobPostList", corpCode);
 	}
 
 	public List<Logo> selectLogoOne(SqlSession sqlSession, int corpCode) {
@@ -65,30 +67,45 @@ public class CorporationDao {
 		return sqlSession.selectList("boardMapper.selectLogoList", corpCode);
 	}
 
-
 	public int corplikeInsert(SqlSession sqlSession, HashMap<String, Integer> map) {
+		
 		return sqlSession.insert("boardMapper.corplikeInsert", map);
 	}
 
 	public int corplikeCount(SqlSession sqlSession, int corpCode) {
+		
 		 return sqlSession.update("boardMapper.corplikeCount", corpCode);
 	}
 
 	public int corplikeUnCount(SqlSession sqlSession, int corpCode) {
 		
 		 return sqlSession.update("boardMapper.corplikeUnCount", corpCode);
-
 	}
 
 	public int corplikeDelete(SqlSession sqlSession, HashMap<String, Integer> map) {
+		
  		return sqlSession.insert("boardMapper.corplikeDelete", map);
-
 	}
 
 	public boolean isCorpLiked(SqlSession sqlSession, HashMap<String, Integer> map) {
-		Boolean isLiked = sqlSession.selectOne("boardMapper.isCorpLiked", map);
-		boolean result = (isLiked != null) ? isLiked.booleanValue() : false;
-		return result;
+		
+		boolean isLiked = sqlSession.selectOne("boardMapper.isCorpLiked", map) != null ? true : false;
+		return isLiked;
+	}
+
+	public int insertReview(SqlSession sqlSession, Reply review) {
+		
+		return sqlSession.insert("boardMapper.insertReview", review);
+	}
+
+	public int updateReview(SqlSession sqlSession, HashMap<String, Integer> map) {
+		
+		return sqlSession.update("boardMapper.updateReview", map);
+	}
+
+	public int deleteReview(SqlSession sqlSession, HashMap<String, Integer> map) {
+
+		return sqlSession.delete("boardMapper.deleteReview", map);
 	}
 
 	

@@ -34,7 +34,7 @@ public class MypageUpdateController extends HttpServlet {
 		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
 		
 		if(loginUser.getUserType().equals("C")) {
-			request.setAttribute("C", new CorporationService().selectCorpOne(loginUser.getUserNo()).get(0)); 
+			request.setAttribute("C", new CorporationService().selectCorpOne(loginUser.getUserNo())); 
 		}
 		
 		request.getRequestDispatcher("WEB-INF/views/member/memberUpdate.jsp").forward(request, response);

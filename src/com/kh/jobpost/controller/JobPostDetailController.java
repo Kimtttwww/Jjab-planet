@@ -33,11 +33,12 @@ public class JobPostDetailController extends HttpServlet {
         if (jobPostservice.increaseCount(jobpostNo) > 0) {
             JobPost p = jobPostservice.detailPost(jobpostNo);
             
-            List<Corporation> arr = new CorporationService().selectCorpOne(p.getCorpNo());
-            Corporation c = arr.get(0);
+//            List<Corporation> arr -> Corporation arr로 변경함 -다연
+            Corporation arr = new CorporationService().selectCorpOne(p.getCorpNo());
+//            Corporation c = arr.get(0);
             
-            p.setCorpName(c.getCorpName());
-            p.setCeoName(c.getCeoName());
+//            p.setCorpName(c.getCorpName());
+//            p.setCeoName(c.getCeoName());
             p.setPhone(new MemberService().selectMember(p.getCorpNo()).getPhone());
             
             String careerText = convertCareerToText(p.getCareer());
