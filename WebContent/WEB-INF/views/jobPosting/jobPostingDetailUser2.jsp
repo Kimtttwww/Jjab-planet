@@ -224,22 +224,22 @@ h1 {
 			<!-- 지원하기 작업중 -->
 		</div>
 	</form>
-<!-- 			<div class="cotent-footer"> -->
-<%-- 				<c:choose> --%>
-<%-- 					<c:when test="${loginUser.userType == 'E'}"> --%>
-<!-- 						개인(구직자) 회원이고 이력서가 등록되어 있을 경우에만 지원 버튼 표시 -->
-<%-- 						<c:if test="${not empty loginUser.resume}"> --%>
-<!-- 							<form action="/applyForJob" method="post"> -->
-<!-- 								<input type="hidden" name="proposer" -->
-<%-- 									value="${loginUser.resumeId}" /> <input type="hidden" --%>
-<%-- 									name="receiver" value="${p.corpNo}" /> <input type="hidden" --%>
-<!-- 									name="proposeType" value="C" /> -->
-<!-- 								<button type="submit">지원</button> -->
-<!-- 							</form> -->
-<%-- 						</c:if> --%>
-<%-- 					</c:when> --%>
-<%-- 				</c:choose> --%>
-<!-- 			</div> -->
+			<div class="cotent-footer">
+				<c:choose>
+					<c:when test="${loginUser.userType == 'E'}">
+						개인(구직자) 회원이고 이력서가 등록되어 있을 경우에만 지원 버튼 표시
+						<c:if test="${not empty loginUser.resume}">
+							<form action="/applyForJob" method="post">
+							<!-- 숨겨진 입력필드 사용자에게 보이지않음,폼제출시 서버로 전송 -->
+								<input type="hidden" name="proposer" value="${loginUser.resumeId}" /> 
+								<input type="hidden" name="receiver" value="${p.corpNo}" /> 
+								<input type="hidden" name="proposeType" value="C" />
+								<button type="submit">지원</button>
+							</form>
+						</c:if>
+					</c:when>
+				</c:choose>
+			</div>
 
 </body>
 
