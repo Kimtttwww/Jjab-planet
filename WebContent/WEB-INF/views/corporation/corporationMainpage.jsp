@@ -10,40 +10,49 @@
     <style>
         table {
             width: 100%;
+            display: inline;
             border-collapse: collapse;
         }
-        th, td {
-            text-align: left;
-            padding: 8px;
+        
+        .proposeList section {
+        	display: flex;
+        	justify-content: space-around;
+        	align-items: center;
+       	   	margin-top: 30px;
         }
-        th {
-            background-color: #f2f2f2;
+        
+        .propose {
+        	height: 100px;
+       	}
+        	
+        .proposeList span {
+        text-align: center;
+        	flex-basis: 30%
+        }
+        .title{
+        border: 5px solid green; /* 지워야함 */
+     	font-weight: bold;
+     	font-size: 27px;
+        height: 60px;
         }
     </style>
 </head>
 <body>
-    <div class="main">
-        <table>
-            <thead>
-                <tr>
-                    <th>이력서제목</th>
-                    <th>분류</th>
-                    <th>작성자</th>
-                </tr>
+    <div class="proposeList">
+                <section class ="title">
+                    <span>이력서제목</span>
+                    <span>분류</span>
+                    <span>작성자</span>
+                </section>
                
-            </thead>
-            <tbody>
                 <c:forEach var="c" items="${cormypage}">
-                
-                 <tr>
-                    <tr onclick = 'location.href = "resumeview.me?bno=${c.workerNo}"'>
-                        <td>${c.formTitle}</td>
-                        <td>${c.jobName}</td>
-                        <td>${c.workerName}</td>
-                    </tr>
+                    <section class="propose" onclick = 'location.href = "resumeview.me?bno=${c.workerNo}"'>
+                        <span>${c.formTitle}</span>
+                        <span>${c.jobName}</span>
+                        <span>${c.workerName}</span>
+                    </section>
                 </c:forEach>
             </tbody>
-        </table>
 
         <section class="pagingbar">
             <!-- Pagination buttons -->

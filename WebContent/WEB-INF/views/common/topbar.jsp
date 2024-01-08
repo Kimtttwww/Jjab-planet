@@ -1,21 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	Member loginUser = (Member)session.getAttribute("loginUser");
-%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Topbar</title>
 <style>
-	body{
-		box-sizing : border-box;
-		min-width: 1200px;
-		max-width: 1600px;
-		margin: 0 auto;
-	}
+* {
+    box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+}
+
+.menu-area {
+    display: flex;
+    align-items: center;
+    width: 1500px;
+    height: 60px;
+    font-weight: bold;
+    justify-content: space-between;
+    position: sticky;
+    border-bottom: 2px solid #eee;
+    margin: 0 auto;
+}
+
+.menu {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    min-width: 1000px;
+}
 
 	.menu-area a {
 		text-decoration-line: none; /* 밑에 줄 없애기 */
@@ -24,30 +42,6 @@
         width: 100px;
 	}
 	
-	.menu-area {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		width: 100%;
-		height: 60px;
-		vertical-align: middle;
-		font-size: default;
-		font-weight: bold;
-		justify-content: space-between;
-		position: sticky;
-		background-color: white;
-		border-bottom: 2px solid #eee;
-	}
-
-	.menu {
-		width: 60%;
-        height: 100%;
-		margin: 0 auto;
-		display: flex;
-		justify-content: space-between;
-		min-width: 1000px;
-	}
-
 	.menu-left a {
 		flex-basis: 50%;
 		justify-content: center;
@@ -56,11 +50,9 @@
 	}
 
 	.menu-right a {
-		flex-basis: 50%;
-		justify-content: center;
-		flex-direction: row;
-		margin-right: 30px;
-	}
+    text-align: center;
+    width: 150px;
+}
 
 	.menu-left a:hover, .menu-right a:hover {
 		font-size: 20px;
@@ -100,17 +92,19 @@
 			</div>
 
 			<div class="menu-right">
-				<% if (loginUser == null) { %>
-					<!-- 로그인 하지 않았을 경우 -->
-					<a href="login.me">로그인</a>
-					<a href="sign.bo">회원가입</a>
-				<% } else { %>
-					<!-- 로그인 했을 때 -->
-					<%= loginUser.getUserId() %>
-					<a href="logout.me">&nbsp; &nbsp; 로그아웃</a>
-					<a href="myPage.me">마이페이지</a>
-					<!-- 마이페이지는 아직 미완성이라 나중에 myPage.me 바꿔야함 -->
-				<% } %>
+				<c:choose>
+					<c:when test="${ empty loginUser }">
+						<!-- 로그인 하지 않았을 경우 -->
+						<a href="login.me">로그인</a>
+						<a href="sign.bo">회원가입</a>
+					</c:when>
+					<c:otherwise>
+						<!-- 로그인 했을 때 -->
+						<span style="min-width: 100px; margin: 0 30px; text-align: center">${ loginUser.userId }</span>
+						<a href="logout.me">로그아웃</a>
+						<a href="myPage.me">마이페이지</a>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>

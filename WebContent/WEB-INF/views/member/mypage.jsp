@@ -10,22 +10,18 @@
 <style>
 .main {
 	display: flex;
-	hight: 100%;
-	margin: 0;
-	justify-content: space-around;
-}
-
-.side {
-/* flex-basis:30%; */
-	width: 200px;
 	height: 2000px;
+}
+.side {
+	width: 500px;
+	height:100%;
 	padding-top: 20px;
 }
 
 .content {
-/* flex-basis:60%; */
 	width: 1000px;
-	height: 2000px;
+	height:100%;
+	margin-left: 80px;
 }
 </style>
 </head>
@@ -33,20 +29,11 @@
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	<div class="main">
 		<div class="side">
-			<c:choose>
-				<c:when test="${loginUser.userType eq 'E'}">
-					<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
-				</c:when>
-				<c:when test="${loginUser.userType eq 'C'}">
-					<jsp:include page="/WEB-INF/views/corporation/corMenubar.jsp" />
-				</c:when>			
-			</c:choose>
+			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
-		
 		
 		<div class="content">
 			<c:choose>
-			
 				<c:when test="${loginUser.userType eq 'E'}">
 					<jsp:include page="/WEB-INF/views/member/notice.jsp" />
 				</c:when>

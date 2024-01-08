@@ -54,13 +54,13 @@ font-size:14px;}
 		<div class="outer">
 			<br>
 			<h1 align="center">이력서</h1>
-		
-				
-				
-				${resume.formTitle}
-				${resume.formTitle}
-				${resume.formTitle}
-			
+		<div>이력서명: ${resume.formTitle}</div> <br>
+		<div>작성자명: ${resume.workerName}</div> <br>
+		<div>생년월일: ${resume.birthday}</div> <br>
+		<div>성별: ${resume.gender}</div> <br>
+		<div>주소: ${resume.address}</div> <br>
+		<div>직업: ${resume.career}</div> <br>
+		<div>학력: ${resume.education}</div> <br>
 		</div>
 	</div>
 </body>
