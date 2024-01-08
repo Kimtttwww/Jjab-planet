@@ -35,35 +35,45 @@ body {
     min-width: 1000px;
 }
 
-	.menu-area a {
-		text-decoration-line: none; /* 밑에 줄 없애기 */
-		text-decoration: none;
-		color: black; /* 보라색 흔적 없애기 */
-        width: 100px;
-	}
-	
-	.menu-left a {
-		flex-basis: 50%;
-		justify-content: center;
-		flex-direction: row;
-		margin-right: 30px;
-	}
-
-	.menu-right a {
-    text-align: center;
-    width: 150px;
+.menu-area a {
+	text-decoration-line: none; /* 밑에 줄 없애기 */
+	text-decoration: none;
+	color: black; /* 보라색 흔적 없애기 */
+	width: 100px;
 }
 
-	.menu-left a:hover, .menu-right a:hover {
-		font-size: 20px;
-		transition-duration: 0.3s;
-	}
+.menu-left a {
+	flex-basis: 50%;
+	justify-content: center;
+	flex-direction: row;
+	margin-right: 30px;
+	text-decoration-line: none; /* 밑에 줄 없애기 */
+	text-decoration: none;
+	color: black; /* 보라색 흔적 없애기 */
+	width: 100px;
+}
 
-    .menu-left , .menu-right {
-        display: flex;
-        height: 100%;
-        align-items: center;
-    }
+.menu-right a {
+	flex-basis: 50%;
+	justify-content: center;
+	flex-direction: row;
+	margin-right: 30px;
+	text-decoration-line: none; /* 밑에 줄 없애기 */
+	text-decoration: none;
+	color: black; /* 보라색 흔적 없애기 */
+	width: 110px;
+}
+
+.menu-left a:hover, .menu-right a:hover {
+	font-size: 20px;
+	transition-duration: 0.3s;
+}
+
+.menu-left , .menu-right {
+	display: flex;
+	height: 100%;
+	align-items: center;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- script 추가한 이유: $(() => 부분에서 jstl 라이브러리가 없어서 불러올수없어서 추가함. --강민구-- -->
@@ -87,7 +97,6 @@ body {
 				<a href="${pageContext.request.contextPath}/list.job">채용공고</a>
 				<a href="${pageContext.request.contextPath}/list.corp">기업정보</a>
 				<a href="${pageContext.request.contextPath}/list.po">커뮤니티</a>
-				<a></a>
 				<a></a>
 			</div>
 

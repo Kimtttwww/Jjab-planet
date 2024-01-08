@@ -40,7 +40,7 @@
                 <textarea class="post-content">${ p.postContent }</textarea>
             </div>
 
-            <article class="need-login">
+            <article class="post-need-login">
                 <a onclick="change(this, 'P')">수정</a>
                 <a href="change.pr?type=P&postNo=${ p.postNo }">삭제</a>
             </article>
@@ -49,7 +49,7 @@
         <section class="reply">
             <section class="reply-write">
 				<textarea id="replyContent"></textarea>
-				<a onclick="refresh()">등록</a>
+				<a id="reply-insert" onclick="refresh()">등록</a>
             </section>
             
 			<c:forEach var="r" items="${ p.replyList }">
@@ -59,7 +59,7 @@
 						<span>${ r.createDate }</span>
 						<textarea id="reply-size">${ r.replyContent }</textarea>
 	                </article>
-	                <article class="need-login">
+	                <article class="reply-need-login">
 	                    <a onclick="change(this, 'R', ${r.replyNo})">수정</a>
 	                    <a href="change.pr?type=R&postNo=${ p.postNo }&replyNo=${r.replyNo}">삭제</a>
 	                </article>

@@ -8,7 +8,7 @@ body {
 
 .topbar a{
     border: none;
-    padding: 10px 30px;
+    padding: 8px 30px;
     cursor: pointer;
     font-size: 20px;
     text-decoration: none;
@@ -24,19 +24,9 @@ square {
     padding: 20px;
 }
 
-square>.post a, square>reply a{
-    width: 100px;
-    height: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    background-color: #27ae60;
-    border-radius: 5px;
-    color: #fff;
-}
+
 
 square textarea {
-    width: 100%;
-    height: 65%;
     resize: none;
 }
 
@@ -163,28 +153,23 @@ square textarea {
     outline-color: #27ae60;
 }
 
-/* 게시글 내부 우측 박스 */
-.need-login{
-    display: flex;
-    flex-basis: 20%;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    position: absolute;
-    bottom:0;
-    right: 0;
+/* 게시글 내부 우측 박스 (수정 삭제)*/
+.post-need-login a{
+	text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: black;
+    border-radius: 5px;
+    color: #fff;
 }
 
-.need-login > :first-child{
-    margin-bottom:10px;
-    margin-right:15px;
-    
-}
-
-.need-login > :last-child{
-    margin-bottom:30px;
-    margin-right:15px;
+.reply-need-login a{
+	text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: black;
+    border-radius: 5px;
+    color: #fff;
 }
 
 /* 댓글 박스 */
@@ -192,13 +177,17 @@ square textarea {
     flex-direction: column;
 }
 
-/* 댓글 작성 박스 */
-.reply-write {
+/* 댓글 작성 박스 안 버튼 */
+#reply-insert {
+	padding: 12px 30px 10px 30px;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
     align-items: center;
     background-color: #27ae60;
     border-radius: 5px;
     color: #fff;
-    
+    cursor: pointer;
 }
 
 /* 댓글 박스 안 댓글 내용 */
@@ -212,13 +201,6 @@ square textarea {
     flex-basis: 80%;
     border: none;
     border-bottom: 1px solid #27ae60;
-}
-
-/* 댓글 작성 박스 안 버튼 */
-.reply-write>a {
-    height: auto;
-    text-align: center;
-    margin: 0 auto;
 }
 
 /* 댓글 좌측 박스 내부 정보 */
