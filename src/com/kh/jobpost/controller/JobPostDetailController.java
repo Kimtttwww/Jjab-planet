@@ -13,6 +13,7 @@ import com.kh.corporation.model.service.CorporationService;
 import com.kh.corporation.model.vo.Corporation;
 import com.kh.jobpost.model.vo.JobPost;
 import com.kh.jobpost.service.JobPostService;
+import com.kh.member.model.vo.Member;
 import com.kh.member.service.MemberService;
 
 /**
@@ -49,6 +50,15 @@ public class JobPostDetailController extends HttpServlet {
             
             String locationText = convertLocationToText(p.getLocation());
             p.setLocation(locationText);
+            
+         // 사용자의 userType 결정
+            Member m = (Member) request.getSession().getAttribute("loginUser");
+            String userType = null;
+            if (m != null) {
+                userType = m.getUserType();
+            }
+            p.setUserType(userType);
+            
             
 
             request.setAttribute("p", p);
