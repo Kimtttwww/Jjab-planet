@@ -1,3 +1,4 @@
+<%@page import="com.kh.corporation.model.vo.Logo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.kh.member.model.vo.Member,
 			java.util.ArrayList" %>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -139,7 +140,7 @@
 								<div class="corp-logo">
 									<div class="corp-logoImg">
 										<img width="120px" height="60px" onclick="${ pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"
-											src="${ pageContext.request.contextPath}/${corp.fileNo.filePath}${corp.fileNo.changeName}"
+											src="${ pageContext.request.contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}"
 											alt="기업 대표이미지">
 									</div>
 									<div class="corp-name">${corp.corpName}</div>

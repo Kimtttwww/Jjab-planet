@@ -36,7 +36,7 @@ public class MemberService {
 			db.rollback();
 		}
 		
-		if(m.getUserType().equals("E")) db.close();
+		if(m.getUserType().equals("E")) {db.close();}
 		return result;
 	}
 	
@@ -44,8 +44,8 @@ public class MemberService {
 	 * @param c
 	 * @return
 	 */
-	public boolean insertMember(Corporation c, Logo l) {
-		boolean result = memberDao.insertMember(db, c) && memberDao.insertMember(db, l);
+	public boolean insertMember(Corporation c) {
+		boolean result = memberDao.insertMember(db, c) && memberDao.insertMember(db, c.getLogo());
 		
 		if(result) {
 			db.commit();
@@ -53,18 +53,16 @@ public class MemberService {
 			db.rollback();
 		}
 		
+		db.close();
 		return result;
 	}
 
 	public Member selectMember(int userNo) {
-		// Connection conn = getConnection();
 		SqlSession sqlSession = getSqlSession();
 		
 		Member m = memberDao.selectMember(sqlSession, userNo);
 		
-		//close(conn);
 		sqlSession.close();
-		
 		return m;
 	}
 	
@@ -77,7 +75,7 @@ public class MemberService {
 			db.rollback();
 		}
 		
-		if(m.getUserType().equals("E")) db.close();
+		if(m.getUserType().equals("E")) {db.close();}
 		return result;
 	}
 

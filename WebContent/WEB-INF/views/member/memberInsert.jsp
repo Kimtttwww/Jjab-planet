@@ -27,7 +27,7 @@
 					<div>아이디*</div>
 					<input type="text" name="userId" class="enroll-email" placeholder="이메일을 입력하세요."> 
 					<span>@</span> 
-					<input disabled id="selectText" class="email-selectText" name="email-selectText" placeholder="이메일을 선택하세요."> 
+					<input disabled id="selectText" class="email-selectText" name="email-text" placeholder="이메일을 선택하세요."> 
 					<select id="selectId" name="email-selectText" class="enroll-selectBox enroll-selectEmail">
 						<option value="" disabled selected>E-Mail 선택</option>
 						<option value="naver.com" >naver.com</option>
@@ -39,11 +39,11 @@
 				</div>
 				<div>
 					<div>비밀번호*</div>
-					<input type="password" name="userPwd" class="enroll-textL" minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호">
+					<input type="password" name="userPwd" class="enroll-textL" minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호" required>
 				</div>
 				<div>
 					<div>비밀번호 확인*</div>
-					<input type="password" class="enroll-textL" minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호">
+					<input type="password" class="enroll-textL" minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호" required>
 				</div>
 				<div>
 					<div id="phone">핸드폰 번호*</div>
@@ -57,7 +57,7 @@
 						<option value="031">031</option>
 						<option value="032">032</option>
 					</select> 
-					<input type="text" name="phone" class="enroll-phoneBox" maxlength="8" placeholder="(-)제외">
+					<input type="text" name="phone" class="enroll-phoneBox" maxlength="8" placeholder="(-)제외" required>
 				</div>
 
 				<div id="corporation-enrollForm" class="flex-container">
@@ -95,8 +95,7 @@
 		</form>
 	</div>
 	<script>
-
-		$(document).ready(function() {
+		$(() => {
 			// 초기 상태 기업 숨김
 			$("#corporation-enrollForm").hide()
 
@@ -105,46 +104,36 @@
 				alert(msg);
 				<%request.removeAttribute("alertMsg");%>
 			}
+	    });
 
-			// 개인회원가입 상태에서 기업 버튼 클릭 시
-			$("#co-btn").click(function() {
-				$("#mem-btn").removeClass("expand-green").addClass("contract-white");
-				$("#co-btn").removeClass("contract-white").addClass("expand-green");
-				$("#corporation-enrollForm").show();
-				$("#phone").html("회사 전화번호*");
-			});
-
-			// 기업회원가입 상태에서 개인 버튼 클릭 시
-			$("#mem-btn").click(function() {
-				$("#mem-btn").removeClass("contract-white").addClass("expand-green");
-				$("#co-btn").removeClass("expand-green").addClass("contract-white");
-				$("#corporation-enrollForm").hide();
-				$("#phone").html("핸드폰 번호*");
-			});
-		});
-
-		$('#mem-btn').click(function() {
-			$("input[type=hidden]").val("E");
-		});
-
-		$('#co-btn').click(function() {
+        $('#selectId').change(function() {
+            if ($('#selectId').val() == 'directEmail') {
+                $('#selectText').attr("disabled", false);
+                $('#selectText').val("");
+                $('#selectText').focus();
+            } else {
+                $('#selectText').val($('#selectId').val());
+                $('#selectText').attr("disabled", true);
+            }
+        });
+		
+		// 개인회원가입 상태에서 기업 버튼 클릭 시
+		$("#co-btn").click(function() {
+			$("#mem-btn").removeClass("expand-green").addClass("contract-white");
+			$("#co-btn").removeClass("contract-white").addClass("expand-green");
+			$("#corporation-enrollForm").show();
+			$("#phone").html("회사 전화번호*");
 			$("input[type=hidden]").val("C");
 		});
-		
-		
-		$(function() {
-	        $('#selectId').change(function() {
-	            if ($('#selectId').val() == 'directEmail') {
-	                $('#selectText').attr("disabled", false);
-	                $('#selectText').val("");
-	                $('#selectText').focus();
-	            } else {
-	                $('#selectText').val($('#selectId').val());
-	                $('#selectText').attr("disabled", true);
-	            }
-	        })
-	    });
-	
+
+		// 기업회원가입 상태에서 개인 버튼 클릭 시
+		$("#mem-btn").click(function() {
+			$("#mem-btn").removeClass("contract-white").addClass("expand-green");
+			$("#co-btn").removeClass("expand-green").addClass("contract-white");
+			$("#corporation-enrollForm").hide();
+			$("#phone").html("핸드폰 번호*");
+			$("input[type=hidden]").val("E");
+		});
 	</script>
 
 
