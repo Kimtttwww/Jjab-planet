@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -189,8 +191,8 @@ h1 {
 				</section>
 				
 				<div class="job-detail"	style="display: flex; flex-direction: column;">
-					<li>마감일 : ${p.endDate}</li>
-					<li>대표 : ${p.ceoName} 회사연락처:(${p.phone})</li>
+					<p>마감일 : ${p.endDate}</p>
+					<p>대표 : ${p.ceoName} 회사연락처:(${p.phone})</p>
 				</div>
 			</main>
 
@@ -198,26 +200,46 @@ h1 {
 
 		<div class="cotent-footer">
 			<button type="button" onclick='location.href="myPage.me?bno=${b.boardNo}"'>수정페이지로이동</button>
-			<c:choose>
 				<!-- userType이 null일 경우 (로그인하지 않은 사용자) -->
-				<c:when test="${p.userType == null}">
 					<!-- 로그인하지 않은 사용자에게 표시될 내용 -->
+				<!-- userType이 'E'인 경우 (개인 사용자) -->
+				<!-- userType이 'C'인 경우 (기업 사용자) -->
+			<c:choose>
+				<c:when test="${loginUser.userType == null}">
+					<div>null</div>
 				</c:when>
 
-				<!-- userType이 'E'인 경우 (개인 사용자) -->
-				<c:when test="${p.userType == 'E'}">
+				<c:when test="${loginUser.userType == 'E'}">
 					<a href="myPage.me">마이페이지</a>
 				</c:when>
 
-				<!-- userType이 'C'인 경우 (기업 사용자) -->
-				<c:when test="${p.userType == 'C'}">
+				<c:when test="${loginUser.userType == 'C'}">
 					<a href="companyPage.me">기업 관리 페이지</a>
 				</c:when>
 			</c:choose>
 
+
+
 			<button type="submit">지원</button>
+			<!-- 지원하기 작업중 -->
 		</div>
 	</form>
+<!-- 			<div class="cotent-footer"> -->
+<%-- 				<c:choose> --%>
+<%-- 					<c:when test="${loginUser.userType == 'E'}"> --%>
+<!-- 						개인(구직자) 회원이고 이력서가 등록되어 있을 경우에만 지원 버튼 표시 -->
+<%-- 						<c:if test="${not empty loginUser.resume}"> --%>
+<!-- 							<form action="/applyForJob" method="post"> -->
+<!-- 								<input type="hidden" name="proposer" -->
+<%-- 									value="${loginUser.resumeId}" /> <input type="hidden" --%>
+<%-- 									name="receiver" value="${p.corpNo}" /> <input type="hidden" --%>
+<!-- 									name="proposeType" value="C" /> -->
+<!-- 								<button type="submit">지원</button> -->
+<!-- 							</form> -->
+<%-- 						</c:if> --%>
+<%-- 					</c:when> --%>
+<%-- 				</c:choose> --%>
+<!-- 			</div> -->
 
 </body>
 

@@ -14,10 +14,10 @@
 
 	<!-- 리스트 목록 -->
 	<select id="selectList" parameterType="string" resultMap='postResultSet'>
-		SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, END_DATE, C.CORP_NAME, JOB_NAME
+		SELECT J.JOBPOST_NO, J.CORP_NO, J.POST_TITLE, J.POST_CONTENT, J.END_DATE, C.CORP_NAME, O.JOB_NAME
 		FROM JOB_POST J
-		JOIN corporation C USING(CORP_NO)
-		JOIN occupation O USING (JOB_NO)
+		JOIN corporation C ON J.CORP_NO=C.CORP_NO
+		JOIN occupation O ON J.JOB_NO=O.JOB_NO
 	</select>
 
 	<!-- 게시물 몇개인지 조회 -->
