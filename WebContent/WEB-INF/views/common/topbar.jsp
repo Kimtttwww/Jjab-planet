@@ -16,13 +16,6 @@
 		max-width: 1600px;
 		margin: 0 auto;
 	}
-
-	.menu-area a {
-		text-decoration-line: none; /* 밑에 줄 없애기 */
-		text-decoration: none;
-		color: black; /* 보라색 흔적 없애기 */
-        width: 100px;
-	}
 	
 	.menu-area {
 		display: flex;
@@ -53,6 +46,10 @@
 		justify-content: center;
 		flex-direction: row;
 		margin-right: 30px;
+		text-decoration-line: none; /* 밑에 줄 없애기 */
+		text-decoration: none;
+		color: black; /* 보라색 흔적 없애기 */
+        width: 100px;
 	}
 
 	.menu-right a {
@@ -60,6 +57,10 @@
 		justify-content: center;
 		flex-direction: row;
 		margin-right: 30px;
+		text-decoration-line: none; /* 밑에 줄 없애기 */
+		text-decoration: none;
+		color: black; /* 보라색 흔적 없애기 */
+        width: 110px;
 	}
 
 	.menu-left a:hover, .menu-right a:hover {
@@ -95,7 +96,6 @@
 				<a href="${pageContext.request.contextPath}/list.job">채용공고</a>
 				<a href="${pageContext.request.contextPath}/list.corp">기업정보</a>
 				<a href="${pageContext.request.contextPath}/list.po">커뮤니티</a>
-				<a></a>
 				<a></a>
 			</div>
 
