@@ -2,9 +2,8 @@
 	import= "java.util.ArrayList, com.kh.corporation.model.vo.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	
-<% 
-	Corporation corp = (Corporation)request.getAttribute("corp");
-%>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,14 +60,15 @@ body {
 
 		<div class="top_banner">
 			<c:forEach var="corp" items="${Corplist}">
+			
 				<div class="top_b3" style="background: pinkyellow">
-					<c:if test="${ empty corp.logo}">
+					<c:if test="${empty corp.logo}">
 			    		<p>등록된 이미지가 없습니다.</p>
 				    </c:if>
 					<div align="center">
 						<img width="250px" height="100px" 
-							onclick='location.href="${pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"' 
-								src="${ pageContext.request.contextPath}/${corp.logo.filePath}${corp.logo.changeName}" alt="기업 대표이미지">
+							onclick='location.href="${contextPath}/detail.corp?corpNo=${corp.corpNo}&currentPage=1"' 
+								src="${contextPath}/${corp.logo.filePath}${corp.logo.changeName}" alt="기업 대표이미지">
 					</div>	
 					<div class="corp_maincontent">
 						<p>${corp.corpName}</p>

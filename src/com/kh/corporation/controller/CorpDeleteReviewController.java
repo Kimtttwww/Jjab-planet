@@ -1,7 +1,6 @@
 package com.kh.corporation.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,47 +11,42 @@ import com.kh.corporation.model.service.CorporationService;
 import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class CorpLikeController
+ * Servlet implementation class CorpDeleteReviewController
  */
-@WebServlet("/update.like.corp")
-public class CorplikeInsertController extends HttpServlet {
+@WebServlet("/deleteReview.corp")
+public class CorpDeleteReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CorplikeInsertController() {
+    public CorpDeleteReviewController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		CorporationService corpService = new CorporationService();
+		int refNo = Integer.parseInt(request.getParameter("corpNo"));
+		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
+		int replyWriter = loginUser.getUserNo();
 		
-		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
-		int userNo = loginUser.getUserNo();
-		int corpCode = Integer.parseInt(request.getParameter("corpCode")) ;
 		
-		boolean isLiked = corpService.isCorpLiked(corpCode, userNo) ? true : false;
+		if(corpService.deleteReview(refNo, replyWriter) > 0) {
+			request.getSession().setAttribute("alertMsg", "리뷰가 삭제되었습니다.");
+			response.getWriter().print(true);
+		} else {
+			request.getSession().setAttribute("alertMsg", "리뷰 삭제에 실패했습니다.");
+			response.getWriter().print(false);
+		}
+		response.sendRedirect("WEB-INF/views/corporation/corpInfo_detail.jsp");
 		
-		if (isLiked) {
-            // 이미 좋아요를 눌렀다면 좋아요 취소
-            corpService.corplikeUnCount(corpCode);
-            corpService.corplikeDelete(corpCode, userNo);
-        } else {
-            // 좋아요를 누르지 않았다면 좋아요 증가
-            corpService.corplikeCount(corpCode);
-            corpService.corplikeInsert(corpCode, userNo);
-        }
 		
-        // 결과를 클라이언트에 전송
-        response.getWriter().print(isLiked);
-        
-    }
-
-		
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

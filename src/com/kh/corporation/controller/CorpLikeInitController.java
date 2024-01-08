@@ -7,22 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.community.model.vo.Reply;
-import com.kh.community.service.PostService;
 import com.kh.corporation.model.service.CorporationService;
 import com.kh.member.model.vo.Member;
 
 /**
- * Servlet implementation class CorpReplyWriterController
+ * Servlet implementation class CorpLikeInitController
  */
-@WebServlet("/write.review")
-public class CorpReplyWriterController extends HttpServlet {
+@WebServlet("/init.like.corp")
+public class CorpLikeInitController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CorpReplyWriterController() {
+    public CorpLikeInitController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,28 +29,25 @@ public class CorpReplyWriterController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		CorporationService corpService = new CorporationService();
+		
+		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+		
+		int corpCode = Integer.parseInt(request.getParameter("corpCode")) ;
+		int userNo = loginUser.getUserNo();
+		
+		boolean isLiked = corpService.isCorpLiked(corpCode, userNo) ? true : false;
+		
+        // 결과를 클라이언트에 전송
+        response.getWriter().print(isLiked);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		CorporationService corpService = new CorporationService();
-		Reply reply = Reply.builder()
-				.refNo(Integer.parseInt(request.getParameter("postNo")))
-				.replyContent(request.getParameter("replyContent"))
-				.replyWriter(((Member) request.getSession().getAttribute("loginUser")).getUserNo())
-				.build();
-		
-//		if(corpService.insertReply(reply) > 0) {
-//			response.getWriter().print(true);
-//		} else {
-//			response.getWriter().print(false);
-//		}
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
-	
 
 }

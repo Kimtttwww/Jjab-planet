@@ -68,16 +68,16 @@ public class CorpListController extends HttpServlet {
 		
 		
 		List<Logo> logoList = corpService.selectLogoList(corpCode);
-		request.setAttribute("logoList", logoList);
 //		System.out.println("listC logoList : " + logoList);
+		request.setAttribute("logoList", logoList);
 
 		// 기업 로고 list
 		List<Corporation> Corplist = corpService.selectCorpList(pi);
+//		System.out.println("Corplist : " + Corplist);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("Corplist", Corplist);
 //		System.out.println("pi : " + pi);
-//		System.out.println("Corplist : " + Corplist);
 		
 		Collections.shuffle(Corplist);
 		request.setAttribute("randonCorp", Corplist);
