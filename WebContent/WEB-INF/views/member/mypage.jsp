@@ -34,6 +34,11 @@
 	<div class="main">
 		<div class="side">
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
+
+
+
+
+
 			
 		</div>
 		
