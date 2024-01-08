@@ -1,4 +1,4 @@
-package com.kh.corporation.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,17 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.member.model.vo.Member;
+import com.kh.member.service.ResumeDetailService;
+import com.kh.myPage.model.vo.Resume;
+
 /**
- * Servlet implementation class CorpReadResume
+ * Servlet implementation class ResumeViewController
  */
-@WebServlet("/CorpReadResume")
-public class CorpReadResume extends HttpServlet {
+@WebServlet("/resumeview.me")
+public class ResumeViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CorpReadResume() {
+    public ResumeViewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,18 +30,19 @@ public class CorpReadResume extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=UTF-8");
 		// TODO Auto-generated method stub
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ResumeDetailService resumeService = new ResumeDetailService();
+		int workerNo = Integer.parseInt(request.getParameter("bno")); // 뒤에 물음표 값을 1;1 식으로 하면 key = value 
 		
-		//get 요청 들
+		Resume resume = resumeService.ResumeDetail(workerNo);
 		
-		// 이력서 번호 받아와야함
-		int babyBaby = Integer.parseInt(request.getParameter("resumeNo"));
-		// 이력서 조회해서 리턴
+		request.setAttribute("resume", resume);
+		request.setAttribute("workerNo", workerNo);
 		
-		request.getRequestDispatcher("WEB-INF/views/jobPosting/memberResume.jsp").forward(request, response);
-		// memberResume.jsp
+		request.getRequestDispatcher("WEB-INF/views/member/memberResumeView.jsp").forward(request, response);
 		
-		// post_no
 	}
 
 	/**
@@ -45,6 +50,7 @@ public class CorpReadResume extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 

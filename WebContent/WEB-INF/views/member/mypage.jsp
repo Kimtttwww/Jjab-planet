@@ -33,19 +33,26 @@
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	<div class="main">
 		<div class="side">
-			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
-			
+			<c:choose>
+				<c:when test="${loginUser.userType eq 'E'}">
+					<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
+				</c:when>
+				<c:when test="${loginUser.userType eq 'C'}">
+					<jsp:include page="/WEB-INF/views/corporation/corMenubar.jsp" />
+				</c:when>			
+			</c:choose>
 		</div>
 		
 		
 		<div class="content">
 			<c:choose>
+			
 				<c:when test="${loginUser.userType eq 'E'}">
 					<jsp:include page="/WEB-INF/views/member/notice.jsp" />
 				</c:when>
-				<c:otherwise>
+				<c:when test="${loginUser.userType eq 'C'}">
 					<jsp:include page="/WEB-INF/views/corporation/corporationMainpage.jsp" />
-				</c:otherwise>			
+				</c:when>			
 			</c:choose>
 		</div>
 		

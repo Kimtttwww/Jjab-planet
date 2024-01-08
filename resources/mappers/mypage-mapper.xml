@@ -7,6 +7,7 @@
 	
 	<resultMap id="resumeResultSet" type='Resume' >
 		<id column="WORKER_NO" property="workerNo"/>
+	
 	</resultMap>
 
 	<!-- 리스트 목록 -->
@@ -15,7 +16,7 @@
 		FROM NOTICE N
 		JOIN NOTICE_TYPE T USING (NOTICE_TYPE)
 		WHERE RECEIVER = #{userNo}
-	</select>
+	</select> 
 
 	<select id="interestCorpList" parameterType="_int" resultMap='interestCorpResultSet'>
 		SELECT JOAYO_NO, CORP_NO, WORKER_NO, CORP_NAME

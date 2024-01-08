@@ -16,7 +16,7 @@ import com.kh.myPage.service.corMyPageService;
 /**
  * Servlet implementation class CorporationMypageController
  */
-@WebServlet("/myPage.bo")
+@WebServlet("/myPage.me")
 public class CorporationMypageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
