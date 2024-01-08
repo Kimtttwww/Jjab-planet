@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.member.model.vo.Member;
-import com.kh.myPage.model.vo.Resume;
 import com.kh.member.service.ResumeDetailService;
+import com.kh.myPage.model.vo.Resume;
 
 /**
  * Servlet implementation class MemberResumeDetailController
@@ -18,6 +18,7 @@ import com.kh.member.service.ResumeDetailService;
 @WebServlet("/resume.me")
 public class ResumeDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	ResumeDetailService resumeService = new ResumeDetailService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -30,7 +31,6 @@ public class ResumeDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ResumeDetailService resumeService = new ResumeDetailService();
 		int workerNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 
 		Resume resume = resumeService.ResumeDetail(workerNo);
@@ -47,25 +47,31 @@ public class ResumeDetailController extends HttpServlet {
 	 * let#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int workerNo = (Integer.parseInt(request.getParameter("workerNo"))); //이력서 제목
+//		ResumeDetailService ds = new ResumeDetailService();
+		int workerNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		System.out.println(workerNo);
+		
 		
 		Resume resume = Resume.builder()
 				.workerNo(workerNo)
 				.formTitle(request.getParameter("formTitle"))
 				.address(request.getParameter("address"))
-				.jobName(request.getParameter("jobname"))
+//				.jobName(request.getParameter("jobname"))
 				.isOpen(request.getParameter("isOpen"))
 				.education(request.getParameter("education"))
 				.career(request.getParameter("career"))
 				.build();
 		
-		Resume updateResume = new ResumeDetailService().updateResume(resume);
+		boolean isUpdateSuccessful = resumeService.updateResume(resume);
+		System.out.println(isUpdateSuccessful);
+		System.out.println(resume);
 		
-		if(updateResume==null) {
-			request.setAttribute("errorMsg", "회원정보 수정에 실패했습니다");	
-		}else {
+		
+		if(isUpdateSuccessful) {
 			request.getSession().setAttribute("alertMsg", "성공적으로 회원정보를 수정했습니다");
-			request.getSession().setAttribute("loginUser", updateResume);	// 같은 키값은 존재할 수 없다 = 덮어쓰기
+		}else {
+			request.setAttribute("errorMsg", "회원정보 수정에 실패했습니다");	
 		}
+		response.sendRedirect("resume.me");
 	}
 }

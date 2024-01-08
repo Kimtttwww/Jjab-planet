@@ -15,7 +15,20 @@ public class ResumeDetailService {
 		session.close();
 		return resume;
 	}
-	public Resume updateResume(Resume resume) {
-		return null;
+	public boolean updateResume(Resume resume) {
+		SqlSession session = Template.getSqlSession();
+		boolean result = dao.updateResume(session, resume);
+		
+		if(result) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		return result;
+		
+		
+		
 	}
 }
