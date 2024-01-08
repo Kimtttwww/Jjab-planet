@@ -77,17 +77,26 @@
 			</c:if>
 		</section>
     </square>
-    <script>
+    <script type="text/javascript">
 //     	필터
     	$(() => {
     		if("${category}") $('#category').val('${category}');
     		if("${keyword}") $('.list-search').val('${keyword}');
     	});
        	
+// 		카테고리 설정
     	$('#category').change(() => {
     		location.href = '${domain}currentPage=1&category=' + $("#category").val();
 		});
+
+// 		검색어 입력 후 enter 시
+		$(".list-search").keyup((key) => {
+			if(key.keyCode == 13) {
+    			$("#search").click();
+			}
+		});
     	
+//     	검색
     	$("#search").click(() => {
 			location.href = '${domain}keyword=' + $('.list-search').val();
     	});
