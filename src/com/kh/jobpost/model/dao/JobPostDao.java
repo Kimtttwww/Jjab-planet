@@ -52,6 +52,12 @@ public class JobPostDao {
 	public ArrayList<JobPost> getPostsByCategory(SqlSession session, String category) {
 		return  (ArrayList)session.selectList("jobpostMapper.getPostsByCategory", category);
 	}
+
+
+	public JobPost selectOne(SqlSession session, int corpNo) {
+		
+		return session.selectOne("jobpostMapper.selectOne", corpNo); 
+	}
 	
 	
 }

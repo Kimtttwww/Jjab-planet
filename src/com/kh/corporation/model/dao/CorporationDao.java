@@ -108,6 +108,14 @@ public class CorporationDao {
 		return sqlSession.delete("boardMapper.deleteReview", map);
 	}
 
+	public int noticelikeCorp(SqlSession sqlSession, int corpCode) {
+		return sqlSession.insert("boardMapper.noticelikeCorp", corpCode);
+	}
+
+	public int noticeReview(SqlSession sqlSession, int corpCode) {
+		return sqlSession.insert("boardMapper.noticeReview", corpCode);
+	}
+
 
 	
 }

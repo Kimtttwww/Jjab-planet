@@ -23,25 +23,24 @@ body {
 }
 
 .container-update {
-    /*회원가입 박스 전체 틀*/
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-} 
+    width: 100%;
+    display: flex;
+    position: relative;
+}
 
 .container-update div { 
     margin-bottom: 8px;
 } 
 .container-update .update-textL {
     /*입력 정보 길이가 긴 인풋태그*/
-    width: 540px;
+    width: 500px;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
 } 
 .container-update .update-phoneBox {
     /*입력 정보 인풋태그 text*/
-    width: 540px;
+    width: 500px;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
@@ -49,7 +48,7 @@ body {
 
 .container-update .update-email{
     /*이메일 인풋태그*/
-    width: 540px;
+    width: 500px;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
@@ -148,68 +147,69 @@ body {
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	<div class="container-update">
-		<form action="update.me" method="post">
-			<div>
-				<div class="update-div">
-					<p class="title-p">회원 정보 수정</p>
+		<div class="side">
+			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
+		</div>
+		<form action="update.me" method="post" style="margin: 100px auto;">
+			<div class="update-div">
+				<p class="title-p">회원 정보 수정</p>
+				<div>
+					<div>아이디</div>
 					<div>
-						<div>아이디</div>
-						<div>
-							<input type="text" name="userId" class="update-email" value="${ loginUser.userId}" disabled>
-						</div>
+						<input type="text" name="userId" class="update-email" value="${ loginUser.userId}" disabled>
 					</div>
-					<div>
-						<div>핸드폰번호</div>
-						<input type="text" name="phone" class="update-phoneBox" maxlength="8" value="${loginUser.phone }" placeholder="(-)제외" required="required">
-					</div>
+				</div>
+				<div>
+					<div>핸드폰번호</div>
+					<input type="text" name="phone" class="update-phoneBox" maxlength="8" value="${loginUser.phone }" placeholder="(-)제외" required="required">
+				</div>
 
-					<div id="corporation-mypageUpdate" class="flex-container">
-						<input type="hidden" name="userType" value="E">
+				<div id="corporation-mypageUpdate" class="flex-container">
+					<input type="hidden" name="userType" value="E">
+					<div>
 						<div>
-							<div>
-								<div>기업명</div>
-							</div>
-							<div>
-								<input type="text" name="corpName" class="update-textL" value="${C.corpName }" minlength="1" maxlength="15">
-							</div>
+							<div>기업명</div>
 						</div>
 						<div>
-							<div>
-								<div>대표자명</div>
-							</div>
-							<div>
-								<input type="text" name="ceoName" class="update-textL" value="${C.ceoName }" minlength="2" maxlength="12">
-							</div>
-						</div>
-						<div>
-							<div>
-								<div>사업자등록번호</div>
-								<!--(XXX-XXXX-XXXX-XX)-->
-							</div>
-							<div>
-								<input type="text" name="corpBn" class="update-textL" value="${C.corpBn }" minlength="16" maxlength="16" placeholder="(-) 포함">
-							</div>
-						</div>
-						<div>
-							<div>
-								<div>회사 주소</div>
-							</div>
-							<div>
-								<input type="text" name="address" value="${C.address }" class="update-textL">
-							</div>
-						</div>
-						<div>
-							<div>
-								<div>회사 홈페이지주소</div>
-							</div>
-							<div>
-								<input type="text" name="homePage" value="${C.homePage }" class="update-textL">
-							</div>
+							<input type="text" name="corpName" class="update-textL" value="${C.corpName }" minlength="1" maxlength="15">
 						</div>
 					</div>
-					<div class="update-btnBox">
-						<button type="submit" class="update-btn">수정</button>
+					<div>
+						<div>
+							<div>대표자명</div>
+						</div>
+						<div>
+							<input type="text" name="ceoName" class="update-textL" value="${C.ceoName }" minlength="2" maxlength="12">
+						</div>
 					</div>
+					<div>
+						<div>
+							<div>사업자등록번호</div>
+							<!--(XXX-XXXX-XXXX-XX)-->
+						</div>
+						<div>
+							<input type="text" name="corpBn" class="update-textL" value="${C.corpBn }" minlength="16" maxlength="16" placeholder="(-) 포함">
+						</div>
+					</div>
+					<div>
+						<div>
+							<div>회사 주소</div>
+						</div>
+						<div>
+							<input type="text" name="address" value="${C.address }" class="update-textL">
+						</div>
+					</div>
+					<div>
+						<div>
+							<div>회사 홈페이지주소</div>
+						</div>
+						<div>
+							<input type="text" name="homePage" value="${C.homePage }" class="update-textL">
+						</div>
+					</div>
+				</div>
+				<div class="update-btnBox">
+					<button type="submit" class="update-btn">수정</button>
 				</div>
 			</div>
 		</form>

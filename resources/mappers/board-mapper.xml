@@ -140,6 +140,14 @@
 		 WHERE CORP_NO = #{corpCode} 
 	</update>
 	
+	<!-- 기업정보에서 ★했을 경우 notice로 insert -->
+	<insert id="noticelikeCorp" parameterType="notice">
+		INSERT INTO NOTICE
+		VALUES(SEQ_NOTICENO.NEXTVAL, #{corpCode}, 6 )
+	</insert>
+	
+	
+	
 	<!-- 기업 정보에 해당 기업공고 노출 -->
 	<select id="selectJobPostList"	resultType="com.kh.jobpost.model.vo.JobPost"> 
 		SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, CREATE_DATE, JOB_NAME 
@@ -171,6 +179,12 @@
 		  WHERE REPLY_TYPE ='R'
 		    AND REPLY_NO = #{replyNo} 
 	</update>
+	
+	<!-- 기업리뷰 등록됐을때 기업에게 알림 -->
+	<insert id="noticeReview" parameterType="notice">
+		INSERT INTO NOTICE
+		VALUES(SEQ_NOTICENO.NEXTVAL, #{corpCode}, 7 )
+	</insert>
 	<!-- 다연 사용중 -->
 	
 

@@ -12,13 +12,6 @@
 	display: flex;
 	height: 2000px;
 }
-/* .side { */
-/* 	width: 300px; */
-/* 	height:100%; */
-/* 	padding-top: 20px; */
-/* 	border-right: 2px solid black; */
-/* 	padding: 25px; */
-/* } */
 
 .content {
 	width: 1000px;
@@ -40,7 +33,7 @@
 					<jsp:include page="/WEB-INF/views/member/notice.jsp" />
 				</c:when>
 				<c:when test="${loginUser.userType eq 'C'}">
-					<jsp:include page="/WEB-INF/views/corporation/corporationMainpage.jsp" />
+					<jsp:include page="/WEB-INF/views/member/notice.jsp" />
 				</c:when>			
 			</c:choose>
 		</div>

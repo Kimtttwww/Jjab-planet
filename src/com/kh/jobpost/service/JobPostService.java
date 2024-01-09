@@ -33,14 +33,6 @@ public class JobPostService {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	public ArrayList<JobPost> selectList(PageInfo pi) {
 		SqlSession session = Template.getSqlSession();
@@ -88,6 +80,17 @@ public class JobPostService {
 		session.close();
 		
 		return list;
+	}
+
+
+	public JobPost selectOne(int corpNo) {
+		
+		SqlSession session = Template.getSqlSession();
+
+		JobPost selectOne = dao.selectOne(session, corpNo);
+
+		session.close();
+		return selectOne;
 	}
 	
 	

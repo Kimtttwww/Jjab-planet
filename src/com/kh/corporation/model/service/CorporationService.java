@@ -224,6 +224,37 @@ public class CorporationService {
 		sqlSession.close();
 		return result;
 	}
+	
+
+	public int noticelikeCorp(int corpCode) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int result = corpDao.noticelikeCorp(sqlSession, corpCode);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return result;
+	}
+
+	public int noticeReview(int corpCode) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		int result = corpDao.noticeReview(sqlSession, corpCode);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return result;
+	}
+
+
 
 
 
