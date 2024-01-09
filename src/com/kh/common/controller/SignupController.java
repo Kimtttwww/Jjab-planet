@@ -61,7 +61,7 @@ public class SignupController extends HttpServlet {
 					.corpBn(mr.getParameter("corpBn"))
 					.address(mr.getParameter("address"))
 					.homePage(mr.getParameter("homePage"))
-					.logo(new Logo(0, 0, mr.getOriginalFileName("logo"), mr.getFilesystemName("logo"), "a"))
+					.logo(new Logo(0, 0, mr.getOriginalFileName("logo"), mr.getFilesystemName("logo")))
 					.build();
 		}
 		

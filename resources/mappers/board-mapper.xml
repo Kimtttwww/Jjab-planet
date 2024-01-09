@@ -18,7 +18,6 @@
 		<result property="corpNo" column="CORP_NO" />
 		<result property="originName" column="ORIGIN_NAME" />
 		<result property="changeName" column="CHANGE_NAME" />
-		<result property="filePath" column="FILE_PATH" />
 	</resultMap>
 	
 	
