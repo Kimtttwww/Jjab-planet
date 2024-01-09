@@ -12,16 +12,14 @@
 
 
 .container{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
     
     /* display: flex; */
     
 }
-.content-container{
-    /* display: flex; */
-    /* flex-direction: column; */
-    
-    
-}
+
 .content-container header{
     background-color: #d9ecde;
     border: solid 1px#3bdf64;
@@ -73,6 +71,10 @@ h1 {
     margin: 0 auto;
     width: 80%;
     padding-top: 25px;
+}
+
+.job-detail p{
+    align-items: end;
 }
 
 .application-form {
@@ -168,7 +170,7 @@ h1 {
 <body>
 <jsp:include page="../common/topbar.jsp"/>
 <div class="container">
-	<form action="/detail.job" method="get">
+	<form action="/detail.job" method="get" style="width: 1200px;">
 		<div class="content-container">
 			<header>
 				<h1>${corp.corpName}</h1>
@@ -200,7 +202,7 @@ h1 {
 				</section>
 
 				<div class="job-detail"
-					style="display: flex; flex-direction: column;">
+					style="display: flex; flex-direction: column-reverse;">
 					<p>마감일 : ${p.endDate}</p>
 					<p>대표 : ${corp.ceoName} 회사연락처:(${p.phone})</p>
 				</div>
