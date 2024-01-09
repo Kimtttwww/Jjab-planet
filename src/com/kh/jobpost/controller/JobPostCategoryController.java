@@ -24,21 +24,14 @@ public class JobPostCategoryController extends HttpServlet {
         JobPostService jobPostService = new JobPostService();
         
         ArrayList<JobPost> list = jobPostService.getPostsByCategory(category);
-        System.out.println(list);
-        
-        
+
         if ("F".equals(category)) {
             list = jobPostService.getPostsByCategory("F");
         } else if ("B".equals(category)) {
             list = jobPostService.getPostsByCategory("B");
         } else if ("S".equals(category)) {
             list = jobPostService.getPostsByCategory("S");
-        } 
-//        else {
-//            // 기타/알 수 없는 카테고리의 경우 전체 리스트 또는 오류 페이지로 처리
-//            list = jobPostService.getAllPosts();
-//        }
-   
+        }
         
         request.setAttribute("list", list);
         request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingList.jsp").forward(request, response);

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.kh.community.model.vo.Reply;
 import com.kh.community.service.PostService;
 import com.kh.member.model.vo.Member;
+import com.kh.member.service.NoticeService;
+import com.kh.propose.service.ProposeService;
 
 /**
  * Servlet implementation class PostWriteController
@@ -42,7 +44,7 @@ public class ReplyWriteController extends HttpServlet {
 				.build();
 		
 		if(new PostService().insertReply(r) > 0) {
-			response.getWriter().print(true);
+			response.getWriter().print(new NoticeService().insertNotice(Integer.parseInt(request.getParameter("postWriter")), 4));
 		} else {
 			response.getWriter().print(false);
 		}

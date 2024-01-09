@@ -44,29 +44,25 @@ public class JobPostDetailController extends HttpServlet {
 
             request.setAttribute("p", p);
             request.setAttribute("corp", corp);
-            request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetailUser2.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetail.jsp").forward(request, response);
         } else {
             request.getSession().setAttribute("alertMsg", "게시글 상세조회 실패");
             response.sendRedirect("list.job?currentPage=1");
         }
     }
 
-    
-
 	private String convertLocationToText(String location) {
 		switch(location) {
-		case "1":
-			return "서울";
-		case "2":
-			return "경기";
-		case "3":
-			return "인천";
-		case "4":
-			return "부산";
-		default:
-			return "지역미상";
-		
-		
+			case "1":
+				return "서울";
+			case "2":
+				return "경기";
+			case "3":
+				return "인천";
+			case "4":
+				return "부산";
+			default:
+				return "지역미상";
 		}
 	}
 
@@ -100,10 +96,7 @@ public class JobPostDetailController extends HttpServlet {
         }
     }
     
-    
-    
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+    	
     }
 }

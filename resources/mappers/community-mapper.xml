@@ -54,7 +54,7 @@
 	
 	<!-- 단일 게시글 조회 -->
 	<select id="selectPost" parameterType="_int" resultMap="postResultSet">
-		SELECT POST_NO, POST_TITLE, POST_CONTENT, USER_ID, COUNT, CREATE_DATE
+		SELECT POST_NO, POST_TITLE, POST_CONTENT, USER_ID, POST_WRITER, COUNT, CREATE_DATE
 		FROM BOARD_POST P
 		JOIN MEMBER ON POST_WRITER = USER_NO
 		WHERE P.STATUS = 'Y' AND POST_NO = #{postNo}

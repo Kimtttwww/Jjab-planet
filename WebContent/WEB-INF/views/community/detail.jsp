@@ -102,7 +102,7 @@
     		if('${loginUser}' && $("#replyContent").val()){
 	    		$.ajax({
 	                url: 'write.re', type: 'post',
-	                data: {postNo: '${ p.postNo }', replyContent: $('#replyContent').val()},
+	                data: {postNo: '${ p.postNo }', postWriter: ${ p.postWriter}, replyContent: $('#replyContent').val()},
 	                success: (tf) => {
 			    		if(tf == 'true') {
 			    			alert("댓글이 등록되었습니다");

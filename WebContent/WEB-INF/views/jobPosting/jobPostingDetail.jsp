@@ -228,19 +228,19 @@
 			<!-- userType이 'E'인 경우 (개인 사용자) -->
 			<!-- userType이 'C'인 경우 (기업 사용자) -->
 			<c:choose>
-				<c:when test="${loginUser.userType == null}">
+				<c:when test="${loginUser.userType eq null}">
 					<div>로그인이 필요합니다</div>
 				</c:when>
 				<%-- <c:when test="${loginUser.userType == 'E'}"> --%>
 				<%-- </c:when> --%>
 
-				<c:when test="${loginUser.userType == 'C'}">
+				<c:when test="${(loginUser.userType eq 'C') and (p.corpNo eq loginUser.userNo)}">
 					<button type="button"
 						onclick='location.href="myPage.me?bno=${b.boardNo}"'>수정페이지로이동</button>
 				</c:when>
 			</c:choose>
 
-            <c:if test="${loginUser.userType == 'E'}">
+            <c:if test="${ loginUser.userType eq 'E' }">
                 <!-- 개인(구직자) 회원이고 이력서가 등록되어 있을 경우에만 지원 버튼 표시 -->
                 <!-- 숨겨진 입력필드 사용자에게 보이지않음,폼제출시 서버로 전송 -->
                 <button type="button" onclick="apply(${p.corpNo})">지원하기</button>

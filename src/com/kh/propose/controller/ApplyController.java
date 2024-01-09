@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.member.model.vo.Member;
+import com.kh.member.service.NoticeService;
 import com.kh.myPage.service.ResumeService;
 import com.kh.propose.service.ProposeService;
 
@@ -23,8 +24,9 @@ public class ApplyController extends HttpServlet {
     	Member loginUser = (Member)request.getSession().getAttribute("loginUser");
     	int corpNo = Integer.parseInt(request.getParameter("corpNo"));
     	
-    	if (new ResumeService().checkResumeExists(loginUser.getUserNo())) {
-    	    response.getWriter().print(new ProposeService().insertPropose(loginUser.getUserNo(), corpNo, "C"));
+    	if (new ResumeService().checkResumeExists(loginUser.getUserNo()) &&
+    			new ProposeService().insertPropose(loginUser.getUserNo(), corpNo, "C")) {
+    	    response.getWriter().print(new NoticeService().insertNotice(corpNo, 5));
     	} else {
     		response.getWriter().print(false);
     	}
