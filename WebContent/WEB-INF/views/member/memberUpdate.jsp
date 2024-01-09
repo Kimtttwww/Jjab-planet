@@ -171,7 +171,7 @@ body {
 				</div>
 				<div>
 					<div>핸드폰번호</div>
-					<input type="text" name="phone" class="update-phoneBox" maxlength="8" value="${loginUser.phone }" placeholder="(-)제외" required="required">
+					<input type="text" name="phone" class="update-phoneBox" maxlength="11" placeholder="(-)제외" required="required">
 				</div>
 
 				<div id="corporation-mypageUpdate" class="flex-container">
@@ -226,13 +226,35 @@ body {
 	</div>
 	
 	<script>
-	const userType = '${loginUser.userType}';
-	$(() => {
-		$("#corporation-mypageUpdate").hide();
-		if(userType === "C"){
-			$("#corporation-mypageUpdate").show();
-		}
-	});
+// 	const userType = '${loginUser.userType}';
+// 	$(() => {
+// 		$("#corporation-mypageUpdate").hide();
+// 		if(userType === "C"){
+// 			$("#corporation-mypageUpdate").show();
+// 		}
+// 	});
+
+$(document).ready(function () {
+    const userType = '${loginUser.userType}';
+
+    console.log("User Type:", userType);
+
+    $("#corporation-mypageUpdate").hide();
+
+    if (userType === "C") {
+        $("#corporation-mypageUpdate").show();
+    }
+});
+
+// $(".update-btn").click(function(){
+// 	const newPhoneValue = $('.update-phoneBox').val();
+//  	alert('번호 업데이트 완료' + newPhoneValue);	
+// 	$(".update-phoneBox").val(newPhoneValue);
+// 	e.preventDefault();
+// });
+
+	
+
 	</script>
 	
 	

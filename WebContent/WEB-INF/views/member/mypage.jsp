@@ -27,13 +27,13 @@
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
 		
-		<div class="content">
+		<div class="content">````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 			<c:choose>
 				<c:when test="${loginUser.userType eq 'E'}">
 					<jsp:include page="/WEB-INF/views/member/notice.jsp" />
 				</c:when>
 				<c:when test="${loginUser.userType eq 'C'}">
-					<jsp:include page="/WEB-INF/views/member/notice.jsp" />
+					<jsp:include page="/WEB-INF/views/corporation/corporationMainpage.jsp" />
 				</c:when>			
 			</c:choose>
 		</div>

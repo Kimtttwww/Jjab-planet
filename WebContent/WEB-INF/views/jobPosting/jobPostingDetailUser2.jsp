@@ -231,7 +231,7 @@ h1 {
             <c:if test="${loginUser.userType == 'E'}">
                 <!-- 개인(구직자) 회원이고 이력서가 등록되어 있을 경우에만 지원 버튼 표시 -->
                 <!-- 숨겨진 입력필드 사용자에게 보이지않음,폼제출시 서버로 전송 -->
-                <button type="submit" onclick="apply(${p.corpNo})">지원하기</button>
+                <button type="button" onclick="apply(${p.corpNo})">지원하기</button>
             </c:if>
 		</div>
 	</form>

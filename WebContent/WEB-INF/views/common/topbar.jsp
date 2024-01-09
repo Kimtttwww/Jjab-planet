@@ -122,7 +122,7 @@ body {
 						<!-- 로그인 했을 때 -->
 						<span>${ loginUser.userId }</span>
 						<a href="logout.me">로그아웃</a>
-						<a href="myPage.me">마이페이지</a>
+						<a href="notice.me">마이페이지</a>
 					</c:otherwise>
 				</c:choose>
 			</div>
