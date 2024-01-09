@@ -1,5 +1,7 @@
 package com.kh.propose.service;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.common.Template;
@@ -43,23 +45,23 @@ public class ProposeService {
     
     
  // 제안(지원) 추가
-    public int insertPropose(int proposer, int receiver, String proposeType) {
+    public boolean insertPropose(int proposer, int receiver, String proposeType) {
         SqlSession session = Template.getSqlSession();
-        int result = 0;
 
-        try {
-            if (ProposeDao.checkResumeExists(session, proposer)) {
-                result = ProposeDao.insertPropose(session, proposer, receiver, proposeType);
-            }
-            if (result > 0) session.commit();
-            else session.rollback();
-        } catch (Exception e) {
-            session.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
+        HashMap<String, String> h = new HashMap<String, String>();
+        h.put("proposer", String.valueOf(proposer));
+        h.put("receiver", String.valueOf(receiver));
+        h.put("proposeType", proposeType);
+        
+        boolean result = ProposeDao.insertPropose(session, h);
+        
+        if (result) {
+        	session.commit();
+        } else {
+        	session.rollback();
         }
 
+        session.close();
         return result;
     }
     

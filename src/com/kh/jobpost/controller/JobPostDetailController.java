@@ -34,34 +34,18 @@ public class JobPostDetailController extends HttpServlet {
         if (jobPostservice.increaseCount(jobpostNo) > 0) {
             JobPost p = jobPostservice.detailPost(jobpostNo);
             
-//            List<Corporation> arr -> Corporation arr로 변경함 -다연
-            Corporation arr = new CorporationService().selectCorpOne(p.getCorpNo());
-//            Corporation c = arr.get(0);
-            
-//            p.setCorpName(c.getCorpName());
-//            p.setCeoName(c.getCeoName());
-            p.setPhone(new MemberService().selectMember(p.getCorpNo()).getPhone());
-            
             String careerText = convertCareerToText(p.getCareer());
-            p.setCareer(careerText); // 변환된 텍스트로 다시 설정
-            
             String educationText = convertEducationToText(p.getEducation());
-            p.setEducation(educationText); // 변환된 텍스트로 다시 설정
-            
             String locationText = convertLocationToText(p.getLocation());
+            p.setPhone(new MemberService().selectMember(p.getCorpNo()).getPhone());
+            p.setCareer(careerText); // 변환된 텍스트로 다시 설정
+            p.setEducation(educationText); // 변환된 텍스트로 다시 설정
             p.setLocation(locationText);
             
-         // 사용자의 userType 결정
-            Member m = (Member) request.getSession().getAttribute("loginUser");
-            String userType = null;
-            if (m != null) {
-                userType = m.getUserType();
-            }
-            p.setUserType(userType);
-            
-            
+            Corporation corp = new CorporationService().selectCorpOne(p.getCorpNo());
 
             request.setAttribute("p", p);
+            request.setAttribute("corp", corp);
             request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetailUser2.jsp").forward(request, response);
         } else {
             request.getSession().setAttribute("alertMsg", "게시글 상세조회 실패");
