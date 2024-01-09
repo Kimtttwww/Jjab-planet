@@ -53,7 +53,7 @@ import com.kh.myPage.service.corMyPageService;
 /**
  * Servlet implementation class CorporationMypageController
  */
-@WebServlet("/myPage.bo")
+@WebServlet("/corMyPage.me")
 public class MypageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

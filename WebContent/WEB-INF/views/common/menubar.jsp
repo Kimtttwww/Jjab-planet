@@ -7,7 +7,6 @@
 %>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <title>Menu bar</title>
@@ -26,10 +25,10 @@
 	
 	<c:if test="${loginUser.userType eq 'C'}">
 		<ul>
-			<li class="menu_li"><a class="mypage_btn" href="notice.me">알림 관리</a></li> 
-			<li class="menu_li"><a class="mypage_btn" href="myPage.me">지원받은 이력서</a></li>
-			<li class="menu_li"><a class="mypage_btn" href="list.job?corpNo=${loginUser.userNo}">공고 관리</a></li>
-			<li class="menu_li"><a class="mypage_btn" href="update.me">정보 변경</a></li> 
+			<li class="menu_li"><a class="mypage_btn" href="notice.me">알림 관리</a></li> <!-- 윤비거 받아야함 -->
+			<li class="menu_li"><a class="mypage_btn" href="corMyPage.me">지원받은 이력서</a></li>
+			<li class="menu_li"><a class="mypage_btn" href="list.job?corpNo=${loginUser.userNo}">공고 관리</a></li> <!-- 윤비거 받아야함 -->
+			<li class="menu_li"><a class="mypage_btn" href="update.me">정보 변경</a></li> <!-- 윤비거 받아야함 -->
 		</ul>
 	</c:if>
 	<script>

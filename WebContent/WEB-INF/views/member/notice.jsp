@@ -87,12 +87,10 @@
 			<section class="list-area">
 				<h3>알림 관리</h3>
 				<hr>
-				
 				<div class="notice-content">
 					<c:if test="${empty notice}">
 						<p align="center">알림이 없습니다.</p>
 					</c:if>
-					
 					<c:forEach var="p" items="${notice}">
 						<article class="notice">
 							<span>${p.noticeText }</span>
