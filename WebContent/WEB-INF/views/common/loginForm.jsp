@@ -82,23 +82,26 @@
 	%>
 	<form id="login-form" action="<%=contextPath%>/login.me" method="post">
 		<div class="bigBox">
-				<div class="naddhapChae">
+			<div class="naddhapChae">
 				<span>로그인</span>
-					<div class="hapChae">
-						<span class="id">아이디:</span>
-							<input type="text" name = "userId" class="large-input" placeholder="이메일 주소">
-					</div>
-					<div class="hapChae">
-						<span class="pwd">비밀번호:</span>
-							<input type="password" name = "userPwd" class="large-input" placeholder="비밀번호">
-						</div>
-						<div class="button">
-							<input type="submit" class ="inputButton" value="로그인"> 
-						</div>
+				<div class="hapChae">
+					<span class="id">아이디:</span>
+					<input type="text" name = "userId" class="large-input" placeholder="이메일 주소">
 				</div>
-			
+				<div class="hapChae">
+					<span class="pwd">비밀번호:</span>
+					<input type="password" name = "userPwd" class="large-input" placeholder="비밀번호">
+				</div>
+				<div class="button">
+					<input type="submit" class ="inputButton" value="로그인"> 
+				</div>
+			</div>
 		</div>
 	</form>
-
+	<script type="text/javascript">
+		$(() => {
+			$(".large-input").eq(0).focus();
+		});
+	</script>
 </body>
 </html>
