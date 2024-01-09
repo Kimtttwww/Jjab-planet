@@ -32,8 +32,14 @@
 	</select>
 
 	<select id="detailResume" parameterType="_int" resultMap='resumeResultSet'>
-		SELECT worker_no, FORM_TITLE, WORKER_NAME, BIRTHDAY, GENDER, ADDRESS, IS_OPEN, job_NAME, CAREER, EDUCATION FROM RESUME
-		JOIN occupation O USING(job_no)
-		WHERE worker_no = #{workerNo}
+	SELECT worker_no, FORM_TITLE, WORKER_NAME, BIRTHDAY, GENDER, ADDRESS,
+	IS_OPEN, job_NAME, CAREER, EDUCATION FROM RESUME
+	JOIN occupation O USING(job_no)
+	WHERE worker_no = #{workerNo}
 	</select>
+	
+	<!-- 이력서정보조회 기업지원할때사용 -->
+<!-- 	<select id="selectResumeByUserNo" parameterType="int" resultType="com.kh.resume.model.vo.Resume"> -->
+<!--     SELECT * FROM RESUME WHERE WORKER_NO = #{userNo} -->
+<!-- </select> -->
 </mapper>   
