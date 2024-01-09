@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.community.model.vo.Reply;
 import com.kh.corporation.model.service.CorporationService;
-import com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class CorpUpdateReviewController

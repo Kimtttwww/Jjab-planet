@@ -1,7 +1,6 @@
 package com.kh.propose.model.dao;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 

@@ -1,7 +1,6 @@
 package com.kh.jobpost.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +12,6 @@ import com.kh.corporation.model.service.CorporationService;
 import com.kh.corporation.model.vo.Corporation;
 import com.kh.jobpost.model.vo.JobPost;
 import com.kh.jobpost.service.JobPostService;
-import com.kh.member.model.vo.Member;
 import com.kh.member.service.MemberService;
 
 /**

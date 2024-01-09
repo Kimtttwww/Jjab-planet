@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import static com.kh.common.Template.*;
 import com.kh.corporation.model.vo.Corporation;
-import com.kh.corporation.model.vo.Logo;
 import com.kh.member.model.dao.MemberDao;
 import com.kh.member.model.vo.Member;
 

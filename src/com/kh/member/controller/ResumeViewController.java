@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.member.model.vo.Member;
 import com.kh.member.service.ResumeDetailService;
 import com.kh.myPage.model.vo.Resume;
 

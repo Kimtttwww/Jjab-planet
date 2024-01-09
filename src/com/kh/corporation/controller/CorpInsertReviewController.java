@@ -1,7 +1,6 @@
 package com.kh.corporation.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.community.model.vo.Reply;
-import com.kh.community.service.PostService;
 import com.kh.corporation.model.service.CorporationService;
-import com.kh.corporation.model.vo.Corporation;
 import com.kh.member.model.vo.Member;
 
 /**
