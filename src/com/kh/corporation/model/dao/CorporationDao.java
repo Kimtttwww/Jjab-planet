@@ -98,7 +98,7 @@ public class CorporationDao {
 		return sqlSession.insert("boardMapper.insertReview", review);
 	}
 
-	public int updateReview(SqlSession sqlSession, HashMap<String, Integer> map) {
+	public int updateReview(SqlSession sqlSession, HashMap<String, String> map) {
 		
 		return sqlSession.update("boardMapper.updateReview", map);
 	}
@@ -107,6 +107,7 @@ public class CorporationDao {
 
 		return sqlSession.delete("boardMapper.deleteReview", map);
 	}
+
 
 	
 }

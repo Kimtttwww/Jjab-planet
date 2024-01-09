@@ -1,12 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" 
-	import="com.kh.member.model.vo.Member,
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.kh.member.model.vo.Member,
 			java.util.ArrayList,
 			com.kh.common.model.vo.PageInfo" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% 
-	Member loginUser= (Member) session.getAttribute("loginUser"); 
-	System.out.println("시작loginUser : " +loginUser);
-	PageInfo pi=(PageInfo)request.getAttribute("pi"); 
+	Member loginUser=(Member) session.getAttribute("loginUser"); 
+	PageInfo pi=(PageInfo)request.getAttribute(" pi"); 
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var=" corp" value="${corp}" />
@@ -60,7 +58,7 @@ body {
 .corp-info-all {
 	width: 60%;
 	margin: 0 auto;
-	padding: 50px 300px;
+	padding: 50px 30px;
 	background-color: rgb(206, 206, 223)
 }
 
@@ -78,7 +76,7 @@ body {
 
 .corp-review-content {
 	background-color: pink;
-	height: 80px;
+	height: 120px;
 	margin-top: 20px;
 	margin: 20px;
 }
@@ -136,32 +134,32 @@ body {
 	<jsp:include page="../common/topbar.jsp" />
 
 	<header>
-			<div class="corp-top-area">
-				<div class="corp-top">
-					<div class="corp-logo">
-						<div class="corp-logoImg">
-							<img width="120px" height="60px" alt="기업 대표이미지"
-								onclick="${contextPath}/detail.corp?corpNo=${corp.corpNo}"
-								src="${corp.logo.filePath}${corp.logo.changeName}"/>
-						</div>
-						<div class="corp-name">${corp.corpName}</div>
-					</div> 
-					<div class="corp-interest">
-						<div class="corp-home">
-							<button id="likeCorp" onclick="isCorpLiked()">★</button>
-							<span class="likeCount">${corp.likeCount}</span>
-						</div>
-						<div class="corp-home">
-							<a href="${corp.homePage}">홈페이지></a>
-						</div>
+		<div class="corp-top-area">
+			<div class="corp-top">
+				<div class="corp-logo">
+					<div class="corp-logoImg">
+						<img width="120px" height="60px" alt="기업 대표이미지"
+							onclick="${contextPath}/detail.corp?corpNo=${corp.corpNo}"
+							src="${corp.logo.filePath}${corp.logo.changeName}" />
+					</div>
+					<div class="corp-name">${corp.corpName}</div>
+				</div>
+				<div class="corp-interest">
+					<div class="corp-home">
+						<button id="likeCorp" onclick="isCorpLiked()">★</button>
+						<span class="likeCount">${corp.likeCount}</span>
+					</div>
+					<div class="corp-home">
+						<a href="${corp.homePage}">홈페이지></a>
 					</div>
 				</div>
-				<div class="corp-aTag">
-					<div class="corp_info_a1">기업정보</div>
-					|
-					<div class="corp_review_a1">리뷰</div>
-				</div>
 			</div>
+			<div class="corp-aTag">
+				<div class="corp_info_a1">기업정보</div>
+				|
+				<div class="corp_review_a1">리뷰</div>
+			</div>
+		</div>
 	</header>
 
 
@@ -171,7 +169,8 @@ body {
 
 		const data = {
 			corpCode: "${corp.corpNo}",
-			userNo: '${ loginUser.userNo }'}
+			userNo: '${ loginUser.userNo }'
+		}
 
 		// 페이지로딩됐을때 DB에서 초기데이터 가져옴
 		function initAPI() {
@@ -182,10 +181,10 @@ body {
 					type: 'get',
 					data: data,
 					success: function (result, status, xhr) {
-						resolve(result); // 성공 시 resolve 호출
+						resolve(result); 
 					},
 					error: function () {
-						reject("요청실패"); // 실패 시 reject 호출
+						reject("요청실패");
 					}
 				});
 			});
@@ -199,10 +198,10 @@ body {
 					type: 'get',
 					data: data,
 					success: function (result, status, xhr) {
-						resolve(result); // 성공 시 resolve 호출
+						resolve(result); 
 					},
 					error: function () {
-						reject("요청실패"); // 실패 시 reject 호출
+						reject("요청실패"); 
 					}
 				});
 			});
@@ -248,7 +247,7 @@ body {
 					$("#likeCorp").css('color', 'black');
 					$("#likeCorp").css('background', 'white');
 				}
-			}).catch((error) => { console.log(error) });
+			})
 
 		}
 
@@ -289,8 +288,10 @@ body {
 				<c:if test="${empty jobPost}">
 					<p>진행중인 공고가 없습니다.</p>
 				</c:if>
-				<div>${jobPost.postTitle}</div>
-				<div>모집직종 : ${jobPost.jobName}</div>
+				<div>
+					<span>${jobPost.postTitle}</span>
+					<span>직종 : ${jobPost.jobName}</span>
+				</div>
 
 				<div align="right">
 					<button onclick="">입사지원</button>
@@ -298,7 +299,7 @@ body {
 				</div>
 			</div>
 		</div>
-		<br> <br> <br> <br> <br> <br> <br>
+		<br> <br>
 
 
 
@@ -309,22 +310,20 @@ body {
 			<div>
 				<div class="corp_review_a2">|기업리뷰</div>
 
-				<%-- <input type="hidden" name="userNo" value="<%=  loginUser.getUserNo() %> "> --%>
-
-					<!-- script로 로그인한 개인회원만 글작성 버튼이 보이게 조정 -->
-					<div align="right">
-						<button onclick="popup_btn()">리뷰작성하기</button>
-					</div>
+				<div align="right">
+					<button onclick="popup_btn()">리뷰작성하기</button>
+				</div>
 			</div>
 
 
 			<!-- 팝업 창 -->
 			<div id="popup_write">
-				<p>해당 기업의 재직자만 리뷰 작성 가능합니다. 재직자가 맞습니까?</p>
+				<p>"해당 기업의 재직자만 리뷰 작성 가능합니다. 재직자가 맞습니까?"</p>
 
 				<button id="popup_yes">예</button>
 				<button id="popup_no">아니오</button>
 			</div>
+
 
 			<div class="corp-review-area">
 				<div align="right">리뷰수 : ${pi.objCount}</div>
@@ -332,26 +331,23 @@ body {
 					<c:if test="${empty reply}">
 						<p>작성된 리뷰가 없습니다.</p>
 					</c:if>
-					???나옴?1
-
-
+			
+					<input type="hidden" name="userNo" value="${loginUser.userNo}">
 					<div class="corp-review-content">
 						<c:forEach var="reply" items="${reply}">
-							<div>작성자:${loginUser.userId} / 작성일:${reply.createDate}</div>
-							<div class="other-reviews">${reply.replyContent}
-								
+							<div>
+								<span>작성자:${loginUser.userId} / 작성일:${reply.createDate}</span>
+								<span>${reply.replyContent}</span>
 								<!-- 본인 작성글에만 수정/삭제 가능하게끔   -->
 								<c:if test="${loginUser.userNo eq reply.replyWriter}">
-									<div align="right">
-										<button id="update-review">수정</button>
-										<button id="delete-review">삭제</button>
-									</div>
+									<button class="update-review" onclick="change(this,${reply.replyNo})">수정</button>
+									<button class="delete-review" value="${reply.replyNo }" >삭제</button>
 								</c:if>
 							</div>
 						</c:forEach>
 					</div>
 				</div>
-				
+
 
 
 				<!-- 기업리뷰 페이징바 -->
@@ -370,130 +366,129 @@ body {
 						</c:choose>
 					</c:forEach>
 				</div>
-				
-<%-- 						<% if (loginUser != null && "E".equals(loginUser.getUserType())) { %> --%>
-					<div class="corp-review-write">
+
+				<div class="corp-review-write">
 					<input type="hidden" name="corpNo" value="${corp.corpNo}">
-						<textarea name="writeBox" id="writeBox1" cols="50" rows="10"
-									style="resize: none;">리뷰를 작성해주세요.</textarea>
-									
-						<button id="insert-btn">등록하기</button>
-					</div>
-<%-- 						<% } else { %> --%>
-					<div class="corp-review-read">
-						<textarea name="" id="" cols="50" rows="10" style="resize: none;"
-							readonly>로그인 후 작성가능합니다.</textarea>
-					</div>
-<%-- 						<% }  %> --%>
+					<input type="hidden" name="rno" id="rnoHidden">
+					<textarea name="writeBox" id="writeBox1" cols="50" rows="10" readonly
+						style="resize: none; ">리뷰를 작성해주세요.</textarea>
 
-
-
-
-<%-- 						<c:if test="${ loginUser.userType eq 'E' }"> --%>
-				
-<%-- 								<input type="hidden" name="corpNo" value="${corp.corpNo}"> --%>
-<!-- 								<textarea name="writeBox" id="writeBox1" cols="50" rows="10" -->
-<!-- 											style="resize: none;">리뷰를 작성해주세요.</textarea> -->
-									
-<!-- 								<button id="insert-btn">등록하기</button> -->
-<%-- 						</c:if> --%>
-<!-- 							<div class="corp-review-write"> -->
-<!-- 								<textarea name="" id="" cols="50" rows="10" style="resize: none;" -->
-<!-- 									readonly>로그인 후 작성가능합니다.</textarea> -->
-<!-- 							</div> -->
+					<button id="insert-btn">등록하기</button>
+				</div>
 			</div>
 		</div>
 	</div>
 
 
 	<script>
-	// 리뷰작성하기 btn 클릭하면 팝업창 나와야함
-	// yes -> userType 확인 후 textarea로 pointer
-	// no -> 
-		const login = '${loginUser}' + '';
-	function popup_btn() {
-		
-		const popup = document.getElementById('popup_write');
-		const popYes = document.getElementById('popup_yes');
-		const popNo = document.getElementById('popup_no');
-		const writeBox1 = document.getElementById('writeBox1');
-		
-		popup.style.display = 'block'
-		
-		popYes.addEventListener("click", function () {
-		if(confirm("~~습니까?")){
-			if ( login == null ) {
-				alert("로그인 후 작성가능합니다!");
-			}
-			alert("로그인 해!");
-		}
-		alert("안돼!");
-		popup.style.display = 'none'
-		});
 
-		popNo.addEventListener("click", function () {
-			popup.style.display = 'none'
-			alert('재직자만 작성할 수 있습니다');
+	let loginNo = '${loginUser.userNo}' ? '${loginUser.userNo}' : null;
+	let userType = loginNo ? '${loginUser.userType}' : null;
+	// alert(loginNo);
+	// alert(userType);
+
+	//리뷰작성하기 btn 클릭하면 팝업창 나와야함
+	//yes -> userType 확인 후 textarea로 pointer
+	//no -> 
+	function popup_btn() {
+		$("#popup_write").css('display', 'block') ;
+
+		$("#popup_yes").click( function () {
+
+		if (loginNo == null) {
+			alert("로그인 후 작성가능합니다!");
+			
+		}else if (userType === 'E'){
+			$("#writeBox1").prop('readonly', false);
+			alert("리뷰를 작성해주세요!");
+			$("#writeBox1").val("");
+			$("#writeBox1").focus();
+		}else{
+			alert("리뷰 작성 권한이 없어요");
+		}
+		$("#popup_write").css('display', 'none') ;
+	});
+
+		$("#popup_no").click( function () {
+			$("#popup_write").css('display', 'none') ;
 		});
 	}
-	
-	// 로그인한 유저 타입에 따라 리뷰입력창 다르게 노출
-		$(function () {
-			let userType = login ? '${loginUser.userType}' : null;
-			alert("userType :" + userType);
-			
-			if( userType === 'E') {
-				$(".corp-review-write").prop("hidden", false)
-				$(".corp-review-read").prop("hidden", true)
+
+	//리뷰 등록 & 수정
+	$("#insert-btn").click(function () {
+		let address;
+		let list = {
+				corpNo : '${corp.corpNo}',
+				replyNo : $("#rnoHidden").val(),
+				replyContent: $("#writeBox1").val()
 			}
-			
-			$(".corp-review-write").prop("hidden", true)
-			$(".corp-review-read").prop("hidden", false);
-		})
 		
+		if(!list.replyNo){
+			address = 'insertReview.corp';
+		}else {
+			address = 'updateReview.corp';
+		}
+		
+		if (!$("#writeBox1").val()) {
+			alert("내용을 입력해주세요");
+			$("#writeBox1").focus();
+		}
+		
+		$.ajax({
+			type: 'post',
+			url: address,
+			data: list,
+			success: function (response) {
+				alert("리뷰 등록했습니다");
+				location.reload();
+				$("#writeBox1").val("");
+			},
+			error: function () {
+				alert("리뷰 등록 실패했습니다");
+			}
+		});
+	});
+
+
+	// 작성된 리뷰 textarea로 가져옴
+	function change(ele, rno) {
+	   		console.log(ele, rno);
+	   		$("#rnoHidden").val(rno);
+			$("#writeBox1").val($(ele).next().next().text());
+			$("#writeBox1").prop('readonly', false);
+	}
+
+
+	// 리뷰 삭제
+	$(".delete-review").click(function (e) {
+		$.ajax({
+			type: 'get',
+			url: 'deleteReview.corp',
+			data: {replyNo : e.target.value},
+			success: function (response) {
+				alert("리뷰 삭제했습니다");
+				location.reload();
+			},
+			error: function () {
+				alert("리뷰삭제 실패했습니다");
+			}
+		})
+	})
+
 	
-	
-	
-		$(function () {
-		    $("#insert-btn").click(function() {
-		    	if(!$("#writeBox1").val()) {
-	    			alert("리뷰를 작성해주세요");
-	    			$("#writeBox1").focus();
-			    }
-		        $.ajax({
-		            type: 'post',
-		            url: 'insertReview.corp',
-		            data: {
-		            	replyContent: $("#writeBox1").val()
-		            },
-		            success: function(response) {
-		            	
-		            	alert("리뷰 등록 성공");
-		            	$("#writeBox1").val("");
-		            	location.reload();
-		            },
-		            error: function() {
-		            	alert("등록 실패했습니다" );
-		            }
-		        })
-		    })
+	$(function () {
+		
+		// 페이지 위치 이동
+		$(".corp_info_a1").click(function (e) {
+			$('html, body').animate({
+				scrollTop: $(".corp_info_a2").offset().top
+			}, 1000);
 		})
 
-
-
-		// 페이지 위치 이동
-		$(function () {
-			$(".corp_info_a1").click(function (e) {
-				$('html, body').animate({
-					scrollTop: $(".corp_info_a2").offset().top
-				}, 1000);
-			})
-
-			$(".corp_review_a1").click(function (e) {
-				$('html, body').animate({
-					scrollTop: $(".corp_review_a2").offset().top
-				}, 1000);
-			});
+		$(".corp_review_a1").click(function (e) {
+			$('html, body').animate({
+				scrollTop: $(".corp_review_a2").offset().top
+			}, 1000);
 		});
 
 		// 호버기능
@@ -510,8 +505,6 @@ body {
 		}));
 
 
-		
-
 
 		// 페이징버튼 클릭시 리뷰영역으로 이동
 		document.addEventListener('DOMContentLoaded', function () {
@@ -521,17 +514,9 @@ body {
 				// 스크롤 이동
 				var pagingArea = document.getElementsById('paging-area');
 				pagingArea.scrollIntoView({ behavior: 'smooth' });
-			}
+				}
+			})
 		})
-
-
-
-
-
-
-
-
-
 
 	</script>
 
