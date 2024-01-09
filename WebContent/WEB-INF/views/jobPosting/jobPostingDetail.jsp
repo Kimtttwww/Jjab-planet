@@ -6,18 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공고 상세페이지</title>
 <style>
-
-
-
 .container{
     display: flex;
     flex-direction: row;
     margin: 0 auto;
-    
-    /* display: flex; */
-    
 }
 
 .content-container header{
@@ -50,8 +44,6 @@ header {
 h1 {
     color: #333;
 }
-
-
 
 .job-detail, .application-guide, .application-form {
     background-color: #fff;

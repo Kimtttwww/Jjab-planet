@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>알림 관리</title>
 <style>
 	body {
 		box-sizing: border-box;

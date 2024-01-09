@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.kh.corporation.model.vo.*"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 
@@ -26,15 +27,19 @@
 			</div>
 			<div class="mypage3_content">
 				<div class="all_list" onclick = "location.href = ">
+					<c:if test="${empty list}">
+						<p align="center">관심기업이 없습니다.</p>
+					</c:if>
 					<c:forEach var="p" items="${list}">
+					<c:out value="${list}" />
 					<ul>
 						<li class="li_no1">${p.joayoNo }</li>
 						<li><img class="corp_logo"
-							src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg">
+							src="${contextPath}/resources/images/kh_logo.jpg">
 						</li>
 						<li>${p.corpName }</li>
 						<li class="li_last"><img class="star_img"
-							src="${ pageContext.request.contextPath }/resources/images/star.png"
+							src="${contextPath}/resources/images/star.png"
 							alt=""></li>
 					</ul>
 					</c:forEach>

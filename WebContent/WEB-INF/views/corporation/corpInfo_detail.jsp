@@ -190,7 +190,7 @@ body {
 					<div class="corp-logoImg">
 						<img width="120px" height="60px" alt="기업 대표이미지"
 							onclick="${contextPath}/detail.corp?corpNo=${corp.corpNo}"
-							src="${Logo.FILE_PATH}${corp.logo.changeName}" />
+							src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}" />
 					</div>
 					<div class="corp-name">${corp.corpName}</div>
 				</div>
@@ -345,7 +345,7 @@ body {
 				</div>
 
 				<div align="right">
-					<button onclick="">입사지원</button>
+					<button onclick="">공고보기</button>
 					<div>공고등록일 : ${jobPost.createDate}</div>
 				</div>
 			</div>
@@ -387,7 +387,7 @@ body {
 					<div class="corp-review-content">
 						<c:forEach var="reply" items="${reply}">
 							<div>
-								<span>작성자:${loginUser.userId} / 작성일:${reply.createDate}</span>
+								<span>작성자:${reply.userId} / 작성일:${reply.createDate}</span>
 								<span>${reply.replyContent}</span>
 								<!-- 본인 작성글에만 수정/삭제 가능하게끔   -->
 								<c:if test="${loginUser.userNo eq reply.replyWriter}">

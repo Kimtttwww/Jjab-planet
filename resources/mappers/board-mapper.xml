@@ -78,7 +78,7 @@
 	
 	<!-- 선택한 기업 로고 -->
 	<select id="selectLogoOne" resultMap="corpResultMap"> 
-		SELECT C.CORP_NO, C.CORP_NAME, L.FILE_NO, L.CHANGE_NAME, L.FILE_PATH 
+		SELECT C.CORP_NO, C.CORP_NAME, L.FILE_NO, L.CHANGE_NAME
 		  FROM LOGO L
 		  JOIN CORPORATION C ON (C.CORP_NO = L.CORP_NO) 
 		 WHERE C.CORP_NO = #{corpCode} 
