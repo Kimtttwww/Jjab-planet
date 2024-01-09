@@ -13,4 +13,5 @@ public class JoayoCorp {
 	private int joayoNo;
 	private int corpNo;
 	private int workerNo;
+	private String corpName;
 }

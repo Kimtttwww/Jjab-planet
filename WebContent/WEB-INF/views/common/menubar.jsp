@@ -26,7 +26,7 @@
 	
 	<c:if test="${loginUser.userType eq 'C'}">
 		<ul>
-			<li class="menu_li"><a class="mypage_btn" href="myPage.me">지원받은 이력서 리스트</a></li>  <!-- 윤비거 받아야함 바궈야함 -->
+			<li class="menu_li"><a class="mypage_btn" href="myPage.me">지원받은 이력서</a></li>
 			<li class="menu_li"><a class="mypage_btn" href="resume.me">알림 관리</a></li> <!-- 윤비거 받아야함 -->
 			<li class="menu_li"><a class="mypage_btn" href="list.co">공고 관리</a></li> <!-- 윤비거 받아야함 -->
 			<li class="menu_li"><a class="mypage_btn" href="update.me">정보 변경</a></li> <!-- 윤비거 받아야함 -->
