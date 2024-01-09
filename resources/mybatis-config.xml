@@ -18,8 +18,8 @@
 			<dataSource type="POOLED">
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-				<property name="username" value="JJAP"/>
-				<property name="password" value="JJAP"/>
+				<property name="username" value="JJAB"/>
+				<property name="password" value="JJAB"/>
 			</dataSource>
 		</environment>
 	</environments>
@@ -31,5 +31,6 @@
 		<mapper resource="/mappers/jobpost-mapper.xml"/>
 		<mapper resource="/mappers/mypage-mapper.xml"/>
 		<mapper resource="/mappers/cormypage-mapper.xml"/>
+		<mapper resource="/mappers/propose.xml"/>
 	</mappers>
 </configuration>

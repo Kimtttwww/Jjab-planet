@@ -7,13 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <style>
 
 
+
+.container{
+    
+    /* display: flex; */
+    
+}
 .content-container{
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     
     
 }
@@ -30,6 +35,7 @@ body {
     max-width: 1200px;
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
+    /* justify-content: center ; */
 }
 
 header, main, footer {
@@ -110,6 +116,8 @@ h1 {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
+    flex-direction: row-reverse;
+    
 }
 
 .cotent-footer button {
@@ -158,11 +166,12 @@ h1 {
 </head>
 
 <body>
-
+<jsp:include page="../common/topbar.jsp"/>
+<div class="container">
 	<form action="/detail.job" method="get">
 		<div class="content-container">
 			<header>
-				<h1>${p.corpName}</h1>
+				<h1>${corp.corpName}</h1>
 			</header>
 
 			<main>
@@ -193,56 +202,57 @@ h1 {
 				<div class="job-detail"
 					style="display: flex; flex-direction: column;">
 					<p>마감일 : ${p.endDate}</p>
-					<p>대표 : ${p.ceoName} 회사연락처:(${p.phone})</p>
+					<p>대표 : ${corp.ceoName} 회사연락처:(${p.phone})</p>
 				</div>
 			</main>
 
 		</div>
 
 		<div class="cotent-footer">
-			<button type="button"
-				onclick='location.href="myPage.me?bno=${b.boardNo}"'>수정페이지로이동</button>
 			<!-- userType이 null일 경우 (로그인하지 않은 사용자) -->
 			<!-- 로그인하지 않은 사용자에게 표시될 내용 -->
 			<!-- userType이 'E'인 경우 (개인 사용자) -->
 			<!-- userType이 'C'인 경우 (기업 사용자) -->
 			<c:choose>
 				<c:when test="${loginUser.userType == null}">
-					<div>null</div>
+					<div>로그인이 필요합니다</div>
 				</c:when>
-
-				<c:when test="${loginUser.userType == 'E'}">
-					<a href="myPage.me">마이페이지</a>
-				</c:when>
+				<%-- <c:when test="${loginUser.userType == 'E'}"> --%>
+				<%-- </c:when> --%>
 
 				<c:when test="${loginUser.userType == 'C'}">
-					<a href="companyPage.me">기업 관리 페이지</a>
+					<button type="button"
+						onclick='location.href="myPage.me?bno=${b.boardNo}"'>수정페이지로이동</button>
 				</c:when>
 			</c:choose>
 
-
-
-			<button type="submit">지원</button>
-			<!-- 지원하기 작업중 -->
+            <c:if test="${loginUser.userType == 'E'}">
+                <!-- 개인(구직자) 회원이고 이력서가 등록되어 있을 경우에만 지원 버튼 표시 -->
+                <!-- 숨겨진 입력필드 사용자에게 보이지않음,폼제출시 서버로 전송 -->
+                <button type="submit" onclick="apply(${p.corpNo})">지원하기</button>
+            </c:if>
 		</div>
 	</form>
-	<div class="cotent-footer">
-		<c:choose>
-			<c:when test="${loginUser.userType == 'E'}">
-				<!-- 개인(구직자) 회원이고 이력서가 등록되어 있을 경우에만 지원 버튼 표시 -->
-				<c:if test="${sessionScope.resumeExists}">
-					<form action="/applyForJob" method="post">
-						<!-- 숨겨진 입력필드 사용자에게 보이지않음,폼제출시 서버로 전송 -->
-						<input type="hidden" name="proposer" value="${loginUser.userNo}" />
-						<input type="hidden" name="receiver" value="${p.corpNo}" /> <input
-							type="hidden" name="proposeType" value="C" />
-						<button type="submit">지원</button>
-					</form>
-				</c:if>
-			</c:when>
-		</c:choose>
-	</div>
-
+</div>
+	
+	<script type="text/javascript">
+	function apply(corpNo) {
+   		$.ajax({
+               url: 'applyForJob', type: 'post',
+               data: {'corpNo': corpNo},
+               success: (tf) => {
+	    		if(tf) {
+	    			alert("지원서가 제출되었습니다");
+  					location.href = "list.job";
+	    		} else {
+	    			alert("제출할 지원서가 없습니다");
+	    		}
+				}, error: () => {
+					console.log("통신 실패");
+				}
+           });
+	}
+</script>
 </body>
 
 </html>

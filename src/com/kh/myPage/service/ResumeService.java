@@ -24,4 +24,13 @@ public class ResumeService {
 
         return userResume;
     }
+
+	public boolean checkResumeExists(int userNo) {
+		SqlSession session = Template.getSqlSession();
+		
+		boolean result= dao.checkResumeExists(session, userNo);
+		
+		session.close();
+		return result;
+	}
 }

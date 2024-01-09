@@ -18,4 +18,9 @@ public class ResumeDao{
         return session.selectOne("mypageMapper.selectResumeByUserNo", userNo);
     }
 
+    public boolean checkResumeExists(SqlSession session, int workerNo) {
+    	return (int) session.selectOne("proposeMapper.checkResumeExists", workerNo) > 0;
+	}
+   
+
 }
