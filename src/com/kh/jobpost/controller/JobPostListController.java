@@ -36,6 +36,8 @@ public class JobPostListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		JobPostService service = new JobPostService();
 		
+		System.out.println("list.bo 들어옴?");
+		
 //		// ------페이징처리-------
 		int objCount = service.selectListCount();
 		int currentPage = 1;
@@ -43,16 +45,19 @@ public class JobPostListController extends HttpServlet {
 		int objLimit = 5;
 	
 		PageInfo pi = Pagination.getPageInfo(objCount, currentPage, pageLimit, objLimit);
-		System.out.println(pi);
 		
 		int result = new JobPostService().selectListCount();
 		HttpSession session =request.getSession();
+//		int corpNo = Integer.parseInt(request.getParameter("corpNo"));
+//		System.out.println("list.bo corpNo :" + corpNo);
 		
 		if (result > 0) {
 		ArrayList<JobPost> list = new ArrayList<JobPost> (service.selectList(pi));
+//		JobPost selectOne = service.selectOne(corpNo);
 		
 		request.setAttribute("pi", pi);      
 		request.setAttribute("list", list);
+//		request.setAttribute("selectOne", selectOne);
 		
 		request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingList.jsp").forward(request, response);
 		} else {

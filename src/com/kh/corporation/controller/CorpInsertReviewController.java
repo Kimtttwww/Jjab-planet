@@ -49,8 +49,12 @@ public class CorpInsertReviewController extends HttpServlet {
 				.replyContent(request.getParameter("replyContent"))
 				.replyWriter(((Member) request.getSession().getAttribute("loginUser")).getUserNo())
 				.build();
-
+		
+		int corpCode = review.getRefNo();
+		System.out.println("insertReview corpCode: "+corpCode);
+		
 		if(corpService.insertReview(review) > 0) {
+			corpService.noticeReview(corpCode);
 			response.getWriter().print(true);
 		} else {
 			response.getWriter().print(false);

@@ -95,15 +95,15 @@ body {
 			    		<p>등록된 이미지가 없습니다.</p>
 				    </c:if>
 					<div align="center">
-						<img onclick='location.href="${pageContext.request.contextPath}/detail.corp?corpNo=${corp.corpNo}"' 
-								src="${ pageContext.request.contextPath}/${corp.logo.filePath}${corp.logo.changeName}" alt="기업 대표이미지">
+						<img onclick='location.href="${contextPath}/detail.corp?corpNo=${corp.corpNo}"' 
+								src="${contextPath}/${corp.logo.filePath}${corp.logo.changeName}" alt="기업 대표이미지">
 					</div>	
 					<div class="corp_maincontent">
 						<p>${corp.corpName}</p>
 						<p>${corp.address}</p>
 					</div>
 					<p class="content_bottom">
-						<img id="interest-corp" src="${pageContext.request.contextPath}/resources/images/star.png">
+						<img id="interest-corp" src="${contextPath}/resources/images/star.png">
 							${corp.likeCount}
 					</p>
 				</div>

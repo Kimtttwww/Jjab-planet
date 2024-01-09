@@ -16,7 +16,7 @@ import com.kh.member.service.NoticeService;
 /**
  * Servlet implementation class noticeController
  */
-@WebServlet("/noti.me")
+@WebServlet("/notice.me")
 public class NoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,8 +36,9 @@ public class NoticeController extends HttpServlet {
 		int userNo =((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 
 		ArrayList<Notice> notice = new ArrayList<Notice> (service.selectList(userNo));
-		System.out.println(notice);
-		System.out.println(userNo);
+		System.out.println("notice : " +notice);
+		System.out.println("userNo : "+userNo);
+		
 		request.setAttribute("notice", notice);
 		request.setAttribute("userNo", userNo); 
 

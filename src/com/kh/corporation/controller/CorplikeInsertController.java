@@ -45,6 +45,7 @@ public class CorplikeInsertController extends HttpServlet {
             // 좋아요를 누르지 않았다면 좋아요 증가
             corpService.corplikeCount(corpCode);
             corpService.corplikeInsert(corpCode, userNo);
+            corpService.noticelikeCorp(corpCode);
         }
 		
         // 결과를 클라이언트에 전송

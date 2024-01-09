@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8" import="com.kh.member.model.vo.Member"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,44 +70,53 @@
 	.content {
 		flex-basis: 80%;
 	}
+	.notice-content{
+		margin: 20px;
+	}
 	
 	
 </style>
 </head>
 <body>
-<%-- <jsp:include page="/WEB-INF/views/common/topbar.jsp" /> --%>
+<%-- 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" /> --%>
 	<div class="main">
-<!-- 	<div class="side"> -->
+<!-- 		<div class="side"> -->
 <%-- 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" /> --%>
 <!-- 		</div> -->
 		<container>
-		<section class="list-area">
-			<h3>알림 관리</h3>
-			<hr>
-			<c:forEach var="p" items="${notice}">
-			<article class="notice">
-				<span>${p.noticeText }</span>
-				<button type="button" class="">삭제</button>
-			</article>
-			<hr>
-			</c:forEach>
+			<section class="list-area">
+				<h3>알림 관리</h3>
+				<hr>
+				
+				<div class="notice-content">
+					<c:if test="${empty notice}">
+						<p align="center">알림이 없습니다.</p>
+					</c:if>
+					
+					<c:forEach var="p" items="${notice}">
+						<article class="notice">
+							<span>${p.noticeText }</span>
+							<button type="button" class="">삭제</button>
+						</article>
+						<hr>
+					</c:forEach>
+				</div>
+			</section>
 			
-		</section>
-
-		<section class="pagingbar">
-			<button type="button">&lt; 이전</button>
-			<button type="button">1</button>
-			<button type="button">2</button>
-			<button type="button">3</button>
-			<button type="button">4</button>
-			<button type="button">5</button>
-			<button type="button">6</button>
-			<button type="button">7</button>
-			<button type="button">8</button>
-			<button type="button">9</button>
-			<button type="button">10</button>
-			<button type="button">다음 &gt;</button>
-		</section>
+			<section class="pagingbar">
+				<button type="button">&lt; 이전</button>
+				<button type="button">1</button>
+				<button type="button">2</button>
+				<button type="button">3</button>
+				<button type="button">4</button>
+				<button type="button">5</button>
+				<button type="button">6</button>
+				<button type="button">7</button>
+				<button type="button">8</button>
+				<button type="button">9</button>
+				<button type="button">10</button>
+				<button type="button">다음 &gt;</button>
+			</section>
 		</container>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
