@@ -34,7 +34,7 @@ body, h2, p {
   /* .job-card는 채용공고 카드 각각을 스타일링합니다. */
   .job-card {
     background-color: #f9f9f9; /* 카드의 배경 색상을 설정합니다. */
-    border: 1px solid #ddd; /* 카드의 테두리를 설정합니다. */
+    border: 1px solid #91d895; /* 카드의 테두리를 설정합니다. */
     padding: 20px; /* 카드 내부의 여백을 설정합니다. */
     border-radius: 20px; /* 카드 모서리를 둥글게 처리합니다. */
   }
