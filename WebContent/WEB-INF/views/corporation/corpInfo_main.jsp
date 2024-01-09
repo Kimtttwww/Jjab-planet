@@ -32,15 +32,15 @@ body {
 
 .top_b3 {
 	flex-basis: 20%;
-	height: 300px;
-	margin: 20px;
+	height: 290px;
+	margin: 9px;
 	border-radius: 20px;
 	justify-content: space-between;
-	border: 1px solid #27ae60;
+	border: 1px solid #eee;
 }
 
 .top_b3 img{
-    width : 250px; 
+    width : 230px; 
     height: 120px; 
     border-radius: 20px 20px 0 0;
     margin-bottom: -4px;
@@ -50,24 +50,32 @@ body {
 	position: relative;
 	height: 120px;
 	padding: 13px 15px 0 16px;
-	background-color: #27ae5f05;
 }
 
 .corp_maincontent::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  top:0;
   left: 5%; 
   width: 90%; 
-  border-bottom: 1px solid #27ae60; 
+  border-top: 1px solid #eee; 
+}
+
+.content_bottom::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5%; 
+  width: 90%; 
+  border-top: 1px solid #eee; 
 }
 
 .content_bottom {
+	position: relative;
 	text-align: right;
 	margin: 0;
 	padding: 10px 15px 15px 0;
 	border-radius: 0 0 20px 20px;
-	background-color: #27ae5f05;
 }
 
 #interest-corp{

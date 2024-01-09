@@ -16,15 +16,15 @@
 
 .content-container header{
     background-color: #d9ecde;
-    border: solid 1px#3bdf64;
+    border: 1px solid 1px#3bdf64;
     
 }
 
-#detail-body h2{
+square h2{
     color: #155724;
 }
 
-#detail-body {
+square {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -34,18 +34,18 @@
     /* justify-content: center ; */
 }
 
-#detail-body-header, #detail-main, .cotent-footer {
+#detail-header, #detail-main, .cotent-footer {
     margin: 10px;
     padding: 15px;
 }
 
-#detail-body-header {
+#detail-header {
     background-color: #bee2c0;
     text-align: center;
     font-size: 28px;
 }
 
-#detail-body-header h1 {
+#detail-header h1 {
     color: #333;
 }
 
@@ -97,7 +97,7 @@
 }
 
 .application-guide li, .application-form p {
-    margin:  0 auto;
+    margin: 0 auto;
     background-color: #f1f8ef;
     margin-bottom: 10px;
     margin-top: 10px;
@@ -179,12 +179,13 @@
 </style>
 </head>
 
-<body id="detail-body">
+<body>
 <jsp:include page="../common/topbar.jsp"/>
+<square>
 <div class="container">
 	<form action="/detail.job" method="get" style="width: 1200px;">
 		<div class="content-container">
-			<header id="detail-body-header">
+			<header id="detail-header">
 				<h1>${corp.corpName}</h1>
 			</header>
 
@@ -248,6 +249,7 @@
 		</div>
 	</form>
 </div>
+</square>
 	
 	<script type="text/javascript">
 	function apply(corpNo) {
