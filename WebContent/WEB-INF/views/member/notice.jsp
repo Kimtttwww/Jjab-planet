@@ -78,11 +78,11 @@
 </style>
 </head>
 <body>
-<%-- 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" /> --%>
+	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	<div class="main">
-<!-- 		<div class="side"> -->
-<%-- 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" /> --%>
-<!-- 		</div> -->
+		<div class="side">
+			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
+		</div>
 		<container>
 			<section class="list-area">
 				<h3>알림 관리</h3>

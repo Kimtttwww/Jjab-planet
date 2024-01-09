@@ -22,7 +22,6 @@ public class CorpLikeInitController extends HttpServlet {
      */
     public CorpLikeInitController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -33,21 +32,23 @@ public class CorpLikeInitController extends HttpServlet {
 		
 		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
 		
-		int corpCode = Integer.parseInt(request.getParameter("corpCode")) ;
-		int userNo = loginUser.getUserNo();
-		
-		boolean isLiked = corpService.isCorpLiked(corpCode, userNo) ? true : false;
-		
-        // 결과를 클라이언트에 전송
-        response.getWriter().print(isLiked);
+		if (loginUser != null) {
+			int corpCode = Integer.parseInt(request.getParameter("corpCode")) ;
+			int userNo = loginUser.getUserNo();
+			
+			boolean isLiked = corpService.isCorpLiked(corpCode, userNo) ? true : false;
+			
+	        // 결과를 클라이언트에 전송
+	        response.getWriter().print(isLiked);
+		} else { 
+			response.getWriter().print(false);
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
-
 }

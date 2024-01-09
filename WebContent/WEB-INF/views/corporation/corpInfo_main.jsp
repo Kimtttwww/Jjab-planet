@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" 
 	import= "java.util.ArrayList, com.kh.corporation.model.vo.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
-
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -95,8 +93,9 @@ body {
 			    		<p>등록된 이미지가 없습니다.</p>
 				    </c:if>
 					<div align="center">
-						<img onclick='location.href="${contextPath}/detail.corp?corpNo=${corp.corpNo}"' 
-								src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}" alt="기업 대표이미지">
+						<img src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}"
+						onclick='location.href="${contextPath}/detail.corp?corpNo=${corp.corpNo}"'
+						alt="기업 대표이미지">
 					</div>	
 					<div class="corp_maincontent">
 						<p>${corp.corpName}</p>

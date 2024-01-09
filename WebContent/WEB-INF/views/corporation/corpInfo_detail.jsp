@@ -1,3 +1,4 @@
+<%@page import="com.kh.corporation.model.vo.Logo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.kh.member.model.vo.Member,
 			java.util.ArrayList,
 			com.kh.common.model.vo.PageInfo" %>
@@ -7,14 +8,13 @@
 	PageInfo pi=(PageInfo)request.getAttribute(" pi"); 
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:set var=" corp" value="${corp}" />
+<c:set var="corp" value="${corp}" />
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
 <title>기업상세정보</title>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 html,
@@ -175,8 +175,6 @@ body {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 	z-index: 1000;
 }
-
-
 </style>
 </head>
 
@@ -298,15 +296,10 @@ body {
 					$("#likeCorp").css('color', 'black');
 					$("#likeCorp").css('background', 'white');
 				}
-			})
-
+			});
 		}
-
 		initialize();
-
 	</script>
-
-
 
 	<div class="corp-info-all">
 		<div class="corp-zone">
@@ -328,11 +321,6 @@ body {
 			</div>
 		</div>
 
-
-
-
-
-
 		<div class="corp-zone">
 			<div>|진행중인 채용공고</div>
 			<div class="corp-uppost-area corp-backwhite">
@@ -343,7 +331,6 @@ body {
 					<span>${jobPost.postTitle}</span>
 					<span>직종 : ${jobPost.jobName}</span>
 				</div>
-
 				<div align="right">
 					<button onclick="">공고보기</button>
 					<div>공고등록일 : ${jobPost.createDate}</div>
@@ -351,11 +338,6 @@ body {
 			</div>
 		</div>
 		<br> <br>
-
-
-
-
-
 
 		<div class="corp-zone">
 			<div>
@@ -366,7 +348,6 @@ body {
 				</div>
 			</div>
 
-
 			<!-- 팝업 창 -->
 			<div id="popup_write">
 				<p>"해당 기업의 재직자만 리뷰 작성 가능합니다. 재직자가 맞습니까?"</p>
@@ -374,7 +355,6 @@ body {
 				<button id="popup_yes">예</button>
 				<button id="popup_no">아니오</button>
 			</div>
-
 
 			<div class="corp-review-area">
 				<div align="right">리뷰수 : ${pi.objCount}</div>
@@ -399,8 +379,6 @@ body {
 					</div>
 				</div>
 
-
-
 				<!-- 기업리뷰 페이징바 -->
 				<div align="center" id="paging-area">
 					<c:url value="${'detail.corp?corpNo='}" var="url"></c:url>
@@ -423,7 +401,6 @@ body {
 					<input type="hidden" name="rno" id="rnoHidden">
 					<textarea name="writeBox" id="writeBox1" cols="50" rows="10" readonly
 						style="resize: none; ">리뷰를 작성해주세요.</textarea>
-
 					<button id="insert-btn">등록하기</button>
 				</div>
 			</div>
@@ -432,145 +409,139 @@ body {
 
 
 	<script>
+		let loginNo = '${loginUser.userNo}' ? '${loginUser.userNo}' : null;
+		let userType = loginNo ? '${loginUser.userType}' : null;
+		// alert(loginNo);
+		// alert(userType);
 
-	let loginNo = '${loginUser.userNo}' ? '${loginUser.userNo}' : null;
-	let userType = loginNo ? '${loginUser.userType}' : null;
-	// alert(loginNo);
-	// alert(userType);
+		//리뷰작성하기 btn 클릭하면 팝업창 나와야함
+		//yes -> userType 확인 후 textarea로 pointer
+		//no -> 
+		function popup_btn() {
+			$("#popup_write").css('display', 'block') ;
 
-	//리뷰작성하기 btn 클릭하면 팝업창 나와야함
-	//yes -> userType 확인 후 textarea로 pointer
-	//no -> 
-	function popup_btn() {
-		$("#popup_write").css('display', 'block') ;
+			$("#popup_yes").click( function () {
 
-		$("#popup_yes").click( function () {
-
-		if (loginNo == null) {
-			alert("로그인 후 작성가능합니다!");
-			
-		}else if (userType === 'E'){
-			$("#writeBox1").prop('readonly', false);
-			alert("리뷰를 작성해주세요!");
-			$("#writeBox1").val("");
-			$("#writeBox1").focus();
-		}else{
-			alert("리뷰 작성 권한이 없어요");
-		}
-		$("#popup_write").css('display', 'none') ;
-	});
-
-		$("#popup_no").click( function () {
+			if (loginNo == null) {
+				alert("로그인 후 작성가능합니다!");
+				
+			}else if (userType === 'E'){
+				$("#writeBox1").prop('readonly', false);
+				alert("리뷰를 작성해주세요!");
+				$("#writeBox1").val("");
+				$("#writeBox1").focus();
+			}else{
+				alert("리뷰 작성 권한이 없어요");
+			}
 			$("#popup_write").css('display', 'none') ;
 		});
-	}
 
-	//리뷰 등록 & 수정
-	$("#insert-btn").click(function () {
-		let address;
-		let list = {
-				corpNo : '${corp.corpNo}',
-				replyNo : $("#rnoHidden").val(),
-				replyContent: $("#writeBox1").val()
-			}
-		
-		if(!list.replyNo){
-			address = 'insertReview.corp';
-		}else {
-			address = 'updateReview.corp';
+			$("#popup_no").click( function () {
+				$("#popup_write").css('display', 'none') ;
+			});
 		}
-		
-		if (!$("#writeBox1").val()) {
-			alert("내용을 입력해주세요");
-			$("#writeBox1").focus();
-		}
-		
-		$.ajax({
-			type: 'post',
-			url: address,
-			data: list,
-			success: function (response) {
-				alert("리뷰 등록했습니다");
-				location.reload();
-				$("#writeBox1").val("");
-			},
-			error: function () {
-				alert("리뷰 등록 실패했습니다");
+
+		//리뷰 등록 & 수정
+		$("#insert-btn").click(function () {
+			let address;
+			let list = {
+					corpNo : '${corp.corpNo}',
+					replyNo : $("#rnoHidden").val(),
+					replyContent: $("#writeBox1").val()
+				}
+			
+			if(!list.replyNo){
+				address = 'insertReview.corp';
+			}else {
+				address = 'updateReview.corp';
 			}
-		});
-	});
-
-
-	// 작성된 리뷰 textarea로 가져옴
-	function change(ele, rno) {
-	   		console.log(ele, rno);
-	   		$("#rnoHidden").val(rno);
-			$("#writeBox1").val($(ele).next().next().text());
-			$("#writeBox1").prop('readonly', false);
-	}
-
-
-	// 리뷰 삭제
-	$(".delete-review").click(function (e) {
-		$.ajax({
-			type: 'get',
-			url: 'deleteReview.corp',
-			data: {replyNo : e.target.value},
-			success: function (response) {
-				alert("리뷰 삭제했습니다");
-				location.reload();
-			},
-			error: function () {
-				alert("리뷰삭제 실패했습니다");
+			
+			if (!$("#writeBox1").val()) {
+				alert("내용을 입력해주세요");
+				$("#writeBox1").focus();
 			}
-		})
-	})
-
-	
-	$(function () {
-		
-		// 페이지 위치 이동
-		$(".corp_info_a1").click(function (e) {
-			$('html, body').animate({
-				scrollTop: $(".corp_info_a2").offset().top
-			}, 1000);
-		})
-
-		$(".corp_review_a1").click(function (e) {
-			$('html, body').animate({
-				scrollTop: $(".corp_review_a2").offset().top
-			}, 1000);
+			
+			$.ajax({
+				type: 'post',
+				url: address,
+				data: list,
+				success: function (response) {
+					alert("리뷰 등록했습니다");
+					location.reload();
+					$("#writeBox1").val("");
+				},
+				error: function () {
+					alert("리뷰 등록 실패했습니다");
+				}
+			});
 		});
 
-		// 호버기능
-		$(".corp_info_a1").hover(function () {
-			$(this).addClass("corp_hovered");
-		}, $(".corp_info_a1").hover(function () {
-			$(this).removeClass("corp_hovered");
-		}));
 
-		$(".corp_review_a1").hover(function () {
-			$(this).addClass("corp_hovered");
-		}, $(".corp_review_a1").hover(function () {
-			$(this).removeClass("corp_hovered");
-		}));
+		// 작성된 리뷰 textarea로 가져옴
+		function change(ele, rno) {
+				console.log(ele, rno);
+				$("#rnoHidden").val(rno);
+				$("#writeBox1").val($(ele).next().next().text());
+				$("#writeBox1").prop('readonly', false);
+		}
 
 
-
-		// 페이징버튼 클릭시 리뷰영역으로 이동
-		document.addEventListener('DOMContentLoaded', function () {
-			function goToPage(page) {
-				location.href = '${url}${corp.corpNo}&currentPage' + page;
-
-				// 스크롤 이동
-				var pagingArea = document.getElementsById('paging-area');
-				pagingArea.scrollIntoView({ behavior: 'smooth' });
+		// 리뷰 삭제
+		$(".delete-review").click(function (e) {
+			$.ajax({
+				type: 'get',
+				url: 'deleteReview.corp',
+				data: {replyNo : e.target.value},
+				success: function (response) {
+					alert("리뷰 삭제했습니다");
+					location.reload();
+				},
+				error: function () {
+					alert("리뷰삭제 실패했습니다");
 				}
 			})
 		})
 
-	</script>
+		
+		$(function () {
+			// 페이지 위치 이동
+			$(".corp_info_a1").click(function (e) {
+				$('html, body').animate({
+					scrollTop: $(".corp_info_a2").offset().top
+				}, 1000);
+			})
 
+			$(".corp_review_a1").click(function (e) {
+				$('html, body').animate({
+					scrollTop: $(".corp_review_a2").offset().top
+				}, 1000);
+			});
+
+			// 호버기능
+			$(".corp_info_a1").hover(function () {
+				$(this).addClass("corp_hovered");
+			}, $(".corp_info_a1").hover(function () {
+				$(this).removeClass("corp_hovered");
+			}));
+
+			$(".corp_review_a1").hover(function () {
+				$(this).addClass("corp_hovered");
+			}, $(".corp_review_a1").hover(function () {
+				$(this).removeClass("corp_hovered");
+			}));
+
+			// 페이징버튼 클릭시 리뷰영역으로 이동
+			document.addEventListener('DOMContentLoaded', function () {
+				function goToPage(page) {
+					location.href = '${url}${corp.corpNo}&currentPage' + page;
+
+					// 스크롤 이동
+					var pagingArea = document.getElementsById('paging-area');
+					pagingArea.scrollIntoView({ behavior: 'smooth' });
+				}
+			})
+		});
+	</script>
 
 </body>
 

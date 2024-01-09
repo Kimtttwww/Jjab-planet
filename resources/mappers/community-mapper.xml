@@ -3,13 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="communityMapper">
-	<resultMap id="postResultSet" type="post">
+	<resultMap id="postResultSet" type="post" autoMapping="true">
 		<id column="POST_NO" property="postNo"/>
 		<collection property="replyList" javaType="java.util.ArrayList"
 			ofType="reply" select="selectReplyList" column="POST_NO"/>
 	</resultMap>
 	
-	<resultMap id="replyResultSet" type="reply"/>
+	<resultMap id="replyResultSet" type="reply" autoMapping="true"/>
 	
 	
 	<!-- 게시글 갯수 파악 -->

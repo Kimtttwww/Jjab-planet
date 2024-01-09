@@ -86,7 +86,7 @@
 		
 	<!-- 기업의 리뷰리스트 -->
 	<select id="selectReviewList"
-		resultType="com.kh.community.model.vo.Reply"> 
+		resultType="reply"> 
 		SELECT R.REPLY_NO, R.REF_NO, R.REPLY_CONTENT,
 				R.REPLY_WRITER, R.CREATE_DATE, M.USER_ID 
 		  FROM BOARD_REPLY R 
@@ -98,7 +98,7 @@
 	</select>
 	
 	<!-- 유저의 관심기업 설정여부 확인 -->
-	<select id="isCorpLiked" resultType="JoayoCorp"> 
+	<select id="isCorpLiked" resultType="joayoCorp"> 
 		SELECT * 
 		  FROM JOAYO_CORP
 		 WHERE CORP_NO = #{corpCode} 
@@ -141,7 +141,7 @@
 	
 	
 	<!-- 기업 정보에 해당 기업공고 노출 -->
-	<select id="selectJobPostList"	resultType="com.kh.jobpost.model.vo.JobPost"> 
+	<select id="selectJobPostList"	resultType="jobPost"> 
 		SELECT JOBPOST_NO, CORP_NO, POST_TITLE, POST_CONTENT, CREATE_DATE, JOB_NAME 
 		  FROM JOB_POST P 
 		  JOIN OCCUPATION USING (JOB_NO)

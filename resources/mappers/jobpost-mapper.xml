@@ -2,14 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jobpostMapper">
-	<resultMap id="postResultSet" type='jobPost'>
-		<!-- <collection property="list" javaType="java.util.ArrayList" -->
-		<!-- ofType="com.kh.jobpost.model.vo.JobPost" select="selectList" column="JOBPOST_NO"
-			/> -->
-		<!-- 댓글 LIST를 담기 위해서 ArrayList<Reply>객체를 생성 (javaType="java.util.ArrayList" -->
-		<!-- ofType="reply") selectReplyList쿼리를 수행하기위해 필요한 파라미터는 현재 resultMap으로
-			조회된 BOARD_NO칼럼을 -->
-		<!-- 사용하겠다 (select="selectReplyList" column="BOARD_NO") -->
+	<resultMap id="postResultSet" type='jobPost' autoMapping="true">
+		<id property="jobpostNo" column="JOBPOST_NO"/>
+		<association property="corp" resultMap="boardMapper.corpResultMap"/>
 	</resultMap>
 
 	<!-- 리스트 목록 -->
@@ -64,30 +59,33 @@
 	<!-- 리스트 목록 -->
 	<select id="idx_firstList" resultMap='postResultSet'>
 		select * from(
-		SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, COUNT
+		SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, COUNT, L.FILE_NO, L.ORIGIN_NAME, L.CHANGE_NAME
 		FROM JOB_POST J
 		JOIN occupation O ON (J.JOB_NO=O.JOB_NO)
-		JOIN corporation C USING(CORP_NO)
+		JOIN corporation C ON(C.CORP_NO=J.CORP_NO)
+		JOIN LOGO L ON C.CORP_NO = L.CORP_NO
 		ORDER BY count DESC)
 		where ROWNUM &lt; 4
 	</select>
 
 	<select id="idx_secondList" resultMap='postResultSet'>
 		select * from(
-		SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, COUNT
+		SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, COUNT, L.FILE_NO, L.ORIGIN_NAME, L.CHANGE_NAME
 		FROM JOB_POST J
 		JOIN occupation O ON (J.JOB_NO=O.JOB_NO)
 		JOIN corporation C ON(C.CORP_NO=J.CORP_NO)
+		JOIN LOGO L ON C.CORP_NO = L.CORP_NO
 		ORDER BY END_DATE ASC)
 		where ROWNUM &lt; 7
 	</select>
 
 	<select id="idx_thirdList" resultMap='postResultSet'>
 		select * from(
-		SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, COUNT
+		SELECT JOBPOST_NO, C.CORP_NAME, POST_TITLE, JOB_NAME, END_DATE, COUNT, L.FILE_NO, L.ORIGIN_NAME, L.CHANGE_NAME
 		FROM JOB_POST J
 		JOIN occupation O ON (J.JOB_NO=O.JOB_NO)
 		JOIN corporation C ON(C.CORP_NO=J.CORP_NO)
+		JOIN LOGO L ON C.CORP_NO = L.CORP_NO
 		ORDER BY J.JOBPOST_NO DESC)
 		where ROWNUM &lt; 10
 	</select>
