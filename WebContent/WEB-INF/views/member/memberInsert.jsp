@@ -75,11 +75,11 @@
 				</div>
 				<div>
 					<div>회사 주소*</div>
-					<input type="text" name="address" class="enroll-textL">
+					<input type="text" name="address" class="enroll-textL" maxlength = "50">
 				</div>
 				<div>
 					<div>회사 홈페이지주소*</div>
-					<input type="text" name="homePage" class="enroll-textL">
+					<input type="text" name="homePage" class="enroll-textL" maxlength = "100">
 				</div>
 				<div>
 					<div>회사 대표 로고*</div>
@@ -167,15 +167,15 @@
 						able = clear(regExp, this, '해당 연락처는 올바르지 않습니다', i);
 						break;
 					case 6:
-						regExp = /^[a-zA-Z가-힣()\_\-]$/;
+						regExp = /^[a-zA-Z가-힣\(\)\_\-]{1,50}}$/;
 						able = clear(regExp, this, '해당 기업명는 사용할 수 없습니다', i);
 						break;
 					case 7:
-						regExp = /^[a-zA-Z가-힣]$/;
+						regExp = /^[a-zA-Z가-힣]{1,50}$/;
 						able = clear(regExp, this, '해당 대표자명은 사용할 수 없습니다', i);
 						break;
 					case 8:
-						regExp = /^[0-9()\_\-]$/;
+						regExp = /^[0-9()\_\-]{1,50}$/;
 						able = clear(regExp, this, '해당 사업자 등록번호는 사용할 수 없습니다', i);
 						break;
 					case 9:
