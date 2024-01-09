@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>채용공고 리스트</title>
+<title>기업채용공고 목록</title>
 <!-- <script src="/3script/jobPostingList.js"></script> -->
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/jobPostingList.css" type="text/css">
 </head>
@@ -41,7 +41,11 @@
 <%-- 				<a href="/JobPostDetailController2?jobpostNo=${p.jobpostNo}"></a> --%>
 			
 				<div class="job-card" onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
-					<img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" class="company-logo">
+				
+					<img onclick='location.href="${contextPath}/detail.corp?corpNo=${corp.corpNo}"' 
+								src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}" alt="기업 대표이미지">
+				
+<%-- 					<img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" class="company-logo"> --%>
 					<div class="job-info">
 						<h3 class="job-offer-title">${p.postTitle }</h3>
 						<p class="employee-condition">${p.postContent }</p>
