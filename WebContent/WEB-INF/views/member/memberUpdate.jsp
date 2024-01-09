@@ -41,7 +41,7 @@ body {
 } 
 .container-update .update-phoneBox {
     /*입력 정보 인풋태그 text*/
-    width: 540px;
+    width: 400px;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
@@ -49,7 +49,7 @@ body {
 
 .container-update .update-email{
     /*이메일 인풋태그*/
-    width: 540px;
+    width: 400px;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
