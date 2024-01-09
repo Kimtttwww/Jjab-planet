@@ -62,7 +62,6 @@
                         <span>${c.workerName}</span> 
                     </section>
                 </c:forEach>
-            </tbody>
 
         <section class="pagingbar">
             <!-- Pagination buttons -->

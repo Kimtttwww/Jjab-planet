@@ -2,10 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardMapper">
-	<resultMap id="corpResultMap"
-		type="com.kh.corporation.model.vo.Corporation">
+	<resultMap id="corpResultMap" type="Corporation">
 		<id property="corpNo" column="CORP_NO" />
-		<result property="corpNo" column="CORP_NO" />
 		<result property="corpName" column="CORP_NAME" />
 		<result property="ceoName" column="CEO_NAME" />
 		<result property="corpBn" column="CORP_BN" />
@@ -15,8 +13,7 @@
 		<association property="logo" resultMap="CorpfnoResultMap" />
 	</resultMap>
 
-	<resultMap id="CorpfnoResultMap"
-		type="com.kh.corporation.model.vo.Logo">
+	<resultMap id="CorpfnoResultMap" type="logo">
 		<id property="fileNo" column="FILE_NO" />
 		<result property="corpNo" column="CORP_NO" />
 		<result property="originName" column="ORIGIN_NAME" />
@@ -174,12 +171,6 @@
 		  WHERE REPLY_TYPE ='R'
 		    AND REPLY_NO = #{replyNo} 
 	</update>
-	
-	<!-- 공고에 지원하기 하면 PROPOSE에 insert -->
-	<insert id="" parameterType="" >
-		INSERT INTO PROPOSE
-		VALUES (SEQ_PROPOSE_NO.NEXTVAL, #{userNo}, #{corpNo}, 'C')
-	</insert>
 	<!-- 다연 사용중 -->
 	
 
