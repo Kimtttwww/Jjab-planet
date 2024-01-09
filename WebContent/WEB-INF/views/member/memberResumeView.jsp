@@ -12,12 +12,14 @@
 .main{
 display:flex;
 }
-.sidebar{
-width:200px;
-}
+/* .side{ */
+/* width:200px; */
+/* } */
 .outer{
 flex-basis:70%;
 margin:0 auto;
+padding: 40px;
+background-color: lightgrey;
 }
 tr td:nth-child(2){
 width:500px;
@@ -42,18 +44,32 @@ input::value{
 color:black;
 font-size:14px;}
 
+
+.resumeDetail{
+ 
+ width: 60%;
+ margin: 0 auto;
+ border: 3px solid black;
+ font-size: 30px;
+ padding: 25px;
+ background-color: white;
+}
+
 </style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	
 	<div class="main">
-		<div class="sidebar">
+		<div class="side">
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
-		<div class="outer">
+
+
+	<div class="outer">
 			<br>
 			<h1 align="center">이력서</h1>
+		<div class = "resumeDetail">
 		<div>이력서명: ${resume.formTitle}</div> <br>
 		<div>작성자명: ${resume.workerName}</div> <br>
 		<div>생년월일: ${resume.birthday}</div> <br>
@@ -61,7 +77,10 @@ font-size:14px;}
 		<div>주소: ${resume.address}</div> <br>
 		<div>직업: ${resume.career}</div> <br>
 		<div>학력: ${resume.education}</div> <br>
+		<div>경력: ${resume.career}</div> <br>
+		<div>주소: ${resume.address}</div>
 		</div>
+	</div>
 	</div>
 </body>
 

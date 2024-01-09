@@ -12,9 +12,9 @@
 .main{
 display:flex;
 }
-.sidebar{
-width:200px;
-}
+/* .sidebar{ */
+/* width:200px; */
+/* } */
 .outer{
 flex-basis:70%;
 margin:0 auto;
@@ -48,7 +48,7 @@ font-size:14px;}
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	
 	<div class="main">
-		<div class="sidebar">
+		<div class="side">
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
 		<div class="outer">

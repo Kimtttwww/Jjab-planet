@@ -18,12 +18,22 @@
         	display: flex;
         	justify-content: space-around;
         	align-items: center;
-       	   	margin-top: 30px;
+       	   	margin-top: 20px;
         }
         
         .propose {
         	height: 100px;
+        	cursor: pointer;
+        	border: 3px solid black;
+            border-color: black;
+            border-radius: 30px;
+            font-size: larger;
        	}
+        
+        .propose:hover {
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+            transition: box-shadow 0.3s ease-in-out;
+        }
         	
         .proposeList span {
         text-align: center;
@@ -49,7 +59,7 @@
                     <section class="propose" onclick = 'location.href = "resumeview.me?bno=${c.workerNo}"'>
                         <span>${c.formTitle}</span>
                         <span>${c.jobName}</span>
-                        <span>${c.workerName}</span>
+                        <span>${c.workerName}</span> 
                     </section>
                 </c:forEach>
             </tbody>

@@ -60,7 +60,7 @@ body {
 .corp-info-all {
 	width: 60%;
 	margin: 0 auto;
-	padding: 50px 300px;
+	padding: 50px 30px;
 	background-color: rgb(206, 206, 223)
 }
 

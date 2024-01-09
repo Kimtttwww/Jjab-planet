@@ -62,9 +62,9 @@
     	justify-content: flex-start;
 	}
 
-	.side {
-		flex-basis: 20%;
-	}
+/* 	.side { */
+/* 		flex-basis: 20%; */
+/* 	} */
 
 	.content {
 		flex-basis: 80%;
