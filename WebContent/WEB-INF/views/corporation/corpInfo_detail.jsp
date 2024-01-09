@@ -21,6 +21,8 @@ html,
 body {
 	margin: 0;
 	height: 100%;
+	min-width: 1200px;
+	max-width: 1600px;
 }
 
 .corp-main {
@@ -29,37 +31,47 @@ body {
 }
 
 .corp-top-area {
-	background-color: gray;
-	width: 1800px;
-	height: 100px;
-	padding: 0 200px;
+	width: 1000px;
+	height: 200px;
+	margin: 0 auto;
 }
 
+/*제일 상단*/
 .corp-top {
 	display: flex;
+	height:153px;
+	background-color: #eee;
+	justify-content: space-between;
 }
 
 .corp-logo {
 	display: flex;
 	margin: 0 100px;
+	align-items: center;
 }
 
 .corp-interest {
 	display: flex;
-	margin: 0 20px;
+	margin: 0 100px 0 0;
+	align-items: center;
 }
 
+/*기업정보|리뷰*/
 .corp-aTag {
 	display: flex;
-	margin: 0 150px;
-	margin-top: 10px;
+	border: 1px solid #eee;
+	padding:12px
+}
+
+.corp-aTag div{
+	margin: 0 10px;
 }
 
 .corp-info-all {
-	width: 60%;
+	width: 1000px;
 	margin: 0 auto;
 	padding: 50px 30px;
-	background-color: rgb(206, 206, 223)
+	background-color: rgb(236, 240, 243);
 }
 
 .corp-zone {
@@ -81,9 +93,45 @@ body {
 	margin: 20px;
 }
 
-.corp-name,
+/*회사명*/
+.corp-name{
+	margin: 0 20px;
+}
+
+/*홈페이지*/
 .corp-home {
 	margin: 0 20px;
+	width: 120px;
+	height: 30px;
+	border: 1px solid black;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0 25px 0 17px;
+    border-radius: 41px; 
+    height: 41px;
+    cursor: pointer;
+	
+	
+	/* 
+	display: block;
+    overflow: hidden;
+    position: relative;
+	border-radius: 20px;
+    */
+}
+
+/*관심 별 버튼*/
+.corp-interest button {
+	border: none;
+	width: 80px;
+	height: 30px;
+	border-radius: 41px; 
+	font-size: 20px;
+	
+}
+
+.corp-home a{
+	text-decoration: none;
+    color: #fff;
 }
 
 .corp-backwhite {
@@ -127,6 +175,8 @@ body {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 	z-index: 1000;
 }
+
+
 </style>
 </head>
 
@@ -145,9 +195,10 @@ body {
 					<div class="corp-name">${corp.corpName}</div>
 				</div>
 				<div class="corp-interest">
-					<div class="corp-home">
-						<button id="likeCorp" onclick="isCorpLiked()">★</button>
+					<div class="corp-star">
+						<button id="likeCorp" onclick="isCorpLiked()">★
 						<span class="likeCount">${corp.likeCount}</span>
+						</button>
 					</div>
 					<div class="corp-home">
 						<a href="${corp.homePage}">홈페이지></a>
