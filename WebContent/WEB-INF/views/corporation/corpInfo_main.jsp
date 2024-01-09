@@ -96,7 +96,7 @@ body {
 				    </c:if>
 					<div align="center">
 						<img onclick='location.href="${contextPath}/detail.corp?corpNo=${corp.corpNo}"' 
-								src="${contextPath}/${corp.logo.filePath}${corp.logo.changeName}" alt="기업 대표이미지">
+								src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}" alt="기업 대표이미지">
 					</div>	
 					<div class="corp_maincontent">
 						<p>${corp.corpName}</p>

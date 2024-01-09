@@ -190,7 +190,7 @@ body {
 					<div class="corp-logoImg">
 						<img width="120px" height="60px" alt="기업 대표이미지"
 							onclick="${contextPath}/detail.corp?corpNo=${corp.corpNo}"
-							src="${corp.logo.filePath}${corp.logo.changeName}" />
+							src="${Logo.FILE_PATH}${corp.logo.changeName}" />
 					</div>
 					<div class="corp-name">${corp.corpName}</div>
 				</div>

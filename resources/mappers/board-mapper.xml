@@ -26,13 +26,6 @@
 	<!-- <id property="corpNo" column="CORP_NO" /> -->
 	<!-- <result property="corpName" column="CORP_NAME" /> -->
 	<!-- <association property="fileNo" column="FILE_NO" resultMap="LogoResultMap"/> -->
-	<!-- </resultMap> -->
-	<!-- <resultMap id="LogoResultMap" type="com.kh.corporation.model.vo.Logo"> -->
-	<!-- <id property="fileNo" column="FILE_NO"/> -->
-	<!-- <id property="originName" column="ORIGIN_NAME"/> -->
-	<!-- <id property="changeName" column="CHANGE_NAME"/> -->
-	<!-- <id property="filePath" column="FILE_PATH"/> -->
-	<!-- </resultMap> -->
 	<!-- <resultMap type="board" id="boardResultSet"> -->
 	<!-- <id column="BOARD_NO" property="boardNo"/> -->
 	<!-- <result column="USER_ID" property="userId"/> -->
