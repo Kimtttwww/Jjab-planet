@@ -1,6 +1,9 @@
 package com.kh.jobpost.model.vo;
 
 import java.sql.Date;
+
+import com.kh.corporation.model.vo.Corporation;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,8 +32,9 @@ public class JobPost {
 	private int count; //JOB_POST
 	private String jobName; //occupation
 	private String phone; //MEMBER
-	private String corpName;//CORPORATION
-	private String ceoName;//CORPORATION
 	private String userType;//USER_TYPE
+	private Corporation corp;
+	
+//	private String corpName;//CORPORATION
+//	private String ceoName;//CORPORATION
 }
-

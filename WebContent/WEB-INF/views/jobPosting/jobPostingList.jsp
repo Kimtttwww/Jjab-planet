@@ -45,7 +45,7 @@
 					<div class="job-info">
 						<h3 class="job-offer-title">${p.postTitle }</h3>
 						<p class="employee-condition">${p.postContent }</p>
-						<p class="corporate-name">${p.corpName}</p>
+						<p class="corporate-name">${p.corp.corpName}</p>
 						
 						<div class="deadline-box">
 							<p class="deadline">${p.endDate}</p>

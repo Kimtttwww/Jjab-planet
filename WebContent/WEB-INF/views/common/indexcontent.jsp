@@ -1,7 +1,8 @@
+<%@page import="com.kh.corporation.model.vo.Logo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <head>
@@ -23,12 +24,12 @@
 			<!--top_b1-->
 			<c:forEach var="p" items="${first}">
 				<div class="top_b1" onclick='location.href="detail.job?bno=${p.jobpostNo}"'>
-					<img src="${ project }/resources/images/kh_logo.jpg">
-					<p>${p.corpName}</p>
+					<img src="${ project }/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
+					<p>${p.corp.corpName}</p>
 					<p>${p.postTitle}</p>
 					<p class="content_bottom">${p.count}</p>		
 				</div>
-			</c:forEach>	
+			</c:forEach>
 		</div>
 		
 		<!--top_banner-->
@@ -38,8 +39,8 @@
 			<c:forEach var="p" items="${second}">
 				<!-- 마감순 배너-->
 				<div class="new_banner" onclick='location.href="detail.job?bno=${p.jobpostNo}"'>
-					<img class="content_top" src="${ project }/resources/images/kh_logo.jpg">
-					<p>${p.corpName}</p>
+					<img class="content_top" src="${ project }/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
+					<p>${p.corp.corpName}</p>
 					<p>${p.postTitle }</p>
 					<p class="content_bottom">${p.jobName }</p>
 				</div>
@@ -50,7 +51,7 @@
 		<c:forEach var="p" items="${third }">
 		<div class="all_list" onclick='location.href="detail.job?bno=${p.jobpostNo}"' style="margin-bottom:20px;">
 			<ul>
-				<li>${p.corpName}</li>
+				<li>${p.corp.corpName}</li>
 				<li id="list_title">${p.postTitle }</li>
 				<li>
 					<ul class="s_info">
@@ -68,6 +69,7 @@
 		</div>
 		</c:forEach>
 	</div>
+	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

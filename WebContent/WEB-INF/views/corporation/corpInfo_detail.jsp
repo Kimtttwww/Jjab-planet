@@ -1,3 +1,4 @@
+<%@page import="com.kh.corporation.model.vo.Logo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.kh.member.model.vo.Member,
 			java.util.ArrayList,
 			com.kh.common.model.vo.PageInfo" %>
@@ -7,14 +8,13 @@
 	PageInfo pi=(PageInfo)request.getAttribute(" pi"); 
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:set var=" corp" value="${corp}" />
+<c:set var="corp" value="${corp}" />
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
 <title>기업상세정보</title>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 html,
@@ -175,8 +175,6 @@ body {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 	z-index: 1000;
 }
-
-
 </style>
 </head>
 
@@ -189,8 +187,8 @@ body {
 				<div class="corp-logo">
 					<div class="corp-logoImg">
 						<img width="120px" height="60px" alt="기업 대표이미지"
-							onclick="${contextPath}/detail.corp?corpNo=${corp.corpNo}"
-							src="${Logo.FILE_PATH}${corp.logo.changeName}" />
+							src="${ contextPath }/${ Logo.FILE_PATH }${ corp.logo.changeName }"
+							onclick="${contextPath}/detail.corp?corpNo=${corp.corpNo}" >
 					</div>
 					<div class="corp-name">${corp.corpName}</div>
 				</div>
