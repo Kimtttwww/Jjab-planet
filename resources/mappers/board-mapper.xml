@@ -159,14 +159,12 @@
 	</insert>
 	
 	<!-- 기업리뷰 수정 -->
-	<update id="updateReview" parameterType="_int">
+	<update id="updateReview" parameterType="hashMap">
 		 UPDATE BOARD_REPLY
-		    SET REPLY_CONTENT = #{reviewContent}, 
+		    SET REPLY_CONTENT = #{replyContent}, 
 		    	CREATE_DATE = SYSDATE
-		  WHERE REPLY_TYPE ='R'
-		    AND STATUS = 'Y'
-		    AND REF_NO = #{corpCode} 
-		    AND REPLY_WRITER = #{userNo}
+		  WHERE REF_NO = #{refNo} 
+		    AND REPLY_NO = #{replyNo}
 	</update>
 	
 	<!-- 기업리뷰 삭제 -->
@@ -174,13 +172,18 @@
 		 UPDATE BOARD_REPLY
 		    SET STATUS = 'N'
 		  WHERE REPLY_TYPE ='R'
-		    AND REF_NO = #{corpCode} 
-		    AND REPLY_WRITER = #{userNo}
+		    AND REPLY_NO = #{replyNo} 
 	</update>
 	
+	<!-- 공고에 지원하기 하면 PROPOSE에 insert -->
+	<insert id="" parameterType="" >
+		INSERT INTO PROPOSE
+		VALUES (SEQ_PROPOSE_NO.NEXTVAL, #{userNo}, #{corpNo}, 'C')
+	</insert>
 	<!-- 다연 사용중 -->
 	
-	
+
+
 	
 	
 	<!-- * DML문 일 경우 <insert id="식별자" parameterType="전달받은 자바타입"> </insert> <update></update> 

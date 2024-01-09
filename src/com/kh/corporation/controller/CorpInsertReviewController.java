@@ -41,9 +41,8 @@ public class CorpInsertReviewController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		CorporationService corpService = new CorporationService();
-		System.out.println(request.getParameter("writeBox"));
-		System.out.println(request.getParameter("replyContent"));
 		
 		Reply review = Reply.builder()
 				.refNo(Integer.parseInt(request.getParameter("corpNo")))
@@ -56,8 +55,6 @@ public class CorpInsertReviewController extends HttpServlet {
 		} else {
 			response.getWriter().print(false);
 		}
-//		String url = "detail.corp?corpNo={refNo}&currentPage=1";
-//		request.getRequestDispatcher(url).forward(request, response);
 	
 	
 	}

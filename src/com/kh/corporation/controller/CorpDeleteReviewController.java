@@ -31,19 +31,13 @@ public class CorpDeleteReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		CorporationService corpService = new CorporationService();
-		int refNo = Integer.parseInt(request.getParameter("corpNo"));
-		Member loginUser = (Member)request.getSession().getAttribute("loginUser");
-		int replyWriter = loginUser.getUserNo();
-		
-		
-		if(corpService.deleteReview(refNo, replyWriter) > 0) {
-			request.getSession().setAttribute("alertMsg", "리뷰가 삭제되었습니다.");
+		int replyNo = Integer.parseInt(request.getParameter("replyNo"));
+
+		if(corpService.deleteReview(replyNo) > 0) {
 			response.getWriter().print(true);
 		} else {
-			request.getSession().setAttribute("alertMsg", "리뷰 삭제에 실패했습니다.");
 			response.getWriter().print(false);
 		}
-		response.sendRedirect("WEB-INF/views/corporation/corpInfo_detail.jsp");
 		
 		
 	}

@@ -48,7 +48,7 @@ public class CorpDetailController extends HttpServlet {
 //		int currentPage = Integer.parseInt(request.getParameter("currentPage") == null ? 
 //							"1" : request.getParameter("currentPage"));		
 		int pageLimit = 5;
-		int objLimit = 2;
+		int objLimit = 4;
 		
 		int currentPage;
 		String currentPageParam = request.getParameter("currentPage");

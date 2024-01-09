@@ -189,12 +189,13 @@ public class CorporationService {
 		return result;
 	}
 
-	public int updateReview(int refNo, int replyWriter) {
-		
+	public int updateReview(int refNo, int replyNo, String replyContent) {
+		System.out.println(replyNo);
 		SqlSession sqlSession = Template.getSqlSession();
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("corpCode", refNo);
-		map.put("userNo", replyWriter);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("refNo", String.valueOf(refNo));
+		map.put("replyNo", String.valueOf(replyNo));
+		map.put("replyContent", replyContent);
 		
 		int result = corpDao.updateReview(sqlSession, map);
 		
@@ -207,12 +208,11 @@ public class CorporationService {
 		return result;
 	}
 
-	public int deleteReview(int refNo, int replyWriter) {
+	public int deleteReview(int replyNo) {
 		
 		SqlSession sqlSession = Template.getSqlSession();
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("corpCode", refNo);
-		map.put("userNo", replyWriter);
+		map.put("replyNo", replyNo);
 		
 		int result = corpDao.deleteReview(sqlSession, map);
 		
@@ -224,6 +224,7 @@ public class CorporationService {
 		sqlSession.close();
 		return result;
 	}
+
 
 
 }
