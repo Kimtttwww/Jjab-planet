@@ -36,4 +36,14 @@
 		JOIN occupation O USING(job_no)
 		WHERE worker_no = #{workerNo}
 	</select>
+	
+	<update id="updateResume" parameterType="Resume">
+		UPDATE resume r
+		SET r.form_title = #{formTitle},
+    		r.address = #{address},
+    		r.is_open = #{isOpen},
+    		r.education = #{education},
+    		r.career = #{career}
+		WHERE r.worker_no = #{workerNo}
+	</update>
 </mapper>   

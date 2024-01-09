@@ -54,7 +54,7 @@ font-size:14px;}
 		<div class="outer">
 			<br>
 			<h1 align="center">이력서</h1>
-			<form action="resume.me" method="get">
+			<form action="resume.me" method="post">
 				<table align="center">
 					<tr>
 						<td>이력서 제목</td>
@@ -135,7 +135,6 @@ font-size:14px;}
 				</div>
 			</form>
 		</div>
-	</div>
+	</div>	
 </body>
-
 </html>
