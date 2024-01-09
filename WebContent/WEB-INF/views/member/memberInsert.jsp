@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Document</title>
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/common/memberInsert.css">
+<!-- sha256 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/topbar.jsp" />
@@ -139,19 +141,18 @@
 		$("input").each(function (i, ele) {
 			if (able) {
 				let regExp;
-// 				console.log(this);
 				switch (i) {
 					case 1:
-						regExp = /^[a-zA-Z0-9_\-]{,14}$/;
-						able = clear(regExp, this, '해당 아이디는 사용할 수 없습니다');
+						regExp = /^[a-zA-Z0-9\_\-]{1,14}$/;
+						able = clear(regExp, this, '해당 아이디는 사용할 수 없습니다', i);
 						break;
 					case 2:
-						regExp = /^[a-zA-Z0-9._\-]{,15}$/;
-						able = clear(regExp, this, '해당 메일 주소는 사용할 수 없습니다');
+						regExp = /^[a-zA-Z0-9.\_\-]{1,15}$/;
+						able = clear(regExp, this, '해당 메일 주소는 사용할 수 없습니다', i);
 						break;
 					case 3:
-						regExp = /^[a-zA-Z0-9!@#$%^&*_]$/;
-						able = clear(regExp, this, '올바른 비밀번호가 아닙니다');
+						regExp = /^[a-zA-Z0-9!@#$%^&*\_]{8,16}$/;
+						able = clear(regExp, this, '올바른 비밀번호가 아닙니다', i);
 						break;
 					case 4:
 						if ($(this).val() != $("input").eq(4).val()) {
@@ -162,39 +163,41 @@
 						}
 						break;
 					case 5:
-						regExp = /^[0-9]$/;
-						able = clear(regExp, this, '해당 회사 전화번호는 사용할 수 없습니다');
+						regExp = /^[0-9]{6,8}$/;
+						able = clear(regExp, this, '해당 연락처는 올바르지 않습니다', i);
 						break;
 					case 6:
-						regExp = /^[a-zA-Z가-힣()_\-]$/;
-						able = clear(regExp, this, '해당 기업명는 사용할 수 없습니다');
+						regExp = /^[a-zA-Z가-힣()\_\-]$/;
+						able = clear(regExp, this, '해당 기업명는 사용할 수 없습니다', i);
 						break;
 					case 7:
 						regExp = /^[a-zA-Z가-힣]$/;
-						able = clear(regExp, this, '해당 대표자명은 사용할 수 없습니다');
+						able = clear(regExp, this, '해당 대표자명은 사용할 수 없습니다', i);
 						break;
 					case 8:
-						regExp = /^[0-9()_\-]$/;
-						able = clear(regExp, this, '해당 사업자 등록번호는 사용할 수 없습니다');
+						regExp = /^[0-9()\_\-]$/;
+						able = clear(regExp, this, '해당 사업자 등록번호는 사용할 수 없습니다', i);
 						break;
 					case 9:
-						regExp = /^[a-zA-Z가-힣()_\-]{,50}$/;
-						able = clear(regExp, this, '해당 회사 주소는 사용할 수 없습니다');
+						regExp = /^[a-zA-Z가-힣()\_\-]{1,50}$/;
+						able = clear(regExp, this, '해당 회사 주소는 사용할 수 없습니다', i);
 						break;
 					case 10:
-						regExp = /^[a-zA-Z가-힣0-9()_\-:/]{,100}$/;
-						able = clear(regExp, this, '해당 회사 홈페이지 주소는 사용할 수 없습니다');
+						regExp = /^[a-zA-Z가-힣0-9()\_\-:/]{1,100}$/;
+						able = clear(regExp, this, '해당 회사 홈페이지 주소는 사용할 수 없습니다', i);
 						break;
 				}
 			} else {	// 반복 강제 종료
 				return;
 			}
 		});
+		if (able) { $("input").eq(3).val(sha256($("input").eq(3).val())) }
 		return able;
 	});
 	
-	function clear(regExp, e, msg) {
-		if (!regExp.test($(e).val())) {
+	function clear(Exp, e, msg, i) {
+		let regExp = new RegExp(Exp);
+		if (($("input").eq(0).val() == "C" || i < 6) && !regExp.test($(e).val())) {
 			alert(msg);
 			$(e).val('');
 			$(e).focus();

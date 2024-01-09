@@ -104,7 +104,7 @@
 	                url: 'write.re', type: 'post',
 	                data: {postNo: '${ p.postNo }', replyContent: $('#replyContent').val()},
 	                success: (tf) => {
-			    		if(tf) {
+			    		if(tf == 'true') {
 			    			alert("댓글이 등록되었습니다");
 			    		} else {
 			    			alert("오류가 발생하였습니다");
@@ -139,7 +139,7 @@
                 url: 'change.pr', type: 'post',
                 data: list,
                 success: (tf) => {
-		    		if(tf) {
+		    		if(tf == 'true') {
 		    			if(ty == 'P') {
 			    			alert("게시글이 수정되었습니다");
 		    			} else {

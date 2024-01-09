@@ -1,10 +1,12 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Login Form</title>
+<!-- sha256 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 </head>
 <style>
 
@@ -72,28 +74,24 @@
 	font-size:xx-large;
 	margin-left: 125px; 
 }
-
-
 </style>
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
-	<%
-		String contextPath = request.getContextPath();
-	%>
-	<form id="login-form" action="<%=contextPath%>/login.me" method="post">
+	
+	<form id="login-form" action="login.me" method="post">
 		<div class="bigBox">
 			<div class="naddhapChae">
 				<span>로그인</span>
 				<div class="hapChae">
 					<span class="id">아이디:</span>
-					<input type="text" name = "userId" class="large-input" placeholder="이메일 주소">
+					<input type="text" name="userId" class="large-input" placeholder="이메일 주소">
 				</div>
 				<div class="hapChae">
 					<span class="pwd">비밀번호:</span>
-					<input type="password" name = "userPwd" class="large-input" placeholder="비밀번호">
+					<input type="password" name="userPwd" class="large-input" placeholder="비밀번호">
 				</div>
 				<div class="button">
-					<input type="submit" class ="inputButton" value="로그인"> 
+					<button type="button" class="inputButton">로그인</button> 
 				</div>
 			</div>
 		</div>
@@ -101,6 +99,37 @@
 	<script type="text/javascript">
 		$(() => {
 			$(".large-input").eq(0).focus();
+		});
+		
+// 		enter로 로그인 시도
+		$(".large-input").keyup((key) => {
+			if(key.keyCode == 13) {
+				$("button").click();
+			}
+		});
+		
+// 		로그인 시도
+		$("button").click(() => {
+			let list = {userId: $(".large-input").eq(0).val(), userPwd: sha256($(".large-input").eq(1).val())};
+			$.ajax({
+				url: 'login.me', type: 'post',
+				data: list,
+				success: (tf) => {
+					if(tf == 'true') {
+						location.href = "index.co";
+		    		} else {
+		    			alert("로그인에 실패했습니다");
+		    			
+		    			$(".large-input").each(function() {
+							$(this).val("");
+						});
+		    			
+		    			$(".large-input").eq(0).focus();
+		    		}
+				}, error: () => {
+					console.log("통신 실패");
+				}
+			});
 		});
 	</script>
 </body>

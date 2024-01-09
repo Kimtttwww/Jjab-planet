@@ -21,17 +21,13 @@ public class LoginController extends HttpServlet {
  
     public LoginController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getSession().getAttribute("loginUser"));
 		request.getRequestDispatcher("WEB-INF/views/common/loginForm.jsp").forward(request, response);
-		
-
 	}
 
 	
@@ -42,28 +38,14 @@ public class LoginController extends HttpServlet {
 		HashMap<String, String> login = new HashMap<String, String>();
 		login.put("userId", userId);
 		login.put("userPwd", userPwd);
-		// login 바궈야함
+		
 		Member loginUser = new MemberService().loginMember(login);		
 		
-		if(loginUser == null) { // 확인
-			request.getSession().setAttribute("alertMsg", "로그인 실패");
-			System.out.println("로그인 실패");
-			
-		}else {
-			request.getSession().setAttribute("alertMsg", "로그인 성공");
+		if(loginUser != null && loginUser.getUserNo() > 0) { // 확인
 			request.getSession().setAttribute("loginUser", loginUser);
-			System.out.println(loginUser);
-			// 이력서 정보 조회
-//		    ResumeService resumeService = new ResumeService();
-//		    Resume userResume = resumeService.getResumeByUserNo(loginUser.getUserNo());
-//
-//		    // 세션에 이력서 정보 추가
-//		    request.getSession().setAttribute("userResume", userResume);
+			response.getWriter().print(true);
+		}else {
+			response.getWriter().print(false);
 		}
-		
-		response.sendRedirect(request.getContextPath());
-	
-	
 	}
-
 }
