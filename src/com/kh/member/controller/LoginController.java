@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.member.service.MemberService;
+import com.kh.myPage.model.vo.Resume;
+import com.kh.myPage.service.ResumeService;
 import com.kh.member.model.vo.Member;
 
 
@@ -51,6 +53,12 @@ public class LoginController extends HttpServlet {
 			request.getSession().setAttribute("alertMsg", "로그인 성공");
 			request.getSession().setAttribute("loginUser", loginUser);
 			System.out.println(loginUser);
+			// 이력서 정보 조회
+//		    ResumeService resumeService = new ResumeService();
+//		    Resume userResume = resumeService.getResumeByUserNo(loginUser.getUserNo());
+//
+//		    // 세션에 이력서 정보 추가
+//		    request.getSession().setAttribute("userResume", userResume);
 		}
 		
 		response.sendRedirect(request.getContextPath());

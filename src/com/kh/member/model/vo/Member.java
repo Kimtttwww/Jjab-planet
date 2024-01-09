@@ -18,4 +18,5 @@ public class Member {
 	private String status;
 	/** A : 관리자, E : 개인, C : 기업 */
 	private String userType;
+	
 }
