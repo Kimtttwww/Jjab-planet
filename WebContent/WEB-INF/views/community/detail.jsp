@@ -56,7 +56,7 @@
 	            <section class="reply-read">
 	                <article>
 						<span>${ r.userId }</span>
-						<span>${ r.createDate }</span>
+						<span>(${ r.createDate })</span>
 						<textarea id="reply-size">${ r.replyContent }</textarea>
 	                </article>
 	                <article class="reply-need-login">
@@ -154,6 +154,30 @@
                 }
             });
    		}
+    	
+    	function adjustAllTextareaHeights() {
+    	    var allReplyTextareas = document.querySelectorAll('.reply-read textarea');
+    	    
+    	    allReplyTextareas.forEach(function(textarea) {
+    	        textarea.style.height = 'auto';
+    	        textarea.style.height = (textarea.scrollHeight) + 'px';
+    	    });
+    	}
+
+    	// 등록 버튼 클릭 시 adjustAllTextareaHeights 함수 호출
+    	document.getElementById('reply-insert').addEventListener('click', function() {
+    	    adjustAllTextareaHeights();
+    	});
+
+    	// 페이지 로딩 시 초기 높이 설정
+    	window.addEventListener('load', function() {
+    	    adjustAllTextareaHeights();
+    	});
+
+    	// 페이지 리사이즈 시 높이 조절
+    	window.addEventListener('resize', function() {
+    	    adjustAllTextareaHeights();
+    	});
     </script>
 </body>
 </html>

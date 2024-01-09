@@ -12,56 +12,57 @@
 }
 
 body {
-	margin: 0;
+	box-sizing : border-box;
+	min-width: 1200px;
+	max-width: 1600px;
+	margin: 0 auto;
+	position: relative;
+	bottom: 0;
+	resize: none;
 }
 
 .menu-area {
     display: flex;
-    align-items: center;
-    width: 1500px;
-    height: 60px;
-    font-weight: bold;
-    justify-content: space-between;
-    position: sticky;
-    border-bottom: 2px solid #eee;
-    margin: 0 auto;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	height: 60px;
+	vertical-align: middle;
+	font-size: default;
+	font-weight: bold;
+	justify-content: space-between;
+	position: sticky;
+	background-color: white;
+	border-bottom: 2px solid #eee;
 }
 
 .menu {
+    width: 60%;
     height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    min-width: 1000px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	min-width: 1000px;
 }
 
 .menu-area a {
 	text-decoration-line: none; /* 밑에 줄 없애기 */
 	text-decoration: none;
 	color: black; /* 보라색 흔적 없애기 */
-	width: 100px;
+	justify-content: center;
+	flex-direction: row;
 }
 
 .menu-left a {
 	flex-basis: 50%;
-	justify-content: center;
-	flex-direction: row;
-	margin-right: 30px;
-	text-decoration-line: none; /* 밑에 줄 없애기 */
-	text-decoration: none;
-	color: black; /* 보라색 흔적 없애기 */
-	width: 100px;
+	margin-right: 10px;
+    width: 100px;
 }
 
 .menu-right a {
 	flex-basis: 50%;
-	justify-content: center;
-	flex-direction: row;
-	margin-right: 30px;
-	text-decoration-line: none; /* 밑에 줄 없애기 */
-	text-decoration: none;
-	color: black; /* 보라색 흔적 없애기 */
-	width: 110px;
+	margin-left: 20px;
+    width: 110px;
 }
 
 .menu-left a:hover, .menu-right a:hover {
@@ -69,11 +70,22 @@ body {
 	transition-duration: 0.3s;
 }
 
-.menu-left , .menu-right {
+.menu-left {
 	display: flex;
 	height: 100%;
 	align-items: center;
+	text-align: center;
+	margin: 0;
 }
+
+.menu-right{
+	display: flex;
+	height: 100%;
+	align-items: center;
+	text-align: center;
+	margin: 0 30px;
+}
+
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- script 추가한 이유: $(() => 부분에서 jstl 라이브러리가 없어서 불러올수없어서 추가함. --강민구-- -->
@@ -97,7 +109,6 @@ body {
 				<a href="${pageContext.request.contextPath}/list.job">채용공고</a>
 				<a href="${pageContext.request.contextPath}/list.corp">기업정보</a>
 				<a href="${pageContext.request.contextPath}/list.po">커뮤니티</a>
-				<a></a>
 			</div>
 
 			<div class="menu-right">
@@ -109,7 +120,7 @@ body {
 					</c:when>
 					<c:otherwise>
 						<!-- 로그인 했을 때 -->
-						<span style="min-width: 100px; margin: 0 30px; text-align: center">${ loginUser.userId }</span>
+						<span>${ loginUser.userId }</span>
 						<a href="logout.me">로그아웃</a>
 						<a href="myPage.me">마이페이지</a>
 					</c:otherwise>
