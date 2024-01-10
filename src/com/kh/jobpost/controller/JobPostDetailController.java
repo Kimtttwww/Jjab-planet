@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.corporation.model.service.CorporationService;
-import com.kh.corporation.model.vo.Corporation;
 import com.kh.jobpost.model.vo.JobPost;
 import com.kh.jobpost.service.JobPostService;
 import com.kh.member.service.MemberService;
@@ -28,23 +26,22 @@ public class JobPostDetailController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JobPostService jobPostservice = new JobPostService();
         int jobpostNo = Integer.parseInt(request.getParameter("bno"));
-
+        
         if (jobPostservice.increaseCount(jobpostNo) > 0) {
             JobPost p = jobPostservice.detailPost(jobpostNo);
             
             String careerText = convertCareerToText(p.getCareer());
             String educationText = convertEducationToText(p.getEducation());
             String locationText = convertLocationToText(p.getLocation());
+            
             p.setPhone(new MemberService().selectMember(p.getCorpNo()).getPhone());
             p.setCareer(careerText); // 변환된 텍스트로 다시 설정
             p.setEducation(educationText); // 변환된 텍스트로 다시 설정
             p.setLocation(locationText);
             
-            Corporation corp = new CorporationService().selectCorpOne(p.getCorpNo());
-
             request.setAttribute("p", p);
-            request.setAttribute("corp", corp);
-            System.out.println("jopPost detailC corp : " +corp);
+            
+            
             request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetail.jsp").forward(request, response);
         } else {
             request.getSession().setAttribute("alertMsg", "게시글 상세조회 실패");
@@ -66,8 +63,6 @@ public class JobPostDetailController extends HttpServlet {
 			return "부산";
 		default:
 			return "지역미상";
-		
-		
 		}
 	}
 

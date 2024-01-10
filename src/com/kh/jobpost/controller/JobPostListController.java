@@ -61,7 +61,6 @@ public class JobPostListController extends HttpServlet {
 		
 		
 		
-		
 	}
 
 	/**
