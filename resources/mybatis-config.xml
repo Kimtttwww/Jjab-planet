@@ -31,6 +31,6 @@
 		<mapper resource="/mappers/jobpost-mapper.xml"/>
 		<mapper resource="/mappers/mypage-mapper.xml"/>
 		<mapper resource="/mappers/cormypage-mapper.xml"/>
-		<mapper resource="/mappers/propose.xml"/>
+		<mapper resource="/mappers/propose-mapper.xml"/>
 	</mappers>
 </configuration>
