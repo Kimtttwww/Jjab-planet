@@ -39,6 +39,7 @@ public class NoticeService {
 	}
 
 	public int deleteNotice(int deleteNo) {
+		
 		int result = dao.noticeDelete(session, deleteNo);
 		
 		if(result > 0) {

@@ -18,7 +18,8 @@
 		FROM NOTICE N
 		JOIN NOTICE_TYPE T USING (NOTICE_TYPE)
 		WHERE RECEIVER = #{userNo}
-	</select> 
+	</select>
+	
 	
 	<select id="interestCorpList" parameterType="_int" resultMap='interestCorpResultSet'>
 		SELECT J.*, C.*, L.*

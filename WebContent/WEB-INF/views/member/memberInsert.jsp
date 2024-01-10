@@ -167,7 +167,7 @@
 						able = clear(regExp, this, '해당 연락처는 올바르지 않습니다', i);
 						break;
 					case 6:
-						regExp = /^[a-zA-Z가-힣\(\)\_\-]{1,50}}$/;
+						regExp = /^[a-zA-Z가-힣\(\)\_\-]{1,50}$/;
 						able = clear(regExp, this, '해당 기업명는 사용할 수 없습니다', i);
 						break;
 					case 7:
