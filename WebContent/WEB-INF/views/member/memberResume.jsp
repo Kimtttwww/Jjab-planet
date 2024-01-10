@@ -71,12 +71,11 @@ font-size:14px;}
 					<tr>
 						<td>성별</td>
 						<td>
-							<c:if test="${resume.gender eq 'F'}">여자
-							</c:if>
-							<c:if test="${resume.gender eq 'M'}">남자
-							</c:if>
+							<input type="radio" name="gender" value="M"  
+								<c:if test="${resume.gender eq 'M'}">checked</c:if>>남자
+							<input type="radio" name="gender" value="F"  
+								<c:if test="${resume.gender eq 'F'}">checked</c:if>>여자
 						</td>
-						
 					</tr>
 					<tr>
 						<td>주소</td>
@@ -105,26 +104,26 @@ font-size:14px;}
 					<tr>
 						<td>학력</td>
 						<td>
-							<input type="radio" name="education" value="1" 
+							<input type="radio" name="education" value="고졸" 
 								<c:if test="${resume.education eq '고졸'}">checked</c:if>> 고졸
-							<input type="radio" name="education" value="2"
-								<c:if test="${resume.education eq '대학재학중'}">checked</c:if>> 대학재학중
-							<input type="radio" name="education" value="3"
-								<c:if test="${resume.education eq '대학졸업'}">checked</c:if>> 대학졸업
+							<input type="radio" name="education" value="초대졸"
+								<c:if test="${resume.education eq '초대졸'}">checked</c:if>> 초대졸
+							<input type="radio" name="education" value="대졸"
+								<c:if test="${resume.education eq '대졸'}">checked</c:if>> 대졸
 						</td>
 					</tr>
 					<tr>
 						<td>경력</td>
 						<td>
-							<input type="radio" name="career" value="1"
+							<input type="radio" name="career" value="신입"
 								<c:if test="${resume.career eq '신입'}">checked</c:if>> 신입
-							<input type="radio" name="career" value="2"
+							<input type="radio" name="career" value="3년미만"
 								<c:if test="${resume.career eq '3년미만'}">checked</c:if>> 3년미만
-							<input type="radio" name="career" value="3"
+							<input type="radio" name="career" value="5년미만"
 								<c:if test="${resume.career eq '5년미만'}">checked</c:if>> 5년미만
-							<input type="radio" name="career" value="4"
+							<input type="radio" name="career" value="7년미만"
 								<c:if test="${resume.career eq '7년미만'}">checked</c:if>> 7년미만
-							<input type="radio" name="career" value="5"
+							<input type="radio" name="career" value="7년이상"
 								<c:if test="${resume.career eq '7년이상'}">checked</c:if>> 7년이상
 						</td>
 					</tr>

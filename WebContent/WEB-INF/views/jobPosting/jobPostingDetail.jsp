@@ -183,6 +183,8 @@
 <jsp:include page="../common/topbar.jsp"/>
 <div class="container">
 	<form action="/detail.job" method="get" style="width: 1200px;">
+	<input type="hidden" name="corpNo" value="${corp.corpNo}" />
+	<c:out value="${p.corp.corpNo}" />
 		<div class="content-container">
 			<header id="detail-body-header">
 				<h1>${corp.corpName}</h1>
@@ -217,7 +219,7 @@
 					style="display: flex; flex-direction: column;">
 					<p>채용마감일 : ${p.endDate}</p>
 					<p>대표 : ${corp.ceoName} </p>
-                    <p>회사연락처 : (${p.phone})      </p>
+                    <p>회사연락처 : (${p.phone})</p>
 				</div>
 			</main>
 		</div>

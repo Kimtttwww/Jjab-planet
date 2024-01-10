@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.common.Pagination;
 import com.kh.common.model.vo.PageInfo;
+import com.kh.corporation.model.service.CorporationService;
+import com.kh.corporation.model.vo.Corporation;
 import com.kh.member.model.vo.JoayoCorp;
 import com.kh.member.model.vo.Member;
 import com.kh.member.service.InterestCorpService;
@@ -37,6 +39,9 @@ public class InterestCorpListController extends HttpServlet {
 			throws ServletException, IOException {
 		InterestCorpService icService = new InterestCorpService();
 		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		System.out.println("들어옴? ㅋ");
+//		int corpNo = Integer.parseInt(request.getParameter("corpNo"));
+//		System.out.println(corpNo);
 		
 		// ------페이징처리-------
 		int objCount = icService.selectListCount(userNo);
@@ -44,16 +49,14 @@ public class InterestCorpListController extends HttpServlet {
 		int pageLimit = 10;
 		int objLimit = 5;
 
-		System.out.println(objCount);
 		PageInfo pi = Pagination.getPageInfo(objCount, currentPage, pageLimit, objLimit);
-		System.out.println(pi);
 		
 		ArrayList<JoayoCorp> list = icService.selectList(pi, userNo);
-
+//		ArrayList<Corporation> corp = new CorporationService().selectCorpOne(corpNo);
+		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
-		System.out.println(list+ " ㅁ");
 
 		request.getRequestDispatcher("WEB-INF/views/member/joayo_corp.jsp").forward(request, response);		
 	}

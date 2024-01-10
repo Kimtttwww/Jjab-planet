@@ -44,7 +44,8 @@ public class JobPostDetailController extends HttpServlet {
 
             request.setAttribute("p", p);
             request.setAttribute("corp", corp);
-            request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetailUser2.jsp").forward(request, response);
+            System.out.println("jopPost detailC corp : " +corp);
+            request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetail.jsp").forward(request, response);
         } else {
             request.getSession().setAttribute("alertMsg", "게시글 상세조회 실패");
             response.sendRedirect("list.job?currentPage=1");

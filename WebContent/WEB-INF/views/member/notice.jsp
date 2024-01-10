@@ -14,11 +14,11 @@
 		height: 100%;
 	}
 
-	container hr {
+	.notice-all hr {
 		width: 100%;
 	}
 
-	container {
+	.notice-all {
 		width: 800px;
 		display: block;
 		margin: 0 auto;
@@ -32,7 +32,8 @@
 	}
 
 	/* 각 알림 */
-	.notice {
+	.notice-text {
+		height: 50px;
 		position: relative;
 		text-align: center;
 		margin: 5px 0;
@@ -71,6 +72,7 @@
 		flex-basis: 80%;
 	}
 	.notice-content{
+		height: 400px;
 		margin: 20px;
 	}
 	
@@ -83,7 +85,7 @@
 		<div class="side">
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
-		<container>
+		<div class="notice-all">
 			<section class="list-area">
 				<h3>알림 관리</h3>
 				<hr>
@@ -92,7 +94,7 @@
 						<p align="center">알림이 없습니다.</p>
 					</c:if>
 					<c:forEach var="p" items="${notice}">
-						<article class="notice">
+						<article class="notice-text">
 							<span>${p.noticeText }</span>
 							<button type="button" class="">삭제</button>
 						</article>
@@ -115,7 +117,7 @@
 				<button type="button">10</button>
 				<button type="button">다음 &gt;</button>
 			</section>
-		</container>
+		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
