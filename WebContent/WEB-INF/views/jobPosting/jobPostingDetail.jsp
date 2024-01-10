@@ -222,12 +222,12 @@ square {
 			<!-- userType이 'C'인 경우 (기업 사용자) -->
 			<c:choose>
 				<c:when test="${loginUser.userType eq null}">
-					<div>로그인이 필요합니다</div>
+					
 				</c:when>
 
 				<c:when test="${(loginUser.userType eq 'C') and (p.corpNo eq loginUser.userNo)}">
 					<button type="button"
-						onclick='location.href="myPage.me?bno=${b.boardNo}"'>수정페이지로이동</button>
+						onclick='location.href="notice.me?bno=${b.boardNo}"'>마이페이지이동</button>
 				</c:when>
 			</c:choose>
 

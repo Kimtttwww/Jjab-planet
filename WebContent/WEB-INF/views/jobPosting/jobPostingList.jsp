@@ -12,26 +12,26 @@
 <!-- <script src="/3script/jobPostingList.js"></script> -->
 <link rel="stylesheet" href="${ jjap }/resources/css/jobPostingList.css" type="text/css">
 </head>
-<body>
+<body >
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 
 	<div class="head-container">
 
-		<h1 style="text-align: center; border-bottom: solid 1px; padding-bottom: 50px; font-size: 5ch;">
+		<h1 style="color: rgb(45, 78, 49); text-align: center; border-bottom: solid 1px rgb(101, 148, 117); padding-bottom: 50px; font-size: 5ch;">
 			채 용 공 고</h1>
 
-		<header class="header">
-<!-- 			<form action="JobPostListController" method="get"> -->
+		<header class="jobPostList-header">
+			<!-- <form action="JobPostListController" method="get"> -->
 				<select id="category">
 					<option value="F">프론트엔드</option>
 					<option value="B">백엔드</option>
 					<option value="S">풀스택</option>
 				</select>
-<!-- 				<button type="submit">검색</button> -->
-<!-- 			</form> -->
+				<!-- <button type="submit">검색</button> -->
+			<!-- </form> -->
 
 			<div>
-				<input type="search" id="search-box" placeholder="기업검색">
+				<input type="search" id="search-box" placeholder="기업명 검색" >
 				<button type="button" id="search">검색</button>
 			</div>
 		</header>
@@ -52,11 +52,12 @@
 						<p class="corporate-name">${p.corp.corpName}</p>
 						
 						<div class="deadline-box">
-							<p class="deadline">${p.endDate}</p>
+							<p class="deadline">마감일 : ${p.endDate}</p>
 						</div>
 					</div>
 				</div>
 			</c:forEach>
+			
 		</section>
 	</main>
 
@@ -67,7 +68,7 @@
 			</c:if>
 
 			<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage}">
-				<a onclick="page(${p})">[${p}]</a>
+				<a onclick="page(${p})">${p}</a>
 			</c:forEach>
 
 			<c:if test="${pi.currentPage ne pi.maxPage }">

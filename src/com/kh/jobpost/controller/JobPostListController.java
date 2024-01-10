@@ -43,8 +43,8 @@ public class JobPostListController extends HttpServlet {
 		}
 	
 		int objCount = service.selectListCount(category, keyword);
-		if (objCount > 0) {
-			PageInfo pi = Pagination.getPageInfo(objCount, currentPage, 10, 1);
+		if (objCount > 0) { //조회된 공고가있으면 페이지정보를 생성, 없으면 오류
+			PageInfo pi = Pagination.getPageInfo(objCount, currentPage, 10, 9);
 			
 			request.setAttribute("pi", pi);
 			request.setAttribute("category", (category.equals("A") ? "" : category));
@@ -53,7 +53,7 @@ public class JobPostListController extends HttpServlet {
 			
 			request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingList.jsp").forward(request, response);
 		} else {
-			request.getSession().setAttribute("alertMsg", "게시글 상세조회 실패");
+			request.getSession().setAttribute("alertMsg", "해당기업이 없습니다.");
 			response.sendRedirect("list.job");
 		}
 	}

@@ -4,6 +4,7 @@
 body, h2, p {
     margin: 0;
     padding: 0;
+    
   }
   
   /* .container 클래스는 최대 너비를 갖고 중앙에 정렬되도록 설정합니다. */
@@ -14,13 +15,42 @@ body, h2, p {
   }
   
   /* header는 검색바와 드롭다운을 포함하는 부분으로, 두 요소를 좌우에 배치합니다. */
-  header {
+  .jobPostList-header {
     display: flex; /* flexbox 레이아웃을 적용합니다. */
     justify-content: space-between; /* 자식 요소들을 양 끝에 정렬합니다. */
     margin-bottom: 20px; /* 헤더와 아래 컨텐츠 사이의 여백을 설정합니다. */
 
   }
+
+.jobPostList-header #category{
+  border-radius: 5px;
+  background-color: rgb(226, 238, 226);
+  border: solid 1px #9fce98;
+  color: #3d553a;
+}
+
+
+
+
+  .jobPostList-header input[type="search"]{
+    width: 400px;
+    height: 35px;
+    border-radius: 5px;
+    /* border: 1px solid; */
+    /* background-color: #cefac8; */
+    
+  }
+
+  .jobPostList-header button[type="button"]{
+    height: 36px;
+    border-radius: 5px;
+    background-color: rgb(215, 241, 214);
+    border: solid 1px #9fce98;
+    color: #648a5e;
+  }
   
+
+
   /* .job-listing은 채용공고 카드를 그리드 형태로 표시합니다. */
   .job-listing {
   	
@@ -34,11 +64,14 @@ body, h2, p {
   /* .job-card는 채용공고 카드 각각을 스타일링합니다. */
   .job-card {
     background-color: #f9f9f9; /* 카드의 배경 색상을 설정합니다. */
-    border: 1px solid #ddd; /* 카드의 테두리를 설정합니다. */
+    border: 1px solid #bde7b5; /* 카드의 테두리를 설정합니다. */
     padding: 20px; /* 카드 내부의 여백을 설정합니다. */
     border-radius: 20px; /* 카드 모서리를 둥글게 처리합니다. */
+    display: flex;
+    flex-direction: column;
   }
   
+
   /* .company-logo는 채용공고 카드 내의 회사 로고 이미지를 스타일링합니다. */
   .company-logo {
     width: 100%; /* 로고 이미지의 너비를 부모 요소에 맞춥니다. */
@@ -50,14 +83,14 @@ body, h2, p {
   .job-offer-title{
     
     display: block; /*블록 레벨 요소로 만들어 줄 바꿈이 일어나지 않도록 함*/
-    width: 14ch; /* 'O' 평균 너비를 9글자 분량으로 설정*/
+    width: 25ch; /* 'O' 평균 너비를 9글자 분량으로 설정*/
     white-space: nowrap; /* 텍스트가 줄 바꿈되지 않고 한줄에 표시되도록 설정*/
     overflow: hidden; /*넘치는 텍스트를 숨김처리*/
     text-overflow: ellipsis; /*넘치는 텍스트를 말줄임표로 표시*/
   }
   .employee-condition{
     display: block; /* 블록 레벨 요소를 만들어 줄 바꿈이 일어나지 않도록 함*/
-    width: 22ch; /* 'O' 평균너비를 22글자 분량으로 설정*/
+    width: 25ch; /* 'O' 평균너비를 22글자 분량으로 설정*/
     white-space: nowrap; /* 텍스트가 줄 바꿈되지 않고 한줄에 표시되도록 설정*/
     overflow: hidden;  /* 넘치는 텍스트를 숨김처리*/
     text-overflow: ellipsis; /* 넘치는 텍스트를 말줄임표로 표시*/
@@ -69,9 +102,16 @@ body, h2, p {
     margin-bottom: 10px; /* 회사명과 직무명 사이의 여백을 설정합니다. */
   }
   
+.job-info{
+  display: flex;
+  flex-direction: column;
+}
+
+
   .job-info p {
     color: #666; /* 직무명, 채용조건의 텍스트 색상을 설정합니다. */
     line-height: 1.5; /* 텍스트의 줄 간격을 설정합니다. */
+    align-self: flex-end;
   }
   
   .corporate-name{
@@ -90,4 +130,18 @@ body, h2, p {
     flex-direction: row-reverse;
   }
   
+  .pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .pagination a{
+    border: 1px solid #b6b8b5;
+    height: 23px;
+    width: 23px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #ececec;
+    color: #4d6349;
+  }
   
