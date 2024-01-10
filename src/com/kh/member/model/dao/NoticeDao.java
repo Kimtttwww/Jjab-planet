@@ -17,4 +17,8 @@ public class NoticeDao {
 	public boolean insertNotice(SqlSession session, HashMap<String, Integer> h) {
 		return session.insert(map + "insertNotice", h) > 0;
 	}
+	
+	public int noticeDelete(SqlSession sqlSession, int deleteNo) {
+		return sqlSession.update("mypageMapper.deleteNotice", deleteNo);
+	}
 }

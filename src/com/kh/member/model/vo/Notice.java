@@ -14,4 +14,5 @@ public class Notice {
 	private int receiver;
 	private int noticeType;
 	private String noticeText;
+	private String status;
 }

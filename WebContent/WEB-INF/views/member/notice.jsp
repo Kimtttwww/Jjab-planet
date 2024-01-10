@@ -90,15 +90,19 @@
 				<h3>알림 관리</h3>
 				<hr>
 				<div class="notice-content">
+				
 					<c:if test="${empty notice}">
+					
 						<p align="center">알림이 없습니다.</p>
 					</c:if>
 					<c:forEach var="p" items="${notice}">
-						<article class="notice-text">
-							<span>${p.noticeText }</span>
-							<button type="button" class="">삭제</button>
-						</article>
-						<hr>
+						<form action="noticeDelete.me" method="get" style="margin: 100px auto;"> 
+							<!-- 서블릿 이동 -->
+							<input type = "hidden" name = "deletenotice" value = "${p.noticeNo}">
+							<span>${p.noticeText}</span>
+							<button type="submit" class="">삭제</button>
+							<hr>
+						</form>
 					</c:forEach>
 				</div>
 			</section>
@@ -120,5 +124,10 @@
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+<script>
+
+	
+
+</script>
 </body>
 </html>

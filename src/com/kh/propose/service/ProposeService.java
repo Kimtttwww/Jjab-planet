@@ -52,8 +52,10 @@ public class ProposeService {
         h.put("proposer", String.valueOf(proposer));
         h.put("receiver", String.valueOf(receiver));
         h.put("proposeType", proposeType);
+        System.out.println(h);
         
         boolean result = ProposeDao.insertPropose(session, h);
+        System.out.println(result);
         
         if (result) {
         	session.commit();

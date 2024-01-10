@@ -45,8 +45,6 @@ public class CorpDetailController extends HttpServlet {
 //		objLimit 한 페이지에 보여질 글의 최대 갯수
 		
 		int objCount = corpService.reviewCount(corpCode);		
-//		int currentPage = Integer.parseInt(request.getParameter("currentPage") == null ? 
-//							"1" : request.getParameter("currentPage"));		
 		int pageLimit = 5;
 		int objLimit = 4;
 		

@@ -67,5 +67,21 @@
             <!-- Pagination buttons -->
         </section>
     </div>
+    
+    <div align="center" id="paging-area">
+					<c:url value="${'corMyPage.me?'}" var="url"></c:url>
+
+					<c:forEach var="p" begin="${pi.startPage}" end="${pi.endPage}">
+						<c:choose>
+							<c:when test="${p eq pi.currentPage}">
+								<b>[${p}]</b>
+							</c:when>
+							<c:otherwise>
+								<a href="${url}currentPage=${p}">[${p}]</a>
+<%-- 								onclick="goToPage(${p})" --%>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</div>
 </body>
 </html>
