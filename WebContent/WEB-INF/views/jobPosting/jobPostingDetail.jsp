@@ -14,10 +14,8 @@
     margin: 0 auto;
 }
 
-.content-container header{
-    background-color: #d9ecde;
-    border: 1px solid 1px#3bdf64;
-    
+.container>form{
+  	width: 1200px;
 }
 
 square h2{
@@ -25,35 +23,29 @@ square h2{
 }
 
 square {
+    width: 1000px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    /* justify-content: center ; */
-}
-
-#detail-header, #detail-main, .cotent-footer {
-    margin: 10px;
-    padding: 15px;
-}
-
-#detail-header {
-    background-color: #bee2c0;
-    text-align: center;
-    font-size: 28px;
-}
-
-#detail-header h1 {
-    color: #333;
-}
-
-.job-detail, .application-guide, .application-form {
-    background-color: #fff;
-    border: 1px solid #d0e9d0;
-    margin-bottom: 40px;
+    display: block;
     padding: 20px;
+}
+
+/*회사명 틀*/
+#detail-header {
+    font-size: 18px;
+}
+
+/*제목 틀*/
+.job-detail{
+
+}
+
+/*지원안내 틀*/
+.application-guide{
+
+}
+
+/*채용내용 틀*/
+.application-form {
 
 }
 
@@ -183,7 +175,7 @@ square {
 <jsp:include page="../common/topbar.jsp"/>
 <square>
 <div class="container">
-	<form action="/detail.job" method="get" style="width: 1200px;">
+	<form action="/detail.job" method="get">
 		<div class="content-container">
 			<header id="detail-header">
 				<h1>${corp.corpName}</h1>
@@ -191,7 +183,7 @@ square {
 
 			<main id="detail-main">
 				<section class="job-detail">
-					<h2 style="color: #333;">${p.postTitle }</h2>
+					<h2>${p.postTitle }</h2>
 				</section>
 
 				<section class="application-guide">
