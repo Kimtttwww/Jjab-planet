@@ -184,7 +184,7 @@
 					<h2>${p.corp.corpName}</h2>
 					<h2>${p.postTitle }</h2>
 				</section>
-
+	
 				<section class="application-guide">
 					<h2>* 지원자격</h2>
 					<ul>
@@ -194,7 +194,7 @@
 						<li><span class="application-guide-span">지역 </span> :<span class="application-guide-span2">${p.location}</span></li>
 					</ul>
 				</section>
-
+	
 				<section class="application-form">
 					<h2>* 채용내용</h2>
 					<p>${p.postContent }</p>
@@ -204,25 +204,24 @@
 					<h2>* 세부사항</h2>
 					<p>채용마감일 : ${p.endDate}</p>
 					<p>대표 : ${p.corp.ceoName} </p>
-                    <p>회사연락처 : (${p.phone})</p>
+	                   <p>회사연락처 : (${p.phone})</p>
 				</section>
 			</div>
+		
 	
-
 			<div class="cotent-footer">
 				<c:choose>
 					<c:when test="${(loginUser.userType eq 'C') and (p.corpNo eq loginUser.userNo)}">
 						<button type="button" onclick='location.href="notice.me?bno=${b.boardNo}"'>마이페이지이동</button>
 					</c:when>
-
+	
 					<c:when test="${ loginUser.userType eq 'E' }">
 						<button type="button" onclick="apply(${p.corpNo})">지원하기</button>
 					</c:when>
 				</c:choose>
 			</div>
-		</form>
-	</div>
-</square>
+		</div>
+	</square>
 	
 	<script type="text/javascript">
 		function apply(corpNo) {
