@@ -39,17 +39,20 @@ body {
 	border: 1px solid #eee;
 }
 
-.top_b3 img{
-    width : 230px; 
+ .top_b3 img{ 
+     width : 230px; 
+     height: 120px; 
+     border-radius: 20px 20px 0 0;
+     margin-bottom: -4px; 
+} 
+.corp-logo{
+	width : 230px; 
     height: 120px; 
-    border-radius: 20px 20px 0 0;
-    margin-bottom: -4px;
 }
-
 .corp_maincontent{
 	position: relative;
 	height: 120px;
-	padding: 13px 15px 0 16px;
+	padding: 3px 15px 0 16px;
 }
 
 .corp_maincontent::after {
@@ -97,16 +100,19 @@ body {
 			<c:forEach var="corp" items="${Corplist}">
 			
 				<div class="top_b3" style="background: pinkyellow">
-					<c:if test="${empty corp.logo}">
-			    		<p>등록된 이미지가 없습니다.</p>
-				    </c:if>
-					<div align="center">
-						<img src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}"
-						onclick='location.href="${contextPath}/detail.corp?corpNo=${corp.corpNo}"'
-						alt="기업 대표이미지">
+					<div class="corp-logo" align="center">
+						<c:choose>
+							<c:when test="${empty corp.logo.changeName}">
+								<p>등록된 이미지가 없습니다. </p>
+							</c:when>
+							<c:otherwise>
+								<img src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}"
+								onclick='location.href="${contextPath}/detail.corp?corpNo=${corp.corpNo}"'>
+							</c:otherwise>
+						</c:choose>
 					</div>	
 					<div class="corp_maincontent">
-						<p>${corp.corpName}</p>
+						<p style="font-size: 18px; font-weight: bold;">${corp.corpName}</p>
 						<p>${corp.address}</p>
 					</div>
 					<p class="content_bottom">

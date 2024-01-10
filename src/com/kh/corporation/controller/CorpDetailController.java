@@ -63,7 +63,7 @@ public class CorpDetailController extends HttpServlet {
 		// 모든 기업리스트
 		List<Corporation> corpList = corpService.selectCorpList(pi);
 		request.setAttribute("corpList", corpList);
-		System.out.println("corpList : " +corpList);
+//		System.out.println("corpList : " +corpList);
 		
 		// corpNo에 해당하는 기업 출력
 		Corporation corp = corpService.selectCorpOne(corpCode);

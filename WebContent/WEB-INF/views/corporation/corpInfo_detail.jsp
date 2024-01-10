@@ -2,10 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.kh.member.model.vo.Member,
 			java.util.ArrayList,
 			com.kh.common.model.vo.PageInfo" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ 
+	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% 
 	Member loginUser=(Member) session.getAttribute("loginUser"); 
-	PageInfo pi=(PageInfo)request.getAttribute(" pi"); 
+System.out.println("시작 : "+ loginUser);
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="corp" value="${corp}" />
@@ -67,6 +68,7 @@ body {
 .corp-titleFont{
     font-size: x-large;
     padding-bottom:10px;
+    font-weight: bold;
 }
 
 /*진행중인 채용공고 입사지원버튼*/
@@ -314,11 +316,11 @@ body {
 			<div class="corp-top">
 				<div class="corp-logo">
 					<div class="corp-logoImg">
-						<img width="120px" height="60px" alt="기업 대표이미지"
+						<img width="150px" height="80px" alt="기업 대표이미지"
 							onclick="${contextPath}/detail.corp?corpNo=${corp.corpNo}"
 							src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}" />
 					</div>
-					<div class="corp-name">${corp.corpName}</div>
+					<div class="corp-name" style="font-size: 35px; font-weight: bold;" >${corp.corpName}</div>
 				</div>
 				<div class="corp-interest">
 					<div class="corp-star">
@@ -346,12 +348,13 @@ body {
 
 		const data = {
 			corpCode: "${corp.corpNo}",
-			userNo: '${ loginUser.userNo }'
+			userNo: '${loginUser.userNo}'
 		}
 
 		// 페이지로딩됐을때 DB에서 초기데이터 가져옴
 		function initAPI() {
-
+			
+			if (${loginUser.userNo} == null) {
 			return new Promise((resolve, reject) => {
 				$.ajax({
 					url: 'init.like.corp',
@@ -365,10 +368,14 @@ body {
 					}
 				});
 			});
+			}
 		}
 
 		// DB에 데이터를 update하기 위한 api(찜 추가/삭제)
 		function updateAPI() {
+			if (${loginUser.userNo} == null) {
+				alert("로그인 후에 가능합니다");
+			}
 			return new Promise((resolve, reject) => {
 				$.ajax({
 					url: 'update.like.corp',
@@ -390,7 +397,6 @@ body {
 		function isCorpLiked() {
 
 			updateAPI().then((result) => {
-
 				if (result === 'true') {
 					console.log("취소됨");
 					$(".likeCount").text(currentLikeCount - 1);
@@ -406,8 +412,9 @@ body {
 					$("#likeCorp").css('background', 'yellow');
 					currentLikeCount++;
 				}
-			}).catch((error) => { console.log(error) });
-
+			}).catch(error => {
+				console.log(error);
+			});
 		}
 
 		// 찜 설정되어 있다면 상태유지하기 initialize
@@ -424,14 +431,16 @@ body {
 					$("#likeCorp").css('color', 'black');
 					$("#likeCorp").css('background', 'white');
 				}
+			}).catch(error => {
+				console.log(error);
 			});
+			initialize();
 		}
-		initialize();
 	</script>
 
 	<div class="corp-info-all">
 		<div class="corp-zone">
-			<div class="corp_info_a2 corp-titleFont">| 기업정보</div>
+			<div class="corp_info_a2 corp-titleFont" >| 기업정보</div>
 			<div class="corp-info-area corp-backwhite">
 				<div class="corp-info1">
 					<div>기업명</div>
@@ -450,19 +459,23 @@ body {
 		</div>
 
 		<div class="corp-zone">
-			<div class="corp-titleFont">| 진행중인 채용공고</div>
+			<div class="corp-titleFont" >| 진행중인 채용공고</div>
 			<div class="corp-uppost-area corp-backwhite">
-				<c:if test="${empty jobPost}">
-					<p>진행중인 공고가 없습니다.</p>
-				</c:if>
-				<div>
-					<span>${jobPost.postTitle}</span>
-					<span>직종 : ${jobPost.jobName}</span>
-				</div>
-				<div align="right">
-					<button class="apply-btn" onclick="">공고보기</button>
-					<div>공고등록일 : ${jobPost.createDate}</div>
-				</div>
+				<c:choose>
+					<c:when test="${empty jobPost}">
+						<p>진행중인 공고가 없습니다.</p>
+					</c:when>
+					<c:otherwise>
+						<div>
+							<span>${jobPost.postTitle}</span>
+							<span>직종 : ${jobPost.jobName}</span>
+						</div>
+						<div align="right">
+							<button class="apply-btn" onclick="">공고보기</button>
+							<div>공고등록일 : ${jobPost.createDate}</div>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		<br> <br>
