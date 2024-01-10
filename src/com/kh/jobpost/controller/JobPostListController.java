@@ -44,7 +44,7 @@ public class JobPostListController extends HttpServlet {
 	
 		int objCount = service.selectListCount(category, keyword);
 		if (objCount > 0) { //조회된 공고가있으면 페이지정보를 생성, 없으면 오류
-			PageInfo pi = Pagination.getPageInfo(objCount, currentPage, 10, 9);
+			PageInfo pi = Pagination.getPageInfo(objCount, currentPage, 9, 1);
 			
 			request.setAttribute("pi", pi);
 			request.setAttribute("category", (category.equals("A") ? "" : category));
