@@ -59,14 +59,14 @@
 			C.HOMEPAGE, L.FILE_NO -->
 		SELECT C.*, L.* 
 		  FROM CORPORATION C 
-		  JOIN LOGO L ON (C.CORP_NO = L.CORP_NO)
+		  LEFT JOIN LOGO L ON (C.CORP_NO = L.CORP_NO)
 	</select>
 	
 	<!-- 선택한 기업정보 -->
 	<select id="selectCorpOne" resultMap="corpResultMap"> 
 		SELECT C.*, L.* 
 		  FROM CORPORATION C 
-		  JOIN LOGO L ON (C.CORP_NO = L.CORP_NO) 
+		  LEFT JOIN LOGO L ON (C.CORP_NO = L.CORP_NO) 
 		 WHERE C.CORP_NO = #{corpCode}
 	</select>
 	

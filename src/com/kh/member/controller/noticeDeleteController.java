@@ -37,17 +37,14 @@ public class noticeDeleteController extends HttpServlet {
 		
 		if(ns.deleteNotice(deleteNo) > 0) {
 			response.getWriter().print(true);
-		} else {
-			response.getWriter().print(false);
-		}
-		
-		if(ns.deleteNotice(deleteNo) > 0) {
 			request.setAttribute("alertMsg", "삭제 성공");
 			response.sendRedirect(request.getContextPath() + "/notice.me");
 		} else {
+			response.getWriter().print(false);
 			request.setAttribute("alertMsg", "해당 게시글을 찾지 못하였습니다");
 			response.sendRedirect(request.getContextPath() + "/notice.me");
 		}
+		
 	}
 
 	/**
