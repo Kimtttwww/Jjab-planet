@@ -75,7 +75,7 @@
 		JOIN occupation O ON (J.JOB_NO=O.JOB_NO)
 		JOIN corporation C ON(C.CORP_NO=J.CORP_NO)
 		JOIN LOGO L ON C.CORP_NO = L.CORP_NO
-		ORDER BY END_DATE ASC)
+		ORDER BY END_DATE DESC)
 		where ROWNUM &lt; 7
 	</select>
 

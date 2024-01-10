@@ -20,14 +20,14 @@
 			채 용 공 고</h1>
 
 		<header class="header">
-			<form action="JobPostListController" method="get">
-				<select id="category" name="category">
+<!-- 			<form action="JobPostListController" method="get"> -->
+				<select id="category">
 					<option value="F">프론트엔드</option>
 					<option value="B">백엔드</option>
 					<option value="S">풀스택</option>
 				</select>
-				<button type="submit">검색</button>
-			</form>
+<!-- 				<button type="submit">검색</button> -->
+<!-- 			</form> -->
 
 			<div>
 				<input type="search" id="search-box" placeholder="기업검색">
@@ -86,7 +86,6 @@
 </body>
 
 <script>
-
 	//검색기능
 	document.getElementById('search-box').addEventListener('input', function(event) {
 	  const searchTerm = event.target.value.toLowerCase();
@@ -102,86 +101,26 @@
 	  });
 	});
 
-
-/* //필터기능
-function filterJobs(category) {
-	  // 모든 job-card 요소를 선택
-	  const jobCards = document.querySelectorAll('.job-card');
-
-	  // 각 job-card에 대해 반복
-	  jobCards.forEach(card => {
-	    // job-card의 data-category 속성을 가져옴
-	    const jobCategory = card.getAttribute('data-category');
-
-	    
-	    // 선택된 카테고리와 일치하거나 'all'이 선택된 경우, 해당 카드를 표시
-	    if (category === 'all' || jobCategory === category) {
-	      card.style.display = ''; // 혹은 'block' 또는 'flex' 등의 적절한 디스플레이 속성 사용
-	    } else {
-	      // 그렇지 않으면 카드를 숨김
-	      card.style.display = 'none';
-	    }
-	  });
-	}
-
-
-//카테고리 선택요소에 이벤트리스너 추가(category 요소 값이 바뀔때마다 관련작어 필터링)
-document.getElementById('category').addEventListener('change',function(){
-  filterJobs(this.value); // this.value는 현재'category' 요소의 선택된 값
-});
- */
-
-
+// 	카테고리 필터
+	$("#category").change(() => {
+		$.ajax({
+			url: 'JobPostListController', type: 'post',
+			success: (tf) => {
+				if(tf != 'false') {
+					location.href = 'JobPostListController?category=' + $("#category").val();
+				} else {
+					alert('요청 실패');
+				}
+			}, error: () => {
+				alert("에러 발생");
+			}
+		});
+	});
+	
+	$(() => {
+		if ("${category}") {
+			$("#category").val("${category}");
+		}
+	});
 </script>
-
-
-
-
-
-
-
-<!-- <script> -->
-
-<!-- // document.getElementById('search-box').addEventListener('input', function(event) { -->
-<!-- //   const searchTerm = event.target.value.toLowerCase(); -->
-<!-- //   const jobCards = document.querySelectorAll('.job-card'); -->
-
-<!-- //   jobCards.forEach(card => { -->
-<!-- //     const title = card.querySelector('.corporate-name').textContent.toLowerCase(); -->
-<!-- //     if (title.includes(searchTerm)) { -->
-<!-- //       card.style.display = ''; -->
-<!-- //     } else { -->
-<!-- //       card.style.display = 'none'; -->
-<!-- //     } -->
-<!-- //   }); -->
-<!-- // }); -->
-
-<!-- // document.addEventListener('DOMContentLoaded', function() { -->
-<!-- //   const jobCards = document.querySelectorAll('.job-card'); -->
-<!-- //   const paginationContainer = document.querySelector('.pagination'); -->
-<!-- //   const perPage = 12; // 한 페이지당 표시할 카드 수 -->
-<!-- //   const totalPages = Math.ceil(jobCards.length / perPage); // 총 페이지 수 -->
-
-<!-- //   function showPage(pageNumber) { -->
-<!-- //     const start = (pageNumber - 1) * perPage; -->
-<!-- //     const end = start + perPage; -->
-<!-- //     jobCards.forEach((card, index) => { -->
-<!-- //       card.style.display = (index >= start && index < end) ? '' : 'none'; -->
-<!-- //     }); -->
-<!-- //   } -->
-
-<!-- //   // 페이지 번호 버튼 생성 -->
-<!-- //   for (let i = 1; i <= totalPages; i++) { -->
-<!-- //     const pageButton = document.createElement('button'); -->
-<!-- //     pageButton.innerText = i; -->
-<!-- //     pageButton.addEventListener('click', () => showPage(i)); -->
-<!-- //     paginationContainer.appendChild(pageButton); -->
-<!-- //   } -->
-
-<!-- //   // 초기 페이지 로드 -->
-<!-- //   showPage(1); -->
-<!-- // }); -->
-
-<!-- </script> -->
 </html>
-
