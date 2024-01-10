@@ -21,7 +21,6 @@
 		WHERE RECEIVER = #{userNo}
 	</select>
 	
-	
 	<select id="interestCorpList" parameterType="_int" resultMap='interestCorpResultSet'>
 		SELECT J.*, C.*, L.*
 		FROM JOAYO_CORP J
@@ -37,9 +36,9 @@
 	</select>
 
 	<select id="detailResume" parameterType="_int" resultMap='resumeResultSet'>
-	SELECT WORKER_NO, FORM_TITLE, WORKER_NAME, BIRTHDAY, GENDER, ADDRESS,
-	IS_OPEN, JOB_NO, CAREER, EDUCATION FROM RESUME
-	WHERE WORKER_NO = #{workerNo}
+		SELECT WORKER_NO, FORM_TITLE, WORKER_NAME, BIRTHDAY, GENDER, ADDRESS,
+		IS_OPEN, JOB_NO, CAREER, EDUCATION FROM RESUME
+		WHERE WORKER_NO = #{workerNo}
 	</select>
 	
 	<insert id="insertNotice">

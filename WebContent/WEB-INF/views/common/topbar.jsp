@@ -55,12 +55,8 @@ body {
 
 .menu-left a {
 	flex-basis: 50%;
-	margin-right: 10px;
+	margin: 0 12px;
     width: 100px;
-}
-
-.menu-left > a:first-child {
-    margin-right: 25px;
 }
 
 .menu-right a {

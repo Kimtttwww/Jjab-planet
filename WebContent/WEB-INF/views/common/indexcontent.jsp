@@ -20,18 +20,20 @@
 		</div>
 		
 		<div class="top_banner">
-			<!--최다 조회수 배너-->
-			<!--top_b1-->
 			<c:forEach var="p" items="${first}">
-				<div class="top_b1" onclick='location.href="detail.job?bno=${p.jobpostNo}"'>
-			
+				<section class="top_b1" onclick='location.href="detail.job?bno=${p.jobpostNo}"'>
+					<article>
 						<img src="${ project }/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
-						
-					<p>${p.corp.corpName}</p>
-					<p>${p.postTitle}</p>
-					  
-					<p class="content_bottom"><img class ="hit" src="${project}/resources/images/hits_icon.png">${p.count}</p>		
-				</div>
+					</article>
+					<article>
+						<span>${p.corp.corpName}</span>
+						<span>${p.postTitle}</span>
+						<span class="content_bottom">
+							<img class ="hit" src="${project}/resources/images/hits_icon.png">
+							${p.count}
+						</span>		
+					</article>
+				</section>
 			</c:forEach>
 		</div>
 		
@@ -40,12 +42,15 @@
 		<div class="content_title"><a href="list.job" class="content_title">최신 공고 &gt;</a></div>
 		<div class="new_banner_content">
 			<c:forEach var="p" items="${second}">
-				<!-- 마감순 배너-->
 				<div class="new_banner" onclick='location.href="detail.job?bno=${p.jobpostNo}"'>
-					<img class="content_top" src="${ project }/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
-					<p>${p.corp.corpName}</p>
-					<p>${p.postTitle }</p>
-					<p class="content_bottom">${p.jobName }</p>
+					<article>
+						<img src="${ project }/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
+					</article>
+					<article>
+						<span>${p.corp.corpName}</span>
+						<span>${p.postTitle }</span>
+						<span class="content_bottom">${p.jobName }</span>
+					</article>
 				</div>
 			</c:forEach>
 		</div>
@@ -54,7 +59,7 @@
 		<c:forEach var="p" items="${third }">
 		<div class="all_list" onclick='location.href="detail.job?bno=${p.jobpostNo}"' style="margin-bottom:20px;">
 			<ul>
-				<li>${p.corp.corpName}</li>
+				<li><a href="detail.corp?corpNo=${ p.corpNo }">${p.corp.corpName}</a></li>
 				<li id="list_title">${p.postTitle }</li>
 				<li>
 					<ul class="s_info">

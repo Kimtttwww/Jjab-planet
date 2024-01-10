@@ -13,8 +13,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Data
-
-
 public class JobPost {
 	private int jobpostNo; //JOB_POST
 	private int corpNo;//CORPORATION
@@ -30,7 +28,4 @@ public class JobPost {
 	private String phone; //MEMBER
 	private String userType;//USER_TYPE
 	private Corporation corp;
-	
-//	private String corpName;//CORPORATION
-//	private String ceoName;//CORPORATION
 }

@@ -105,10 +105,10 @@
 						<td>
 							<input type="radio" name="education" value="고졸" 
 								<c:if test="${resume.education eq '고졸'}">checked</c:if>> 고졸
-							<input type="radio" name="education" value="대학재학중"
-								<c:if test="${resume.education eq '대학재학중'}">checked</c:if>> 대학재학중
-							<input type="radio" name="education" value="대학졸업"
-								<c:if test="${resume.education eq '대학졸업'}">checked</c:if>> 대학졸업
+							<input type="radio" name="education" value="초대졸"
+								<c:if test="${resume.education eq '초대졸'}">checked</c:if>> 대학재학중
+							<input type="radio" name="education" value="대졸"
+								<c:if test="${resume.education eq '대졸'}">checked</c:if>> 대학졸업
 						</td>
 					</tr>
 					<tr>

@@ -33,11 +33,8 @@ public class ResumeDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int workerNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 
-		Resume resume = resumeService.ResumeDetail(workerNo);
-		
-		System.out.println(resume);
-		request.setAttribute("resume", resume); 
 		request.setAttribute("workerNo", workerNo); 
+		request.setAttribute("resume", resumeService.ResumeDetail(workerNo)); 
 		
 		request.getRequestDispatcher("WEB-INF/views/member/memberResume.jsp").forward(request, response);
 	}
@@ -48,25 +45,19 @@ public class ResumeDetailController extends HttpServlet {
 	 * let#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		ResumeDetailService ds = new ResumeDetailService();
 		int workerNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 		
 		Resume resume = Resume.builder()
 				.workerNo(workerNo)
 				.formTitle(request.getParameter("formTitle"))
 				.address(request.getParameter("address"))
-				.jobName(request.getParameter("jobname"))
+				.jobNo(request.getParameter("jobNo"))
 				.isOpen(request.getParameter("isOpen"))
 				.education(request.getParameter("education"))
 				.career(request.getParameter("career"))
 				.build();
 		
-		boolean isUpdateSuccessful = resumeService.updateResume(resume);
-		System.out.println(isUpdateSuccessful);
-		System.out.println(resume);
-		
-		
-		if(isUpdateSuccessful) {
+		if(resumeService.updateResume(resume)) {
 			request.getSession().setAttribute("alertMsg", "성공적으로 회원정보를 수정했습니다");
 		}else {
 			request.setAttribute("errorMsg", "회원정보 수정에 실패했습니다");	

@@ -10,7 +10,7 @@
 <style>
 	.container{
 	    display: flex;
-	    flex-direction: row;
+	    flex-direction: column;
 	    margin: 0 auto;
 	}
 	

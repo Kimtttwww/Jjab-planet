@@ -24,28 +24,27 @@ public class CorpMypageJobController extends HttpServlet {
      */
     public CorpMypageJobController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		int corpCode = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 		JobPostService jpService = new JobPostService();
 		JobPost p = jpService.selectOne(corpCode);
 		
-		String careerText = convertCareerToText(p.getCareer());
-        String educationText = convertEducationToText(p.getEducation());
-        String locationText = convertLocationToText(p.getLocation());
-        p.setPhone(new MemberService().selectMember(p.getCorpNo()).getPhone());
-        p.setCareer(careerText); // 변환된 텍스트로 다시 설정
-        p.setEducation(educationText); // 변환된 텍스트로 다시 설정
-        p.setLocation(locationText);
-        
-        request.setAttribute("p", p);
-         
+		if (p != null) {
+			String careerText = convertCareerToText(p.getCareer());
+	        String educationText = convertEducationToText(p.getEducation());
+	        String locationText = convertLocationToText(p.getLocation());
+	        p.setPhone(new MemberService().selectMember(p.getCorpNo()).getPhone());
+	        p.setCareer(careerText); // 변환된 텍스트로 다시 설정
+	        p.setEducation(educationText); // 변환된 텍스트로 다시 설정
+	        p.setLocation(locationText);
+	        
+	        request.setAttribute("p", p);
+		}
          
         request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetail.jsp").forward(request, response);
 	}
@@ -100,9 +99,6 @@ public class CorpMypageJobController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
-
-
 }
