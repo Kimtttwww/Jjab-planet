@@ -18,14 +18,14 @@ System.out.println("시작 : "+ loginUser);
 <title>기업상세정보</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
-html,
-body {
-    margin: 0;
-    height: 100%;
-    min-width: 1200px;
-    max-width: 1600px;
+.corp-info-main{
+	width: 1000px;
+	margin: 0 auto;
+    background-color: #f1f1f1;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
-
 .corp-main {
     width: 60%;
     margin: 0 auto;
@@ -70,15 +70,24 @@ body {
     padding-bottom:10px;
     font-weight: bold;
 }
-
+.corp-star{
+    border: 1px solid black;
+    border-radius: 50px;
+}
 /*진행중인 채용공고 입사지원버튼*/
 .apply-btn {
+    font-size: 15px;
+    font-weight: bold;
     background-color: #666060;
     border-radius: 5px;
     color: #fff;
     border: none;
     cursor: pointer;
-    padding: 4px 6px 5px 6px;
+    height: 50px;
+}
+.corp_info_a1, .corp_review_a1{
+    font-size: 18px;
+    font-weight: bold;	
 }
 
 /*리뷰작성버튼*/
@@ -99,16 +108,20 @@ body {
 .corp-info-all {
     width: 1000px;
     margin: 0 auto;
-    padding: 50px 30px;
+    padding: 0 30px;
     background-color: rgb(236, 240, 243);
+    position: relative;
 }
 
 .corp-zone {
-    margin: 50px;
+    padding: 50px 50px;
 }
 
 .corp-info1 {
     margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
@@ -150,7 +163,7 @@ body {
     background-color: white;
     height: 150px;
     display: flex;
-    padding: 12px;
+    padding: 20px;
     border: 1px solid #e4e5e7;
 }
 
@@ -194,6 +207,11 @@ body {
 .corp-review-area {
     background-color: #fff;
     border: 1px solid #eee;
+    padding: 10px;
+}
+.corp-review-form{
+	display: flex;
+    justify-content: space-between;
 }
 
 /*기업리뷰 등록버튼*/
@@ -270,9 +288,9 @@ body {
 
 /*리뷰 한줄 박스*/
 .review-line{
-	display: flex;
+    display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
+    margin: 20px;
     position: relative;
 
 }
@@ -281,20 +299,35 @@ body {
 .review-line .review-info {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
-
+.review-info{
+	
+}
 /*리뷰 작성자*/
 .review-Writer{
-	margin: 10px;
+	margin-left: 30px;
 	padding-bottom:5px;
 	border-bottom: 1px solid #eee;
 }
 
 /*리뷰 내용*/
 .review-detail{
-	margin: 0 30px 30px 30px;
+	margin: 10px 30px 40px 30px;
 	overflow: auto;
 	overflow-wrap: break-word;
+}
+
+.corp-post-area{
+	display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.corp-uppost-area{
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
 }
 
 .review-detail::after {
@@ -311,12 +344,12 @@ body {
 <body>
 	<jsp:include page="../common/topbar.jsp" />
 
-	<header>
+	<header class="corp-info-main">
 		<div class="corp-top-area">
 			<div class="corp-top">
 				<div class="corp-logo">
 					<div class="corp-logoImg">
-						<img width="150px" height="80px" alt="기업 대표이미지"
+						<img width="180px" height="80px" alt="기업 대표이미지"
 							onclick="${contextPath}/detail.corp?corpNo=${corp.corpNo}"
 							src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}" />
 					</div>
@@ -342,105 +375,10 @@ body {
 	</header>
 
 
-
-	<script>
-		let currentLikeCount = parseInt($(".likeCount").text());
-
-		const data = {
-			corpCode: "${corp.corpNo}",
-			userNo: '${loginUser.userNo}'
-		}
-
-		// 페이지로딩됐을때 DB에서 초기데이터 가져옴
-		function initAPI() {
-			
-			if (${loginUser.userNo} == null) {
-			return new Promise((resolve, reject) => {
-				$.ajax({
-					url: 'init.like.corp',
-					type: 'get',
-					data: data,
-					success: function (result, status, xhr) {
-						resolve(result); 
-					},
-					error: function () {
-						reject("요청실패");
-					}
-				});
-			});
-			}
-		}
-
-		// DB에 데이터를 update하기 위한 api(찜 추가/삭제)
-		function updateAPI() {
-			if (${loginUser.userNo} == null) {
-				alert("로그인 후에 가능합니다");
-			}
-			return new Promise((resolve, reject) => {
-				$.ajax({
-					url: 'update.like.corp',
-					type: 'get',
-					data: data,
-					success: function (result, status, xhr) {
-						resolve(result); 
-					},
-					error: function () {
-						reject("요청실패"); 
-					}
-				});
-			});
-		}
-
-		// db에서 즐겨찾기가 되어 있는 상태 인지 먼저 체크
-		// 즐겨찾기가 되어 있으면 삭제하고
-		// 안되어 있으면 등록하면 됨.
-		function isCorpLiked() {
-
-			updateAPI().then((result) => {
-				if (result === 'true') {
-					console.log("취소됨");
-					$(".likeCount").text(currentLikeCount - 1);
-					$("#likeCorp").css('color', 'black');
-					$("#likeCorp").css('background', 'white');
-					currentLikeCount--;
-				}
-				// 좋아요 등록하는 경우.
-				else {
-					console.log("등록됨");
-					$(".likeCount").text(currentLikeCount + 1);
-					$("#likeCorp").css('color', 'red');
-					$("#likeCorp").css('background', 'yellow');
-					currentLikeCount++;
-				}
-			}).catch(error => {
-				console.log(error);
-			});
-		}
-
-		// 찜 설정되어 있다면 상태유지하기 initialize
-		function initialize() {
-			initAPI().then((result) => {
-
-				// 데이터가 존재함 -> 찜이 되어 있따.
-				if (result === 'true') {
-					$("#likeCorp").css('color', 'red');
-					$("#likeCorp").css('background', 'yellow');
-				}
-				// 데이터가 존재하지 않는다 -> 찜안되어 있음
-				else {
-					$("#likeCorp").css('color', 'black');
-					$("#likeCorp").css('background', 'white');
-				}
-			}).catch(error => {
-				console.log(error);
-			});
-			initialize();
-		}
-	</script>
-
+	<div class="corp_info_a2" style="height: 150px;"></div>
 	<div class="corp-info-all">
 		<div class="corp-zone">
-			<div class="corp_info_a2 corp-titleFont" >| 기업정보</div>
+			<div class="corp-titleFont" >| 기업정보</div>
 			<div class="corp-info-area corp-backwhite">
 				<div class="corp-info1">
 					<div>기업명</div>
@@ -449,7 +387,7 @@ body {
 					<div>홈페이지</div>
 				</div>
 
-				<div class="corp-info2">
+				<div class="corp-info1">
 					<div>${corp.corpName}</div>
 					<div>${corp.ceoName}</div>
 					<div>${corp.address}</div>
@@ -466,11 +404,11 @@ body {
 						<p>진행중인 공고가 없습니다.</p>
 					</c:when>
 					<c:otherwise>
-						<div>
+						<div class="corp-post-area">
 							<span>${jobPost.postTitle}</span>
 							<span>직종 : ${jobPost.jobName}</span>
 						</div>
-						<div align="right">
+						<div class="corp-post-area" align="right">
 							<button class="apply-btn" onclick="">공고보기</button>
 							<div>공고등록일 : ${jobPost.createDate}</div>
 						</div>
@@ -478,10 +416,9 @@ body {
 				</c:choose>
 			</div>
 		</div>
-		<br> <br>
 
 		<div class="corp-zone">
-			<div>
+			<div class="corp-review-form">
 				<div class="corp_review_a2 corp-titleFont">| 기업리뷰</div>
 
 				<div align="right">
@@ -500,21 +437,23 @@ body {
 			<div class="corp-review-area">
 				<div align="right">리뷰수 : ${pi.objCount}</div>
 				<div>
-					<c:if test="${empty reply}">
-						<p>작성된 리뷰가 없습니다.</p>
-					</c:if>
 			
 					<input type="hidden" name="userNo" value="${loginUser.userNo}">
 					<div class="corp-review-content">
+						<c:if test="${empty reply}">
+							<p>작성된 리뷰가 없습니다.</p> 
+						</c:if>
 						<c:forEach var="reply" items="${reply}">
 							<div class="review-line">
 								<div class="review-info">
-								<!-- 본인 작성글에만 수정/삭제 가능하게끔   -->
-								<span class="review-Writer">${reply.userId} / ${reply.createDate}</span>
-								<c:if test="${loginUser.userNo eq reply.replyWriter}">
-									<button class="update-review" onclick="change(this,${reply.replyNo})">수정</button>
-									<button class="delete-review" value="${reply.replyNo }" >삭제</button>
-								</c:if>
+									<!-- 본인 작성글에만 수정/삭제 가능하게끔   -->
+									<span class="review-Writer">${reply.userId} / ${reply.createDate}</span>
+									<div class="review-info-a">
+										<c:if test="${loginUser.userNo eq reply.replyWriter}">
+											<button class="update-review" onclick="change(this,${reply.replyNo})">수정</button>
+											<button class="delete-review" value="${reply.replyNo }" >삭제</button>
+										</c:if>
+									</div>
 								</div>
 								<span class="review-detail">${reply.replyContent}</span>
 							</div>
@@ -549,9 +488,103 @@ body {
 			</div>
 		</div>
 	</div>
+	<jsp:include page="../common/footer.jsp"/>
 
 
 	<script>
+	let currentLikeCount = parseInt($(".likeCount").text());
+
+	const data = {
+		corpCode: "${corp.corpNo}",
+		userNo: '${loginUser.userNo}'
+	}
+
+	// 페이지로딩됐을때 DB에서 초기데이터 가져옴
+	function initAPI() {
+		
+		if (${loginUser.userNo} == null) {
+		return new Promise((resolve, reject) => {
+			$.ajax({
+				url: 'init.like.corp',
+				type: 'get',
+				data: data,
+				success: function (result, status, xhr) {
+					resolve(result); 
+				},
+				error: function () {
+					reject("요청실패");
+				}
+			});
+		});
+		}
+	}
+
+	// DB에 데이터를 update하기 위한 api(찜 추가/삭제)
+	function updateAPI() {
+		if (${loginUser.userNo} == null) {
+			alert("로그인 후에 가능합니다");
+		}
+		return new Promise((resolve, reject) => {
+			$.ajax({
+				url: 'update.like.corp',
+				type: 'get',
+				data: data,
+				success: function (result, status, xhr) {
+					resolve(result); 
+				},
+				error: function () {
+					reject("요청실패"); 
+				}
+			});
+		});
+	}
+
+	// db에서 즐겨찾기가 되어 있는 상태 인지 먼저 체크
+	// 즐겨찾기가 되어 있으면 삭제하고
+	// 안되어 있으면 등록하면 됨.
+	function isCorpLiked() {
+
+		updateAPI().then((result) => {
+			if (result === 'true') {
+				console.log("취소됨");
+				$(".likeCount").text(currentLikeCount - 1);
+				$("#likeCorp").css('color', 'black');
+				$("#likeCorp").css('background', 'white');
+				currentLikeCount--;
+			}
+			// 좋아요 등록하는 경우.
+			else {
+				console.log("등록됨");
+				$(".likeCount").text(currentLikeCount + 1);
+				$("#likeCorp").css('color', 'red');
+				$("#likeCorp").css('background', 'yellow');
+				currentLikeCount++;
+			}
+		}).catch(error => {
+			console.log(error);
+		});
+	}
+
+	// 찜 설정되어 있다면 상태유지하기 initialize
+	function initialize() {
+		initAPI().then((result) => {
+
+			// 데이터가 존재함 -> 찜이 되어 있따.
+			if (result === 'true') {
+				$("#likeCorp").css('color', 'red');
+				$("#likeCorp").css('background', 'yellow');
+			}
+			// 데이터가 존재하지 않는다 -> 찜안되어 있음
+			else {
+				$("#likeCorp").css('color', 'black');
+				$("#likeCorp").css('background', 'white');
+			}
+		}).catch(error => {
+			console.log(error);
+		});
+		initialize();
+	}
+
 		let loginNo = '${loginUser.userNo}' ? '${loginUser.userNo}' : null;
 		let userType = loginNo ? '${loginUser.userType}' : null;
 		// alert(loginNo);

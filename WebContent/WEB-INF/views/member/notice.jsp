@@ -71,12 +71,21 @@
 	.content {
 		flex-basis: 80%;
 	}
-	.notice-content{
+	.notice-content-area{
 		height: 400px;
-		margin: 20px;
 	}
 	
-	
+	.notice-content{
+		margin: 30px 0;
+		display: flex;
+	    flex-direction: row;
+	    flex-wrap: wrap;
+	    justify-content: space-evenly;
+	    align-items: center;
+	}	
+	.notice-content-area>p{
+		font-size: 30px;
+	}
 </style>
 </head>
 <body>
@@ -87,19 +96,19 @@
 		</div>
 		<div class="notice-all">
 			<section class="list-area">
-				<h3>알림 관리</h3>
+				<h3 style="padding: 20px 0;">알림 관리</h3>
 				<hr>
-				<div class="notice-content">
+				<div class="notice-content-area">
 				
 					<c:if test="${empty notice}">
 					
 						<p align="center">알림이 없습니다.</p>
 					</c:if>
 					<c:forEach var="p" items="${notice}">
-						<form action="noticeDelete.me" method="get" style="margin: 100px auto;"> 
+						<form action="noticeDelete.me" method="get" class="notice-content"> 
 							<!-- 서블릿 이동 -->
 							<input type = "hidden" name = "deletenotice" value = "${p.noticeNo}">
-							<span>${p.noticeText}</span>
+							<p align="center">${p.noticeText}</p>
 							<button type="submit" class="">삭제</button>
 							<hr>
 						</form>
@@ -107,20 +116,6 @@
 				</div>
 			</section>
 			
-<!-- 			<section class="pagingbar"> -->
-<!-- 				<button type="button">&lt; 이전</button> -->
-<!-- 				<button type="button">1</button> -->
-<!-- 				<button type="button">2</button> -->
-<!-- 				<button type="button">3</button> -->
-<!-- 				<button type="button">4</button> -->
-<!-- 				<button type="button">5</button> -->
-<!-- 				<button type="button">6</button> -->
-<!-- 				<button type="button">7</button> -->
-<!-- 				<button type="button">8</button> -->
-<!-- 				<button type="button">9</button> -->
-<!-- 				<button type="button">10</button> -->
-<!-- 				<button type="button">다음 &gt;</button> -->
-<!-- 			</section> -->
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
