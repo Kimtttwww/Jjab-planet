@@ -143,11 +143,11 @@
 				let regExp;
 				switch (i) {
 					case 1:
-						regExp = /^[a-zA-Z0-9\_\-]{1,14}$/;
+						regExp = /^[a-zA-Z0-9_\-]{1,14}$/;
 						able = clear(regExp, this, '해당 아이디는 사용할 수 없습니다', i);
 						break;
 					case 2:
-						regExp = /^[a-zA-Z0-9.\_\-]{1,15}$/;
+						regExp = /^[a-zA-Z0-9._\-]{1,15}$/;
 						able = clear(regExp, this, '해당 메일 주소는 사용할 수 없습니다', i);
 						break;
 					case 3:
@@ -167,7 +167,7 @@
 						able = clear(regExp, this, '해당 연락처는 올바르지 않습니다', i);
 						break;
 					case 6:
-						regExp = /^[a-zA-Z가-힣\(\)\_\-]{1,50}}$/;
+						regExp = /^[a-zA-Z가-힣()_\-]{1,50}$/;
 						able = clear(regExp, this, '해당 기업명는 사용할 수 없습니다', i);
 						break;
 					case 7:
@@ -175,15 +175,15 @@
 						able = clear(regExp, this, '해당 대표자명은 사용할 수 없습니다', i);
 						break;
 					case 8:
-						regExp = /^[0-9()\_\-]{1,50}$/;
+						regExp = /^[0-9()\-]{1,50}$/;
 						able = clear(regExp, this, '해당 사업자 등록번호는 사용할 수 없습니다', i);
 						break;
 					case 9:
-						regExp = /^[a-zA-Z가-힣()\_\-]{1,50}$/;
+						regExp = /^[a-zA-Z가-힣0-9_()\s\-]{1,50}$/;
 						able = clear(regExp, this, '해당 회사 주소는 사용할 수 없습니다', i);
 						break;
 					case 10:
-						regExp = /^[a-zA-Z가-힣0-9()\_\-:/]{1,100}$/;
+						regExp = /^[a-zA-Z가-힣0-9@.\(\)\/_\-]{1,100}$/;
 						able = clear(regExp, this, '해당 회사 홈페이지 주소는 사용할 수 없습니다', i);
 						break;
 				}

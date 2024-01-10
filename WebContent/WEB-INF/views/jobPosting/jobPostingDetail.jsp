@@ -6,191 +6,187 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${corp.corpName} 채용공고</title>
+<title>${p.corp.corpName} 채용공고</title>
 <style>
-.container{
-    display: flex;
-    flex-direction: row;
-    margin: 0 auto;
-}
-
-.container>form{
-  	width: 1200px;
-}
-
-square h2{
-    color: #155724;
-}
-
-square {
-    width: 1000px;
-    margin: 0 auto;
-    display: block;
-    padding: 20px;
-}
-
-/*회사명 틀*/
-#detail-header {
-    font-size: 18px;
-}
-
-/*제목 틀*/
-.job-detail{
-
-}
-
-/*지원안내 틀*/
-.application-guide{
-
-}
-
-/*채용내용 틀*/
-.application-form {
-
-}
-
-.job-detail h2, .job-detail h1{
-    width: 85%;
-    margin: 0 auto;
-    font-size: 40px;
-    padding-bottom:25px;
-    border-bottom: solid 1px rgb(210, 240, 210);
-}
-
-.job-detail h3{
-    margin: 0 auto;
-    width: 80%;
-    padding-top: 25px;
-}
-
-.job-detail p{
-    text-align: right;
-    margin: 5px;
-
-}
-
-.application-form {
-    text-size-adjust: 100%;
-}
-
-.application-guide h2, .application-form h2{
-    font-size: 35px;
-    width: 75%;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    
-}
-
-.application-guide ul{
-    list-style: none;
-    padding: 0;
-    
-}
-
-.application-guide li, .application-form p {
-    margin: 0 auto;
-    background-color: #f1f8ef;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding: 0;
-    height: 37px;
-    font-size: 20px;
-    font-weight: bolder;
-    font-size:20px;
-    width: 50%;
-    padding-left: 35px ;
-    border-left: solid 1px rgb(101, 233, 101);
-    display: flex;
-    align-items: center;
-    
-}
-
-.application-guide-span{
-    margin-right: 10px;
-}
-
-.application-guide-span2{
-    margin-left: 25px;
-
-}
-
-.application-form p{
-    font-size: larger;
-}
-
-.cotent-footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    flex-direction: row-reverse;
-    
-}
-
-.cotent-footer button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-}
-
-.cotent-footer button[type="button"] {
-    background-color: #f8d7da;
-    color: #721c24;
-}
-
-.cotent-footer button[type="button"]:hover{
-    background-color: #ca8d92 ;
-    color: #fff;
-}
-
-.cotent-footer button[type="submit"] {
-    background-color: #c3e6cb;
-    color: #155724;
-}
-
-.cotent-footer button[type="submit"]:hover{
-    background-color: #8bbb97;
-    color: #fff;
-}
-
-.job-detail li{
-    height: 25px;
-    list-style: none;
-    width: 90%;
-    background-color: #fff;
-    text-align: right;  
-    font-size: smaller;
-    margin: 0;
-}
-
-.application-guide-head{
-    display: flex;
-    justify-content: space-between;
-    padding-right: 20px;
-}
+	.container{
+	    display: flex;
+	    flex-direction: row;
+	    margin: 0 auto;
+	}
+	
+	.content-container {
+	  	width: 1200px;
+	}
+	
+	square h2{
+	    width: 75%;
+	    font-size: 35px;
+	    color: #155724;
+	    margin: 20px auto;
+	}
+	
+	square {
+	    width: 1200px;
+	    margin: 0 auto;
+	    display: block;
+	    padding: 20px;
+	}
+	
+	/*회사명 틀*/
+	#detail-header {
+	    font-size: 18px;
+	}
+	
+	.job-detail h2{
+		width: 50%;
+	    margin: 0 auto;
+	    text-align: center;
+	    font-size: 40px;
+	    padding: 10px 0;
+	    border-bottom: solid 1px rgb(210, 240, 210);
+	}
+	
+	.job-detail h3{
+	    margin: 0 auto;
+	    width: 80%;
+	    padding-top: 25px;
+	}
+	
+	.job-detail p{
+	    text-align: right;
+	    margin: 5px;
+	
+	}
+	
+	.application-form {
+	    text-size-adjust: 100%;
+	}
+	
+	.application-guide ul{
+	    list-style: none;
+	    padding: 0;
+	    
+	}
+	
+	.application-guide li, square p {
+	    width: 50%;
+	    height: 37px;
+	    display: flex;
+	    align-items: center;
+	    background-color: #f1f8ef;
+	    font-size: 20px;
+	    font-weight: bolder;
+	    border-left: solid 1px rgb(101, 233, 101);
+	    margin: 10px auto;
+	    padding: 0;
+	    padding-left: 35px;
+	    
+	}
+	
+	.application-guide-span{
+	    margin-right: 10px;
+	}
+	
+	.application-guide-span2{
+	    margin-left: 25px;
+	
+	}
+	
+	.application-form p{
+	    font-size: larger;
+	}
+	
+	.cotent-footer {
+	    display: flex;
+	    justify-content: space-between;
+	    flex-direction: row-reverse;
+	    padding: 10px 0;
+	}
+	
+	.cotent-footer button {
+	    border: none;
+	    border-radius: 5px;
+	    padding: 10px 20px;
+	}
+	
+	.cotent-footer button[type="button"] {
+	    background-color: #f8d7da;
+	    color: #721c24;
+	}
+	
+	.cotent-footer button[type="button"]:hover{
+	    background-color: #ca8d92 ;
+	    color: #fff;
+	}
+	
+	.cotent-footer button[type="submit"] {
+	    background-color: #c3e6cb;
+	    color: #155724;
+	}
+	
+	.cotent-footer button[type="submit"]:hover{
+	    background-color: #8bbb97;
+	    color: #fff;
+	}
+	
+	.job-detail li{
+	    width: 90%;
+	    height: 25px;
+	    list-style: none;
+	    background-color: #fff;
+	    text-align: right;  
+	    font-size: smaller;
+	    margin: 0;
+	}
+	
+	.application-guide-head{
+	    display: flex;
+	    justify-content: space-between;
+	    padding-right: 20px;
+	}
+	
+	.content-container section:not(section:first-child) {
+		margin-bottom: 40px;
+	}
+	
+	/* 세부사항 박스 */
+	.application-detail {
+		width: 870px;
+	    display: flex;
+	    flex-direction: column;
+	    margin: 0 auto;
+	}
+	
+	/* 세부사항 그 잡채 */
+	.application-detail h2 {
+		margin: 0.83em 0;
+	}
+	
+	/* 세부사항 내용 */
+	.application-detail p {
+		width: 580px;
+	}
+	
+	.job-detail {
+		display: flex;
+	    padding: 0 20px;
+	}
 </style>
 </head>
 
 <body>
-<jsp:include page="../common/topbar.jsp"/>
-<square>
-<div class="container">
-	<form action="/detail.job" method="get">
-		<div class="content-container">
-			<header id="detail-header">
-				<h1>${corp.corpName}</h1>
-			</header>
-
-			<main id="detail-main">
+	<jsp:include page="../common/topbar.jsp"/>
+	
+	<square>
+		<div class="container">
+			<div class="content-container">
 				<section class="job-detail">
+					<h2>${p.corp.corpName}</h2>
 					<h2>${p.postTitle }</h2>
 				</section>
 
 				<section class="application-guide">
-					<div class="application-guide-head" >
-						<h2>* 지원안내</h2>
-<%-- 						<span style="font-size: 20px;">조회수 : ${p.count}</span> --%>
-					</div>
+					<h2>* 지원자격</h2>
 					<ul>
 						<li><span class="application-guide-span">경력 </span>: <span class="application-guide-span2"> ${p.career}</span></li>
 						<li><span class="application-guide-span">직종 </span> :<span class="application-guide-span2">${p.jobName} </span></li>
@@ -201,64 +197,49 @@ square {
 
 				<section class="application-form">
 					<h2>* 채용내용</h2>
-					<div>
-						<p>${p.postContent }</p>
-					</div>
+					<p>${p.postContent }</p>
 				</section>
-
-				<div class="job-detail"
-					style="display: flex; flex-direction: column;">
+				
+				<section class="application-detail">
+					<h2>* 세부사항</h2>
 					<p>채용마감일 : ${p.endDate}</p>
 					<p>대표 : ${p.corp.ceoName} </p>
                     <p>회사연락처 : (${p.phone})</p>
-				</div>
-			</main>
+				</section>
+			</div>
+	
+			<div class="cotent-footer">
+				<c:choose>
+					<c:when test="${loginUser.userType eq 'E'}">
+		                <button type="button" onclick="apply(${p.corpNo})">지원하기</button>
+					</c:when>
+	
+					<c:when test="${(loginUser.userType eq 'C') and (p.corpNo eq loginUser.userNo)}">
+						<button type="button" onclick='location.href="myPage.me?bno=${b.boardNo}"'>수정페이지로이동</button>
+					</c:when>
+				</c:choose>
+			</div>
 		</div>
-
-		<div class="cotent-footer">
-			<!-- userType이 null일 경우 (로그인하지 않은 사용자) -->
-			<!-- 로그인하지 않은 사용자에게 표시될 내용 -->
-			<!-- userType이 'E'인 경우 (개인 사용자) -->
-			<!-- userType이 'C'인 경우 (기업 사용자) -->
-			<c:choose>
-				<c:when test="${loginUser.userType eq null}">
-					<div>로그인이 필요합니다</div>
-				</c:when>
-
-				<c:when test="${(loginUser.userType eq 'C') and (p.corpNo eq loginUser.userNo)}">
-					<button type="button"
-						onclick='location.href="myPage.me?bno=${b.boardNo}"'>수정페이지로이동</button>
-				</c:when>
-			</c:choose>
-
-            <c:if test="${ loginUser.userType eq 'E' }">
-                <!-- 개인(구직자) 회원이고 이력서가 등록되어 있을 경우에만 지원 버튼 표시 -->
-                <!-- 숨겨진 입력필드 사용자에게 보이지않음,폼제출시 서버로 전송 -->
-                <button type="button" onclick="apply(${p.corpNo})">지원하기</button>
-            </c:if>
-		</div>
-	</form>
-</div>
-</square>
+	</square>
 	
 	<script type="text/javascript">
-	function apply(corpNo) {
-   		$.ajax({
-            url: 'applyForJob', type: 'post',
-            data: {'corpNo': corpNo},
-            success: (tf) => {
-	            if(tf == 'true') {
-	                alert("지원서가 제출되었습니다");
-	                location.href = "list.job";
-	            } else {
-	                alert("제출할 지원서가 없습니다");
+		function apply(corpNo) {
+	   		$.ajax({
+	            url: 'applyForJob', type: 'post',
+	            data: {'corpNo': corpNo},
+	            success: (tf) => {
+		            if(tf == 'true') {
+		                alert("지원서가 제출되었습니다");
+		                location.href = "list.job";
+		            } else {
+		                alert("제출할 지원서가 없습니다");
+		            }
+	            }, error: () => {
+	                console.log("통신 실패");
 	            }
-            }, error: () => {
-                console.log("통신 실패");
-            }
-        });
-	}
-</script>
+	        });
+		}
+	</script>
 </body>
 
 </html>
