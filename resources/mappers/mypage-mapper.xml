@@ -3,7 +3,10 @@
 <mapper namespace="mypageMapper">
 	<resultMap id="noticeResultSet" type='Notice' />
 	
-	<resultMap id="interestCorpResultSet" type='joayoCorp' />
+	<resultMap id="interestCorpResultSet" type='joayoCorp' autoMapping="true" >
+		<id column="JOAYO_NO" property="joayoNo"/>
+		<association  property="corp" resultMap="boardMapper.corpResultMap" />
+	</resultMap>
 	
 	<resultMap id="resumeResultSet" type='Resume' >
 		<id column="WORKER_NO" property="workerNo"/>
@@ -19,9 +22,10 @@
 	</select> 
 
 	<select id="interestCorpList" parameterType="_int" resultMap='interestCorpResultSet'>
-		SELECT JOAYO_NO, CORP_NO, WORKER_NO, CORP_NAME
-		FROM JOAYO_CORP j
-		JOIN CORPORATION C USING (CORP_NO)
+		SELECT J.*, C.*, L.*
+		FROM JOAYO_CORP J
+		JOIN Corporation C ON (J.CORP_NO = C.CORP_NO)
+		JOIN LOGO L ON (C.CORP_NO = L.CORP_NO)
 		WHERE WORKER_NO = #{userNo}
 	</select>
 	

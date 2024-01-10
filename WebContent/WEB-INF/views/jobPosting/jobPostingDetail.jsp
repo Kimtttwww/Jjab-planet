@@ -185,7 +185,7 @@
 	<form action="/detail.job" method="get" style="width: 1200px;">
 		<div class="content-container">
 			<header id="detail-body-header">
-				<h1>${corp.corpName}</h1>
+				<h1>${p.corp.corpName}</h1>
 			</header>
 
 			<main id="detail-main">
@@ -216,8 +216,8 @@
 				<div class="job-detail"
 					style="display: flex; flex-direction: column;">
 					<p>채용마감일 : ${p.endDate}</p>
-					<p>대표 : ${corp.ceoName} </p>
-                    <p>회사연락처 : (${p.phone})      </p>
+					<p>대표 : ${p.corp.ceoName} </p>
+                    <p>회사연락처 : (${p.phone})</p>
 				</div>
 			</main>
 		</div>
@@ -231,8 +231,6 @@
 				<c:when test="${loginUser.userType eq null}">
 					<div>로그인이 필요합니다</div>
 				</c:when>
-				<%-- <c:when test="${loginUser.userType == 'E'}"> --%>
-				<%-- </c:when> --%>
 
 				<c:when test="${(loginUser.userType eq 'C') and (p.corpNo eq loginUser.userNo)}">
 					<button type="button"

@@ -34,8 +34,6 @@ public class JobPostListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		JobPostService service = new JobPostService();
-		
-//		------페이징처리-------
 		int objCount = service.selectListCount();
 		int currentPage = 1;
 	

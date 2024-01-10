@@ -38,14 +38,11 @@
       <section class="job-listing" style="margin-bottom: 40px;"><!-- 일단여기에 css적용 -->
       
 			<c:forEach var="p" items="${list }">
-<%-- 				<a href="/JobPostDetailController2?jobpostNo=${p.jobpostNo}"></a> --%>
 			
 				<div class="job-card" onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
-				
 					<img onclick='location.href="${contextPath}/detail.corp?corpNo=${corp.corpNo}"' 
 								src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}" alt="기업 대표이미지">
 				
-<%-- 					<img src="${ pageContext.request.contextPath }/resources/images/kh_logo.jpg" class="company-logo"> --%>
 					<div class="job-info">
 						<h3 class="job-offer-title">${p.postTitle }</h3>
 						<p class="employee-condition">${p.postContent }</p>

@@ -36,8 +36,6 @@ public class NoticeController extends HttpServlet {
 		int userNo =((Member)request.getSession().getAttribute("loginUser")).getUserNo();
 
 		ArrayList<Notice> notice = new ArrayList<Notice> (service.selectList(userNo));
-		System.out.println("notice : " +notice);
-		System.out.println("userNo : "+userNo);
 		
 		request.setAttribute("notice", notice);
 		request.setAttribute("userNo", userNo); 

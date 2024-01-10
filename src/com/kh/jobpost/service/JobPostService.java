@@ -92,7 +92,8 @@ public class JobPostService {
 		session.close();
 		return selectOne;
 	}
-	
+
+
 	
 
 	

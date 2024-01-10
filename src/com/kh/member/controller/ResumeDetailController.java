@@ -49,14 +49,12 @@ public class ResumeDetailController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		ResumeDetailService ds = new ResumeDetailService();
 		int workerNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
-		System.out.println(workerNo);
-		
 		
 		Resume resume = Resume.builder()
 				.workerNo(workerNo)
 				.formTitle(request.getParameter("formTitle"))
 				.address(request.getParameter("address"))
-//				.jobName(request.getParameter("jobname"))
+				.jobName(request.getParameter("jobname"))
 				.isOpen(request.getParameter("isOpen"))
 				.education(request.getParameter("education"))
 				.career(request.getParameter("career"))

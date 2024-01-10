@@ -26,16 +26,17 @@
 				<h3>관심기업 리스트</h3>
 			</div>
 			<div class="mypage3_content">
+					<input type="hidden" name="corpNo" value="${p.corpNo}" />
 				<div class="all_list" onclick = "location.href = ">
 					<c:if test="${empty list}">
 						<p align="center">관심기업이 없습니다.</p>
 					</c:if>
 					<c:forEach var="p" items="${list}">
-					<c:out value="${list}" />
+					
 					<ul>
 						<li class="li_no1">${p.joayoNo }</li>
 						<li><img class="corp_logo"
-							src="${contextPath}/resources/images/kh_logo.jpg">
+							src="${contextPath}/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
 						</li>
 						<li>${p.corpName }</li>
 						<li class="li_last"><img class="star_img"

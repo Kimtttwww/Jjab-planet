@@ -17,11 +17,12 @@
 	
 	<!-- corpNo의 리스트 목록 -->
 	<select id="selectOne" parameterType="JobPost" resultMap='postResultSet'>
-		SELECT J.JOBPOST_NO, J.CORP_NO, J.POST_TITLE, J.POST_CONTENT, J.END_DATE, C.CORP_NAME, O.JOB_NAME
+		SELECT J.*, C.*, O.*
 		FROM JOB_POST J
-		JOIN corporation C ON J.CORP_NO=C.CORP_NO
-		JOIN occupation O ON J.JOB_NO=O.JOB_NO
+		JOIN corporation C ON (J.CORP_NO=C.CORP_NO)
+		JOIN occupation O ON (J.JOB_NO=O.JOB_NO)
 	    WHERE C.CORP_NO = #{corpNo}
+	    AND J.STATUS = 'Y'
 	</select>
 
 	<!-- 게시물 몇개인지 조회 -->
@@ -33,6 +34,16 @@
 
 	<!-- 공고 상세보기 -->
 	<select id="detailPost" resultMap='postResultSet'>
+		SELECT J.*, C.*, O.*
+		FROM JOB_POST J
+		JOIN corporation C ON (J.CORP_NO=C.CORP_NO)
+		JOIN occupation O ON (J.JOB_NO=O.JOB_NO)
+		WHERE J.JOBPOST_NO = #{jobpostNo}
+		AND J.STATUS = 'Y'
+	</select>
+	
+		<!-- 공고 상세보기 -->
+	<select id="corpPostOne" resultMap='postResultSet'>
 		SELECT
 			JOBPOST_NO,
 			CORP_NO,
@@ -45,9 +56,10 @@
 			POST_CONTENT
 		FROM JOB_POST J
 		JOIN occupation O USING (JOB_NO)
-		WHERE JOBPOST_NO = #{jobpostNo}
+		WHERE CORP_NO = #{corpCode}
 		AND J.STATUS = 'Y'
 	</select>
+	
 
 	<update id="increaseCount" parameterType="_int">
 		UPDATE JOB_POST
