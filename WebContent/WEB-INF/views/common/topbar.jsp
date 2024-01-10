@@ -59,6 +59,10 @@ body {
     width: 100px;
 }
 
+.menu-left > a:first-child {
+    margin-right: 25px;
+}
+
 .menu-right a {
 	flex-basis: 50%;
 	margin-left: 20px;
@@ -83,7 +87,11 @@ body {
 	height: 100%;
 	align-items: center;
 	text-align: center;
-	margin: 0 30px;
+	margin: 0 0 0 20px;
+}
+
+.menu-right>a:first-child {
+    margin-left: 20px;
 }
 
 </style>

@@ -19,163 +19,291 @@
 <style>
 html,
 body {
-	margin: 0;
-	height: 100%;
-	min-width: 1200px;
-	max-width: 1600px;
+    margin: 0;
+    height: 100%;
+    min-width: 1200px;
+    max-width: 1600px;
 }
 
 .corp-main {
-	width: 60%;
-	margin: 0 auto;
+    width: 60%;
+    margin: 0 auto;
 }
 
 .corp-top-area {
-	width: 1000px;
-	height: 200px;
-	margin: 0 auto;
+    width: 1000px;
+    height: 200px;
+    margin: 0 auto;
 }
 
 /*제일 상단*/
 .corp-top {
-	display: flex;
-	height:153px;
-	background-color: #eee;
-	justify-content: space-between;
+    display: flex;
+    height:153px;
+    background-color: #eee;
+    justify-content: space-between;
 }
 
 .corp-logo {
-	display: flex;
-	margin: 0 100px;
-	align-items: center;
+    display: flex;
+    margin: 0 100px;
+    align-items: center;
 }
 
 .corp-interest {
-	display: flex;
-	margin: 0 100px 0 0;
-	align-items: center;
+    display: flex;
+    margin: 0 100px 0 0;
+    align-items: center;
 }
 
 /*기업정보|리뷰*/
 .corp-aTag {
-	display: flex;
-	border: 1px solid #eee;
-	padding:12px
+    display: flex;
+    border: 1px solid #eee;
+    padding:12px
+}
+
+/*기업정보 내용*/
+.corp-titleFont{
+    font-size: x-large;
+    padding-bottom:10px;
+}
+
+/*진행중인 채용공고 입사지원버튼*/
+.apply-btn {
+    background-color: #666060;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 4px 6px 5px 6px;
+}
+
+/*리뷰작성버튼*/
+.review-btn{
+    background-color: #666060;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 4px 6px 5px 6px;
+    margin: 2px;
 }
 
 .corp-aTag div{
-	margin: 0 10px;
+    margin: 0 10px;
 }
 
 .corp-info-all {
-	width: 1000px;
-	margin: 0 auto;
-	padding: 50px 30px;
-	background-color: rgb(236, 240, 243);
+    width: 1000px;
+    margin: 0 auto;
+    padding: 50px 30px;
+    background-color: rgb(236, 240, 243);
 }
 
 .corp-zone {
-	margin: 50px;
+    margin: 50px;
 }
 
 .corp-info1 {
-	margin-right: 20px;
+    margin-right: 20px;
 }
 
-.corp-review-area {
-	background-color: rgb(158, 120, 120);
-}
 
-.corp-review-content {
-	background-color: pink;
-	height: 120px;
-	margin-top: 20px;
-	margin: 20px;
-}
 
 /*회사명*/
 .corp-name{
-	margin: 0 20px;
+    margin: 0 20px;
 }
 
-/*홈페이지*/
+/*홈페이지>*/
 .corp-home {
-	margin: 0 20px;
-	width: 120px;
-	height: 30px;
-	border: 1px solid black;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 0 25px 0 17px;
+    margin: 0 20px;
+    width: 120px;
+    height: 35px;
+    border: none;
+    background-color: #666060;
     border-radius: 41px; 
-    height: 41px;
     cursor: pointer;
-	
-	
-	/* 
-	display: block;
-    overflow: hidden;
-    position: relative;
-	border-radius: 20px;
-    */
+    padding: 5px 0 0 23px;
 }
 
 /*관심 별 버튼*/
 .corp-interest button {
-	border: none;
-	width: 80px;
-	height: 30px;
-	border-radius: 41px; 
-	font-size: 20px;
-	
+    border: none;
+    width: 80px;
+    height: 35px;
+    border-radius: 41px; 
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 0 5px 0;
 }
 
 .corp-home a{
-	text-decoration: none;
+    text-decoration: none;
     color: #fff;
 }
 
 .corp-backwhite {
-	background-color: white;
-	height: 100px;
-	display: flex;
-	padding: 10px;
+    background-color: white;
+    height: 150px;
+    display: flex;
+    padding: 12px;
+    border: 1px solid #e4e5e7;
 }
 
 .corp-uppost-area {
-	flex-direction: column;
+    flex-direction: column;
 }
 
 .corp_hovered {
-	color: blue;
-	font-weight: bold;
+    color: blue;
+    font-weight: bold;
 }
 
 #popup_write {
-	display: none;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	padding: 20px;
-	background-color: #fff;
-	border: 1px solid #ccc;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	z-index: 1000;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
 #popup_report {
-	display: none;
-	position: fixed;
-	top: 60%;
-	left: 60%;
-	transform: translate(-20%, -20%);
-	padding: 20px;
-	background-color: #fff;
-	border: 1px solid #ccc;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	z-index: 1000;
+    display: none;
+    position: fixed;
+    top: 60%;
+    left: 60%;
+    transform: translate(-20%, -20%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
-</style>
+
+
+/*기업리뷰 박스*/
+.corp-review-area {
+    background-color: #fff;
+    border: 1px solid #eee;
+}
+
+/*기업리뷰 등록버튼*/
+#insert-btn{
+    background-color: #666060;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 4px 6px 5px 6px;
+    margin-top: 30px;
+}
+
+/*기업리뷰 작성란 틀*/
+.corp-review-write{
+    display: flex;
+      align-items: center;
+}
+
+/*기업 리뷰 작성 박스*/
+#writeBox1 {
+    resize: none;
+      margin: 20px 10px 20px 20px;
+      border: 1px solid #eee;
+}
+
+#writeBox1:focus{
+    outline-color: #98ca98;
+}
+
+/*기업 리뷰 보여줄 박스*/
+.corp-review-content {
+    background-color: #fff;
+    border: 1px solid #eee;
+    min-height: 100px;
+    max-height: 2000px;
+    margin-top: 20px;
+    margin: 20px;
+}
+
+/*댓글 페이징 다른페이지*/
+#paging-area a{
+    background-color: #666060;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 1px 3px 3px 3px;
+    margin-top: 30px;
+    text-decoration: none;
+}
+
+/*댓글 페이징 해당페이지*/
+#paging-area b{
+    background-color: #666060;
+    border-radius: 5px;
+    color: #98ca98;
+    border: none;
+    cursor: pointer;
+    padding: 1px 3px 3px 3px;
+    margin-top: 30px;
+}
+
+/* 댓글 수정 삭제 버튼*/
+.review-line button {
+    background-color: #666060;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 1px 3px 2px 3px;
+    margin-right: 5px;
+}
+
+/*리뷰 한줄 박스*/
+.review-line{
+	display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    position: relative;
+
+}
+
+/*리뷰 쪽 작성자 버튼2개 묶는 박스*/
+.review-line .review-info {
+    display: flex;
+    align-items: center;
+}
+
+/*리뷰 작성자*/
+.review-Writer{
+	margin: 10px;
+	padding-bottom:5px;
+	border-bottom: 1px solid #eee;
+}
+
+/*리뷰 내용*/
+.review-detail{
+	margin: 0 30px 30px 30px;
+	overflow: auto;
+	overflow-wrap: break-word;
+}
+
+.review-detail::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 2%; 
+  width: 96%; 
+  border-bottom: 1px solid #666060; 
+}
+    </style>
 </head>
 
 <body>
@@ -303,7 +431,7 @@ body {
 
 	<div class="corp-info-all">
 		<div class="corp-zone">
-			<div class="corp_info_a2">|기업정보</div>
+			<div class="corp_info_a2 corp-titleFont">| 기업정보</div>
 			<div class="corp-info-area corp-backwhite">
 				<div class="corp-info1">
 					<div>기업명</div>
@@ -322,7 +450,7 @@ body {
 		</div>
 
 		<div class="corp-zone">
-			<div>|진행중인 채용공고</div>
+			<div class="corp-titleFont">| 진행중인 채용공고</div>
 			<div class="corp-uppost-area corp-backwhite">
 				<c:if test="${empty jobPost}">
 					<p>진행중인 공고가 없습니다.</p>
@@ -332,7 +460,7 @@ body {
 					<span>직종 : ${jobPost.jobName}</span>
 				</div>
 				<div align="right">
-					<button onclick="">공고보기</button>
+					<button class="apply-btn" onclick="">공고보기</button>
 					<div>공고등록일 : ${jobPost.createDate}</div>
 				</div>
 			</div>
@@ -341,10 +469,10 @@ body {
 
 		<div class="corp-zone">
 			<div>
-				<div class="corp_review_a2">|기업리뷰</div>
+				<div class="corp_review_a2 corp-titleFont">| 기업리뷰</div>
 
 				<div align="right">
-					<button onclick="popup_btn()">리뷰작성하기</button>
+					<button class="review-btn" onclick="popup_btn()">리뷰작성하기</button>
 				</div>
 			</div>
 
@@ -366,14 +494,16 @@ body {
 					<input type="hidden" name="userNo" value="${loginUser.userNo}">
 					<div class="corp-review-content">
 						<c:forEach var="reply" items="${reply}">
-							<div>
-								<span>작성자:${reply.userId} / 작성일:${reply.createDate}</span>
-								<span>${reply.replyContent}</span>
+							<div class="review-line">
+								<div class="review-info">
 								<!-- 본인 작성글에만 수정/삭제 가능하게끔   -->
+								<span class="review-Writer">${reply.userId} / ${reply.createDate}</span>
 								<c:if test="${loginUser.userNo eq reply.replyWriter}">
 									<button class="update-review" onclick="change(this,${reply.replyNo})">수정</button>
 									<button class="delete-review" value="${reply.replyNo }" >삭제</button>
 								</c:if>
+								</div>
+								<span class="review-detail">${reply.replyContent}</span>
 							</div>
 						</c:forEach>
 					</div>
@@ -386,11 +516,11 @@ body {
 					<c:forEach var="p" begin="${pi.startPage}" end="${pi.endPage}">
 						<c:choose>
 							<c:when test="${p eq pi.currentPage}">
-								<b>[${p}]</b>
+								<b>${p}</b>
 							</c:when>
 							<c:otherwise>
 								<a href="${url}${corp.corpNo}&currentPage=${p}"
-									onclick="goToPage(${p})">[${p}]</a>
+									onclick="goToPage(${p})">${p}</a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -399,7 +529,7 @@ body {
 				<div class="corp-review-write">
 					<input type="hidden" name="corpNo" value="${corp.corpNo}">
 					<input type="hidden" name="rno" id="rnoHidden">
-					<textarea name="writeBox" id="writeBox1" cols="50" rows="10" readonly
+					<textarea name="writeBox" id="writeBox1" cols="100" rows="4" readonly
 						style="resize: none; ">리뷰를 작성해주세요.</textarea>
 					<button id="insert-btn">등록하기</button>
 				</div>
