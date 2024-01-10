@@ -20,7 +20,6 @@
 	</c:if>
 	
 	<c:if test="${loginUser.userType eq 'C'}">
-	<c:out value="menubar : + ${loginUser.userNo}" />
 		<ul>
 			<li class="menu_li"><a class="mypage_btn" href="notice.me">알림 관리</a></li> 
 			<li class="menu_li"><a class="mypage_btn" href="corMyPage.me">지원받은 이력서</a></li>

@@ -24,10 +24,13 @@
 			<!--top_b1-->
 			<c:forEach var="p" items="${first}">
 				<div class="top_b1" onclick='location.href="detail.job?bno=${p.jobpostNo}"'>
-					<img src="${ project }/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
+			
+						<img src="${ project }/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
+						
 					<p>${p.corp.corpName}</p>
 					<p>${p.postTitle}</p>
-					<p class="content_bottom">${p.count}</p>		
+					  
+					<p class="content_bottom"><img class ="hit" src="${project}/resources/images/hits_icon.png">${p.count}</p>		
 				</div>
 			</c:forEach>
 		</div>

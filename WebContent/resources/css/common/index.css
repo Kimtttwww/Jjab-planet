@@ -70,10 +70,9 @@ html, body {
 /*입사지원 버튼*/
 .btn {
 	border: 2px solid red;
-	border-radius: 20px;
+	border-radius: 30px;
 	padding: 10px;
 	margin: 0 auto;
-	width: 80px;
 }
 
 .btn a {
@@ -101,24 +100,37 @@ a {
 	width: 100%;
 	display: flex;
 	margin-bottom: 20px;
+	padding: 10px;
 }
 
-.top_b1 {
-	flex-basis: 40%;
-	background-color: aliceblue;
-	margin: 0 20px 0 0;
-	padding: 25px;
-	border-radius: 20px;
+.top_b1, .top_b1:nth-child(2), .top_b1:nth-child(3) {
+    background-color: aquamarine;
+    margin: 0 20px 0 0;
+    padding: 20px;
+    border-radius: 20px;
+    width: 400px;
 }
 
-.top_b1:nth-child(2), .top_b1:nth-child(3) {
-	flex-basis: 25%;
-	background-color: aquamarine;
-	margin: 0 20px 0 0;
-	padding: 20px;
-	border-radius: 20px;
+.logoBox{
+	margin: 20px;
 }
 
 .content_bottom {
 	text-align: right;
+}
+
+
+.hit{
+	height: 10px;
+}
+
+.top_b1, .new_banner{
+    position: relative; 
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.top_b1:hover, .new_banner:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); 
+    transform: translateY(-5px); 
 }
