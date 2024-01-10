@@ -12,12 +12,12 @@
 <!-- <script src="/3script/jobPostingList.js"></script> -->
 <link rel="stylesheet" href="${ jjap }/resources/css/jobPostingList.css" type="text/css">
 </head>
-<body >
+<body style="background-color: rgb(254, 254, 255);" class="jobPostingList-body">
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 
 	<div class="head-container">
 
-		<h1 style="color: rgb(45, 78, 49); text-align: center; border-bottom: solid 1px rgb(101, 148, 117); padding-bottom: 50px; font-size: 5ch;">
+		<h1 class="head-container-h1">
 			채 용 공 고</h1>
 
 		<header class="jobPostList-header">
@@ -42,10 +42,13 @@
 			<c:forEach var="p" items="${list }">
 			
 				<div class="job-card" onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
-					
-					<img onclick='location.href="detail.corp?corpNo=${p.corp.corpNo}"' 
+					<div class="job-card-img">
+						<img  onclick='location.href="detail.corp?corpNo=${p.corp.corpNo}"' 
 						src="${jjap}/${Logo.FILE_PATH}${p.corp.logo.changeName}" alt="기업 대표이미지">
-						
+
+					</div>
+					
+					
 					<div class="job-info">
 						<h3 class="job-offer-title">${p.postTitle }</h3>
 						<p class="employee-condition">${p.postContent }</p>
@@ -64,7 +67,7 @@
 
 		<div class="pagination">
 			<c:if test="${pi.currentPage ne 1 }">
-				<a onclick="stepPage(-1)">[이전]</a>
+				<a class="pagenation-next" onclick="stepPage(-1)"> &lt; </a>
 			</c:if>
 
 			<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage}">
@@ -72,7 +75,7 @@
 			</c:forEach>
 
 			<c:if test="${pi.currentPage ne pi.maxPage }">
-				<a onclick="page(${1})">[다음]</a>
+				<a class="pagenation-next" onclick="page(${1})">&gt;</a>
 			</c:if>
 		</div>
 		
@@ -106,7 +109,7 @@
 
 //  페이징
 	function page(n) {
-		let domain = '${domain}currentPage=' + n;
+		let domain = '${jjap}/list.job?currentPage=' + n;
 		
 		if("${category}") domain += '&category=${category}';
 		if("${keyword}") domain += '&keyword=${keyword}';
@@ -115,7 +118,7 @@
 	}
 	
 	function stepPage(n) {
-		let domain = '${domain}currentPage=' + (${pi.currentPage} + n);
+		let domain = '${jjap}/list.job?currentPage=' + (${pi.currentPage} + n);
 		
 		if("${category}") domain += '&category=${category}';
 		
