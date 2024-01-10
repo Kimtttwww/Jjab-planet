@@ -75,7 +75,7 @@
 			</c:forEach>
 
 			<c:if test="${pi.currentPage ne pi.maxPage }">
-				<a class="pagenation-next" onclick="page(${1})">&gt;</a>
+				<a class="pagenation-next" onclick="stepPage(1)">&gt;</a>
 			</c:if>
 		</div>
 		

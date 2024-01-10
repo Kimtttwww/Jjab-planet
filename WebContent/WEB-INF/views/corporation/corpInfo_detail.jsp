@@ -324,9 +324,8 @@ body {
 				</div>
 				<div class="corp-interest">
 					<div class="corp-star">
-						<button id="likeCorp" onclick="isCorpLiked()">★
+						<button id="likeCorp" style="font-size: larger;" onclick="isCorpLiked()">★</button>
 						<span class="likeCount">${corp.likeCount}</span>
-						</button>
 					</div>
 					<div class="corp-home">
 						<a href="${corp.homePage}">홈페이지></a>
@@ -354,7 +353,7 @@ body {
 		// 페이지로딩됐을때 DB에서 초기데이터 가져옴
 		function initAPI() {
 			
-			if (${loginUser.userNo} == null) {
+			if ('${loginUser.userNo}' == "") {
 			return new Promise((resolve, reject) => {
 				$.ajax({
 					url: 'init.like.corp',
@@ -373,9 +372,6 @@ body {
 
 		// DB에 데이터를 update하기 위한 api(찜 추가/삭제)
 		function updateAPI() {
-			if (${loginUser.userNo} == null) {
-				alert("로그인 후에 가능합니다");
-			}
 			return new Promise((resolve, reject) => {
 				$.ajax({
 					url: 'update.like.corp',
@@ -395,6 +391,10 @@ body {
 		// 즐겨찾기가 되어 있으면 삭제하고
 		// 안되어 있으면 등록하면 됨.
 		function isCorpLiked() {
+			if ('${loginUser.userNo}' == '') {
+				alert("로그인 후에 가능합니다");
+				return;
+			}
 
 			updateAPI().then((result) => {
 				if (result === 'true') {
@@ -412,15 +412,15 @@ body {
 					$("#likeCorp").css('background', 'yellow');
 					currentLikeCount++;
 				}
-			}).catch(error => {
+			}).catch((error) => {
 				console.log(error);
 			});
 		}
 
 		// 찜 설정되어 있다면 상태유지하기 initialize
 		function initialize() {
-			initAPI().then((result) => {
 
+			initAPI().then((result) => {
 				// 데이터가 존재함 -> 찜이 되어 있따.
 				if (result === 'true') {
 					$("#likeCorp").css('color', 'red');
