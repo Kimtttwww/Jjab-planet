@@ -56,7 +56,7 @@ public class ResumeDetailController extends HttpServlet {
 				.workerNo(workerNo)
 				.formTitle(request.getParameter("formTitle"))
 				.address(request.getParameter("address"))
-//				.jobName(request.getParameter("jobname"))
+				.jobNo(request.getParameter("jobNo"))
 				.isOpen(request.getParameter("isOpen"))
 				.education(request.getParameter("education"))
 				.career(request.getParameter("career"))

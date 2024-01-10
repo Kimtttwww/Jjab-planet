@@ -255,12 +255,12 @@
             url: 'applyForJob', type: 'post',
             data: {'corpNo': corpNo},
             success: (tf) => {
-            if(tf) {
-                alert("지원서가 제출되었습니다");
-                location.href = "list.job";
-            } else {
-                alert("제출할 지원서가 없습니다");
-            }
+	            if(tf == 'true') {
+	                alert("지원서가 제출되었습니다");
+	                location.href = "list.job";
+	            } else {
+	                alert("제출할 지원서가 없습니다");
+	            }
             }, error: () => {
                 console.log("통신 실패");
             }

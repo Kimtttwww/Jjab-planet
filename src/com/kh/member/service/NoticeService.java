@@ -1,6 +1,7 @@
 package com.kh.member.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -17,6 +18,23 @@ public class NoticeService {
 		
 		session.close();
 		return notice;
+	}
+
+	public int deleteNotice(int deleteNo) {
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("deleteNo", deleteNo);
+		
+		int result = dao.noticeDelete(sqlSession, deleteNo);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return result;
 	}
 
 

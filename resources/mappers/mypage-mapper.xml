@@ -5,9 +5,8 @@
 	
 	<resultMap id="interestCorpResultSet" type='joayoCorp' />
 	
-	<resultMap id="resumeResultSet" type='Resume' >
+	<resultMap id="resumeResultSet" type='resume' autoMapping="true">
 		<id column="WORKER_NO" property="workerNo"/>
-	
 	</resultMap>
 
 	<!-- 리스트 목록 -->
@@ -17,7 +16,7 @@
 		JOIN NOTICE_TYPE T USING (NOTICE_TYPE)
 		WHERE RECEIVER = #{userNo}
 	</select> 
-
+	
 	<select id="interestCorpList" parameterType="_int" resultMap='interestCorpResultSet'>
 		SELECT JOAYO_NO, CORP_NO, WORKER_NO, CORP_NAME
 		FROM JOAYO_CORP j
@@ -43,9 +42,15 @@
 		SET r.form_title = #{formTitle},
     		r.address = #{address},
     		r.is_open = #{isOpen},
+    		r.job_No = #{jobNo},
     		r.education = #{education},
     		r.career = #{career}
 		WHERE r.worker_no = #{workerNo}
+	</update>
+	
+	<update id="deleteNotice" parameterType="Notice">
+		DELETE FROM notice n
+ 		WHERE n.notice_no = #{deleteNo}
 	</update>
 	
 	<!-- 이력서정보조회 기업지원할때사용 -->
