@@ -19,6 +19,6 @@ public class NoticeDao {
 	}
 	
 	public int noticeDelete(SqlSession sqlSession, int deleteNo) {
-		return sqlSession.update("mypageMapper.deleteNotice", deleteNo);
+		return sqlSession.update(map + "deleteNotice", deleteNo);
 	}
 }

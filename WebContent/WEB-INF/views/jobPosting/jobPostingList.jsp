@@ -88,8 +88,20 @@
 		if("${keyword}") $('#search-box').val('${keyword}');
 	});
 
+// 	카테고리 필터
+	$("#category").change(() => {
+		location.href = 'list.job?category=' + $("#category").val();
+	});
+
 	$("#search").click(() => {
 		location.href = 'list.job?keyword=' + $("#search-box").val();
+	});
+
+// 	검색어 입력 후 enter 시
+	$("#search-box").keyup((key) => {
+		if(key.keyCode == 13) {
+			$("#search").click();
+		}
 	});
 
 //  페이징
@@ -109,13 +121,6 @@
 		
 		location.href = domain;
 	}
-
-// 	검색어 입력 후 enter 시
-	$("#search-box").keyup((key) => {
-		if(key.keyCode == 13) {
-			$("#search").click();
-		}
-	});
 </script>
 
 

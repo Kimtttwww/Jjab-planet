@@ -12,6 +12,7 @@
 		<id column="WORKER_NO" property="workerNo"/>
 	</resultMap>
 
+
 	<!-- 리스트 목록 -->
 	<select id="noticeList" parameterType="_int" resultMap='noticeResultSet'>
 		SELECT NOTICE_NO, NOTICE_TYPE, NOTICE_TEXT
@@ -35,11 +36,15 @@
 	</select>
 
 	<select id="detailResume" parameterType="_int" resultMap='resumeResultSet'>
-	SELECT worker_no, FORM_TITLE, WORKER_NAME, BIRTHDAY, GENDER, ADDRESS,
-	IS_OPEN, job_NAME, CAREER, EDUCATION FROM RESUME
-	JOIN occupation O USING(job_no)
-	WHERE worker_no = #{workerNo}
+	SELECT WORKER_NO, FORM_TITLE, WORKER_NAME, BIRTHDAY, GENDER, ADDRESS,
+	IS_OPEN, JOB_NO, CAREER, EDUCATION FROM RESUME
+	WHERE WORKER_NO = #{workerNo}
 	</select>
+	
+	<insert id="insertNotice">
+		INSERT INTO NOTICE
+		VALUES(SEQ_NOTICENO.nextval, #{receiverNo}, #{noticeType})
+	</insert>
 	
 	<update id="updateResume" parameterType="Resume">
 		UPDATE resume r

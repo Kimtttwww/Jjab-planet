@@ -35,6 +35,7 @@ public class ResumeDetailController extends HttpServlet {
 
 		Resume resume = resumeService.ResumeDetail(workerNo);
 		
+		System.out.println(resume);
 		request.setAttribute("resume", resume); 
 		request.setAttribute("workerNo", workerNo); 
 		

@@ -51,8 +51,6 @@
 			SEQ_USERNO.CURRVAL,
 			#{originName},
 			#{changeName}
-			 <!-- 나중에 없앨 컬럼 -->
-			,'A'
 		)
 	</insert>
 	
