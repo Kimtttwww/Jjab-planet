@@ -42,12 +42,12 @@ public class NoticeService {
 		int result = dao.noticeDelete(session, deleteNo);
 		
 		if(result > 0) {
-			sqlSession.commit();
+			session.commit();
 		} else {
-			sqlSession.rollback();
+			session.rollback();
 		}
 
-		sqlSession.close();
+		session.close();
 		return result;
 	}
 }

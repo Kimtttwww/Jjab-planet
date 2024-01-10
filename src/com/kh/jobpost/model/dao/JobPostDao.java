@@ -1,6 +1,7 @@
 package com.kh.jobpost.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -13,30 +14,20 @@ public class JobPostDao {
 	public JobPost detailBoard(SqlSession session, int jobpostNo) {
 		return session.selectOne("jobpostMapper.detailPost", jobpostNo); 
 	}
+
 	
 	
-//	public JobPost detailPost(SqlSession session, int jobpostNo) {
-//
-//		// MyBatis의 selectOne 메서드를 사용하여 특정 jobpostNo에 해당하는
-//        // 채용공고 상세 정보를 조회하고 반환
-//        return session.selectOne("jobpostMapper.detailPost", jobpostNo); 
-//	}
-	
-	/*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0**/
-	/*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0*0**/
-	
-	
-	public ArrayList<JobPost> selectList(SqlSession session, PageInfo pi){
+	public ArrayList<JobPost> selectList(SqlSession session, PageInfo pi, HashMap<String, String> h){
 		int limit = pi.getObjLimit();
 		int offset = (pi.getCurrentPage()-1)*limit;
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return(ArrayList) session.selectList("jobpostMapper.selectList",null,rowBounds);
+		return(ArrayList) session.selectList("jobpostMapper.selectList", h,rowBounds);
 	}
 
-	public int selectListCount(SqlSession sqlSession) {
-		return sqlSession.selectOne("jobpostMapper.selectListCount");
+	public int selectListCount(SqlSession sqlSession, HashMap<String, String> h) {
+		return sqlSession.selectOne("jobpostMapper.selectListCount", h);
 	}
 
 

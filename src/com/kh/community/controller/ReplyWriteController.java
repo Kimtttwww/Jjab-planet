@@ -10,7 +10,6 @@ import com.kh.community.model.vo.Reply;
 import com.kh.community.service.PostService;
 import com.kh.member.model.vo.Member;
 import com.kh.member.service.NoticeService;
-import com.kh.propose.service.ProposeService;
 
 /**
  * Servlet implementation class PostWriteController

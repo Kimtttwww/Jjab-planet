@@ -1,14 +1,12 @@
 package com.kh.jobpost.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.jobpost.model.vo.JobPost;
 import com.kh.jobpost.service.JobPostService;
 
 @WebServlet("/JobPostListController")

@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.common.Pagination;
 import com.kh.common.model.vo.PageInfo;
-import com.kh.corporation.model.service.CorporationService;
-import com.kh.corporation.model.vo.Corporation;
 import com.kh.member.model.vo.JoayoCorp;
 import com.kh.member.model.vo.Member;
 import com.kh.member.service.InterestCorpService;

@@ -68,7 +68,7 @@
 			
 			<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage}">
 				<button type="button"
-				<c:if test="i eq ${pi.currentPage}">disabled</c:if>
+				<c:if test="${i eq pi.currentPage}">disabled</c:if>
 				 onclick="page(${i})">${i}</button>
 			</c:forEach>
 			

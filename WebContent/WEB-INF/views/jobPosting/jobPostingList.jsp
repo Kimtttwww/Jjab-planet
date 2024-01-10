@@ -4,12 +4,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
+<c:set var="jjap" value="${ pageContext.request.contextPath }"/>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>기업채용공고 목록</title>
 <!-- <script src="/3script/jobPostingList.js"></script> -->
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/jobPostingList.css" type="text/css">
+<link rel="stylesheet" href="${ jjap }/resources/css/jobPostingList.css" type="text/css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
@@ -31,6 +32,7 @@
 
 			<div>
 				<input type="search" id="search-box" placeholder="기업검색">
+				<button type="button" id="search">검색</button>
 			</div>
 		</header>
     <main>
@@ -40,9 +42,10 @@
 			<c:forEach var="p" items="${list }">
 			
 				<div class="job-card" onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
-					<img onclick='location.href="${contextPath}/detail.corp?corpNo=${corp.corpNo}"' 
-								src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}" alt="기업 대표이미지">
-				
+					
+					<img onclick='location.href="detail.corp?corpNo=${p.corp.corpNo}"' 
+						src="${jjap}/${Logo.FILE_PATH}${p.corp.logo.changeName}" alt="기업 대표이미지">
+						
 					<div class="job-info">
 						<h3 class="job-offer-title">${p.postTitle }</h3>
 						<p class="employee-condition">${p.postContent }</p>
@@ -59,20 +62,16 @@
 
 
 		<div class="pagination">
-			<c:url value="${empty condition ? 'list.job' : 'search.bo'}" var="url">
-				<c:param name="condition" value="${condition }" />
-				<c:param name="keyword" value="${keyword }" />
-			</c:url>
 			<c:if test="${pi.currentPage ne 1 }">
-				<a href="${url }&currentPage=${pi.currentPage-1 }">[이전]</a>
+				<a onclick="stepPage(-1)">[이전]</a>
 			</c:if>
 
 			<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage}">
-				<a href="${url }&currentPage=${p }">[${p}]</a>
+				<a onclick="page(${p})">[${p}]</a>
 			</c:forEach>
 
 			<c:if test="${pi.currentPage ne pi.maxPage }">
-				<a href="${url }&currentPage=${pi.currentPage+1 }">[다음]</a>
+				<a onclick="page(${1})">[다음]</a>
 			</c:if>
 		</div>
 		
@@ -83,41 +82,40 @@
 </body>
 
 <script>
-	//검색기능
-	document.getElementById('search-box').addEventListener('input', function(event) {
-	  const searchTerm = event.target.value.toLowerCase();
-	  const jobCards = document.querySelectorAll('.job-card');
-	
-	  jobCards.forEach(card => {
-	    const title = card.querySelector('.corporate-name').textContent.toLowerCase();
-	    if (title.includes(searchTerm)) {
-	      card.style.display = '';
-	    } else {
-	      card.style.display = 'none';
-	    }
-	  });
+	$(() => {
+		if("${category}") $('#category').val('${category}');
+		if("${keyword}") $('#search-box').val('${keyword}');
 	});
 
-// 	카테고리 필터
-	$("#category").change(() => {
-		$.ajax({
-			url: 'JobPostListController', type: 'post',
-			success: (tf) => {
-				if(tf != 'false') {
-					location.href = 'JobPostListController?category=' + $("#category").val();
-				} else {
-					alert('요청 실패');
-				}
-			}, error: () => {
-				alert("에러 발생");
-			}
-		});
+	$("#search").click(() => {
+		location.href = 'list.job?keyword=' + $("#search-box").val();
 	});
+
+//  페이징
+	function page(n) {
+		let domain = '${domain}currentPage=' + n;
+		
+		if("${category}") domain += '&category=${category}';
+		if("${keyword}") domain += '&keyword=${keyword}';
+		
+		location.href = domain;
+	}
 	
-	$(() => {
-		if ("${category}") {
-			$("#category").val("${category}");
+	function stepPage(n) {
+		let domain = '${domain}currentPage=' + (${pi.currentPage} + n);
+		
+		if("${category}") domain += '&category=${category}';
+		
+		location.href = domain;
+	}
+
+// 	검색어 입력 후 enter 시
+	$("#search-box").keyup((key) => {
+		if(key.keyCode == 13) {
+			$("#search").click();
 		}
 	});
 </script>
+
+
 </html>
