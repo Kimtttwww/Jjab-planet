@@ -35,46 +35,37 @@ public class JobPostListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		JobPostService service = new JobPostService();
-		
-		System.out.println("list.bo 들어옴?");
-		
-//		// ------페이징처리-------
-		int objCount = service.selectListCount();
+		String category = request.getParameter("category");
+		String keyword = request.getParameter("keyword");
+
 		int currentPage = 1;
-		int pageLimit = 10;
-		int objLimit = 5;
-	
-		PageInfo pi = Pagination.getPageInfo(objCount, currentPage, pageLimit, objLimit);
-		
-		int result = new JobPostService().selectListCount();
-		HttpSession session =request.getSession();
-//		int corpNo = Integer.parseInt(request.getParameter("corpNo"));
-//		System.out.println("list.bo corpNo :" + corpNo);
-		
-		if (result > 0) {
-		ArrayList<JobPost> list = new ArrayList<JobPost> (service.selectList(pi));
-//		JobPost selectOne = service.selectOne(corpNo);
-		
-		request.setAttribute("pi", pi);      
-		request.setAttribute("list", list);
-//		request.setAttribute("selectOne", selectOne);
-		
-		request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingList.jsp").forward(request, response);
-		} else {
-			session.setAttribute("alertMsg", "게시글 상세조회 실패");
+		try {
+			if (category == null || category.equals("")) {category = "A";}
+			if (keyword == null || keyword.equals("")) {keyword = "NULLNULLNULLNULLNULL";}
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		} catch (NumberFormatException e) {
 		}
-		
-		
-		
-		
+	
+		int objCount = service.selectListCount(category, keyword);
+		if (objCount > 0) {
+			PageInfo pi = Pagination.getPageInfo(objCount, currentPage, 10, 1);
+			
+			request.setAttribute("pi", pi);
+			request.setAttribute("category", (category.equals("A") ? "" : category));
+			request.setAttribute("keyword", (keyword.equals("NULLNULLNULLNULLNULL") ? "" : keyword));
+			request.setAttribute("list", service.selectList(pi, category, keyword));
+			
+			request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingList.jsp").forward(request, response);
+		} else {
+			request.getSession().setAttribute("alertMsg", "게시글 상세조회 실패");
+			response.sendRedirect("list.job");
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
-
 }

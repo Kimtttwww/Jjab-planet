@@ -20,7 +20,7 @@
 		    AND CATEGORY = #{category}
 	    </if>
 		<if test='!keyword.equals("NULLNULLNULLNULLNULL")'>
-		    AND POST_CONTENT LIKE '%${keyword}%'
+		    AND (POST_CONTENT LIKE '%${keyword}%' OR POST_TITLE LIKE '%${keyword}%')
 	    </if>
 	</select>
 	

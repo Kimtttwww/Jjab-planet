@@ -13,11 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Data
-//이 VO 이상함!@@
-//ceoName이랑 phone이 왜있는지? 
-//jobNo이랑 jobName이랑 둘다 있는지?
-//createDate는 왜 없는지 -> 내가 추가함
-//VO에 필드명 막추가하지마@@@@ -> 2024.1.4 다연
+
 
 public class JobPost {
 	private int jobpostNo; //JOB_POST

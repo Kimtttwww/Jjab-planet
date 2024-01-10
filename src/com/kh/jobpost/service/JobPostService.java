@@ -1,6 +1,7 @@
 package com.kh.jobpost.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -34,21 +35,29 @@ public class JobPostService {
 	
 	
 
-	public ArrayList<JobPost> selectList(PageInfo pi) {
+	public ArrayList<JobPost> selectList(PageInfo pi, String category, String keyword) {
 		SqlSession session = Template.getSqlSession();
 
-		ArrayList<JobPost> list = dao.selectList(session, pi);
+		HashMap<String, String> h = new HashMap<String, String>();
+		h.put("category", category);
+		h.put("keyword", keyword);
 		
+		ArrayList<JobPost> list = dao.selectList(session, pi, h);
+		
+		session.close();
 		return list;
 	}
 
-	public int selectListCount() {
+	public int selectListCount(String category, String keyword) {
 		SqlSession sqlSession = Template.getSqlSession();
 
-		int listCount = dao.selectListCount(sqlSession);
+		HashMap<String, String> h = new HashMap<String, String>();
+		h.put("category", category);
+		h.put("keyword", keyword);
+		
+		int listCount = dao.selectListCount(sqlSession, h);
 
 		sqlSession.close();
-
 		return listCount;
 	}
 
