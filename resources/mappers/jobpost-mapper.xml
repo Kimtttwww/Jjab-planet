@@ -63,10 +63,11 @@
 			SET CAREER = #{career},
 				EDUCATION = #{education},
 				LOCATION = #{location},
-				JOBPOST_NO = #{jobPostNo},
+				JOB_NO = #{jobNo},
 				END_DATE = #{endDate},
 				POST_TITLE = #{postTitle},
 				POST_CONTENT = #{postContent}
+		WHERE CORP_NO = #{corpNo}
 	</update>
 	
 	<!-- 기업 공고 생성 -->
