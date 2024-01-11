@@ -26,6 +26,7 @@ body {
 	font-size: 20px;
 	margin-top: 20px;
 	margin-bottom: 10px;
+	padding-bottom:30px;
 }
 .top_banner {
     display: flex;

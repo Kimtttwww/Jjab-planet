@@ -31,6 +31,17 @@ body {
 	flex-direction: column;
 }
 
+.list-area h3{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-bottom:30px;
+}
+
 /* 각 알림 */
 .notice-text {
     height: 50px;
@@ -83,10 +94,14 @@ body {
 	font-size: 30px;
 }
 
-.joayo-page-area{
-   text-align: center;
-   width: 100%;
-   margin-top:50px;
+.notice-page-area{
+   	text-align: center;
+   	width: 100%;
+   	padding:30px;
+}
+
+.notice-content hr {
+	border-color: skyblue;
 }
 </style>
 </head>
@@ -119,17 +134,13 @@ body {
 				</div>
 			</section>
 			
-			<div class="joayo-page-area">
+			<div class="notice-page-area">
 				<button class="page">1</button>
 				<button class="page">2</button>
 			</div>
 		</div>
 	</div>
+
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-<script>
-
-	
-
-</script>
 </body>
 </html>

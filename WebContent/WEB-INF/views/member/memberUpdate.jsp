@@ -6,8 +6,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>정보 변경</title>
 <style>
+body {
+    box-sizing: border-box;
+	margin: 0 auto;
+	height: 100%;
+}
+
+.update-area {
+	width: 800px;
+    margin: 0 auto;
+}
+
+.update-area h3{
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-bottom:30px;
+}
+
 .container-update input {
 	border: 1px solid skyblue;
 }
@@ -73,6 +92,7 @@
     border-radius: 20px;
     width: 580px;
     padding: 30px 20px 30px 35px;
+    margin: 100px auto 0 auto;
 } 
 
 .container-update .update-btn {
@@ -155,69 +175,72 @@
 		<div class="side">
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
-		<form action="update.me" method="post" style="margin: 100px auto;">
-			<div class="update-div">
-				<p class="title-p">회원 정보 수정</p>
-				<div>
-					<div>아이디</div>
+		
+		<div class="update-area">
+			<form action="update.me" method="post">
+				<div class="update-div">
+					<p class="title-p">회원 정보 수정</p>
 					<div>
-						<input type="text" name="userId" class="update-email" value="${ loginUser.userId}" disabled>
+						<div>아이디</div>
+						<div>
+							<input type="text" name="userId" class="update-email" value="${ loginUser.userId}" disabled>
+						</div>
 					</div>
-				</div>
-				<div>
-					<div>핸드폰번호</div>
-					<input type="text" name="phone" class="update-phoneBox" maxlength="11" placeholder="(-)제외" required="required">
-				</div>
+					<div>
+						<div>핸드폰번호</div>
+						<input type="text" name="phone" class="update-phoneBox" maxlength="11" placeholder="(-)제외" required="required">
+					</div>
 
-				<div id="corporation-mypageUpdate" class="flex-container">
-					<input type="hidden" name="userType" value="E">
-					<div>
+					<div id="corporation-mypageUpdate" class="flex-container">
+						<input type="hidden" name="userType" value="E">
 						<div>
-							<div>기업명</div>
+							<div>
+								<div>기업명</div>
+							</div>
+							<div>
+								<input type="text" name="corpName" class="update-textL" value="${C.corpName }" minlength="1" maxlength="15">
+							</div>
 						</div>
 						<div>
-							<input type="text" name="corpName" class="update-textL" value="${C.corpName }" minlength="1" maxlength="15">
+							<div>
+								<div>대표자명</div>
+							</div>
+							<div>
+								<input type="text" name="ceoName" class="update-textL" value="${C.ceoName }" minlength="2" maxlength="12">
+							</div>
+						</div>
+						<div>
+							<div>
+								<div>사업자등록번호</div>
+								<!--(XXX-XXXX-XXXX-XX)-->
+							</div>
+							<div>
+								<input type="text" name="corpBn" class="update-textL" value="${C.corpBn }" minlength="16" maxlength="16" placeholder="(-) 포함">
+							</div>
+						</div>
+						<div>
+							<div>
+								<div>회사 주소</div>
+							</div>
+							<div>
+								<input type="text" name="address" value="${C.address }" class="update-textL">
+							</div>
+						</div>
+						<div>
+							<div>
+								<div>회사 홈페이지주소</div>
+							</div>
+							<div>
+								<input type="text" name="homePage" value="${C.homePage }" class="update-textL">
+							</div>
 						</div>
 					</div>
-					<div>
-						<div>
-							<div>대표자명</div>
-						</div>
-						<div>
-							<input type="text" name="ceoName" class="update-textL" value="${C.ceoName }" minlength="2" maxlength="12">
-						</div>
-					</div>
-					<div>
-						<div>
-							<div>사업자등록번호</div>
-							<!--(XXX-XXXX-XXXX-XX)-->
-						</div>
-						<div>
-							<input type="text" name="corpBn" class="update-textL" value="${C.corpBn }" minlength="16" maxlength="16" placeholder="(-) 포함">
-						</div>
-					</div>
-					<div>
-						<div>
-							<div>회사 주소</div>
-						</div>
-						<div>
-							<input type="text" name="address" value="${C.address }" class="update-textL">
-						</div>
-					</div>
-					<div>
-						<div>
-							<div>회사 홈페이지주소</div>
-						</div>
-						<div>
-							<input type="text" name="homePage" value="${C.homePage }" class="update-textL">
-						</div>
+					<div class="update-btnBox">
+						<button type="submit" class="update-btn">수정</button>
 					</div>
 				</div>
-				<div class="update-btnBox">
-					<button type="submit" class="update-btn">수정</button>
-				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
@@ -234,6 +257,8 @@
 		    }
 		});
 	</script>
+	
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 
 </html>

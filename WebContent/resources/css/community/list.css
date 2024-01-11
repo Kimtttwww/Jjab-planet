@@ -7,7 +7,7 @@ body {
 }
 
 square {
-    width: 800px;
+    width: 1000px;
     margin: 0 auto;
     display: block;
 }
@@ -26,10 +26,18 @@ square a {
 
 /* 제목박스 */
 .titlebar {
+	text-align: center;
     width: 350px;
-    text-align: center;
     font-size: 20px;
     margin: 0 auto;
+}
+
+.titlebar h1{
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-bottom:30px;
 }
 
 /* 검색도구 */

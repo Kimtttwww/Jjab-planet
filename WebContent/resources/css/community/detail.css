@@ -105,7 +105,7 @@ square textarea {
 
 /* 게시글 좌측 박스 내부 각 정보들 */
 .post-info span:first-of-type {
-    width: 18%;
+    width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -131,15 +131,15 @@ square textarea {
 .post-info img:first-of-type {
 	max-width: 40px;
     height: 16px;
-    margin-top: 6px;
-    margin-right: -14px;
+    margin-top: 4px;
+    margin-right: -12px;
 }
 
 .post-info img:last-of-type {
 	max-width: 40px;
     height: 16px;
-    margin-top: 5px;
-    margin-right: -28px;
+    margin-top: 2px;
+    margin-right: -26px;
 }
 
 /* 게시글 좌측 박스 내부 제목 */

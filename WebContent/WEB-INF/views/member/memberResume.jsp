@@ -7,15 +7,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>이력서 관리</title>
 <style>
+	body {
+	    box-sizing: border-box;
+		margin: 0 auto;
+		height: 100%;
+	}
 	.main{
 		display:flex;
 	}
 
 	.outer{
-		flex-basis:70%;
-		margin:0 auto;
+		width: 800px;
+		display: block;
+		margin: 0 auto;
+	}
+	
+	.outer h3{
+		font-weight: bold;
+		font-size: 20px;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		padding-bottom:30px;
 	}
 
 	tr td:nth-child(2){
@@ -46,13 +60,12 @@
     width: 170px;
     height: 50px;
     font-size: 18px;
-    background-color: #27ae60;
+    background-color: skyblue;
     color: #fff;
     font-weight: bold;
     border-radius: 5px;
     margin: 30px 0;
     cursor: pointer;
-		
 	}
 </style>
 </head>
@@ -64,7 +77,7 @@
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
 		<div class="outer">
-			<br>
+			<h3>이력서 관리 ></h3>
 			<h1 align="center">이력서</h1>
 			<form action="resume.me" method="post">
 				<table align="center">

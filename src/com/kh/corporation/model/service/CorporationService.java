@@ -12,8 +12,6 @@ import com.kh.corporation.model.dao.CorporationDao;
 import com.kh.corporation.model.vo.Corporation;
 import com.kh.corporation.model.vo.Logo;
 import com.kh.jobpost.model.vo.JobPost;
-import com.kh.member.model.vo.Member;
-import com.kh.member.service.MemberService;
 
 public class CorporationService {
 

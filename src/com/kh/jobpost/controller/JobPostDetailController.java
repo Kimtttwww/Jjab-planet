@@ -12,7 +12,6 @@ import com.kh.corporation.model.service.CorporationService;
 import com.kh.corporation.model.vo.Corporation;
 import com.kh.jobpost.model.vo.JobPost;
 import com.kh.jobpost.service.JobPostService;
-import com.kh.member.model.vo.Member;
 import com.kh.member.service.MemberService;
 
 /**

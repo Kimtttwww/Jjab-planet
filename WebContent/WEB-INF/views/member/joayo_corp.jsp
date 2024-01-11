@@ -14,20 +14,25 @@ body {
 	margin: 0 auto;
 	height: 100%;
 }
+
 .list-content{
     display: flex;
     justify-content: space-around;
     height: 60px;
     align-items: center;
+    border-top: 1px solid skyblue;
 }
+
 .joayo-area{
     width: 800px;
     margin: 0 auto;
 }
+
 .mypage3_title-box{
     margin-top: 40px;
     font-size: 25px;
 }
+
 /*관심기업 star이미지*/
 .joayo-star_img {
     width: 30px;
@@ -42,12 +47,12 @@ body {
 	height: 400px;
 }
 
-
 /*페이지네이션 버튼*/
 .joayo-page-area{
     text-align: center;
     width: 100%;
-    margin-top:50px;
+    border-top: 1px solid skyblue;
+    padding: 30px; 
 }
 
 </style>
@@ -89,7 +94,6 @@ body {
 							src="${contextPath}/resources/images/star.png">
 						</div>
 					</div>
-					<hr>
 					</c:forEach>
 				</div>
 				<div class="joayo-page-area">
