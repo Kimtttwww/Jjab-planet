@@ -14,15 +14,25 @@ body {
 	margin: 0 auto;
 	height: 100%;
 }
+
 .list-content{
     display: flex;
     justify-content: space-around;
     height: 60px;
     align-items: center;
+    border-top: 1px solid skyblue;
 }
 .joayo-area{
     width: 800px;
     margin: 0 auto;
+}
+
+.mypage3_title h3{
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-bottom:30px;
 }
 
 /*관심기업 star이미지*/
@@ -44,7 +54,8 @@ body {
 .joayo-page-area{
     text-align: center;
     width: 100%;
-    margin-top:50px;
+    border-top: 1px solid skyblue;
+    padding: 30px; 
 }
 
 </style>
@@ -63,8 +74,7 @@ body {
 		
 		<div class="joayo-area">
 			<div class="mypage3_title">
-				<h3 style="padding: 20px 0;">관심기업 리스트</h3>
-				<hr>
+				<h3>관심 기업 리스트 ></h3>
 			</div>
 			<div class="mypage3_content">
 					<input type="hidden" name="corpNo" value="${p.corpNo}" />
@@ -87,7 +97,6 @@ body {
 							src="${contextPath}/resources/images/star.png">
 						</div>
 					</div>
-					<hr>
 					</c:forEach>
 				</div>
 				<div class="joayo-page-area">

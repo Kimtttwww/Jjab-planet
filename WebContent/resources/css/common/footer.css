@@ -9,6 +9,10 @@ html, body {
 	background-color: rgb(241, 241, 241);
 	margin: 60px auto 0 auto;
 	border-top: 2px solid #eee;
+    padding: 10px;
+    box-sizing: border-box;
+    max-width: 1200px;
+    
 }
 
 .footer_div1 {

@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .container-enroll input {
@@ -30,9 +31,27 @@ body {
     border-radius: 5px;
 }
 
+/*이메일 셀렉트 박스 css*/
+.container-enroll .email-selectBox {
+	width:120px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid skyblue;
+    outline-color: skyblue;
+}
+
+/*핸드폰 셀렉트 박스 css*/
+.container-enroll .phone-selectBox {
+	width:75px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid skyblue;
+    outline-color: skyblue;
+}
+
 .container-enroll .enroll-phoneBox {
     /*입력 정보 인풋태그 text*/
-    width: 490px;
+    width: 482px;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
@@ -55,13 +74,6 @@ body {
 }
 
 
-.container-enroll .enroll-selectBox {
-    /*셀렉트 박스 css*/
-    border-radius: 5px;
-    padding: 9px;
-    border: 1px solid skyblue;
-    outline-color: skyblue;
-}
 
 .container-enroll .enroll-div{
     /*입력 정보 감싸는 틀*/

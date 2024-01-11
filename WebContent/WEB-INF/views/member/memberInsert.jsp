@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
+<title>회원가입</title>
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/common/memberInsert.css">
 <!-- sha256 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
@@ -28,7 +28,7 @@
 				<input type="text" name="userId" class="enroll-email" placeholder="이메일을 입력하세요."> 
 				<span>@</span> 
 				<input disabled id="selectText" class="email-selectText" name="email-text" placeholder="이메일을 선택하세요."> 
-				<select id="selectId" name="email-selectText" class="enroll-selectBox enroll-selectEmail">
+				<select id="selectId" name="email-selectText" class="email-selectBox enroll-selectEmail">
 					<option value="" disabled selected>E-Mail 선택</option>
 					<option value="naver.com" >naver.com</option>
 					<option value="gmail.com" >gmail.com</option>
@@ -47,7 +47,7 @@
 			</div>
 			<div>
 				<div id="phone">핸드폰 번호*</div>
-				<select id="selectPhone" name="pphone" class="enroll-selectBox">
+				<select id="selectPhone" name="pphone" class="phone-selectBox">
 					<option value="010">010</option>
 					<option value="011">011</option>
 					<option value="016">016</option>

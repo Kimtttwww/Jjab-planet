@@ -26,31 +26,36 @@ body {
 	font-size: 20px;
 	margin-top: 20px;
 	margin-bottom: 10px;
+	padding-bottom:30px;
 }
 .top_banner {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;	
+	padding: 0 31px;
 }
 
 .top_b3 {
-	flex-basis: 20%;
+	width: 252px;
+	cursor: pointer;
 	height: 290px;
-	margin: 9px;
+	margin: 30px;
 	border-radius: 20px;
 	justify-content: space-between;
 	border: 1px solid skyblue;
+	overflow: hidden;
 }
 
  .top_b3 img{ 
-     width : 230px; 
+     width : 250px; 
      height: 120px; 
      border-radius: 20px 20px 0 0;
      margin-bottom: -4px; 
 } 
 .corp-logo{
 	width : 230px; 
-    height: 120px; 
+    min-height: 103px; 
+    max-height: 120px; 
 }
 .corp_maincontent{
 	position: relative;

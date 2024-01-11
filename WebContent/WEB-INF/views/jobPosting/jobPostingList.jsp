@@ -16,7 +16,7 @@
 
 	<div class="head-container">
 
-		<h1 class="head-container-h1">채 용 공 고</h1>
+		<h1 class="head-container-h1">채용공고  ></h1>
 
 		<header class="jobPostList-header">
 			<select id="category">
@@ -31,13 +31,11 @@
 			</div>
 		</header>
     <main>
-      <section class="job-listing" style="margin-bottom: 40px;"><!-- 일단여기에 css적용 -->
+      <section class="job-listing"><!-- 일단여기에 css적용 -->
 			<c:forEach var="p" items="${list }">
 				<div class="job-card" onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
-					<div class="job-card-img">
-						<img  onclick='location.href="detail.corp?corpNo=${p.corp.corpNo}"' 
+						<img class="job-card-img" onclick='location.href="detail.corp?corpNo=${p.corp.corpNo}"' 
 						src="${jjap}/${Logo.FILE_PATH}${p.corp.logo.changeName}" alt="기업 대표이미지">
-					</div>
 					
 					<div class="job-info">
 						<h3 class="job-offer-title">${p.postTitle }</h3>

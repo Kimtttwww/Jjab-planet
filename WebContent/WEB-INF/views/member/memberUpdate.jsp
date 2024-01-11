@@ -6,19 +6,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>정보 변경</title>
 <style>
 body {
-    margin: 0;
-    padding: 0;
+    box-sizing: border-box;
+	margin: 0 auto;
+	height: 100%;
+}
+
+.update-area {
+	width: 800px;
+    margin: 0 auto;
+}
+
+.update-area h3{
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-bottom:30px;
 }
 
 .container-update input {
-	border: 1px solid #27ae60;
+	border: 1px solid skyblue;
 }
 
 .container-update input:focus{
-    outline-color: #27ae60;
+    outline-color: skyblue;
 }
 
 .container-update {
@@ -67,13 +81,13 @@ body {
     /*셀렉트 박스 css*/
     border-radius: 5px;
     padding: 9px;
-    border: 1px solid #27ae60;
-    outline-color: #27ae60;
+    border: 1px solid skyblue;
+    outline-color: skyblue;
 }
 
 .container-update .update-div{
     /*입력 정보 감싸는 틀*/
-    border: 4px solid #27ae60;
+    border: 4px solid skyblue;
     padding-left: 20px;
     border-radius: 20px;
     width: 580px;
@@ -82,7 +96,7 @@ body {
 
 .container-update .update-btn {
     /*가입 버튼*/
-    background-color: #27ae60;
+    background-color: skyblue;
     color: #fff;
     border: none;
     padding: 15px 30px;
@@ -124,7 +138,7 @@ body {
 }
 
 .expand-green {
-    background-color: #27ae60; 
+    background-color: skyblue; 
     border: none;
     color: #fff;
     width: 50%;
@@ -132,8 +146,8 @@ body {
 
 .contract-white {
     background-color: #ffff; 
-    border: 3px solid #27ae60; 
-    color: #27ae60;
+    border: 3px solid skyblue; 
+    color: skyblue;
     width: 50%;
 }
 
@@ -160,7 +174,11 @@ body {
 		<div class="side">
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
-		<form action="update.me" method="post" style="margin: 100px auto;">
+		
+		<div class="update-area">
+			<h3>정보 변경 ></h3>
+		
+		<form action="update.me" method="post">
 			<div class="update-div">
 				<p class="title-p">회원 정보 수정</p>
 				<div>
@@ -223,6 +241,7 @@ body {
 				</div>
 			</div>
 		</form>
+		</div>
 	</div>
 	
 	<script>
@@ -257,7 +276,7 @@ $(document).ready(function () {
 
 	</script>
 	
-	
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 
 </html>

@@ -67,6 +67,8 @@
 			</c:forEach>
         </section>
     </square>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    
     <script>
     	const asdf = '${loginUser.userId}';
     	$(() => {

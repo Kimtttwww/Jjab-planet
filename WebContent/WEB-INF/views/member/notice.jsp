@@ -31,6 +31,17 @@ body {
 	flex-direction: column;
 }
 
+.list-area h3{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-bottom:30px;
+}
+
 /* 각 알림 */
 .notice-text {
 	height: 50px;
@@ -77,10 +88,15 @@ body {
 	font-size: 30px;
 }
 
-.joayo-page-area{
-   text-align: center;
-   width: 100%;
-   margin-top:50px;
+.notice-content-area {
+	border-top: 1px solid skyblue;
+}
+
+.notice-page-area{
+   	text-align: center;
+   	width: 100%;
+	border-top: 1px solid skyblue;
+   	padding:30px;
 }
 </style>
 </head>
@@ -92,8 +108,7 @@ body {
 		</div>
 		<div class="notice-all">
 			<section class="list-area">
-				<h3 style="padding: 20px 0;">알림 관리</h3>
-				<hr>
+				<h3>알림 관리 ></h3>
 				<div class="notice-content-area">
 				
 					<c:if test="${empty notice}">
@@ -111,7 +126,7 @@ body {
 				</div>
 			</section>
 			
-			<div class="joayo-page-area">
+			<div class="notice-page-area">
 				<button class="page">1</button>
 				<button class="page">2</button>
 			</div>
