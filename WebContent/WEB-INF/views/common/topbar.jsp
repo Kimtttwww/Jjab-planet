@@ -15,6 +15,12 @@
 }
 * {
     box-sizing: border-box;
+    font-family: 'SOYOMapleBoldTTF';
+}
+
+a {
+	text-decoration-line: none;
+	color: black;
 }
 
 body {

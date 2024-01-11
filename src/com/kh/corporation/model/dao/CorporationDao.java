@@ -102,6 +102,8 @@ public class CorporationDao {
 		
 		return sqlSession.update("boardMapper.updateReview", map);
 	}
+	
+	
 
 	public int deleteReview(SqlSession sqlSession, HashMap<String, Integer> map) {
 
@@ -115,6 +117,17 @@ public class CorporationDao {
 	public int noticeReview(SqlSession sqlSession, int corpCode) {
 		return sqlSession.insert("boardMapper.noticeReview", corpCode);
 	}
+
+//	해보자구
+	public boolean corporationUpdate(SqlSession sqlSession, JobPost j) {
+		return sqlSession.update("jobpostMapper.updatePost", j) > 0;
+	}
+
+	public boolean insertPost(SqlSession sqlSession, JobPost j) {
+		return sqlSession.insert("jobpostMapper.insertPost", j) > 0;
+	}
+	
+
 
 
 	

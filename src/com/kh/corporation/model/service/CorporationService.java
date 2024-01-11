@@ -12,6 +12,8 @@ import com.kh.corporation.model.dao.CorporationDao;
 import com.kh.corporation.model.vo.Corporation;
 import com.kh.corporation.model.vo.Logo;
 import com.kh.jobpost.model.vo.JobPost;
+import com.kh.member.model.vo.Member;
+import com.kh.member.service.MemberService;
 
 public class CorporationService {
 
@@ -254,8 +256,43 @@ public class CorporationService {
 		return result;
 	}
 
+	//민구 작성중
+	public boolean updateMyPageJobService(JobPost j) {
+		
+		
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		boolean result = corpDao.corporationUpdate(sqlSession, j);
+		
+		if(result) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
+		return result;
+	}
 
-
-
-
+	public boolean insertPost(JobPost j) {
+		SqlSession sqlSession = Template.getSqlSession();
+		
+		boolean result = corpDao.insertPost(sqlSession, j);
+		
+		if(result) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result;
+	}
+	
+	
 }
+
+
+
+
+
+

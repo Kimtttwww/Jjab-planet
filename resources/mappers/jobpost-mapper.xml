@@ -57,6 +57,44 @@
 		AND J.STATUS = 'Y'
 	</select>
 	
+	<!-- 공고 고치기 강민구-->
+	<update id="updatePost" parameterType = 'jobPost'>
+		UPDATE JOB_POST
+			SET CAREER = #{career},
+				EDUCATION = #{education},
+				LOCATION = #{location},
+				JOBPOST_NO = #{jobPostNo},
+				END_DATE = #{endDate},
+				POST_TITLE = #{postTitle},
+				POST_CONTENT = #{postContent}
+	</update>
+	
+	<!-- 기업 공고 생성 -->
+		<insert id="insertPost" parameterType = 'jobPost'>
+		INSERT INTO job_post(
+				JOBPOST_NO,
+				CORP_NO,
+				POST_TITLE,
+				POST_CONTENT,
+				END_DATE,
+				JOB_NO,
+				CAREER,
+				EDUCATION,
+				"LOCATION"
+			)
+			VALUES(
+				SEQ_JOB_POSTNO.nextval,
+				#{corpNo},
+				#{postTitle},
+				#{postContent},
+				#{endDate},
+				#{jobNo},
+				#{career},
+				#{education},
+				#{location}
+			)
+	</insert>
+	
 		<!-- 공고 상세보기 -->
 	<select id="corpPostOne" resultMap='postResultSet'>
 		SELECT
