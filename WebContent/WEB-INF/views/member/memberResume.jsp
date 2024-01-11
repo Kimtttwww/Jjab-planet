@@ -24,6 +24,7 @@
 
 	td {
 		padding : 20px;
+		font-size: 20px;
 	}
 
 	td>input[type=text]{
@@ -40,6 +41,18 @@
 		border-width : 0 0 1px;
 		border-color:#eee;
 		padding : 10px;
+	}
+	.update-btn{
+    width: 170px;
+    height: 50px;
+    font-size: 18px;
+    background-color: #27ae60;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 30px 0;
+    cursor: pointer;
+		
 	}
 </style>
 </head>

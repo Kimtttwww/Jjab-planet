@@ -4,13 +4,52 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>관심 기업 리스트</title>
+<style>
+body {
+	box-sizing: border-box;
+	margin: 0 auto;
+	height: 100%;
+}
+.list-content{
+    display: flex;
+    justify-content: space-around;
+    height: 60px;
+    align-items: center;
+}
+.joayo-area{
+    width: 800px;
+    margin: 0 auto;
+}
+
+/*관심기업 star이미지*/
+.joayo-star_img {
+    width: 30px;
+}
+
+/*기업 로고 이미지*/
+.joayo-corp_logo{
+    width: 80px;
+}
+
+.mypage3_content{
+	height: 400px;
+}
+
+
+/*페이지네이션 버튼*/
+.joayo-page-area{
+    text-align: center;
+    width: 100%;
+    margin-top:50px;
+}
+
+</style>
 <link rel="stylesheet"
-	href="${ pageContext.request.contextPath }/resources/css/joayo_corp.css"
+	href="${contextPath}/resources/css/joayo_corp.css"
 	type="text/css">
 </head>
 
@@ -21,9 +60,11 @@
 		<div class="side">
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
-		<div class="mypage3 content">
+		
+		<div class="joayo-area">
 			<div class="mypage3_title">
-				<h3>관심기업 리스트</h3>
+				<h3 style="padding: 20px 0;">관심기업 리스트</h3>
+				<hr>
 			</div>
 			<div class="mypage3_content">
 					<input type="hidden" name="corpNo" value="${p.corpNo}" />
@@ -33,28 +74,25 @@
 					</c:if>
 					<c:forEach var="p" items="${list}">
 					
-					<ul>
-						<li class="li_no1">${p.joayoNo }</li>
-						<li><img class="corp_logo"
-							src="${contextPath}/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
-						</li>
-						<li>${p.corpName }</li>
-						<li class="li_last"><img class="star_img"
-							src="${contextPath}/resources/images/star.png"
-							alt=""></li>
-					</ul>
+					<div class="list-content">
+						<div style="width: 50% padding-left:20px ;">
+							<img class="joayo-corp_logo"
+								src="${contextPath}/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
+						</div>
+						<div style="width: 40%;" align="center">
+							<p style="font-size: 18px;">${p.corpName}</p>
+						</div>
+						<div style="width: 10%;">
+							<img class="joayo-star_img"
+							src="${contextPath}/resources/images/star.png">
+						</div>
+					</div>
+					<hr>
 					</c:forEach>
 				</div>
-				<div class="page-area">
-					<div id="page-area">
-						<button class="prev">이전</button>
-						<button class="page">1</button>
-						<button class="page">2</button>
-						<button class="page">3</button>
-						<button class="page">4</button>
-						<button class="page">5</button>
-						<button class="page">다음</button>
-					</div>
+				<div class="joayo-page-area">
+					<button class="page">1</button>
+					<button class="page">2</button>
 				</div>
 			</div>
 		</div>

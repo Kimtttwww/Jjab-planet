@@ -175,7 +175,7 @@
 	<!-- 기업리뷰 등록됐을때 기업에게 알림 -->
 	<insert id="noticeReview" parameterType="notice">
 		INSERT INTO NOTICE
-		VALUES(SEQ_NOTICENO.NEXTVAL, #{corpCode}, 7 )
+		VALUES(SEQ_NOTICENO.NEXTVAL, #{corpCode}, 6 )
 	</insert>
 	<!-- 다연 사용중 -->
 	
