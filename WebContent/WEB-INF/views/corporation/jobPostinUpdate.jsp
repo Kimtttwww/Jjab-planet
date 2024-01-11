@@ -100,69 +100,74 @@
 </head>
 <body>
 	<jsp:include page="../common/topbar.jsp"/>
-	<form action="mypage.me" method="post" style="margin: 100px auto;">
-		<div class="square">
-			<div class="content-container">
-				<div class="job-detail">
-					<span class="post-title">${p.corp.corpName}</span>
-					<span class="post-title">공고명: <input type="text" name="postTitle" class="update-textL" value="${p.postTitle}"></span>
-				</div>
-				<hr>
-				
-				<section class="application-form">
-					<p class="post-content">채용 공고 수정</p> <br><br>
-					<span class="post-content">공고내용: <input type="text" name="postContent" class="update-textL"  value="${p.postContent}"></span>
-				</section> 
-				
-				<section class="application-form">
-					<p class="post-content">* 지원자격</p>
-					<div class="application-guide-span">
-						<div>
-							<span>경력 : <input type="text" name="career" class="update-textL" value="${p.career}"></span>
-							<span>학력 : <input type="text" name="education" class="update-textL" value="${p.education}"></span>
-						</div>
-						<div>
-							<span>직종 : <input type="text" name="jobName" class="update-textL" value = "${p.jobName}"></span>
-							<span>지원구분 : <select name="jobNo" id="jobNo" class="update-textL">
-								<c:choose>
-									<c:when test="${p.jobNo eq 'S'}">
-										<option value="S" selected>풀스택</option>
-									</c:when>
-									<c:when test="${p.jobNo eq 'B'}">
-										<option value="B" selected>백엔드</option>
-									</c:when>
-									<c:when test="${p.jobNo eq 'F'}">
-		 								<option value="F" selected>프론트엔드</option>
-									</c:when>
-									<c:otherwise>
-						                <option value="S">풀스택</option>
-						                <option value="B">백엔드</option>
-						                <option value="F">프론트엔드</option>
-						            </c:otherwise>
-						        </c:choose>
-						    </select>
-	<!-- 					이쪽부분에서 {p.jobNo} 값을 불러야와야하는데 어떻게 해야할지 모르겠음 -->
-							</span>
-							<span>지역 : <input type="text" name="loation" class="update-textL" value="${p.location}"></span>
-						</div>
+	<div style="display: flex;">
+		<div class="side">
+			<jsp:include page="/WEB-INF/views/common/menubar.jsp"></jsp:include>
+		</div>
+		<form action="mypage.me" method="post" style="margin: 50px auto 0 auto;">
+			<div class="square">
+				<div class="content-container">
+					<div class="job-detail">
+						<span class="post-title">${p.corp.corpName}</span>
+						<span class="post-title">공고명: <input type="text" name="postTitle" class="update-textL" value="${p.postTitle}"></span>
 					</div>
-				</section>
-				
-				<section class="application-form">
-					<p class="post-content">* 세부사항</p>
-					<div class="application-guide-span">
-							<span>채용마감일 :  <input type="text" name="endDate" class="update-textL" value="${p.endDate}"></span>
-							<span>대표 : ${p.corp.ceoName}</span>
-							<span>문의 : ${p.phone}</span>
+					<hr>
+					
+					<section class="application-form">
+						<p class="post-content">채용 공고 수정</p> <br><br>
+						<span class="post-content">공고내용: <input type="text" name="postContent" class="update-textL"  value="${p.postContent}"></span>
+					</section> 
+					
+					<section class="application-form">
+						<p class="post-content">* 지원자격</p>
+						<div class="application-guide-span">
+							<div>
+								<span>경력 : <input type="text" name="career" class="update-textL" value="${p.career}"></span>
+								<span>학력 : <input type="text" name="education" class="update-textL" value="${p.education}"></span>
+							</div>
+							<div>
+								<span>직종 : <input type="text" name="jobName" class="update-textL" value = "${p.jobName}"></span>
+								<span>지원구분 : <select name="jobNo" id="jobNo" class="update-textL">
+									<c:choose>
+										<c:when test="${p.jobNo eq 'S'}">
+											<option value="S" selected>풀스택</option>
+										</c:when>
+										<c:when test="${p.jobNo eq 'B'}">
+											<option value="B" selected>백엔드</option>
+										</c:when>
+										<c:when test="${p.jobNo eq 'F'}">
+			 								<option value="F" selected>프론트엔드</option>
+										</c:when>
+										<c:otherwise>
+							                <option value="S">풀스택</option>
+							                <option value="B">백엔드</option>
+							                <option value="F">프론트엔드</option>
+							            </c:otherwise>
+							        </c:choose>
+							    </select>
+		<!-- 					이쪽부분에서 {p.jobNo} 값을 불러야와야하는데 어떻게 해야할지 모르겠음 -->
+								</span>
+								<span>지역 : <input type="text" name="loation" class="update-textL" value="${p.location}"></span>
+							</div>
+						</div>
+					</section>
+					
+					<section class="application-form">
+						<p class="post-content">* 세부사항</p>
+						<div class="application-guide-span">
+								<span>채용마감일 :  <input type="text" name="endDate" class="update-textL" value="${p.endDate}"></span>
+								<span>대표 : ${p.corp.ceoName}</span>
+								<span>문의 : ${p.phone}</span>
+						</div>
+					</section>
+					
+					<div class="update-btnBox">
+							<button type="submit" class="update-btn">수정 및 등록</button>
 					</div>
-				</section>
-				
-				<div class="update-btnBox">
-						<button type="submit" class="update-btn">수정 및 등록</button>
 				</div>
 			</div>
-		</div>
-	</form>
+		</form>
+	</div>
 	
 	<script type="text/javascript">
 		function apply(corpNo) {
