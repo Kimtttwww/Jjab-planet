@@ -24,7 +24,10 @@ body {
     width: 800px;
     margin: 0 auto;
 }
-
+.mypage3_title-box{
+    margin-top: 40px;
+    font-size: 25px;
+}
 /*관심기업 star이미지*/
 .joayo-star_img {
     width: 30px;
@@ -62,9 +65,8 @@ body {
 		</div>
 		
 		<div class="joayo-area">
-			<div class="mypage3_title">
-				<h3 style="padding: 20px 0;">관심기업 리스트</h3>
-				<hr>
+			<div class="mypage3_title-box">
+				<p class="joayo-title">관심기업 리스트</p>
 			</div>
 			<div class="mypage3_content">
 					<input type="hidden" name="corpNo" value="${p.corpNo}" />

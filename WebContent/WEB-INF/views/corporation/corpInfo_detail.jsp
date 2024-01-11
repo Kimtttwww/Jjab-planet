@@ -75,6 +75,10 @@ System.out.println("시작 : "+ loginUser);
 .corp-star{
     border: 1px solid black;
     border-radius: 50px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 /*진행중인 채용공고 입사지원버튼*/
@@ -86,7 +90,8 @@ System.out.println("시작 : "+ loginUser);
     color: #fff;
     border: none;
     cursor: pointer;
-    height: 50px;
+    width: 100px;
+    height: 35px;
 }
 
 .corp_info_a1, .corp_review_a1{
@@ -104,7 +109,10 @@ System.out.println("시작 : "+ loginUser);
     padding: 4px 6px 5px 6px;
     margin: 2px;
 }
-
+.review-btn-box{
+    display: flex;
+    align-items: center;
+}
 .corp-aTag div{
     margin: 0 10px;
 }
@@ -122,7 +130,7 @@ System.out.println("시작 : "+ loginUser);
 }
 
 .corp-info1 {
-    margin-right: 20px;
+    margin-right: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -140,37 +148,46 @@ System.out.println("시작 : "+ loginUser);
     height: 35px;
     border: none;
     background-color: #666060;
-    border-radius: 41px; 
+    border-radius: 41px;
     cursor: pointer;
-    padding: 5px 0 0 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*관심 별 버튼*/
 .corp-interest button {
     border: none;
-    width: 80px;
+    width: 44px;
     height: 35px;
-    border-radius: 41px; 
+    border-radius: 40px;
     font-size: 20px;
     cursor: pointer;
     padding: 0 0 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .corp-home a{
     text-decoration: none;
     color: #fff;
 }
-
+.corp-info-area{
+	height: 200px;
+}
 .corp-backwhite {
     background-color: white;
-    height: 150px;
     display: flex;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #e4e5e7;
+    align-items: stretch;
+    flex-direction: row;
 }
 
 .corp-uppost-area {
-    flex-direction: column;
+    height: 150px;
+    justify-content: space-between;
 }
 
 .corp_hovered {
@@ -209,11 +226,12 @@ System.out.println("시작 : "+ loginUser);
 .corp-review-area {
     background-color: #fff;
     border: 1px solid #eee;
-    padding: 10px;
+    padding: 20px;
 }
 .corp-review-form{
-	display: flex;
+    display: flex;
     justify-content: space-between;
+    margin-right: 20px;
 }
 
 /*기업리뷰 등록버튼*/
@@ -222,22 +240,29 @@ System.out.println("시작 : "+ loginUser);
     border-radius: 5px;
     color: #fff;
     border: none;
+    width: 10%;
+    height: 30px;
     cursor: pointer;
-    padding: 4px 6px 5px 6px;
-    margin-top: 30px;
+    /* padding: 4px 6px 5px 6px; */
+    /* margin-top: 30px; */
 }
 
 /*기업리뷰 작성란 틀*/
 .corp-review-write{
     display: flex;
-      align-items: center;
+    margin: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    /* width: 100%; */
 }
 
 /*기업 리뷰 작성 박스*/
 #writeBox1 {
     resize: none;
-      margin: 20px 10px 20px 20px;
-      border: 1px solid #eee;
+    margin: 20px;
+    border: 1px solid #eee;
+    width: 85%;
+    height: 100px;
 }
 
 #writeBox1:focus{
@@ -323,12 +348,14 @@ System.out.println("시작 : "+ loginUser);
     flex-direction: column;
     justify-content: space-evenly;
 }
-
-.corp-uppost-area{
-    flex-direction: row;
+.corp-post-area2{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-end;
+	
 }
+
 
 .review-detail::after {
   content: "";
@@ -353,7 +380,7 @@ System.out.println("시작 : "+ loginUser);
 							onclick="${contextPath}/detail.corp?corpNo=${corp.corpNo}"
 							src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}" />
 					</div>
-					<div class="corp-name" style="font-size: 35px; font-weight: bold;" >${corp.corpName}</div>
+					<div class="corp-name" style="font-size: 30px; font-weight: bold;" >${corp.corpName}</div>
 				</div>
 				<div class="corp-interest">
 					<div class="corp-star">
@@ -407,8 +434,12 @@ System.out.println("시작 : "+ loginUser);
 							<span>${jobPost.postTitle}</span>
 							<span>직종 : ${jobPost.jobName}</span>
 						</div>
-						<div class="corp-post-area" align="right">
-							<button class="apply-btn">공고보기</button>
+						<div class="corp-post-area2" >
+						<form action="detail.job?corpNo=${corp.corpNo}" method="post">
+							<input type="hidden" name="bno" value="${jobPost.jobpostNo}" >
+						
+							<button class="apply-btn" onclick='location.href="${contextPath}/detail.job?corpNo=${corp.corpNo}"'>공고보기</button>
+						</form>
 							<div>공고등록일 : ${jobPost.createDate}</div>
 						</div>
 					</c:otherwise>
@@ -420,7 +451,7 @@ System.out.println("시작 : "+ loginUser);
 			<div class="corp-review-form">
 				<div class="corp_review_a2 corp-titleFont">| 기업리뷰</div>
 
-				<div align="right">
+				<div class="review-btn-box" >
 					<button class="review-btn" onclick="popup_btn()">리뷰작성하기</button>
 				</div>
 			</div>
@@ -480,7 +511,7 @@ System.out.println("시작 : "+ loginUser);
 				<div class="corp-review-write">
 					<input type="hidden" name="corpNo" value="${corp.corpNo}">
 					<input type="hidden" name="rno" id="rnoHidden">
-					<textarea name="writeBox" id="writeBox1" cols="100" rows="4" readonly
+					<textarea name="writeBox" id="writeBox1" readonly
 						style="resize: none; ">리뷰를 작성해주세요.</textarea>
 					<button id="insert-btn">등록하기</button>
 				</div>
@@ -547,6 +578,8 @@ System.out.println("시작 : "+ loginUser);
 			if (result === 'true') {
 				console.log("취소됨");
 				$(".likeCount").text(currentLikeCount - 1);
+				$(".corp-star").css('color', 'black');
+				$(".corp-star").css('background', 'white');
 				$("#likeCorp").css('color', 'black');
 				$("#likeCorp").css('background', 'white');
 				currentLikeCount--;
@@ -555,6 +588,8 @@ System.out.println("시작 : "+ loginUser);
 			else {
 				console.log("등록됨");
 				$(".likeCount").text(currentLikeCount + 1);
+				$(".corp-star").css('color', 'red');
+				$(".corp-star").css('background', 'yellow');
 				$("#likeCorp").css('color', 'red');
 				$("#likeCorp").css('background', 'yellow');
 				currentLikeCount++;
@@ -570,13 +605,13 @@ System.out.println("시작 : "+ loginUser);
 
 			// 데이터가 존재함 -> 찜이 되어 있따.
 			if (result === 'true') {
-				$("#likeCorp").css('color', 'red');
-				$("#likeCorp").css('background', 'yellow');
+				$(".corp-star").css('color', 'red');
+				$(".corp-star").css('background', 'yellow');
 			}
 			// 데이터가 존재하지 않는다 -> 찜안되어 있음
 			else {
-				$("#likeCorp").css('color', 'black');
-				$("#likeCorp").css('background', 'white');
+				$(".corp-star").css('color', 'black');
+				$(".corp-star").css('background', 'white');
 			}
 		}).catch(error => {
 			console.log(error);

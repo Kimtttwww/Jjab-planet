@@ -22,34 +22,37 @@
 		<div class="top_banner">
 			<c:forEach var="p" items="${first}">
 				<section class="top_b1" onclick='location.href="detail.job?bno=${p.jobpostNo}"'>
-					<article>
+					<article class="top_b1-1">
 						<img src="${ project }/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
 					</article>
-					<article>
+					<article class="top_b1-2">
 						<span>${p.corp.corpName}</span>
 						<span>${p.postTitle}</span>
-						<span class="content_bottom">
+						<p class="content_bottom">
 							<img class ="hit" src="${project}/resources/images/hits_icon.png">
 							${p.count}
-						</span>		
+						</p>		
 					</article>
 				</section>
 			</c:forEach>
 		</div>
 		
+		
 		<!--top_banner-->
-
-		<div class="content_title"><a href="list.job" class="content_title">최신 공고 &gt;</a></div>
+		<div class="content_title">
+			<a href="list.job" class="content_title">최신 공고 &gt;</a>
+		</div>
+		
 		<div class="new_banner_content">
 			<c:forEach var="p" items="${second}">
 				<div class="new_banner" onclick='location.href="detail.job?bno=${p.jobpostNo}"'>
-					<article>
+					<article class="new_banner-1">
 						<img src="${ project }/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
 					</article>
-					<article>
+					<article class="new_banner-2">
 						<span>${p.corp.corpName}</span>
 						<span>${p.postTitle }</span>
-						<span class="content_bottom">${p.jobName }</span>
+						<p class="content_bottom">${p.jobName }</p>
 					</article>
 				</div>
 			</c:forEach>
