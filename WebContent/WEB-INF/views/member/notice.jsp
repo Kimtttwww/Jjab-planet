@@ -14,14 +14,14 @@ body {
 	height: 100%;
 }
 
-.notice-all hr {
-	width: 100%;
+.notice-all {
+    width: 800px;
+    display: block;
+    margin: 0 auto;
 }
 
-.notice-all {
-	width: 800px;
-	display: block;
-	margin: 0 auto;
+.notice-all hr {
+	width: 100%;
 }
 
 /* 알림 리스트 */
@@ -33,10 +33,14 @@ body {
 
 /* 각 알림 */
 .notice-text {
-	height: 50px;
-	position: relative;
-	text-align: center;
-	margin: 5px 0;
+    height: 50px;
+    position: relative;
+    text-align: center;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 /* 각 알림의 버튼 */
@@ -63,14 +67,16 @@ body {
 	display: flex;
    	justify-content: flex-start;
 }
-
-.notice-content{
-	margin: 30px 0;
-	display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.notice-title-area{
+    margin-top: 40px;
+    font-size: 25px;
+}
+.notice-content-area{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     justify-content: space-evenly;
-    align-items: center;
+    align-content: center;
 }
 
 .notice-content-area>p{
@@ -92,8 +98,9 @@ body {
 		</div>
 		<div class="notice-all">
 			<section class="list-area">
-				<h3 style="padding: 20px 0;">알림 관리</h3>
-				<hr>
+				<div class="notice-title-area">
+					<p>알림 관리</p>
+				</div>
 				<div class="notice-content-area">
 				
 					<c:if test="${empty notice}">
@@ -101,10 +108,11 @@ body {
 					</c:if>
 					<c:forEach var="p" items="${notice}">
 						<form action="noticeDelete.me" method="get" class="notice-content"> 
-							<!-- 서블릿 이동 -->
+							<div class="notice-text">
 							<input type = "hidden" name = "deletenotice" value = "${p.noticeNo}">
-							<p align="center">${p.noticeText}</p>
-							<button type="submit" class="">삭제</button>
+								<p style="width: 60%">${p.noticeText}</p>
+								<button style="width: 10%" type="submit" class="">삭제</button>
+							</div>	
 							<hr>
 						</form>
 					</c:forEach>

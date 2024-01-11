@@ -10,13 +10,14 @@
 <style>
 .main {
 	display: flex;
-	height: 2000px;
+	height: 100%;
 }
 
-.content {
-	width: 1000px;
+.mypage-main-home {
 	height:100%;
-	margin-left: 80px;
+	width: 800px;
+    display: block;
+    margin: 0 auto;
 }
 </style>
 </head>
@@ -27,7 +28,7 @@
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
 		
-		<div class="content">
+		<div class="mypage-main-home">
 			<c:choose>
 				<c:when test="${loginUser.userType eq 'E'}">
 					<jsp:include page="/WEB-INF/views/member/notice.jsp" />
