@@ -50,7 +50,6 @@ public class InterestCorpListController extends HttpServlet {
 		PageInfo pi = Pagination.getPageInfo(objCount, currentPage, pageLimit, objLimit);
 		
 		ArrayList<JoayoCorp> list = icService.selectList(pi, userNo);
-//		ArrayList<Corporation> corp = new CorporationService().selectCorpOne(corpNo);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);

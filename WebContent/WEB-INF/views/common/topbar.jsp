@@ -7,6 +7,12 @@
 	<meta charset="UTF-8">
 	<title>Topbar</title>
 <style>
+@font-face {
+    font-family: 'SOYOMapleBoldTTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
 * {
     box-sizing: border-box;
 }
@@ -20,15 +26,18 @@ body {
 	bottom: 0;
 	resize: none;
 }
-
-.menu-area {
+.topbar-menu-area >*{
+	font-family: 'SOYOMapleBoldTTF';
+	
+}
+.topbar-menu-area {
     display: flex;
 	flex-direction: row;
 	align-items: center;
 	width: 100%;
-	height: 60px;
+	height: 80px;
 	vertical-align: middle;
-	font-size: default;
+	font-size: large;
 	font-weight: bold;
 	justify-content: space-between;
 	position: sticky;
@@ -73,6 +82,7 @@ body {
 .menu-left {
 	display: flex;
 	height: 100%;
+	width: 55%;
 	align-items: center;
 	text-align: center;
 	margin: 0;
@@ -88,7 +98,9 @@ body {
 
 .menu-right>a:first-child {
     margin-left: 20px;
+    
 }
+
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -106,7 +118,7 @@ body {
 		});
 	</script>
 
-	<div class="menu-area">
+	<div class="topbar-menu-area">
 		<div class="menu">
 			<div class="menu-left">
 				<a href="${pageContext.request.contextPath}">JJOBPLANET</a>

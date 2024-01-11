@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>커뮤니티</title>
 <link rel="stylesheet" href="${project}/resources/css/community/list.css" type="text/css">
+<link rel="stylesheet" href="${project}/resources/css/common/fontStyle.css" type="text/css">
 </head>
 <body>
 	<jsp:include page="../common/topbar.jsp"/>

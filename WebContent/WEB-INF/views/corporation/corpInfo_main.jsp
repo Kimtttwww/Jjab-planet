@@ -7,13 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>기업정보페이지</title>
+
 <style>
 html,
 body {
 	margin: 0;
 	height: 100%;
 }
-
+*{
+	font-family: 'SOYOMapleBoldTTF';
+}
 .main {
 	max-width: 1000px;
 	margin: 0 auto;
