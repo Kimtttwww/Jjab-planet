@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.corporation.model.service.CorporationService;
+import com.kh.corporation.model.vo.Corporation;
 import com.kh.jobpost.model.vo.JobPost;
 import com.kh.jobpost.service.JobPostService;
+import com.kh.member.model.vo.Member;
 import com.kh.member.service.MemberService;
 
 /**
@@ -95,9 +98,30 @@ public class JobPostDetailController extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
+    	int corpNo = Integer.parseInt(request.getParameter("corpNo")); 
+    	Corporation corp = new CorporationService().selectCorpOne(corpNo);
+    	
+    	int jobpostNo = Integer.parseInt(request.getParameter("bno"));
+    	JobPost p = new JobPostService().detailPost(jobpostNo);
+    	
+        String careerText = convertCareerToText(p.getCareer());
+        String educationText = convertEducationToText(p.getEducation());
+        String locationText = convertLocationToText(p.getLocation());
+        
+        p.setPhone(new MemberService().selectMember(p.getCorpNo()).getPhone());
+        p.setCareer(careerText); // 변환된 텍스트로 다시 설정
+        p.setEducation(educationText); // 변환된 텍스트로 다시 설정
+        p.setLocation(locationText);
+        
+    	request.setAttribute("corp", corp);
+    	request.setAttribute("p", p);
     	
     	
-    	 request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostinUpdate.jsp").forward(request, response);
+    	 request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostingDetail.jsp").forward(request, response);
     	
+
+
+    
+	
     }
 }

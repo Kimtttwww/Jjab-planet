@@ -5,25 +5,11 @@ html, body {
 }
 /*h3 제목과 아래 컨텐츠 맞춤용*/
 .content_title {
-	font-weight: bold;
-	font-size: 20px;
-	margin-top: 20px;
-	margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 30px 0 20px 0;
 }
 
-/* new banner */
-.new_banner_content {
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-}
-
-.new_banner {
-	flex-basis: 30%;
-	border-radius: 5px;
-	border: 2px solid skyblue;
-}
 
 /*all_list 공고 전체*/
 .all_list {
@@ -93,35 +79,35 @@ a {
 	margin: 0 auto;
 }
 
+
 /*최상단 배너*/
-.top_banner {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 20px;
+.top_banner, .new_banner_content{
+    height: 330px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
 }
 
-.top_b1, .top_b1:nth-child(2), .top_b1:nth-child(3) {
-    width: 300px;
+.top_b1 {
     background-color: aquamarine;
+}
+
+.top_b1, .new_banner{
+	height: 330px;
+    position: relative; 
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    cursor: pointer;
     border-radius: 20px;
+    flex-basis: 30%;
+	border: 2px solid skyblue;
+	
 }
 
-.logoBox{
-	margin: 20px;
-}
-
-.content_bottom {
-	text-align: right;
-}
-
-.hit{
-	height: 10px;
-}
-
-.top_b1>article:first-of-type, .new_banner>article:first-of-type {
+.top_b1-1, .new_banner-1{
 	width: 100%;
-	height: 55%;
+	height: 45%;
 	display: flex;
 	justify-content: center;
 	border: 3px solid aquamarine;
@@ -129,28 +115,21 @@ a {
 	padding: 20px 20px 0 20px;
 }
 
-article>img {
-	max-width: 100%;
-	max-height: 100%;
-}
-
-.top_b1>article:nth-of-type(2) {
-    display: flex;
-    flex-direction: column;
-	margin: 25px 20px 0 20px;
-}
-
-.top_b1 span {
-    margin: 0 20px;
+.top_b1 span, .new_banner span{
+    margin: 18px 20px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.top_b1, .new_banner{
-    position: relative; 
-    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
-    cursor: pointer;
+.new_banner-1 {
+	border: 0;
+}
+
+.top_b1-2, .new_banner-2 {
+    display: flex;
+    flex-direction: column;
+	margin: 10px 20px 0 20px;
 }
 
 .top_b1:hover, .new_banner:hover {
@@ -158,13 +137,21 @@ article>img {
     transform: translateY(-5px); 
 }
 
-.new_banner>article:first-of-type {
-	border: 0;
+.content_bottom {
+    text-align: right;
+    padding-top: 5px;
 }
 
-.new_banner>article:nth-of-type(2) {
-    display: flex;
-    flex-direction: column;
-	margin: 25px 20px 0 20px;
-	
+.logoBox{
+	margin: 20px;
+}
+
+article>img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+/* 눈깔img */
+.hit{
+	height: 10px;
 }

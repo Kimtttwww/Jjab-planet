@@ -5,22 +5,26 @@ html, body {
 }
 
 .footer {
-	color: rgb(141, 141, 141);
-	background-color: rgb(241, 241, 241);
-	margin: 60px auto 0 auto;
-	border-top: 2px solid #eee;
+    color: black;
+    background-color: #b6d7e5;
+    margin: 140px auto 0 auto;
+    border-top: 2px solid #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 35px;
 }
 
 .footer_div1 {
-	padding: 10px;
+	padding: 20px;
 	display: flex;
 	justify-content: space-evenly;
 }
 
 .footer a {
-	text-decoration-line: none;
-	color: rgb(141, 141, 141);
-	font-size: xx-small;
+    text-decoration-line: none;
+    color: black;
+    font-size: smaller;
 }
 
 .footer p {

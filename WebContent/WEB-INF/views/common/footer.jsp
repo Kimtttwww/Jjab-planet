@@ -23,12 +23,11 @@
 			<a href="">고객센터</a>
 		</div>
 		<div style="vertical-align: bottom;">
+			<p>JJOB PLANET 고객센터 : 02-2022-2222 (평일 10:00~15:00, 주말,공휴일 휴무)</p> 
+			<p>이메일 : help@jjobplanet.co.kr | FAX 02-2202-3333</p>	
+			
 			<p>
-				사람인 고객센터 02-2025-4733 (평일 09:00~19:00, 주말공휴일 휴무) | 이메일 
-				<a href="#">help@saramin.co.kr</a> | FAX 02-6937-0039
-			</p>
-			<p>
-				프로들과 이야기하자!<a href="#">커뮤니티</a> | 사람인 공식채널 <a href="#">
+				프로들과 이야기하자! <a href="#"> 커뮤니티</a> | JJOB PLANET 공식채널 <a href="#">
 				<img id="youtube_logo" src="${ pageContext.request.contextPath }/resources/images/youtube_logo.png"></a>
 			</p>
 		</div>

@@ -28,29 +28,32 @@ body {
 	margin-bottom: 10px;
 }
 .top_banner {
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;	
+    display: flex;
+    margin: 30px auto;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .top_b3 {
-	flex-basis: 20%;
-	height: 290px;
-	margin: 9px;
-	border-radius: 20px;
-	justify-content: space-between;
-	border: 1px solid skyblue;
+    flex-basis: 25%;
+    height: 290px;
+    margin: 25px;
+    border-radius: 20px;
+    display: flex;
+    border: 1px solid skyblue;
+    flex-direction: column;
 }
 
  .top_b3 img{ 
-     width : 230px; 
-     height: 120px; 
-     border-radius: 20px 20px 0 0;
-     margin-bottom: -4px; 
+    width: 100%;
+    height: 116px;
+    border-radius: 20px 20px 0 0;
 } 
 .corp-logo{
-	width : 230px; 
-    height: 120px; 
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .corp_maincontent{
 	position: relative;
@@ -77,11 +80,14 @@ body {
 }
 
 .content_bottom {
-	position: relative;
-	text-align: right;
-	margin: 0;
-	padding: 10px 15px 15px 0;
-	border-radius: 0 0 20px 20px;
+    position: relative;
+    text-align: right;
+    margin: 0;
+    height: 15%;
+    display: flex;
+    padding-right: 20px;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 #interest-corp{
@@ -102,15 +108,16 @@ body {
 		<div class="top_banner">
 			<c:forEach var="corp" items="${Corplist}">
 			
-				<div class="top_b3">
-					<div class="corp-logo" align="center">
+				<div class="top_b3"
+					onclick='location.href="${contextPath}/detail.corp?corpNo=${corp.corpNo}"'>
+					<div class="corp-logo">
 						<c:choose>
 							<c:when test="${empty corp.logo.changeName}">
 								<p>등록된 이미지가 없습니다. </p>
 							</c:when>
 							<c:otherwise>
-								<img src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}"
-								onclick='location.href="${contextPath}/detail.corp?corpNo=${corp.corpNo}"'>
+								<img class="corp-logo-img" 
+								src="${contextPath}/${Logo.FILE_PATH}${corp.logo.changeName}">
 							</c:otherwise>
 						</c:choose>
 					</div>	
@@ -118,10 +125,10 @@ body {
 						<p style="font-size: 18px; font-weight: bold;">${corp.corpName}</p>
 						<p>${corp.address}</p>
 					</div>
-					<p class="content_bottom">
+					<div class="content_bottom">
 						<img id="interest-corp" src="${contextPath}/resources/images/star.png">
 							${corp.likeCount}
-					</p>
+					</div>
 				</div>
 			</c:forEach>
 		</div>
