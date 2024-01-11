@@ -38,7 +38,7 @@ public class CorpMypageJobController extends HttpServlet {
 		int corpCode = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
 		JobPostService jpService = new JobPostService();
 		JobPost p = jpService.selectOne(corpCode);
-
+//		System.out.println("숫자받는거 확인" + corpCode);
 		if (p != null) {
 			String careerText = convertCareerToText(p.getCareer());
 			String educationText = convertEducationToText(p.getEducation());
@@ -104,18 +104,20 @@ public class CorpMypageJobController extends HttpServlet {
 			throws ServletException, IOException {
 		CorporationService cmpj = new CorporationService();
 		Member loginUser = (Member) request.getSession().getAttribute("loginUser");
-//		String 
+
 		JobPost j = JobPost.builder().career(request.getParameter("career"))
 				.education(request.getParameter("education")).endDate(Date.valueOf(request.getParameter("endDate")))
-				.jobNo(request.getParameter("jobpostNo")).location(request.getParameter("location"))
+				.jobNo(request.getParameter("jobNo")).location(request.getParameter("location"))
 				.phone(request.getParameter("phone")).postContent(request.getParameter("postContent"))
 				.postTitle(request.getParameter("postTitle"))
+				.corpNo(loginUser.getUserNo())
 				.build();
 		
-//		이력서 존재 확인
+		System.out.println("확인" + j);
+		
+//		이력서 공고가 없으면 등록완료로 하고, 있으면 공고 수정 완료로
 		JobPost jobPost = new JobPostService().selectOne(loginUser.getUserNo()); 
 		if (jobPost == null) {
-			j.setCorpNo(loginUser.getUserNo());
 			if (cmpj.insertPost(j)) {
 				request.setAttribute("alertMsg", "공고 등록 완료");
 				response.sendRedirect("notice.me");
@@ -132,6 +134,5 @@ public class CorpMypageJobController extends HttpServlet {
 			response.sendRedirect("mypage.me");
 		}
 	}
-	// insert면 추가로 추가로 몇개 더 받아서 진행
 
 }

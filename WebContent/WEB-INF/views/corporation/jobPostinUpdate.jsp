@@ -7,6 +7,32 @@
 <meta charset="UTF-8">
 <title>${p.corp.corpName} 채용공고</title>
 <style>
+	
+input {
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 13px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+}
+
+
+/* 공고내용 input box */
+.application-form span.post-content input { 
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    color: #155724;
+    margin: 0;
+}
+
+form{
+display: flex;
+margin: 10px;
+}
+
 	.square {
 	    width: 800px;
 	    margin: 0 auto;
@@ -15,7 +41,7 @@
 	    flex-direction: column;
 	}
 	.post-content{
-	    width: 75%;
+	    width: 500px;
 	    font-size: 25px;
 	    color: #155724;
 	    margin: 0;
@@ -24,7 +50,7 @@
 	.post-title{
 		font-size: 40px;
 		font-weight: bold;
-		margin-top: 30px;
+		margin-top: 10px;
 	}
 	.application-guide-span {
 	    height: 200px;
@@ -97,7 +123,10 @@
 </head>
 <body>
 	<jsp:include page="../common/topbar.jsp"/>
-	<form action="mypage.me" method="post" style="margin: 100px auto;">
+	<form action="mypage.me" method="post" style="margin: 20px auto;">
+	<div class="side">
+			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
+	</div>
 	<div class="square">
 		<div class="content-container">
 			<div class="job-detail">
@@ -114,32 +143,35 @@
 				<p class="post-content">* 지원자격</p>
 				<div class="application-guide-span">
 					<div>
-						<span>경력 : <input type="text" name="career" class="update-textL" value="${p.career}"></span>
-						<span>학력 : <input type="text" name="education" class="update-textL" value="${p.education}"></span>
+						<span>경력 : <select name="career" class="update-textL">
+			                <option value="1">신입</option>
+			                <option value="2">3년미만</option>
+			                <option value="3">5년미만</option>
+			                <option value="4">7년미만</option>
+			                <option value="5">7년이상</option>
+	   					</select></span>
+						<span>학력 : <select name="education" class="update-textL">
+			                <option value="1">고졸</option>
+			                <option value="2">초대졸</option>
+			                <option value="3">대졸</option>
+	   					</select></span>
 					</div>
 					<div>
-						<span>직종 : <input type="text" name="jobName" class="update-textL" value = "${p.jobName}"></span>
-						<span>지원구분 : <select name="jobNo" id="jobNo" class="update-textL">
-        									<c:choose>
-            									<c:when test="${p.jobNo eq 'S'}">
-               									 <option value="S" selected>풀스택</option>
-            									</c:when>
-           										 <c:when test="${p.jobNo eq 'B'}">
-               									  <option value="B" selected>백엔드</option>
-           												 </c:when>
-            										<c:when test="${p.jobNo eq 'F'}">
-               										 <option value="F" selected>프론트엔드</option>
-           											 </c:when>
-            										<c:otherwise>
-                <option value="S">풀스택</option>
-                <option value="B">백엔드</option>
-                <option value="F">프론트엔드</option>
-            </c:otherwise>
-        </c:choose>
-    </select>
+						<span>지원구분 : 
+						<select name="jobNo" class="update-textL">
+			                <option value="S">풀스택</option>
+			                <option value="B">백엔드</option>
+			                <option value="F">프론트엔드</option>
+	   					</select>
+	   					</span>
 <!-- 									이쪽부분에서 {p.jobNo} 값을 불러야와야하는데 어떻게 해야할지 모르겠음 -->
-						</span>
-						<span>지역 : <input type="text" name="loation" class="update-textL" value="${p.location}"></span>
+						
+						<span>지역 : <select name="location" class="update-textL">
+			                <option value="1">서울</option>
+			                <option value="2">경기</option>
+			                <option value="3">인천</option>
+			                <option value="4">부산</option>
+	   					</select></span>
 					</div>
 				</div>
 			</section>
@@ -183,6 +215,6 @@
 	
 		
 	</script>
-	
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>
