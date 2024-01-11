@@ -33,5 +33,7 @@
             <button>등록</button>
         </form>
     </square>
+    
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

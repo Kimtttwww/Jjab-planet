@@ -408,7 +408,7 @@ System.out.println("시작 : "+ loginUser);
 							<span>직종 : ${jobPost.jobName}</span>
 						</div>
 						<div class="corp-post-area" align="right">
-							<button class="apply-btn" onclick="">공고보기</button>
+							<button class="apply-btn">공고보기</button>
 							<div>공고등록일 : ${jobPost.createDate}</div>
 						</div>
 					</c:otherwise>

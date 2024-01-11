@@ -36,14 +36,14 @@
         }
         	
         .proposeList span {
-        text-align: center;
+        	text-align: center;
         	flex-basis: 30%
         }
         .title{
-        border: 5px solid green; /* 지워야함 */
-     	font-weight: bold;
-     	font-size: 27px;
-        height: 60px;
+	        border: 5px solid skyblue; /* 지워야함 */
+	     	font-weight: bold;
+	     	font-size: 27px;
+	        height: 60px;
         }
     </style>
 </head>

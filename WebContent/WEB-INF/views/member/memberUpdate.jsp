@@ -8,17 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <style>
-body {
-    margin: 0;
-    padding: 0;
-}
-
 .container-update input {
-	border: 1px solid #27ae60;
+	border: 1px solid skyblue;
 }
 
 .container-update input:focus{
-    outline-color: #27ae60;
+    outline-color: skyblue;
 }
 
 .container-update {
@@ -67,13 +62,13 @@ body {
     /*셀렉트 박스 css*/
     border-radius: 5px;
     padding: 9px;
-    border: 1px solid #27ae60;
-    outline-color: #27ae60;
+    border: 1px solid skyblue;
+    outline-color: skyblue;
 }
 
 .container-update .update-div{
     /*입력 정보 감싸는 틀*/
-    border: 4px solid #27ae60;
+    border: 4px solid skyblue;
     padding-left: 20px;
     border-radius: 20px;
     width: 580px;
@@ -82,7 +77,7 @@ body {
 
 .container-update .update-btn {
     /*가입 버튼*/
-    background-color: #27ae60;
+    background-color: skyblue;
     color: #fff;
     border: none;
     padding: 15px 30px;
@@ -124,16 +119,16 @@ body {
 }
 
 .expand-green {
-    background-color: #27ae60; 
+    background-color: skyblue; 
     border: none;
     color: #fff;
     width: 50%;
 }
 
 .contract-white {
-    background-color: #ffff; 
-    border: 3px solid #27ae60; 
-    color: #27ae60;
+    background-color: white; 
+    border: 3px solid skyblue; 
+    color: skyblue;
     width: 50%;
 }
 
@@ -225,39 +220,20 @@ body {
 		</form>
 	</div>
 	
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<script>
-// 	const userType = '${loginUser.userType}';
-// 	$(() => {
-// 		$("#corporation-mypageUpdate").hide();
-// 		if(userType === "C"){
-// 			$("#corporation-mypageUpdate").show();
-// 		}
-// 	});
-
-$(document).ready(function () {
-    const userType = '${loginUser.userType}';
-
-    console.log("User Type:", userType);
-
-    $("#corporation-mypageUpdate").hide();
-
-    if (userType === "C") {
-        $("#corporation-mypageUpdate").show();
-    }
-});
-
-// $(".update-btn").click(function(){
-// 	const newPhoneValue = $('.update-phoneBox').val();
-//  	alert('번호 업데이트 완료' + newPhoneValue);	
-// 	$(".update-phoneBox").val(newPhoneValue);
-// 	e.preventDefault();
-// });
-
-	
-
+		$(document).ready(function () {
+		    const userType = '${loginUser.userType}';
+		
+		    console.log("User Type:", userType);
+		
+		    $("#corporation-mypageUpdate").hide();
+		
+		    if (userType === "C") {
+		        $("#corporation-mypageUpdate").show();
+		    }
+		});
 	</script>
-	
-	
 </body>
 
 </html>

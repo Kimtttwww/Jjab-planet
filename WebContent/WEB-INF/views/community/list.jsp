@@ -78,6 +78,8 @@
 			</c:if>
 		</section>
     </square>
+    
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <script type="text/javascript">
 //     	필터
     	$(() => {
