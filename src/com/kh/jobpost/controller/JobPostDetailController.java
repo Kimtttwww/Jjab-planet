@@ -95,5 +95,9 @@ public class JobPostDetailController extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
+    	
+    	
+    	 request.getRequestDispatcher("WEB-INF/views/jobPosting/jobPostinUpdate.jsp").forward(request, response);
+    	
     }
 }

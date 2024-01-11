@@ -102,7 +102,7 @@ public class JobPostService {
 		return selectOne;
 	}
 
-
+	
 	
 
 	
