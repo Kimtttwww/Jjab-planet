@@ -36,7 +36,7 @@ body {
 	margin: 9px;
 	border-radius: 20px;
 	justify-content: space-between;
-	border: 1px solid #eee;
+	border: 1px solid skyblue;
 }
 
  .top_b3 img{ 
@@ -61,7 +61,7 @@ body {
   top:0;
   left: 5%; 
   width: 90%; 
-  border-top: 1px solid #eee; 
+  border-top: 1px solid skyblue; 
 }
 
 .content_bottom::after {
@@ -70,7 +70,7 @@ body {
   top: 0;
   left: 5%; 
   width: 90%; 
-  border-top: 1px solid #eee; 
+  border-top: 1px solid skyblue; 
 }
 
 .content_bottom {
@@ -99,7 +99,7 @@ body {
 		<div class="top_banner">
 			<c:forEach var="corp" items="${Corplist}">
 			
-				<div class="top_b3" style="background: pinkyellow">
+				<div class="top_b3">
 					<div class="corp-logo" align="center">
 						<c:choose>
 							<c:when test="${empty corp.logo.changeName}">

@@ -93,6 +93,8 @@
 		</div>
 	</form>
 </div>
+
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 <script>
 	$(() => {
 //		초기 상태 기업 숨김

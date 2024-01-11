@@ -11,14 +11,14 @@ square {
 
 square a {
     width: 100px;
-    background-color: #666;
+    background-color: skyblue;
     border-radius: 5px;
-    color: #fff;
+    color: white;
     text-decoration: none;
     font-size: larger;
     font-weight: bold;
     margin-left: 10px;
-    padding: 5px;
+    padding: 7px;
 }
 
 /* 제목박스 */
@@ -35,7 +35,7 @@ square a {
     text-align: center;
     margin-top: 20px;
     padding-bottom: 20px;
-    border-bottom: 2px solid #666;
+    border-bottom: 2px solid skyblue;
 }
 
 /* 검색도구 드롭다운 박스 */
@@ -65,7 +65,7 @@ square a {
     width: 100%;
     display: flex;
     cursor: pointer;
-    border-bottom: 2px solid #666;
+    border-bottom: 2px solid skyblue;
 }
 
 /* 게시글 2등분 좌측 */
@@ -75,7 +75,14 @@ square a {
     flex-direction: column;
     padding: 10px;
     padding-left: 20px;
-    margin-bottom: 20px;
+    margin: 10px 0;
+}
+
+/* 게시글 내용 */
+.post-content span {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 /* 게시글 제목 */
@@ -118,9 +125,9 @@ square a {
 /* select 바 */
 #category {
     cursor: pointer;
-    border: 1px solid #666;
+    border: 1px solid skyblue;
     border-radius: 4px;
-    outline-color: #666;
+    outline-color: skyblue;
 }
 
 /* 검색창 input태그*/
@@ -138,7 +145,7 @@ square a {
 
 /* 검색창 input태그 감싸는 박스 */
 .list-searchBox{
-    border: 1px solid #666;
+    border: 1px solid skyblue;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -162,9 +169,9 @@ square img:hover{
 }
 
 .pagingbar button{
-	border: 1px solid #666;
+	border: 1px solid skyblue;
     border-radius: 5px;
-    background-color: #666;
-    color: #fff;   
+    background-color: skyblue;
+    color: white;   
     cursor: pointer;
 }

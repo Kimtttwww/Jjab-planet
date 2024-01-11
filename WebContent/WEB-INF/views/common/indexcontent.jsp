@@ -57,24 +57,24 @@
 
 		<div class="content_title"><a href="list.job" class="content_title">전체 공고 &gt;</a></div>
 		<c:forEach var="p" items="${third }">
-		<div class="all_list" onclick='location.href="detail.job?bno=${p.jobpostNo}"' style="margin-bottom:20px;">
-			<ul>
-				<li><a href="detail.corp?corpNo=${ p.corpNo }">${p.corp.corpName}</a></li>
-				<li id="list_title">${p.postTitle }</li>
-				<li>
-					<ul class="s_info">
-						<li>${p.location }</li>
-						<li>${p.career }</li>
-						<li>${p.education}</li>
-					</ul>
-				</li>
-				<li>
-					<div class="btn">
-						<a href="#">입사지원</a>
-					</div>
-				</li>
-			</ul>
-		</div>
+			<div class="all_list" onclick='location.href="detail.job?bno=${p.jobpostNo}"'>
+				<ul>
+					<li><a href="detail.corp?corpNo=${ p.corpNo }">${p.corp.corpName}</a></li>
+					<li id="list_title">${p.postTitle }</li>
+					<li>
+						<ul class="s_info">
+							<li>${p.location }</li>
+							<li>${p.career }</li>
+							<li>${p.education}</li>
+						</ul>
+					</li>
+					<li>
+						<div class="btn">
+							<a href="#">입사지원</a>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</c:forEach>
 	</div>
 	

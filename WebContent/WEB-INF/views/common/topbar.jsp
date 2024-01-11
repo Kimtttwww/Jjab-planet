@@ -22,18 +22,16 @@ body {
 }
 
 .menu-area {
-    display: flex;
-	flex-direction: row;
-	align-items: center;
 	width: 100%;
 	height: 60px;
-	vertical-align: middle;
-	font-size: default;
-	font-weight: bold;
+    display: flex;
+	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 	position: sticky;
 	background-color: white;
-	border-bottom: 2px solid #eee;
+	font-weight: bold;
+	border-bottom: 2px solid skyblue;
 }
 
 .menu {
@@ -46,11 +44,11 @@ body {
 }
 
 .menu-area a {
+	flex-direction: row;
+	justify-content: center;
 	text-decoration-line: none; /* 밑에 줄 없애기 */
 	text-decoration: none;
 	color: black; /* 보라색 흔적 없애기 */
-	justify-content: center;
-	flex-direction: row;
 }
 
 .menu-left a {

@@ -9,26 +9,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>기업채용공고 목록</title>
-<!-- <script src="/3script/jobPostingList.js"></script> -->
 <link rel="stylesheet" href="${ jjap }/resources/css/jobPostingList.css" type="text/css">
 </head>
-<body style="background-color: rgb(254, 254, 255);" class="jobPostingList-body">
+<body class="jobPostingList-body">
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 
 	<div class="head-container">
 
-		<h1 class="head-container-h1">
-			채 용 공 고</h1>
+		<h1 class="head-container-h1">채 용 공 고</h1>
 
 		<header class="jobPostList-header">
-			<!-- <form action="JobPostListController" method="get"> -->
-				<select id="category">
-					<option value="F">프론트엔드</option>
-					<option value="B">백엔드</option>
-					<option value="S">풀스택</option>
-				</select>
-				<!-- <button type="submit">검색</button> -->
-			<!-- </form> -->
+			<select id="category">
+				<option value="F">프론트엔드</option>
+				<option value="B">백엔드</option>
+				<option value="S">풀스택</option>
+			</select>
 
 			<div>
 				<input type="search" id="search-box" placeholder="기업명 검색" >
@@ -36,18 +31,13 @@
 			</div>
 		</header>
     <main>
-
       <section class="job-listing" style="margin-bottom: 40px;"><!-- 일단여기에 css적용 -->
-      
 			<c:forEach var="p" items="${list }">
-			
 				<div class="job-card" onclick='location.href = "detail.job?bno=${p.jobpostNo }"'>
 					<div class="job-card-img">
 						<img  onclick='location.href="detail.corp?corpNo=${p.corp.corpNo}"' 
 						src="${jjap}/${Logo.FILE_PATH}${p.corp.logo.changeName}" alt="기업 대표이미지">
-
 					</div>
-					
 					
 					<div class="job-info">
 						<h3 class="job-offer-title">${p.postTitle }</h3>
@@ -60,7 +50,6 @@
 					</div>
 				</div>
 			</c:forEach>
-			
 		</section>
 	</main>
 
@@ -125,6 +114,5 @@
 		location.href = domain;
 	}
 </script>
-
 
 </html>

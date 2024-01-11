@@ -7,7 +7,7 @@ html, body {
 .footer {
 	color: rgb(141, 141, 141);
 	background-color: rgb(241, 241, 241);
-	margin: 0 auto;
+	margin: 60px auto 0 auto;
 	border-top: 2px solid #eee;
 }
 

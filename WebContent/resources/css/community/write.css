@@ -28,7 +28,7 @@ square {
     flex-direction: column;
     margin-bottom: 20px;
     padding: 50px 50px;
-    border: 2px solid #27ae60;
+    border: 2px solid skyblue;
     border-radius: 5px;
 }
 
@@ -39,7 +39,7 @@ square {
 
 /* 카테고리 */
 #category {
-    border: 1px solid #27ae60;
+    border: 1px solid skyblue;
     border-radius: 5px;
     width: 190px;
     padding: 10px;
@@ -47,14 +47,14 @@ square {
 }
 
 #category, .post input, .post-content:focus{
-    outline-color: #27ae60;
+    outline-color: skyblue;
 }
 
 /* 게시글 제목 */
 .post-title {
     width: 72%;
     font-size: larger;
-    border: 1px solid #27ae60;
+    border: 1px solid skyblue;
     border-radius: 5px;
     margin: 0 auto;
     padding: 15px 10px 10px 10px;
@@ -63,7 +63,7 @@ square {
 /* 게시글 좌측 박스 내부 각 정보들 */
 .post-content {
     background-color: #ebecef;
-    border: 1px solid #27ae60;
+    border: 1px solid skyblue;
     border-radius: 5px;
     min-height: 300px;
     margin: 10px 0;
@@ -71,13 +71,14 @@ square {
 }
 
 .post button {
-    background-color: #27ae60;
-    color: #fff;
+    background-color: skyblue;
     border: none;
-    padding: 10px 30px;
     border-radius: 5px;
-    cursor: pointer;
+    color: white;
     font-size: 20px;
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 10px 30px;
 }
 
 

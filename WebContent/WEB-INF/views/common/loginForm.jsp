@@ -34,7 +34,7 @@
     border: 1px solid black;
     border-radius: 20px;
     padding: 30px;
-    border: 6px solid #27ae60;
+    border: 6px solid skyblue;
     border-radius: 20px;
 }
 
@@ -48,8 +48,8 @@
 }
 
 .inputButton{
-    background-color: #27ae60;
-    color: #fff;
+    background-color: skyblue;
+    color: black;
     border: none;
     padding: 15px 30px;
     border-radius: 5px;
@@ -61,19 +61,20 @@
 .large-input {
 	width: 200px;
     height: 30px;
-    border: 1px solid #27ae60;
+    border: 1px solid skyblue;
     border-radius: 5px;
     margin: -3px;
 }
 
 .large-input:focus{
-    outline-color: #27ae60;
+    outline-color: skyblue;
 }
 
 .naddhapChae>span{
 	font-size:xx-large;
 	margin-left: 125px; 
 }
+
 </style>
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
@@ -96,6 +97,8 @@
 			</div>
 		</div>
 	</form>
+	
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<script type="text/javascript">
 		$(() => {
 			$(".large-input").eq(0).focus();

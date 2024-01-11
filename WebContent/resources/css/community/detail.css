@@ -12,9 +12,9 @@ body {
     cursor: pointer;
     font-size: 20px;
     text-decoration: none;
-    background-color: #666;
+    background-color: skyblue;
     border-radius: 5px;
-    color: #fff;
+    color: white;
 }
 
 .post a {
@@ -80,7 +80,7 @@ square textarea {
 /* 게시글 박스, 댓글 박스 */
 .post, .reply{
     display: flex;
-    border: 1px solid #666;
+    border: 1px solid skyblue;
     border-radius: 5px;
     margin-bottom: 20px;
     padding: 30px 30px 30px 30px;
@@ -123,8 +123,8 @@ square textarea {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #666;
-    background-color: #eee;
+    border: 1px solid skyblue;
+    background-color: #ddeffe;
     border-radius: 5px;
 }
 
@@ -158,13 +158,13 @@ square textarea {
     width: 650px; 
     height: 300px; 
     resize: none;
-    border: 1px solid #666;
-    background-color: #eee;
+    border: 1px solid skyblue;
+    background-color: #ddeffe;
     border-radius: 5px;
 }
 
 .post-box textarea:focus{
-    outline-color: #666;
+    outline-color: skyblue;
 }
 
 .reply-need-login{
@@ -182,20 +182,20 @@ square textarea {
 	text-align: center;
     font-weight: bold;
     text-decoration: none;
-    background-color: #666;
+    background-color: skyblue;
     padding:4px;
     border-radius: 5px;
-    color: #fff;
+    color: white;
 }
 
 .reply-need-login a{
 	text-align: center;
     font-weight: bold;
     text-decoration: none;
-    background-color: #666;
+    background-color: skyblue;
     padding:4px;
     border-radius: 5px;
-    color: #fff;
+    color: white;
 }
 
 /* 댓글 박스 */
@@ -210,9 +210,9 @@ square textarea {
     text-align: center;
     margin: 0 auto;
     align-items: center;
-    background-color: #666;
+    background-color: skyblue;
     border-radius: 5px;
-    color: #fff;
+    color: white;
     cursor: pointer;
 }
 
@@ -220,14 +220,14 @@ square textarea {
 .reply-write>textarea {
     min-height: 50px;
     flex-basis: 80%;
+    outline-color: #3300ff;
+    border-color: #66aaff;
 }
 
 #reply-size {
     flex-basis: 99%;
     border: none;
-    border-bottom: 1px solid #666;
-    height: auto; 
-    overflow: hidden; 
+    border-bottom: 1px solid skyblue;
     resize: none;
     padding: 10px 20px 20px 30px;	
 }

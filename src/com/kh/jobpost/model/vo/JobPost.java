@@ -24,8 +24,8 @@ public class JobPost {
 	private Date createDate; //JOB_POST
 	private Date endDate; //JOB_POST
 	private int count; //JOB_POST
+	private String jobNo; //occupation
 	private String jobName; //occupation
 	private String phone; //MEMBER
-	private String userType;//USER_TYPE
 	private Corporation corp;
 }

@@ -16,6 +16,7 @@
 
 	.notice-all hr {
 		width: 100%;
+		border-color: skyblue;
 	}
 
 	.notice-all {
@@ -40,10 +41,9 @@
 	}
 
 	/* 각 알림의 버튼 */
-	.notice>button {
-		width: 50px;
-		position: absolute;
-		right: 30px;
+	.notice-content button {
+		background-color: white;
+		border-color: skyblue;
 	}
 
 	/* 페이징 바 */
@@ -63,14 +63,11 @@
 		display: flex;
     	justify-content: flex-start;
 	}
-
-/* 	.side { */
-/* 		flex-basis: 20%; */
-/* 	} */
-
+	
 	.content {
 		flex-basis: 80%;
 	}
+	
 	.notice-content{
 		height: 400px;
 		margin: 20px;
@@ -90,17 +87,15 @@
 				<h3>알림 관리</h3>
 				<hr>
 				<div class="notice-content">
-				
 					<c:if test="${empty notice}">
-					
 						<p align="center">알림이 없습니다.</p>
 					</c:if>
 					<c:forEach var="p" items="${notice}">
-						<form action="noticeDelete.me" method="get" style="margin: 100px auto;"> 
+						<form action="noticeDelete.me" method="get" style="margin: 10px auto;"> 
 							<!-- 서블릿 이동 -->
-							<input type = "hidden" name = "deletenotice" value = "${p.noticeNo}">
+							<input type="hidden" name="deletenotice" value="${p.noticeNo}">
 							<span>${p.noticeText}</span>
-							<button type="submit" class="">삭제</button>
+							<button type="submit">삭제</button>
 							<hr>
 						</form>
 					</c:forEach>

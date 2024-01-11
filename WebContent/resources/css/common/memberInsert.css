@@ -4,11 +4,11 @@ body {
 }
 
 .container-enroll input {
-	border: 1px solid #27ae60;
+	border: 1px solid skyblue;
 }
 
 .container-enroll input:focus{
-    outline-color: #27ae60;
+    outline-color: skyblue;
 }
 
 .container-enroll {
@@ -59,13 +59,13 @@ body {
     /*셀렉트 박스 css*/
     border-radius: 5px;
     padding: 9px;
-    border: 1px solid #27ae60;
-    outline-color: #27ae60;
+    border: 1px solid skyblue;
+    outline-color: skyblue;
 }
 
 .container-enroll .enroll-div{
     /*입력 정보 감싸는 틀*/
-    border: 7px solid #27ae60;
+    border: 7px solid skyblue;
     padding: 25px 20px 25px 20px;
     border-radius: 20px;
     width: 615px;
@@ -73,7 +73,7 @@ body {
 
 .container-enroll .enroll-btn {
     /*가입 버튼*/
-    background-color: #27ae60;
+    background-color: skyblue;
     color: #fff;
     border: none;
     padding: 15px 30px;
@@ -115,7 +115,7 @@ body {
 }
 
 .expand-green {
-    background-color: #27ae60; 
+    background-color: skyblue; 
     border: none;
     color: #fff;
     width: 50%;
@@ -123,8 +123,8 @@ body {
 
 .contract-white {
     background-color: #ffff; 
-    border: 3px solid #27ae60; 
-    color: #27ae60;
+    border: 3px solid skyblue; 
+    color: skyblue;
     width: 50%;
 }
 

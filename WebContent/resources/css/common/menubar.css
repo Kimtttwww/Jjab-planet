@@ -2,19 +2,20 @@ a {
 	text-decoration-line: none;
 	color: black;
 }
+
 .side{
 	width: 200px;	
 }
+
 .menu_li {
+	height: 40px;
 	list-style: none;
 	text-align: center;
-	border-right : 1px solid black;
-	margin-top: 40px;
-	border: 3px solid lightgreen;
-	height: 40px;
-	cursor: pointer;
-	border-radius: 15px;
 	font-weight: bold;
+	border: 3px solid skyblue;
+	border-radius: 15px;
+	cursor: pointer;
+	margin-top: 40px;
 	padding: 5px;
 }
 
@@ -25,8 +26,7 @@ ul {
 
 .menu_li:hover{
 	background-color: #f0f0f0; 
-    color: #ff6600; 
-    transition: background-color 1s, color 1s, border-color 1s;
+    transition: background-color 0.5s, border-color 0.5s;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-	border-color: green;
+	border-color: #1188ff;
 }
