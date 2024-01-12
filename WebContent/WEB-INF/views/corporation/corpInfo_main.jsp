@@ -66,6 +66,19 @@ body {
 	padding: 3px 15px 0 16px;
 }
 
+.corp_maincontent>:first-child{
+	font-size: 30px;
+	font-weight: bold;
+	color: #656666;
+}
+
+.corp_maincontent>:last-child{
+	font-size: 15px;
+	font-weight: bold;
+	color: #656666;
+	margin-top:25px;
+}
+
 .corp_maincontent::after {
   content: "";
   position: absolute;

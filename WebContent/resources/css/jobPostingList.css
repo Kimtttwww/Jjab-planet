@@ -89,6 +89,9 @@ body, h2, p {
 	white-space: nowrap; /* 텍스트가 줄 바꿈되지 않고 한줄에 표시되도록 설정*/
 	overflow: hidden;  /* 넘치는 텍스트를 숨김처리*/
 	text-overflow: ellipsis; /* 넘치는 텍스트를 말줄임표로 표시*/
+	border-bottom: 1px solid skyblue;
+	font-size: 12px;
+	padding-bottom:5px;
 }
 
 
@@ -122,15 +125,13 @@ body, h2, p {
     overflow: hidden;
     text-overflow: ellipsis;
     color: #656666;
-    line-height: 1.5;
-    margin-bottom: 10px;
 }
 
 
 .job-info .deadline-box {
     display: flex;
     flex-direction: row-reverse;
-    width: 250px; /* 너비 제한 */
+    width: 200px; /* 너비 제한 */
 }
 	
 .job-card-img{
@@ -141,24 +142,32 @@ body, h2, p {
     margin-bottom: -4px; 
 }
 
-.job-info p, .job-info h3 {
-	color: #656666; 
-	line-height: 1.5; 
+.job-info p {
+	line-height: 1.6; 
 }
-  
+ 
+.job-info h3 {
+	margin: 25px 0 10px 0;
+	font-size: 17px;
+}
+
+/*회사 명*/
 .corporate-name{
   font-weight: bold;  /*텍스트 굵기를 굵게 합니다*/
-  font-size: larger;
-  border-bottom: 1px solid skyblue; 
+  font-size: 30px;
+  padding-top:15px;
 }
 
 .deadline {
 	font-weight: lighter; /* 마감일 텍스트의 굵기를 굵게 설정합니다. */
+	font-size: 13px;
+	text-align: right;
 }
 
 .deadline-box{
 	display: flex;
 	flex-direction: row-reverse;
+	margin-top:5px;
 }
 
 .pagination{
