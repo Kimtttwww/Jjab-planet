@@ -17,9 +17,7 @@ public class InterestCorpService {
 
 		int listCount = dao.selectListCount(sqlSession, userNo);
 
-		System.out.println(listCount+ " 서비스 리턴");
 		sqlSession.close();
-
 		return listCount;
 	}
 

@@ -38,7 +38,7 @@ public class CorpMypageJobController extends HttpServlet {
 		int corpCode = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
 		JobPostService jpService = new JobPostService();
 		JobPost p = jpService.selectOne(corpCode);
-//		System.out.println("숫자받는거 확인" + corpCode);
+
 		if (p != null) {
 			String careerText = convertCareerToText(p.getCareer());
 			String educationText = convertEducationToText(p.getEducation());
@@ -112,8 +112,6 @@ public class CorpMypageJobController extends HttpServlet {
 				.postTitle(request.getParameter("postTitle"))
 				.corpNo(loginUser.getUserNo())
 				.build();
-		
-		System.out.println("확인" + j);
 		
 //		이력서 공고가 없으면 등록완료로 하고, 있으면 공고 수정 완료로
 		JobPost jobPost = new JobPostService().selectOne(loginUser.getUserNo()); 

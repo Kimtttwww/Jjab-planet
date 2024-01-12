@@ -47,16 +47,8 @@ public class CorpListController extends HttpServlet {
 		        e.printStackTrace(); 
 		    }
 		} else {
-		    // 적절한 기본값이나 오류 처리
 		    corpCode = 1000; // 기본값 설정
 		}
-//		System.out.println("corpCode : "  + corpCode);
-		
-		// ------------------------ 페이징처리 -----------------------
-//		int objCount;	// 게시글 갯수
-//		int currentPage;	// 현재 요청한 페이지
-//		int pageLimit;	// 페이지바 하단에 보여질 페이징바의 페이지 최대 갯수
-//		int objLimit;	// 한 페이지에 보여질 게시글의 최대 갯수
 
 		int objCount = corpService.corpCount();
 		int currentPage = Integer.parseInt(request.getParameter("currentPage") == null ? 
@@ -66,18 +58,14 @@ public class CorpListController extends HttpServlet {
 
 		PageInfo pi = Pagination.getPageInfo(objCount, currentPage, pageLimit, objLimit);
 		
-		
 		List<Logo> logoList = corpService.selectLogoList(corpCode);
-//		System.out.println("listC logoList : " + logoList);
 		request.setAttribute("logoList", logoList);
 
 		// 기업 로고 list
 		List<Corporation> Corplist = corpService.selectCorpList(pi);
-//		System.out.println("Corplist : " + Corplist);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("Corplist", Corplist);
-//		System.out.println("pi : " + pi);
 		
 		Collections.shuffle(Corplist);
 		request.setAttribute("randonCorp", Corplist);

@@ -31,7 +31,7 @@
             <article>
                 	<a id="write">글작성</a>
                     <div class="list-searchBox">
-                        <input class="list-search" type="text" placeholder="검색어를 입력하세요.">
+                        <input class="list-search" type="search" placeholder="검색어를 입력하세요.">
                         <img id="search" src="${project}/resources/images/search_icon.png">
                     </div>
             </article>

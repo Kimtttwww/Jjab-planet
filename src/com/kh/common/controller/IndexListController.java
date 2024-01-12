@@ -40,10 +40,6 @@ public class IndexListController extends HttpServlet {
 		request.setAttribute("second", second);
 		request.setAttribute("third", third);
 		
-		System.out.print(first);
-		System.out.print(second);
-		System.out.print(third);
-		
 		request.getRequestDispatcher("/WEB-INF/views/common/indexcontent.jsp").forward(request, response);
 	}
 

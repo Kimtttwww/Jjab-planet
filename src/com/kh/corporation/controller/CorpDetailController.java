@@ -37,13 +37,6 @@ public class CorpDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CorporationService corpService = new CorporationService();
 		int corpCode = Integer.parseInt( request.getParameter("corpNo"));
-		
-//		 ------------------------기업리뷰 페이징처리 -----------------------
-//		objCount 모든 글의 갯수 
-//		currentPage 현재 요청한 페이지
-//		pageLimit 페이지바 하단에 보여질 페이징바의 페이지 최대 갯수
-//		objLimit 한 페이지에 보여질 글의 최대 갯수
-		
 		int objCount = corpService.reviewCount(corpCode);		
 		int pageLimit = 5;
 		int objLimit = 4;
@@ -63,29 +56,22 @@ public class CorpDetailController extends HttpServlet {
 		// 모든 기업리스트
 		List<Corporation> corpList = corpService.selectCorpList(pi);
 		request.setAttribute("corpList", corpList);
-//		System.out.println("corpList : " +corpList);
 		
 		// corpNo에 해당하는 기업 출력
 		Corporation corp = corpService.selectCorpOne(corpCode);
 		request.setAttribute("corp", corp);
-//		System.out.println("corp : " +corp);
 		
 		// corpNo에 해당하는 기업로고
 		List<Logo> logo = corpService.selectLogoOne(corpCode);
 		request.setAttribute("logo", logo);
-//		System.out.println("logo : " + logo);
 		
 		// corpNo에 해당하는 채용공고 출력
 		JobPost jobPost = corpService.selectJobPostList(corpCode);
-//		System.out.println("jobPost : " +jobPost);
 		request.setAttribute("jobPost", jobPost);
-		
 		
 		// corpNo에 해당하는 리뷰 리스트 출력하기
 		List<Reply> reply = corpService.selectReviewList(pi, corpCode);
-//		System.out.println("reply : " + reply);
 		request.setAttribute("reply", reply);
-		
 		
 		request.getRequestDispatcher("/WEB-INF/views/corporation/corpInfo_detail.jsp").forward(request, response);
 	}
@@ -95,10 +81,5 @@ public class CorpDetailController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-				
-				
-				
-				
 	}
-
 }

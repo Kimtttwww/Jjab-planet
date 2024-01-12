@@ -75,4 +75,10 @@
 		FROM MEMBER
 		WHERE USER_NO = #{userNo}
 	</select>
+	
+	<select id="duplicateCheck" parameterType="string" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE USER_ID = #{userId}
+	</select>
 </mapper>

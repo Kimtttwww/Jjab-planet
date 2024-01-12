@@ -19,9 +19,6 @@ public class InterestCorpDao {
 	}
 
 	public int selectListCount(SqlSession sqlSession, int userNo) {
-		int re = sqlSession.selectOne("mypageMapper.interestCorpListCount", userNo);
-		
-		System.out.println(re + "asd");
-		return re;
+		return sqlSession.selectOne("mypageMapper.interestCorpListCount", userNo);
 	}
 }

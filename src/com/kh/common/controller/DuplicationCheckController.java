@@ -1,4 +1,4 @@
-package com.kh.member.controller;
+package com.kh.common.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.member.service.NoticeService;
+import com.kh.member.service.MemberService;
 
 /**
- * Servlet implementation class noticeDeleteController
+ * Servlet implementation class DuplicateCheckController
  */
-@WebServlet("/noticeDelete.me")
-public class noticeDeleteController extends HttpServlet {
+@WebServlet("/check.me")
+public class DuplicationCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public noticeDeleteController() {
+    public DuplicationCheckController() {
         super();
     }
 
@@ -27,24 +27,18 @@ public class noticeDeleteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		NoticeService ns = new NoticeService();
-		int deleteNo = Integer.parseInt(request.getParameter("deletenotice"));
 		
-		if(ns.deleteNotice(deleteNo) > 0) {
-			response.getWriter().print(true);
-			request.setAttribute("alertMsg", "삭제 성공");
-			response.sendRedirect(request.getContextPath() + "/notice.me");
-		} else {
-			response.getWriter().print(false);
-			request.setAttribute("alertMsg", "해당 게시글을 찾지 못하였습니다");
-			response.sendRedirect(request.getContextPath() + "/notice.me");
-		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		MemberService service = new MemberService();
+		String checkId = request.getParameter("userId");
 		
+		if (checkId != null && !checkId.equals("")) {
+			response.getWriter().print(service.duplicationCheck(checkId));
+		}
 	}
 }
