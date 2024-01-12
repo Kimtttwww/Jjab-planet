@@ -34,11 +34,14 @@
     background-color: rgb(242, 251, 255);
     font-size: 20px;
     font-weight: bolder;
-    border-left: solid 1px skyblue;
+    border: solid 1px skyblue;
     margin: 10px auto;
     padding-left: 35px;
     flex-direction: row;
     justify-content: space-evenly;
+	box-shadow: 3px 3px 10px 1px skyblue;
+	border-radius: 8px;
+	
 }
 
 .application-guide-span > div{
@@ -47,6 +50,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+	border-right: solid 1px rgb(110, 159, 179);
+	padding: 7px;
 }
 
 .application-form{
@@ -96,6 +101,28 @@
     background-color: #8BBB97;
     color: white;
 }
+.update-btnBox{
+	display: flex;
+	justify-content: center;
+}
+
+.update-btnBox button[type=submit]{
+	background-color: skyblue;
+	color: white;
+	border: solid 1px rgb(106, 160, 182);
+	width: 70%;
+	height: 40px;
+	margin-top: 40px;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.update-btn :hover{
+	background-color: rgb(78, 128, 148);
+	
+}
+
+
 </style>
 </head>
 <body>

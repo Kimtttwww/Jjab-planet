@@ -104,7 +104,7 @@
 	}
 	.application-guide-item{
 		border-right: solid 1px rgb(110, 159, 179);
-		/* border-radius: 8px; */
+		
 		padding: 7px;
 	}
 </style>
