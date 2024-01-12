@@ -149,8 +149,8 @@
 				success: (tf) => {
 					if (tf == 'true') {
 						alert("사용 가능한 아이디입니다");
-						$("input").eq(1).prop('readOnly', 'true')
-						$("input").eq(2).prop('readOnly', 'true')
+						$("input").eq(1).prop('disabled', 'true')
+						$("input").eq(2).prop('disabled', 'true')
 						$("#selectId").prop('disabled', 'true')
 					} else {
 						alert("이미 사용중인 아이디 입니다");

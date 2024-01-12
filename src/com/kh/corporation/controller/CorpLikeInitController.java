@@ -39,7 +39,7 @@ public class CorpLikeInitController extends HttpServlet {
 			boolean isLiked = corpService.isCorpLiked(corpCode, userNo) ? true : false;
 			
 	        // 결과를 클라이언트에 전송
-	        response.getWriter().print(isLiked);
+	        response.getWriter().print(true);
 		} else { 
 			response.getWriter().print(false);
 		}

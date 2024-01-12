@@ -18,7 +18,7 @@ body {
 .list-content{
     display: flex;
     justify-content: space-around;
-    height: 60px;
+    height: 85px;
     align-items: center;
     border-top: 1px solid skyblue;
 }

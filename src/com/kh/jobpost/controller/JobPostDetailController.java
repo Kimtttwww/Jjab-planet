@@ -27,7 +27,13 @@ public class JobPostDetailController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JobPostService jobPostservice = new JobPostService();
-        int jobpostNo = Integer.parseInt(request.getParameter("bno"));
+        int jobpostNo = 0;
+        try {
+			
+        	jobpostNo = Integer.parseInt(request.getParameter("bno"));
+		} catch (NumberFormatException e) {
+			System.out.println("jobpostNo에 문제가있어요");
+		}
         
         if (jobPostservice.increaseCount(jobpostNo) > 0) {
             JobPost p = jobPostservice.detailPost(jobpostNo);
