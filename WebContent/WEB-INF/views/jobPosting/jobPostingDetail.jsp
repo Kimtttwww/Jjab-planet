@@ -18,8 +18,9 @@
 	.post-content{
 	    width: 75%;
 	    font-size: 25px;
-	    color: #155724;
+	    color: rgb(94, 147, 168);
 	    margin: 0;
+		
 	}
 	
 	.post-title{
@@ -29,17 +30,21 @@
 	}
 
 	.application-guide-span {
+		border-radius: 8px;
+		border: solid 1px ;
 	    height: 200px;
 	    display: flex;
 	    align-items: center;
-	    background-color: #F1F8EF;
+	    background-color: rgb(242, 251, 255);
 	    font-size: 20px;
 	    font-weight: bolder;
-	    border-left: solid 1px rgb(101, 233, 101);
+	    border: solid 1px rgb(161, 213, 233);
 	    margin: 10px auto;
 	    padding-left: 35px;
 	    flex-direction: row;
 	    justify-content: space-evenly;
+		box-shadow: 3px 3px 10px 1px skyblue;
+
 	}
 
 	.application-guide-span > div{
@@ -79,12 +84,12 @@
 	}
 	
 	.cotent-footer button[type="button"] {
-	    background-color: #F8D7DA;
-	    color: #721C24;
+	    background-color: skyblue;
+	    color: white;
 	}
 	
 	.cotent-footer button[type="button"]:hover{
-	    background-color: #CA8D92 ;
+	    background-color: rgb(90, 175, 211);
 	    color: white;
 	}
 	
@@ -96,6 +101,11 @@
 	.cotent-footer button[type="submit"]:hover{
 	    background-color: #8BBB97;
 	    color: white;
+	}
+	.application-guide-item{
+		border-right: solid 1px rgb(110, 159, 179);
+		/* border-radius: 8px; */
+		padding: 7px;
 	}
 </style>
 </head>
@@ -119,11 +129,11 @@
 			<section class="application-form">
 				<p class="post-content">* 지원자격</p>
 				<div class="application-guide-span">
-					<div>
+					<div class="application-guide-item">
 						<span>경력 : ${p.career}</span>
 						<span>학력 : ${p.education}</span>
 					</div>
-					<div>
+					<div class="application-guide-item">
 						<span>직종 : ${p.jobName}</span>
 						<span>지역 : ${p.location}</span>
 					</div>
