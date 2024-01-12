@@ -36,18 +36,23 @@
 
 .naddhapChae {
     margin-top: 70px;
+    width: 540px;
+    height: 500px;
     padding: 30px;
     border: 6px solid skyblue;
     border-radius: 20px;
 }
 
-.naddhapChae > div:first-of-type {
+.loginform-input {
     margin-top: 60px;
     font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.button {
-    margin-top: 60px;
+.login-button {
+    margin-top: 100px;
     text-align: center;
 }
 
@@ -63,12 +68,10 @@
 }
 
 .large-input {
-    width: 230px;
+    width: 290px;
     height: 43px;
     border: 1px solid skyblue;
     border-radius: 5px;
-    mar: ;
-    /* margin: -3px; */
 }
 
 .large-input:focus{
@@ -86,8 +89,8 @@
 <body>
 	<jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 	
-	<form id="login-form" action="login.me" method="post">
-		<div class="bigBox">
+	<div class="bigBox">
+		<form id="login-form" action="login.me" method="post">
 			<div class="naddhapChae">
 				<span>로그인</span>
 				<div class="loginform-input">
@@ -100,12 +103,12 @@
 						<input type="password" name="userPwd" class="large-input" placeholder="비밀번호를 입력해주세요">
 					</div>
 				</div>
-				<div class="button">
+				<div class="login-button">
 					<button type="button" class="inputButton">로그인</button> 
 				</div>
 			</div>
-		</div>
-	</form>
+		</form>
+	</div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<script type="text/javascript">

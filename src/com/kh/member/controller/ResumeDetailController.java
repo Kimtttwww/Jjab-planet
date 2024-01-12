@@ -46,7 +46,7 @@ public class ResumeDetailController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int workerNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
-		
+		System.out.println("들어옴??");
 		Resume resume = Resume.builder()
 				.workerNo(workerNo)
 				.formTitle(request.getParameter("formTitle"))
@@ -57,6 +57,7 @@ public class ResumeDetailController extends HttpServlet {
 				.career(request.getParameter("career"))
 				.build();
 		
+		System.out.println(resume);
 		if(resumeService.updateResume(resume)) {
 			request.getSession().setAttribute("alertMsg", "성공적으로 회원정보를 수정했습니다");
 		}else {

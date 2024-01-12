@@ -6,7 +6,6 @@
 	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% 
 	Member loginUser=(Member) session.getAttribute("loginUser"); 
-System.out.println("시작 : "+ loginUser);
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="corp" value="${corp}" />
@@ -243,6 +242,7 @@ System.out.println("시작 : "+ loginUser);
     width: 10%;
     height: 30px;
     cursor: pointer;
+    display: none;
     /* padding: 4px 6px 5px 6px; */
     /* margin-top: 30px; */
 }
@@ -263,6 +263,7 @@ System.out.println("시작 : "+ loginUser);
     border: 1px solid #eee;
     width: 85%;
     height: 100px;
+    font-size: 20px;
 }
 
 #writeBox1:focus{
@@ -400,7 +401,7 @@ System.out.println("시작 : "+ loginUser);
 		</div>
 	</header>
 
-	<div class="corp_info_a2" style="height: 150px;"></div>
+	<div class="corp_info_a2" style="height: 150px; display: none;"></div>
 
 	<div class="corp-info-all">
 		<div class="corp-zone">
@@ -638,6 +639,7 @@ System.out.println("시작 : "+ loginUser);
 			}else if (userType === 'E'){
 				$("#writeBox1").prop('readonly', false);
 				alert("리뷰를 작성해주세요!");
+				$("#insert-btn").css('display', 'block');
 				$("#writeBox1").val("");
 				$("#writeBox1").focus();
 			}else{
@@ -650,6 +652,7 @@ System.out.println("시작 : "+ loginUser);
 				$("#popup_write").css('display', 'none') ;
 			});
 		}
+		
 
 		//리뷰 등록 & 수정
 		$("#insert-btn").click(function () {
@@ -659,18 +662,25 @@ System.out.println("시작 : "+ loginUser);
 					replyNo : $("#rnoHidden").val(),
 					replyContent: $("#writeBox1").val()
 				}
+				
+			if ( !$("#review-btn").data("clicked")) {
+				$("#insert-btn").css('display', 'block');
+				$("#writeBox1").focus();
+			}
+			
+			// 리뷰 수정
+			$("#update-review").data("clicked")) {
+				change();
+				$("#insert-btn").css('display', 'none');
+				$("#writeBox1").focus();
+			}
 			
 			if(!list.replyNo){
 				address = 'insertReview.corp';
 			}else {
 				address = 'updateReview.corp';
 			}
-			
-			if (!$("#writeBox1").val()) {
-				alert("내용을 입력해주세요");
-				$("#writeBox1").focus();
-			}
-			
+				
 			$.ajax({
 				type: 'post',
 				url: address,
@@ -694,6 +704,8 @@ System.out.println("시작 : "+ loginUser);
 				$("#writeBox1").val($(ele).next().next().text());
 				$("#writeBox1").prop('readonly', false);
 		}
+
+		
 
 
 		// 리뷰 삭제

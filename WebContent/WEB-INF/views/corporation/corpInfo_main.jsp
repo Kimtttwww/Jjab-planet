@@ -29,8 +29,8 @@ body {
 .top_banner {
     display: flex;
     margin: 30px auto;
+    justify-content: space-between;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
 .top_b3 {
