@@ -241,6 +241,7 @@
     width: 10%;
     height: 30px;
     cursor: pointer;
+    display: none;
     /* padding: 4px 6px 5px 6px; */
     /* margin-top: 30px; */
 }
@@ -261,6 +262,7 @@
     border: 1px solid #eee;
     width: 85%;
     height: 100px;
+    font-size: 20px;
 }
 
 #writeBox1:focus{
@@ -398,7 +400,7 @@
 		</div>
 	</header>
 
-	<div class="corp_info_a2" style="height: 150px;"></div>
+	<div class="corp_info_a2" style="height: 150px; display: none;"></div>
 
 	<div class="corp-info-all">
 		<div class="corp-zone">
@@ -636,6 +638,7 @@
 			}else if (userType === 'E'){
 				$("#writeBox1").prop('readonly', false);
 				alert("리뷰를 작성해주세요!");
+				$("#insert-btn").css('display', 'block');
 				$("#writeBox1").val("");
 				$("#writeBox1").focus();
 			}else{
@@ -648,6 +651,7 @@
 				$("#popup_write").css('display', 'none') ;
 			});
 		}
+		
 
 		//리뷰 등록 & 수정
 		$("#insert-btn").click(function () {
@@ -657,18 +661,25 @@
 					replyNo : $("#rnoHidden").val(),
 					replyContent: $("#writeBox1").val()
 				}
+				
+			if ( !$("#review-btn").data("clicked")) {
+				$("#insert-btn").css('display', 'block');
+				$("#writeBox1").focus();
+			}
+			
+			// 리뷰 수정
+			$("#update-review").data("clicked")) {
+				change();
+				$("#insert-btn").css('display', 'none');
+				$("#writeBox1").focus();
+			}
 			
 			if(!list.replyNo){
 				address = 'insertReview.corp';
 			}else {
 				address = 'updateReview.corp';
 			}
-			
-			if (!$("#writeBox1").val()) {
-				alert("내용을 입력해주세요");
-				$("#writeBox1").focus();
-			}
-			
+				
 			$.ajax({
 				type: 'post',
 				url: address,
@@ -692,6 +703,8 @@
 				$("#writeBox1").val($(ele).next().next().text());
 				$("#writeBox1").prop('readonly', false);
 		}
+
+		
 
 
 		// 리뷰 삭제

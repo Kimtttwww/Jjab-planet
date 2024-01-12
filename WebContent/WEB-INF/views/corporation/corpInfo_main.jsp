@@ -34,7 +34,8 @@ body {
 
 .top_banner {
     display: flex;
-    padding: 0 10px;
+    margin: 30px auto;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
