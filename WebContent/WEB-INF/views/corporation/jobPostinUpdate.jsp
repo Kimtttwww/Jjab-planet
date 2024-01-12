@@ -158,7 +158,7 @@ margin: 10px;
 	   					</select></span>
 					</div>
 					<div>
-						<span>지원구분 : 
+						<span>직종 : 
 						<select name="jobNo" class="update-textL">
 			                <option value="S">풀스택</option>
 			                <option value="B">백엔드</option>
