@@ -44,6 +44,7 @@ square {
     width: 190px;
     padding: 10px;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 #category, .post input, .post-content:focus{

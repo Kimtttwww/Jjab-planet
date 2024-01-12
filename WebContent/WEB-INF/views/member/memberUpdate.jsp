@@ -242,8 +242,8 @@ body {
 			</form>
 		</div>
 	</div>
-	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	
 	<script>
 		$(document).ready(function () {
 		    const userType = '${loginUser.userType}';
@@ -258,7 +258,6 @@ body {
 		});
 	</script>
 	
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 
 </html>

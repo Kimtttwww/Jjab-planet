@@ -21,7 +21,7 @@
 	.outer{
 		width: 800px;
 		display: block;
-		margin: 0 auto;
+		margin: 40px auto;
 	}
 	
 	.outer h3{
@@ -38,7 +38,7 @@
 
 	td {
 		padding : 20px;
-		font-size: 20px;
+		font-size: 17px;
 	}
 
 	td>input[type=text]{
@@ -60,6 +60,7 @@
     width: 170px;
     height: 50px;
     font-size: 18px;
+    border: 2px solid skyblue;
     background-color: skyblue;
     color: #fff;
     font-weight: bold;
@@ -77,7 +78,6 @@
 			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
 		<div class="outer">
-			<h3>이력서 관리 ></h3>
 			<h1 align="center">이력서</h1>
 			<form action="resume.me" method="post">
 				<table align="center">
