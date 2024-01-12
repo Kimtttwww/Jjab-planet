@@ -55,10 +55,13 @@ body {
 }
 
 /* 각 알림의 버튼 */
-.notice>button {
-	width: 50px;
-	position: absolute;
-	right: 30px;
+.notice-text button {
+	border: 1px solid skyblue;
+    border-radius: 5px;
+    background-color: skyblue;
+    color: white;   
+    cursor: pointer;
+    padding: 4px 8px;
 }
 
 /* 페이징 바 */
@@ -100,6 +103,15 @@ body {
    	padding:30px;
 }
 
+.page{
+	border: 2px solid skyblue;
+    border-radius: 5px;
+    background-color: skyblue;
+    color: #fff;   
+    cursor: pointer;
+    padding:3px 6px 3px 6px;
+}
+
 .notice-content hr {
 	border-color: skyblue;
 }
@@ -126,7 +138,7 @@ body {
 							<div class="notice-text">
 							<input type = "hidden" name = "deletenotice" value = "${p.noticeNo}">
 								<p style="width: 60%">${p.noticeText}</p>
-								<button style="width: 10%" type="submit" class="">삭제</button>
+								<button type="submit" class="">삭제</button>
 							</div>	
 							<hr>
 						</form>

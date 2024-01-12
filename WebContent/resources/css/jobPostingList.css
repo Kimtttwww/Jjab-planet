@@ -6,9 +6,10 @@ body, h2, p {
 }
 
 .head-container-h1{
+	text-align: center;
   	font-weight: bold;
-	font-size: 20px;
-	margin-top: 20px;
+	font-size: 30px;
+	margin-top: 40px;
 	margin-bottom: 10px;
 	padding-bottom:30px;
 }  
@@ -19,9 +20,10 @@ body, h2, p {
 }
 
 .jobPostList-header {
+	
   display: flex; 
   justify-content: space-between; 
-  margin-bottom: 20px; 
+  margin: 40px 0 20px 0; 
 }
 
 .jobPostList-header #category{
@@ -29,6 +31,7 @@ body, h2, p {
   background-color: rgb(227, 236, 248);
   border: solid 1px #9caac9;
   color: #3a4755;
+  cursor: pointer;
 }
 
 .jobPostList-header input[type="search"]{
@@ -49,20 +52,18 @@ body, h2, p {
 }
 
 .job-listing {
-	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	padding: 0 10px 0 10px;
+	padding: 0 10px;
 	margin-bottom: 40px;
 }
   
 .job-card {
-	width: 252px;
+	flex-basis: 25%;
 	cursor: pointer;
 	height: 290px;
-	margin: 30px;
+	margin: 40px;
 	border-radius: 20px;
-	justify-content: space-between;
 	border: 1px solid skyblue;
 	overflow: hidden;
 }
@@ -167,14 +168,10 @@ body, h2, p {
 }
 
 .pagination a{
-	margin-right: 3px;
-	text-align: center;
-	border-radius: 4px;
-	width: 25px;
-	height: 25px;
-	border-radius: 5px;
-	background-color: rgb(240, 244, 245);
-	border: solid 1px #98c3ce;
-	color: #5e7d8a;
-	cursor: pointer;
+	border: 2px solid skyblue;
+    border-radius: 5px;
+    background-color: skyblue;
+    color: #fff;   
+    cursor: pointer;
+    padding:3px 6px 3px 6px;
 }

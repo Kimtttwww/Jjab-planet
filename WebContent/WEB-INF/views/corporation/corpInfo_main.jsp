@@ -14,33 +14,37 @@ body {
 	margin: 0;
 	height: 100%;
 }
+
 *{
 	font-family: 'SOYOMapleBoldTTF';
 }
+
 .main {
 	max-width: 1000px;
 	margin: 0 auto;
 }
+
 .content_title {
+	text-align: center;
 	font-weight: bold;
-	font-size: 20px;
-	margin-top: 20px;
+	font-size: 30px;
+	margin-top: 40px;
 	margin-bottom: 10px;
 	padding-bottom:30px;
 }
+
 .top_banner {
     display: flex;
-    margin: 30px auto;
+    padding: 0 10px;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
 .top_b3 {
     flex-basis: 25%;
+    cursor: pointer;
     height: 290px;
-    margin: 25px;
+    margin: 40px;
     border-radius: 20px;
-    display: flex;
     border: 1px solid skyblue;
     flex-direction: column;
 }
@@ -103,7 +107,7 @@ body {
 	
 	<div class="main">
 		<div class="content_title">
-			기업정보 >
+			기업정보
 		</div>
 
 		<div class="top_banner">

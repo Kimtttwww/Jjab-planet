@@ -25,7 +25,7 @@ body {
 
 .joayo-area{
     width: 800px;
-    margin: 0 auto;
+    margin: 40px auto;
 }
 
 .mypage3_title-box{
@@ -53,6 +53,15 @@ body {
     width: 100%;
     border-top: 1px solid skyblue;
     padding: 30px; 
+}
+
+.page{
+	border: 2px solid skyblue;
+    border-radius: 5px;
+    background-color: skyblue;
+    color: #fff;   
+    cursor: pointer;
+    padding:3px 6px 3px 6px;
 }
 
 </style>

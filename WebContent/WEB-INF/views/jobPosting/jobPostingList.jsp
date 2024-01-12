@@ -16,7 +16,7 @@
 
 	<div class="head-container">
 
-		<h1 class="head-container-h1">채용공고  ></h1>
+		<h1 class="head-container-h1">채용공고</h1>
 
 		<header class="jobPostList-header">
 			<select id="category">
