@@ -17,7 +17,7 @@
 .post-content{
     width: 75%;
     font-size: 25px;
-    color: #155724;
+    color: skyblue;
     margin: 0;
 }
 
@@ -31,10 +31,10 @@
     height: 200px;
     display: flex;
     align-items: center;
-    background-color: #F1F8EF;
+    background-color: rgb(242, 251, 255);
     font-size: 20px;
     font-weight: bolder;
-    border-left: solid 1px rgb(101, 233, 101);
+    border-left: solid 1px skyblue;
     margin: 10px auto;
     padding-left: 35px;
     flex-direction: row;
@@ -84,27 +84,28 @@
 
 .cotent-footer button[type="button"]:hover{
     background-color: #CA8D92 ;
-    color: #fff;
+    color: white;
 }
 
 .cotent-footer button[type="submit"] {
     background-color: #C3E6CB;
-    color: #155724;
+    color: skyblue;
 }
 
 .cotent-footer button[type="submit"]:hover{
     background-color: #8BBB97;
-    color: #fff;
+    color: white;
 }
 </style>
 </head>
 <body>
 	<jsp:include page="../common/topbar.jsp"/>
+
 	<div style="display: flex;">
 		<div class="side">
-			<jsp:include page="/WEB-INF/views/common/menubar.jsp"></jsp:include>
+			<jsp:include page="/WEB-INF/views/common/menubar.jsp" />
 		</div>
-		<form action="mypage.me" method="post" style="margin: 50px auto 0 auto;">
+		<form action="mypage.me" method="post" style="margin: 20px auto;">
 			<div class="square">
 				<div class="content-container">
 					<div class="job-detail">
@@ -112,42 +113,50 @@
 						<span class="post-title">공고명: <input type="text" name="postTitle" class="update-textL" value="${p.postTitle}"></span>
 					</div>
 					<hr>
-					
-					<section class="application-form">
+				<section class="application-form">
 						<p class="post-content">채용 공고 수정</p> <br><br>
 						<span class="post-content">공고내용: <input type="text" name="postContent" class="update-textL"  value="${p.postContent}"></span>
-					</section> 
+				</section> 
 					
 					<section class="application-form">
 						<p class="post-content">* 지원자격</p>
 						<div class="application-guide-span">
 							<div>
-								<span>경력 : <input type="text" name="career" class="update-textL" value="${p.career}"></span>
-								<span>학력 : <input type="text" name="education" class="update-textL" value="${p.education}"></span>
+								<span>경력 : 
+									<select name="career" class="update-textL">
+										<option value="1">신입</option>
+										<option value="2">3년미만</option>
+										<option value="3">5년미만</option>
+										<option value="4">7년미만</option>
+										<option value="5">7년이상</option>
+									</select>
+								</span>
+								<span>학력 : 
+									<select name="education" class="update-textL">
+										<option value="1">고졸</option>
+										<option value="2">초대졸</option>
+										<option value="3">대졸</option>
+									</select>
+								</span>
 							</div>
 							<div>
-								<span>직종 : <input type="text" name="jobName" class="update-textL" value = "${p.jobName}"></span>
-								<span>지원구분 : <select name="jobNo" id="jobNo" class="update-textL">
-									<c:choose>
-										<c:when test="${p.jobNo eq 'S'}">
-											<option value="S" selected>풀스택</option>
-										</c:when>
-										<c:when test="${p.jobNo eq 'B'}">
-											<option value="B" selected>백엔드</option>
-										</c:when>
-										<c:when test="${p.jobNo eq 'F'}">
-			 								<option value="F" selected>프론트엔드</option>
-										</c:when>
-										<c:otherwise>
-							                <option value="S">풀스택</option>
-							                <option value="B">백엔드</option>
-							                <option value="F">프론트엔드</option>
-							            </c:otherwise>
-							        </c:choose>
-							    </select>
-		<!-- 					이쪽부분에서 {p.jobNo} 값을 불러야와야하는데 어떻게 해야할지 모르겠음 -->
+								<span>직종 : 
+									<select name="jobNo" class="update-textL">
+										<option value="S">풀스택</option>
+										<option value="B">백엔드</option>
+										<option value="F">프론트엔드</option>
+									</select>
 								</span>
-								<span>지역 : <input type="text" name="loation" class="update-textL" value="${p.location}"></span>
+		<!-- 									이쪽부분에서 {p.jobNo} 값을 불러야와야하는데 어떻게 해야할지 모르겠음 -->
+								
+								<span>지역 : 
+									<select name="location" class="update-textL">
+										<option value="1">서울</option>
+										<option value="2">경기</option>
+										<option value="3">인천</option>
+										<option value="4">부산</option>
+									</select>
+								</span>
 							</div>
 						</div>
 					</section>
@@ -155,20 +164,19 @@
 					<section class="application-form">
 						<p class="post-content">* 세부사항</p>
 						<div class="application-guide-span">
-								<span>채용마감일 :  <input type="text" name="endDate" class="update-textL" value="${p.endDate}"></span>
-								<span>대표 : ${p.corp.ceoName}</span>
-								<span>문의 : ${p.phone}</span>
+							<span>채용마감일 :  <input type="text" name="endDate" class="update-textL" value="${p.endDate}"></span>
+							<span>대표 : ${p.corp.ceoName}</span>
+							<span>문의 : ${p.phone}</span>
 						</div>
 					</section>
 					
 					<div class="update-btnBox">
-							<button type="submit" class="update-btn">수정 및 등록</button>
+						<button type="submit" class="update-btn">수정 및 등록</button>
 					</div>
 				</div>
 			</div>
 		</form>
 	</div>
-	
 	<script type="text/javascript">
 		function apply(corpNo) {
 	   		$.ajax({
