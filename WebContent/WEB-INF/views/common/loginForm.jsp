@@ -11,9 +11,10 @@
 <style>
 
 .bigBox {
-    height: 410px;
-    width: 100%;
+    height: 500px;
     display: flex;
+    margin-top: 150px;
+    margin-bottom: 300px;
     justify-content: center;
 }
 
@@ -21,25 +22,28 @@
     display: flex;
     width: 350px;
     margin-top: 15px;
+    justify-content: center;
+    align-content: center;
 }
 
 .id, .pwd {
     flex-basis: 30%;
     text-align: center;
-    padding-right: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .naddhapChae {
     margin-top: 70px;
-    border: 1px solid black;
-    border-radius: 20px;
     padding: 30px;
     border: 6px solid skyblue;
     border-radius: 20px;
 }
 
 .naddhapChae > div:first-of-type {
-    margin-top: 35px;
+    margin-top: 60px;
+    font-size: 18px;
 }
 
 .button {
@@ -51,19 +55,20 @@
     background-color: skyblue;
     color: black;
     border: none;
-    padding: 15px 30px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 20px;
-    width: 100%;
+    width: 350px;
+    height: 50px;
 }
 
 .large-input {
-	width: 200px;
-    height: 30px;
+    width: 230px;
+    height: 43px;
     border: 1px solid skyblue;
     border-radius: 5px;
-    margin: -3px;
+    mar: ;
+    /* margin: -3px; */
 }
 
 .large-input:focus{
@@ -71,8 +76,10 @@
 }
 
 .naddhapChae>span{
-	font-size:xx-large;
-	margin-left: 125px; 
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
 }
 
 </style>
@@ -83,13 +90,15 @@
 		<div class="bigBox">
 			<div class="naddhapChae">
 				<span>로그인</span>
-				<div class="hapChae">
-					<span class="id">아이디:</span>
-					<input type="text" name="userId" class="large-input" placeholder="이메일 주소">
-				</div>
-				<div class="hapChae">
-					<span class="pwd">비밀번호:</span>
-					<input type="password" name="userPwd" class="large-input" placeholder="비밀번호">
+				<div class="loginform-input">
+					<div class="hapChae">
+						<span class="id">아이디:</span>
+						<input type="text" name="userId" class="large-input" placeholder="이메일을 입력해주세요">
+					</div>
+					<div class="hapChae">
+						<span class="pwd">비밀번호:</span>
+						<input type="password" name="userPwd" class="large-input" placeholder="비밀번호를 입력해주세요">
+					</div>
 				</div>
 				<div class="button">
 					<button type="button" class="inputButton">로그인</button> 

@@ -1,7 +1,13 @@
 body {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
+}
+
+.container-enroll {
+    /*회원가입 박스 전체 틀*/
+    width: 600px;
+    margin: 65px auto;
 }
 
 .container-enroll input {
@@ -12,28 +18,40 @@ body {
     outline-color: skyblue;
 }
 
-.container-enroll {
-    /*회원가입 박스 전체 틀*/
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 .container-enroll div { 
     margin-bottom: 8px;
 }
 
-.container-enroll .enroll-textL {
+.enroll-title{
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.enroll-textL {
     /*입력 정보 길이가 긴 인풋태그*/
-    width: 100%;
+    width: 95%;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
 }
 
+.enroll-idcheck{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 27px;
+    align-items: flex-end;
+}
+.id-duplicate{
+    width: 120px;
+    height: 29px;
+    border-radius: 5px;
+    background-color: skyblue;
+    color: white;
+}
+
 /*이메일 셀렉트 박스 css*/
 .container-enroll .email-selectBox {
-	width:120px;
+	width:123px;
     border-radius: 5px;
     padding: 10px;
     border: 1px solid skyblue;
@@ -42,7 +60,7 @@ body {
 
 /*핸드폰 셀렉트 박스 css*/
 .container-enroll .phone-selectBox {
-	width:75px;
+    width: 85px;
     border-radius: 5px;
     padding: 10px;
     border: 1px solid skyblue;
@@ -51,8 +69,8 @@ body {
 
 .container-enroll .enroll-phoneBox {
     /*입력 정보 인풋태그 text*/
-    width: 482px;
-    padding: 10px;
+    width: 430px;
+    padding: 8.5px;
     margin-bottom: 5px;
     border-radius: 5px;
 }
@@ -67,7 +85,7 @@ body {
 
 .container-enroll .email-selectText{
     /*직접입력 누르면 나오는 인풋태그*/
-    width: 160px;
+    width: 172px;
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
@@ -78,9 +96,12 @@ body {
 .container-enroll .enroll-div{
     /*입력 정보 감싸는 틀*/
     border: 7px solid skyblue;
-    padding: 25px 20px 25px 20px;
+    padding: 5px 50px 30px 50px;
     border-radius: 20px;
-    width: 615px;
+    width: 660px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .container-enroll .enroll-btn {
@@ -100,15 +121,24 @@ body {
 }
 
 .enroll-btnBox{
-    margin-bottom: 20px; 
-	margin-left: 37%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
 }
 
 .container-enroll .link-enroll {
     /*개인 & 기업 회원가입 이동 틀*/
-    border: none; 
-    width: 615px;
-    height: 100px;
+    border: none;
+    width: 660px;
+    height: 115px;
+    margin-bottom: 30px;
+}
+
+.enroll-required{
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 50px;
 }
 
 .link-enroll{

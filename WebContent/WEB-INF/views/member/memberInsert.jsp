@@ -13,8 +13,8 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/topbar.jsp" />
 
-<div class="container-enroll">
-	<form action="sign.bo" method="post" enctype="multipart/form-data">
+<form action="sign.bo" method="post" enctype="multipart/form-data">
+	<div class="container-enroll">
 		<input type="hidden" name="userType" value="E">
 		<div class="link-enroll">
 			<button type="button" id="mem-btn" class="enroll-button expand-green radius-left">개인회원</button>
@@ -22,12 +22,15 @@
 		</div>
 
 		<div class="enroll-div">
-			<p>* 필수 입력 정보입니다.</p>
+			<p class="enroll-required">* 필수 입력 정보입니다.</p>
 			<div>
-				<div>아이디*</div>
-				<input type="text" name="userId" class="enroll-email" placeholder="이메일을 입력하세요."> 
+				<div class="enroll-idcheck">
+					<span class="enroll-title">아이디*</span>
+					<button class="id-duplicate">아이디중복체크</button>
+				</div>
+				<input type="text" name="userId" class="enroll-email" required placeholder="이메일을 입력하세요."> 
 				<span>@</span> 
-				<input disabled id="selectText" class="email-selectText" name="email-text" placeholder="이메일을 선택하세요."> 
+				<input disabled id="selectText" class="email-selectText" name="email-text" required placeholder="이메일을 선택하세요."> 
 				<select id="selectId" name="email-selectText" class="email-selectBox enroll-selectEmail">
 					<option value="" disabled selected>E-Mail 선택</option>
 					<option value="naver.com" >naver.com</option>
@@ -38,15 +41,15 @@
 				</select>
 			</div>
 			<div>
-				<div>비밀번호*</div>
+				<div class="enroll-title">비밀번호*</div>
 				<input type="password" name="userPwd" class="enroll-textL" minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호(!@#$%^&*_ 사용가능)" required>
 			</div>
 			<div>
-				<div>비밀번호 확인*</div>
+				<div class="enroll-title">비밀번호 확인*</div>
 				<input type="password" class="enroll-textL" minlength="8" maxlength="16" placeholder="8~16자의 영문, 숫자, 특수기호(!@#$%^&*_ 사용가능)" required>
 			</div>
 			<div>
-				<div id="phone">핸드폰 번호*</div>
+				<div class="enroll-title" id="phone">핸드폰 번호*</div>
 				<select id="selectPhone" name="pphone" class="phone-selectBox">
 					<option value="010">010</option>
 					<option value="011">011</option>
@@ -62,37 +65,37 @@
 
 			<div id="corporation-enrollForm" class="flex-container">
 				<div>
-					<div>기업명*</div>
+					<div class="enroll-title">기업명*</div>
 					<input type="text" name="corpName" class="enroll-textL" minlength="1" maxlength="15">
 				</div>
 				<div>
-					<div>대표자명*</div>
+					<div class="enroll-title">대표자명*</div>
 					<input type="text" name="ceoName" class="enroll-textL" minlength="2" maxlength="12">
 				</div>
 				<div>
-					<div>사업자등록번호*</div>
+					<div class="enroll-title">사업자등록번호*</div>
 					<input type="text" name="corpBn" class="enroll-textL" minlength="16" maxlength="16" placeholder="(-) 포함">
 				</div>
 				<div>
-					<div>회사 주소*</div>
+					<div class="enroll-title">회사 주소*</div>
 					<input type="text" name="address" class="enroll-textL" maxlength = "50">
 				</div>
 				<div>
-					<div>회사 홈페이지주소*</div>
+					<div class="enroll-title">회사 홈페이지주소*</div>
 					<input type="text" name="homePage" class="enroll-textL" maxlength = "100">
 				</div>
 				<div>
-					<div>회사 대표 로고*</div>
+					<div class="enroll-title">회사 대표 로고*</div>
 					<input type="file" name="logo" class="enroll-textL">
 					<div>파일은 최대 10MB까지 가능합니다</div>
 				</div>
 			</div>
+			<div class="enroll-btnBox">
+				<button class="enroll-btn">가입하기</button>
+			</div>
 		</div>
-		<div class="enroll-btnBox">
-			<button class="enroll-btn">가입하기</button>
-		</div>
-	</form>
-</div>
+	</div>
+</form>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 <script>
@@ -135,6 +138,32 @@
 		$("#corporation-enrollForm input").each((i, ele) => {
 			$(ele).prop("required", false);
 		});
+	});
+	
+// 	중복체크
+	$(".id-duplicate").click(() => {
+		if ($("input").eq(1).val() && $("input").eq(2).val() && $("#selectId").val() != 'directEmail') {
+			$.ajax({
+				url: 'check.me', type: 'post',
+				data: {userId: $("input").eq(1).val() + "@" + $("input").eq(2).val()},
+				success: (tf) => {
+					if (tf == 'true') {
+						alert("사용 가능한 아이디입니다");
+						$("input").eq(1).prop('readOnly', 'true')
+						$("input").eq(2).prop('readOnly', 'true')
+						$("#selectId").prop('disabled', 'true')
+					} else {
+						alert("이미 사용중인 아이디 입니다");
+						$("input").eq(1).val('');
+						$("input").eq(1).focus();
+					}
+				}, error: () => {
+					alert("서버와의 통신에 실패했습니다");
+				}
+			});
+		} else {
+			alert("유효하지 않은 아이디 입니다")
+		}
 	});
 	
 //	정규식

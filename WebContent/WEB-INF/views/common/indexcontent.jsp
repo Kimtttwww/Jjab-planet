@@ -26,7 +26,7 @@
 						<img src="${ project }/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
 					</article>
 					<article class="top_b1-2">
-						<span>${p.corp.corpName}</span>
+						<span class="corpname-font">${p.corp.corpName}</span>
 						<span>${p.postTitle}</span>
 						<p class="content_bottom">
 							<img class ="hit" src="${project}/resources/images/hits_icon.png">
@@ -50,7 +50,7 @@
 						<img src="${ project }/${ Logo.FILE_PATH }${ p.corp.logo.changeName }">
 					</article>
 					<article class="new_banner-2">
-						<span>${p.corp.corpName}</span>
+						<span class="corpname-font">${p.corp.corpName}</span>
 						<span>${p.postTitle }</span>
 						<p class="content_bottom">${p.jobName }</p>
 					</article>
@@ -73,7 +73,7 @@
 					</li>
 					<li>
 						<div class="btn">
-							<a href="#">입사지원</a>
+							<a href="#">공고보기</a>
 						</div>
 					</li>
 				</ul>

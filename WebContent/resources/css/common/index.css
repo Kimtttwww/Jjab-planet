@@ -6,7 +6,7 @@ html, body {
 /*h3 제목과 아래 컨텐츠 맞춤용*/
 .content_title {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
     margin: 30px 0 20px 0;
 }
 
@@ -35,10 +35,9 @@ html, body {
 }
 
 .s_info ul, .all_list ul {
-	width: 100%;
-	display: inline-flex;
-	margin: 0 auto;
-	padding: 0;
+    width: 100%;
+    display: inline-flex;
+    font-size: 18px;
 }
 
 .s_info li {
@@ -51,7 +50,7 @@ html, body {
 	display: block;
 }
 
-/*입사지원 버튼*/
+/*공고보기 버튼*/
 .btn {
 	border: 2px solid red;
 	border-radius: 30px;
@@ -106,17 +105,18 @@ a {
 }
 
 .top_b1-1, .new_banner-1{
-	width: 100%;
-	height: 45%;
-	display: flex;
-	justify-content: center;
-	border: 3px solid aquamarine;
-	border-radius: 20px;
-	padding: 20px 20px 0 20px;
+    width: 100%;
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    border: 3px solid aquamarine;
+    border-radius: 20px;
+    padding: 20px 20px 0 20px;
+    margin-bottom: 20px;
 }
 
 .top_b1 span, .new_banner span{
-    margin: 18px 20px;
+    margin: 8px 20px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -137,6 +137,9 @@ a {
     transform: translateY(-5px); 
 }
 
+.corpname-font{
+	font-size: 25px;	
+}
 .content_bottom {
     text-align: right;
     padding-top: 5px;

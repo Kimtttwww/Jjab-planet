@@ -22,11 +22,9 @@ body {
 	margin: 0 auto;
 }
 .content_title {
-	font-weight: bold;
-	font-size: 20px;
-	margin-top: 20px;
-	margin-bottom: 10px;
-	padding-bottom:30px;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 30px 0 20px;
 }
 .top_banner {
     display: flex;
@@ -47,7 +45,7 @@ body {
 
  .top_b3 img{ 
     width: 100%;
-    height: 116px;
+    height: 100%;
     border-radius: 20px 20px 0 0;
 } 
 .corp-logo{
