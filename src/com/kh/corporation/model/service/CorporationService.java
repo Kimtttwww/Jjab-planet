@@ -190,7 +190,6 @@ public class CorporationService {
 	}
 
 	public int updateReview(int refNo, int replyNo, String replyContent) {
-		System.out.println(replyNo);
 		SqlSession sqlSession = Template.getSqlSession();
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("refNo", String.valueOf(refNo));

@@ -90,4 +90,11 @@ public class MemberService {
 		db.close();
 		return result;
 	}
+
+	public boolean duplicationCheck(String checkId) {
+		boolean result = memberDao.duplicationCheck(db, checkId);
+		
+		db.close();
+		return result;
+	}
 }

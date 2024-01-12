@@ -39,4 +39,8 @@ public class MemberDao {
 	public boolean updateMember(SqlSession db, Corporation c) {
 		return db.update(map + "updateCorporation", c) > 0;
 	}
+
+	public boolean duplicationCheck(SqlSession db, String userId) {
+		return (int) db.selectOne(map + "duplicationCheck", userId) > 0;
+	}
 }

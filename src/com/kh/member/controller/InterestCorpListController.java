@@ -37,11 +37,7 @@ public class InterestCorpListController extends HttpServlet {
 			throws ServletException, IOException {
 		InterestCorpService icService = new InterestCorpService();
 		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
-		System.out.println("들어옴? ㅋ");
-//		int corpNo = Integer.parseInt(request.getParameter("corpNo"));
-//		System.out.println(corpNo);
 		
-		// ------페이징처리-------
 		int objCount = icService.selectListCount(userNo);
 		int currentPage = 1;
 		int pageLimit = 10;
@@ -54,7 +50,6 @@ public class InterestCorpListController extends HttpServlet {
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
-
 		request.getRequestDispatcher("WEB-INF/views/member/joayo_corp.jsp").forward(request, response);		
 	}
 

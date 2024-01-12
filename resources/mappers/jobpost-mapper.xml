@@ -14,7 +14,7 @@
 		LEFT JOIN corporation C ON J.CORP_NO=C.CORP_NO
 		LEFT JOIN occupation O ON J.JOB_NO=O.JOB_NO
 		LEFT JOIN LOGO L ON L.CORP_NO = C.CORP_NO
-		WHERE STATUS = 'Y'
+		WHERE STATUS = 'Y' AND END_DATE > SYSDATE
 		<if test='!category.equals("A")'>
 		    AND J.JOB_NO = #{category}
 	    </if>

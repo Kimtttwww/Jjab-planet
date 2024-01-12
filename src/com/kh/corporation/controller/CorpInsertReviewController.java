@@ -48,7 +48,6 @@ public class CorpInsertReviewController extends HttpServlet {
 				.build();
 		
 		int corpCode = review.getRefNo();
-		System.out.println("insertReview corpCode: "+corpCode);
 		
 		if(corpService.insertReview(review) > 0) {
 			corpService.noticeReview(corpCode);

@@ -1,6 +1,7 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,22 +46,34 @@ public class ResumeDetailController extends HttpServlet {
 	 * let#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int workerNo = ((Member)request.getSession().getAttribute("loginUser")).getUserNo();
+		int	workerNo = ((Member) request.getSession().getAttribute("loginUser")).getUserNo();
 		
 		Resume resume = Resume.builder()
 				.workerNo(workerNo)
+				.workerName(request.getParameter("workerName"))
 				.formTitle(request.getParameter("formTitle"))
 				.address(request.getParameter("address"))
+				.gender(request.getParameter("gender"))
 				.jobNo(request.getParameter("jobNo"))
-				.isOpen(request.getParameter("isOpen"))
+				.birthday(Date.valueOf(request.getParameter("birth")))
 				.education(request.getParameter("education"))
 				.career(request.getParameter("career"))
+				.isOpen(request.getParameter("isOpen"))
 				.build();
 		
-		if(resumeService.updateResume(resume)) {
-			request.getSession().setAttribute("alertMsg", "성공적으로 회원정보를 수정했습니다");
+		System.out.println(resume);
+		if(resumeService.ResumeDetail(workerNo) != null) {
+			if (resumeService.updateResume(resume)) {
+				request.getSession().setAttribute("alertMsg", "성공적으로 이력서를 수정했습니다");
+			} else {
+				request.getSession().setAttribute("alertMsg", "이력서 수정에 실패했습니다");
+			}
 		}else {
-			request.setAttribute("errorMsg", "회원정보 수정에 실패했습니다");	
+			if (resumeService.insertResume(resume)) {
+				request.getSession().setAttribute("alertMsg", "성공적으로 이력서를 등록했습니다");
+			} else {
+				request.setAttribute("errorMsg", "이력서 추가에 실패했습니다");	
+			}
 		}
 		response.sendRedirect("resume.me");
 	}

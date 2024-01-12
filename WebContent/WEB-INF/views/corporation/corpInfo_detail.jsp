@@ -2,11 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.kh.member.model.vo.Member,
 			java.util.ArrayList,
 			com.kh.common.model.vo.PageInfo" %>
-<%@ 
-	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% 
 	Member loginUser=(Member) session.getAttribute("loginUser"); 
-System.out.println("시작 : "+ loginUser);
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="corp" value="${corp}" />

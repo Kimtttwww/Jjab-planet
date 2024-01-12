@@ -21,6 +21,10 @@ public class ResumeDao{
     public boolean checkResumeExists(SqlSession session, int workerNo) {
     	return (int) session.selectOne("proposeMapper.checkResumeExists", workerNo) > 0;
 	}
+
+	public boolean insertResume(SqlSession session, Resume resume) {
+		return session.insert("mypageMapper.insertResume", resume) > 0;
+	}
    
 
 }

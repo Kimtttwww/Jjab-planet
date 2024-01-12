@@ -31,4 +31,17 @@ public class ResumeDetailService {
 		
 		
 	}
+	public boolean insertResume(Resume resume) {
+		SqlSession session = Template.getSqlSession();
+		boolean result = dao.insertResume(session, resume);
+		
+		if(result) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		
+		session.close();
+		return result;
+	}
 }
