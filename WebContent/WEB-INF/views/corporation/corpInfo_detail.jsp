@@ -2,7 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.kh.member.model.vo.Member,
 			java.util.ArrayList,
 			com.kh.common.model.vo.PageInfo" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ 
+	taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% 
 	Member loginUser=(Member) session.getAttribute("loginUser"); 
 %>
@@ -60,7 +61,8 @@
 .corp-aTag {
     display: flex;
     border: 1px solid #eee;
-    padding:12px
+    background-color: white;
+    padding: 12px;
 }
 
 /*기업정보 내용*/
@@ -602,7 +604,7 @@
 	// 찜 설정되어 있다면 상태유지하기 initialize
 	function initialize() {
 		initAPI().then((result) => {
-
+			console.log(result);
 			// 데이터가 존재함 -> 찜이 되어 있따.
 			if (result === 'true') {
 				$(".corp-star").css('color', 'red');
@@ -652,7 +654,22 @@
 			});
 		}
 		
-
+		
+		// 리뷰 수정버튼 클릭시 등록하기버튼 활성화
+		
+		
+		// 작성된 리뷰 textarea로 가져옴
+		function change(ele, rno) {
+				console.log(ele, rno);
+				$("#rnoHidden").val(rno);
+				$("#writeBox1").val($(ele).parent().parent().next().text());
+				$("#writeBox1").prop('readonly', false);
+				$("#writeBox1").focus();
+				$("#insert-btn").css('display', 'block');
+		
+		}
+		
+				
 		//리뷰 등록 & 수정
 		$("#insert-btn").click(function () {
 			let address;
@@ -662,17 +679,12 @@
 					replyContent: $("#writeBox1").val()
 				}
 				
-			if ( !$("#review-btn").data("clicked")) {
+			if ( $("#review-btn").data("clicked")) {
 				$("#insert-btn").css('display', 'block');
 				$("#writeBox1").focus();
 			}
 			
-			// 리뷰 수정
-			$("#update-review").data("clicked")) {
-				change();
-				$("#insert-btn").css('display', 'none');
-				$("#writeBox1").focus();
-			}
+
 			
 			if(!list.replyNo){
 				address = 'insertReview.corp';
@@ -685,26 +697,16 @@
 				url: address,
 				data: list,
 				success: function (response) {
-					alert("리뷰 등록했습니다");
+					alert("리뷰를 등록했습니다");
 					location.reload();
 					$("#writeBox1").val("");
 				},
 				error: function () {
-					alert("리뷰 등록 실패했습니다");
+					alert("리뷰 등록에 실패했습니다");
 				}
 			});
 		});
 
-
-		// 작성된 리뷰 textarea로 가져옴
-		function change(ele, rno) {
-				console.log(ele, rno);
-				$("#rnoHidden").val(rno);
-				$("#writeBox1").val($(ele).next().next().text());
-				$("#writeBox1").prop('readonly', false);
-		}
-
-		
 
 
 		// 리뷰 삭제
@@ -714,11 +716,11 @@
 				url: 'deleteReview.corp',
 				data: {replyNo : e.target.value},
 				success: function (response) {
-					alert("리뷰 삭제했습니다");
+					alert("리뷰를 삭제했습니다");
 					location.reload();
 				},
 				error: function () {
-					alert("리뷰삭제 실패했습니다");
+					alert("리뷰삭제에 실패했습니다");
 				}
 			})
 		})
@@ -751,6 +753,7 @@
 				$(this).removeClass("corp_hovered");
 			}));
 
+			
 			// 페이징버튼 클릭시 리뷰영역으로 이동
 			document.addEventListener('DOMContentLoaded', function () {
 				function goToPage(page) {
