@@ -32,7 +32,7 @@ public class ResumeViewController extends HttpServlet {
 		ResumeDetailService resumeService = new ResumeDetailService();
 		int workerNo = Integer.parseInt(request.getParameter("bno")); // 뒤에 물음표 값을 1;1 식으로 하면 key = value 
 		
-		if (new NoticeService().insertNotice(workerNo, 3)) {
+		if (new NoticeService().insertNotice(workerNo, 2)) {
 			Resume resume = resumeService.ResumeDetail(workerNo);
 			
 			request.setAttribute("resume", resume);

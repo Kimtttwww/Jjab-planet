@@ -43,7 +43,7 @@ public class ReplyWriteController extends HttpServlet {
 				.build();
 		
 		if(new PostService().insertReply(r) > 0) {
-			response.getWriter().print(new NoticeService().insertNotice(Integer.parseInt(request.getParameter("postWriter")), 4));
+			response.getWriter().print(new NoticeService().insertNotice(Integer.parseInt(request.getParameter("postWriter")), 3));
 		} else {
 			response.getWriter().print(false);
 		}

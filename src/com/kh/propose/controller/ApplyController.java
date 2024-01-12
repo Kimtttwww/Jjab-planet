@@ -26,7 +26,7 @@ public class ApplyController extends HttpServlet {
     	
     	if (new ResumeService().checkResumeExists(loginUser.getUserNo()) &&
     			new ProposeService().insertPropose(loginUser.getUserNo(), corpNo, "C")) {
-    	    response.getWriter().print(new NoticeService().insertNotice(corpNo, 5));
+    	    response.getWriter().print(new NoticeService().insertNotice(corpNo, 4));
     	} else {
     		response.getWriter().print(false);
     	}
