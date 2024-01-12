@@ -38,9 +38,9 @@
 						src="${jjap}/${Logo.FILE_PATH}${p.corp.logo.changeName}" alt="기업 대표이미지">
 					
 					<div class="job-info">
+						<p class="corporate-name">${p.corp.corpName}</p>
 						<h3 class="job-offer-title">${p.postTitle }</h3>
 						<p class="employee-condition">${p.postContent }</p>
-						<p class="corporate-name">${p.corp.corpName}</p>
 						
 						<div class="deadline-box">
 							<p class="deadline">마감일 : ${p.endDate}</p>
