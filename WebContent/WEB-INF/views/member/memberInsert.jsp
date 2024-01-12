@@ -26,7 +26,7 @@
 			<div>
 				<div class="enroll-idcheck">
 					<span class="enroll-title">아이디*</span>
-					<button class="id-duplicate">아이디중복체크</button>
+					<button type="button" class="id-duplicate">아이디중복체크</button>
 				</div>
 				<input type="text" name="userId" class="enroll-email" required placeholder="이메일을 입력하세요."> 
 				<span>@</span> 

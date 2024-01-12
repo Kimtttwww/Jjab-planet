@@ -76,7 +76,7 @@
 		WHERE USER_NO = #{userNo}
 	</select>
 	
-	<select id="duplicateCheck" parameterType="string" resultType="int">
+	<select id="duplicationCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*)
 		FROM MEMBER
 		WHERE USER_ID = #{userId}
